@@ -1,0 +1,2137 @@
+{
+  "metadata": {
+    "runId": "qa_20260925024144_f04fa",
+    "startTime": "2026-09-25T02:41:44.516Z",
+    "serverUrl": "http://localhost:3005",
+    "os": "linux",
+    "nodeVersion": "v24.16.0",
+    "browser": "Google Chrome 150.0.7871.186 (Headless)",
+    "firebaseProjectId": "beastcode-7555e",
+    "endTime": "2026-09-25T02:45:48.338Z",
+    "durationTotalMs": 243822
+  },
+  "results": [
+    {
+      "id": "CHAT-NAV-001",
+      "featureId": "CHAT-NAV",
+      "feature": "Chat Entry & Navigation",
+      "priority": "P0",
+      "layer": "E2E",
+      "scenario": "Unauthenticated visitor accessing /messages",
+      "actors": "Unauthenticated Guest",
+      "status": "PASS",
+      "durationMs": 616,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-NAV-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 616,
+          "timestamp": "2026-09-25T02:43:50.693Z"
+        }
+      ],
+      "evidence": "Verified unauthenticated gating. Screenshot: reports/chat/evidence/chat_nav_001_unauthenticated.png"
+    },
+    {
+      "id": "CHAT-NAV-002",
+      "featureId": "CHAT-NAV",
+      "feature": "Chat Entry & Navigation",
+      "priority": "P0",
+      "layer": "E2E",
+      "scenario": "Authenticated user accessing /messages",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 464,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-NAV-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 464,
+          "timestamp": "2026-09-25T02:43:51.158Z"
+        }
+      ],
+      "evidence": "Renders ChatShell with sidebar, topbar, and conversation list. Screenshot: reports/chat/evidence/chat_nav_002_authenticated.png"
+    },
+    {
+      "id": "CHAT-NAV-003",
+      "featureId": "CHAT-NAV",
+      "feature": "Chat Entry & Navigation",
+      "priority": "P1",
+      "layer": "E2E",
+      "scenario": "Deep-linking directly to a conversation (/messages/[cid])",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 15427,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-NAV-003",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 15427,
+          "errorMessage": "page.waitForSelector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('textarea') to be visible\n",
+          "timestamp": "2026-09-25T02:44:09.407Z"
+        }
+      ],
+      "errorMessage": "page.waitForSelector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('textarea') to be visible\n",
+      "evidence": "page.waitForSelector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('textarea') to be visible\n\n    at runE2ETests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/e2e/chatE2E.test.ts:121:17)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:69:3)"
+    },
+    {
+      "id": "CHAT-NAV-004",
+      "featureId": "CHAT-NAV",
+      "feature": "Chat Entry & Navigation",
+      "priority": "P2",
+      "layer": "E2E",
+      "scenario": "Deep-linking to non-existent conversation ID",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 30000,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-NAV-004",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 30000,
+          "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"http://localhost:3005/messages/non_existent_cid_qa_99999\", waiting until \"domcontentloaded\"\n",
+          "timestamp": "2026-09-25T02:44:39.407Z"
+        }
+      ],
+      "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"http://localhost:3005/messages/non_existent_cid_qa_99999\", waiting until \"domcontentloaded\"\n",
+      "evidence": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"http://localhost:3005/messages/non_existent_cid_qa_99999\", waiting until \"domcontentloaded\"\n\n    at runE2ETests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/e2e/chatE2E.test.ts:142:17)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:69:3)"
+    },
+    {
+      "id": "CHAT-NAV-005",
+      "featureId": "CHAT-NAV",
+      "feature": "Chat Entry & Navigation",
+      "priority": "P2",
+      "layer": "E2E",
+      "scenario": "Desktop auto-selection of first conversation",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2822,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-NAV-005",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2822,
+          "timestamp": "2026-09-25T02:43:53.980Z"
+        }
+      ],
+      "evidence": "First conversation automatically selected on desktop. Screenshot: reports/chat/evidence/chat_nav_005_desktop_autoselect.png"
+    },
+    {
+      "id": "CHAT-DISC-001",
+      "featureId": "CHAT-DISC",
+      "feature": "User Search & Discovery",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Search users by username query",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 4593,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-DISC-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4593,
+          "timestamp": "2026-09-25T02:41:58.295Z"
+        }
+      ],
+      "evidence": "Found user: userb__f04fa"
+    },
+    {
+      "id": "CHAT-DISC-002",
+      "featureId": "CHAT-DISC",
+      "feature": "User Search & Discovery",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Search users by displayName query",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 3325,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-DISC-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 3325,
+          "timestamp": "2026-09-25T02:42:01.620Z"
+        }
+      ],
+      "evidence": "Found user by displayName"
+    },
+    {
+      "id": "CHAT-DISC-003",
+      "featureId": "CHAT-DISC",
+      "feature": "User Search & Discovery",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Search query shorter than 2 characters",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2932,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-DISC-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2932,
+          "timestamp": "2026-09-25T02:42:04.552Z"
+        }
+      ],
+      "evidence": "Empty array returned for <2 chars query"
+    },
+    {
+      "id": "CHAT-DISC-004",
+      "featureId": "CHAT-DISC",
+      "feature": "User Search & Discovery",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Self-exclusion from search results",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 3263,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-DISC-004",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 3263,
+          "timestamp": "2026-09-25T02:42:07.815Z"
+        }
+      ],
+      "evidence": "Self successfully excluded from search"
+    },
+    {
+      "id": "CHAT-DISC-005",
+      "featureId": "CHAT-DISC",
+      "feature": "User Search & Discovery",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Search with special/Unicode characters",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 3583,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-DISC-005",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 3583,
+          "timestamp": "2026-09-25T02:42:11.398Z"
+        }
+      ],
+      "evidence": "Unicode search query handled cleanly without 500 error"
+    },
+    {
+      "id": "CHAT-CONV-001",
+      "featureId": "CHAT-CONV",
+      "feature": "Conversation Creation & Lifecycle",
+      "priority": "P0",
+      "layer": "API",
+      "scenario": "Creating new direct conversation between User A and User B",
+      "actors": "User A, User B",
+      "status": "PASS",
+      "durationMs": 4709,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-CONV-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4709,
+          "timestamp": "2026-09-25T02:42:16.107Z"
+        }
+      ],
+      "evidence": "Canonical DM ID: dm_qa_user_a__f04fa_qa_user_b__f04fa"
+    },
+    {
+      "id": "CHAT-CONV-002",
+      "featureId": "CHAT-CONV",
+      "feature": "Conversation Creation & Lifecycle",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Requesting direct conversation when one already exists",
+      "actors": "User A, User B",
+      "status": "PASS",
+      "durationMs": 4705,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-CONV-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4705,
+          "timestamp": "2026-09-25T02:42:20.812Z"
+        }
+      ],
+      "evidence": "Idempotent lookup confirmed with isExisting=true"
+    },
+    {
+      "id": "CHAT-CONV-003",
+      "featureId": "CHAT-CONV",
+      "feature": "Conversation Creation & Lifecycle",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Attempting to create a self-conversation",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2895,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-CONV-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2895,
+          "timestamp": "2026-09-25T02:42:23.707Z"
+        }
+      ],
+      "evidence": "Self-messaging rejected with 400: [object Object]"
+    },
+    {
+      "id": "CHAT-CONV-004",
+      "featureId": "CHAT-CONV",
+      "feature": "Conversation Creation & Lifecycle",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Attempting to create DM when blocked",
+      "actors": "User A, User D (blocked)",
+      "status": "PASS",
+      "durationMs": 4273,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-CONV-004",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4273,
+          "timestamp": "2026-09-25T02:42:27.980Z"
+        }
+      ],
+      "evidence": "Blocked DM rejected with 403: [object Object]"
+    },
+    {
+      "id": "CHAT-CONV-005",
+      "featureId": "CHAT-CONV",
+      "feature": "Conversation Creation & Lifecycle",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Creating organization channel as org staff/owner",
+      "actors": "Org Staff",
+      "status": "PASS",
+      "durationMs": 7138,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-CONV-005",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 7138,
+          "timestamp": "2026-09-25T02:42:35.118Z"
+        }
+      ],
+      "evidence": "Created org channel: org_org_qa_20260925024144_f04fa_staff-study-group-7980"
+    },
+    {
+      "id": "CHAT-CONV-006",
+      "featureId": "CHAT-CONV",
+      "feature": "Conversation Creation & Lifecycle",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Creating organization channel as ordinary non-staff member",
+      "actors": "Regular Member",
+      "status": "PASS",
+      "durationMs": 4980,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-CONV-006",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4980,
+          "timestamp": "2026-09-25T02:42:40.098Z"
+        }
+      ],
+      "evidence": "Regular member channel creation blocked with 403: [object Object]"
+    },
+    {
+      "id": "CHAT-CONV-007",
+      "featureId": "CHAT-CONV",
+      "feature": "Conversation Creation & Lifecycle",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Creating duplicate channel with conflicting name in same org",
+      "actors": "Org Staff",
+      "status": "PASS",
+      "durationMs": 4142,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-CONV-007",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4142,
+          "timestamp": "2026-09-25T02:42:44.240Z"
+        }
+      ],
+      "evidence": "Duplicate channel title returned 409 Conflict: [object Object]"
+    },
+    {
+      "id": "CHAT-LIST-001",
+      "featureId": "CHAT-LIST",
+      "feature": "Conversation List & Previews",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Conversation list includes last message preview and sender details",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 5539,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-LIST-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 5539,
+          "timestamp": "2026-09-25T02:42:49.779Z"
+        }
+      ],
+      "evidence": "Preview: 'Direct conversation initialized', Sender: 'User A (_f04fa)'"
+    },
+    {
+      "id": "CHAT-LIST-002",
+      "featureId": "CHAT-LIST",
+      "feature": "Conversation List & Previews",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Conversations are ordered by lastActivityAt descending",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 5706,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-LIST-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 5706,
+          "timestamp": "2026-09-25T02:42:55.485Z"
+        }
+      ],
+      "evidence": "Verified descending order across 4 conversations"
+    },
+    {
+      "id": "CHAT-LIST-003",
+      "featureId": "CHAT-LIST",
+      "feature": "Conversation List & Previews",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Recipient unread status computation",
+      "actors": "User A, User B",
+      "status": "PASS",
+      "durationMs": 4767,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-LIST-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4767,
+          "timestamp": "2026-09-25T02:43:00.252Z"
+        }
+      ],
+      "evidence": "isUnread computed as true for recipient"
+    },
+    {
+      "id": "CHAT-MSG-001",
+      "featureId": "CHAT-MSG",
+      "feature": "Text Messages & Boundaries",
+      "priority": "P0",
+      "layer": "API",
+      "scenario": "Sending standard text message",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 6094,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MSG-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 6094,
+          "timestamp": "2026-09-25T02:43:06.346Z"
+        }
+      ],
+      "evidence": "Created message ID: EgdxYHKHjV7OIeTZNPuW"
+    },
+    {
+      "id": "CHAT-MSG-002",
+      "featureId": "CHAT-MSG",
+      "feature": "Text Messages & Boundaries",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Sending multiline content with preserved line breaks",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 4674,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MSG-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4674,
+          "timestamp": "2026-09-25T02:43:11.021Z"
+        }
+      ],
+      "evidence": "Multiline text preserved exactly"
+    },
+    {
+      "id": "CHAT-MSG-003",
+      "featureId": "CHAT-MSG",
+      "feature": "Text Messages & Boundaries",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Sending empty or whitespace-only message",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 3042,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MSG-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 3042,
+          "timestamp": "2026-09-25T02:43:14.063Z"
+        }
+      ],
+      "evidence": "Empty message rejected: [object Object]"
+    },
+    {
+      "id": "CHAT-MSG-004",
+      "featureId": "CHAT-MSG",
+      "feature": "Text Messages & Boundaries",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Sending Unicode, Vietnamese diacritics, and emoji characters",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 4264,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MSG-004",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4264,
+          "timestamp": "2026-09-25T02:43:18.327Z"
+        }
+      ],
+      "evidence": "Vietnamese diacritics and emojis preserved without mojibake"
+    },
+    {
+      "id": "CHAT-MSG-005",
+      "featureId": "CHAT-MSG",
+      "feature": "Text Messages & Boundaries",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Sending message at max length boundary (15,000 characters)",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 4655,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MSG-005",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4655,
+          "timestamp": "2026-09-25T02:43:22.982Z"
+        }
+      ],
+      "evidence": "Exact 15,000 characters accepted successfully"
+    },
+    {
+      "id": "CHAT-MSG-006",
+      "featureId": "CHAT-MSG",
+      "feature": "Text Messages & Boundaries",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Sending message exceeding max length (>15,000 characters)",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2540,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MSG-006",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2540,
+          "timestamp": "2026-09-25T02:43:25.522Z"
+        }
+      ],
+      "evidence": "Oversized message (15,001 chars) rejected: [object Object]"
+    },
+    {
+      "id": "CHAT-MSG-007",
+      "featureId": "CHAT-MSG",
+      "feature": "Text Messages & Boundaries",
+      "priority": "P2",
+      "layer": "Unit",
+      "scenario": "Mention extraction from message text",
+      "actors": "System",
+      "status": "PASS",
+      "durationMs": 0,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MSG-007",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 0,
+          "timestamp": "2026-09-25T02:41:53.701Z"
+        }
+      ],
+      "evidence": "Parsed mentions: [\"alice\",\"bob_42\"] from input 'Hello @alice and @bob_42, please review code with @alice and ignore @x or @!'"
+    },
+    {
+      "id": "CHAT-SEND-001",
+      "featureId": "CHAT-SEND",
+      "feature": "Send Interaction & Idempotency",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Message submission with clientMessageId",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 4052,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-SEND-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4052,
+          "timestamp": "2026-09-25T02:43:29.574Z"
+        }
+      ],
+      "evidence": "clientMessageId stored: cm_idempotent_1790304205522"
+    },
+    {
+      "id": "CHAT-SEND-002",
+      "featureId": "CHAT-SEND",
+      "feature": "Send Interaction & Idempotency",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Duplicate resend with identical clientMessageId",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2874,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-SEND-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2874,
+          "timestamp": "2026-09-25T02:43:32.448Z"
+        }
+      ],
+      "evidence": "Duplicate send returned existing message with isDuplicate: true"
+    },
+    {
+      "id": "CHAT-SEND-003",
+      "featureId": "CHAT-SEND",
+      "feature": "Send Interaction & Idempotency",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Exceeding rate limit threshold (>30 msgs/min)",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2680,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-SEND-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2680,
+          "timestamp": "2026-09-25T02:43:35.128Z"
+        }
+      ],
+      "evidence": "Rate limit enforced with 429: [object Object]"
+    },
+    {
+      "id": "CHAT-REALTIME-001",
+      "featureId": "CHAT-REALTIME",
+      "feature": "Realtime Delivery & Attribution",
+      "priority": "P0",
+      "layer": "E2E",
+      "scenario": "Real-time message delivery from User A to User B in separate browser contexts",
+      "actors": "User A, User B",
+      "status": "FAIL",
+      "durationMs": 30000,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-REALTIME-001",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 30000,
+          "errorMessage": "page.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('textarea')\n    3 × waiting for \"http://localhost:3005/messages/non_existent_cid_qa_99999\" navigation to finish...\n      - navigated to \"http://localhost:3005/messages/non_existent_cid_qa_99999\"\n",
+          "timestamp": "2026-09-25T02:45:48.029Z"
+        }
+      ],
+      "errorMessage": "page.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('textarea')\n    3 × waiting for \"http://localhost:3005/messages/non_existent_cid_qa_99999\" navigation to finish...\n      - navigated to \"http://localhost:3005/messages/non_existent_cid_qa_99999\"\n",
+      "evidence": "page.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('textarea')\n    3 × waiting for \"http://localhost:3005/messages/non_existent_cid_qa_99999\" navigation to finish...\n      - navigated to \"http://localhost:3005/messages/non_existent_cid_qa_99999\"\n\n    at runE2ETests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/e2e/chatE2E.test.ts:188:17)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:69:3)"
+    },
+    {
+      "id": "CHAT-CONC-001",
+      "featureId": "CHAT-CONC",
+      "feature": "Concurrency & Ordering",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Simultaneous concurrent message sends by both participants",
+      "actors": "User A, User B",
+      "status": "PASS",
+      "durationMs": 4218,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-CONC-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4218,
+          "timestamp": "2026-09-25T02:43:39.659Z"
+        }
+      ],
+      "evidence": "Both concurrent sends succeeded: Msg A=q7qVLEwt5LsyyNeDakv5, Msg B=kdnwPTf7x8fqJybsOXGe"
+    },
+    {
+      "id": "CHAT-HIST-001",
+      "featureId": "CHAT-HIST",
+      "feature": "History & Pagination",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Paginated message fetch respecting limit query",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2004,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-HIST-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2004,
+          "timestamp": "2026-09-25T02:43:41.663Z"
+        }
+      ],
+      "evidence": "Fetched 5 messages with limit=5"
+    },
+    {
+      "id": "CHAT-HIST-002",
+      "featureId": "CHAT-HIST",
+      "feature": "History & Pagination",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Pagination cursor using 'before' timestamp",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 3971,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-HIST-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 3971,
+          "timestamp": "2026-09-25T02:43:45.634Z"
+        }
+      ],
+      "evidence": "Retrieved earlier messages before cursor 1790304208637"
+    },
+    {
+      "id": "CHAT-READ-001",
+      "featureId": "CHAT-READ",
+      "feature": "Read Receipts & Unread Tracking",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Marking conversation as read updates read pointers",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 116,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-READ-001",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 116,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+          "timestamp": "2026-09-25T02:43:45.750Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 200\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:670:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-READ-002",
+      "featureId": "CHAT-READ",
+      "feature": "Read Receipts & Unread Tracking",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Unread count reconciliation after marking read",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 44,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-READ-002",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 44,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+          "timestamp": "2026-09-25T02:43:45.794Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 200\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:697:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-TYPE-001",
+      "featureId": "CHAT-TYPE",
+      "feature": "Typing Indicators",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Sending typing heartbeat creates ephemeral record",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 46,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-TYPE-001",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 46,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+          "timestamp": "2026-09-25T02:43:45.840Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 200\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:719:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-TYPE-002",
+      "featureId": "CHAT-TYPE",
+      "feature": "Typing Indicators",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Clearing typing state deletes ephemeral record",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 12,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-TYPE-002",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 12,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+          "timestamp": "2026-09-25T02:43:45.852Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 200\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:738:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-TYPE-003",
+      "featureId": "CHAT-TYPE",
+      "feature": "Typing Indicators",
+      "priority": "P2",
+      "layer": "Unit",
+      "scenario": "Client typing hook filters out user's own typing",
+      "actors": "System",
+      "status": "PASS",
+      "durationMs": 0,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-TYPE-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 0,
+          "timestamp": "2026-09-25T02:41:53.701Z"
+        }
+      ],
+      "evidence": "Filtered list: [{\"uid\":\"user_partner\",\"displayName\":\"Partner\",\"expiresAt\":1790304116701}]"
+    },
+    {
+      "id": "CHAT-REACT-001",
+      "featureId": "CHAT-REACT",
+      "feature": "Message Reactions",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Adding reaction to message",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 29,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-REACT-001",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 29,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+          "timestamp": "2026-09-25T02:43:45.881Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 200\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:759:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-REACT-002",
+      "featureId": "CHAT-REACT",
+      "feature": "Message Reactions",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Toggling reaction off removes UID and cleans empty key",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 9,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-REACT-002",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 9,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+          "timestamp": "2026-09-25T02:43:45.890Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 200\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:779:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-PIN-001",
+      "featureId": "CHAT-PIN",
+      "feature": "Pinned Messages",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Direct message participant pins message",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 36,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-PIN-001",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 36,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+          "timestamp": "2026-09-25T02:43:45.926Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 200\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:799:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-PIN-002",
+      "featureId": "CHAT-PIN",
+      "feature": "Pinned Messages",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Non-staff user attempts to pin in organization channel",
+      "actors": "Regular Member",
+      "status": "FAIL",
+      "durationMs": 9,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-PIN-002",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 9,
+          "errorMessage": "Cannot read properties of undefined (reading 'id')",
+          "timestamp": "2026-09-25T02:43:45.936Z"
+        }
+      ],
+      "errorMessage": "Cannot read properties of undefined (reading 'id')",
+      "evidence": "TypeError: Cannot read properties of undefined (reading 'id')\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:819:115)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-EDIT-001",
+      "featureId": "CHAT-EDIT",
+      "feature": "Message Edits & Soft Deletions",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Author edits message within 24 hours",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 32,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-EDIT-001",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 32,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+          "timestamp": "2026-09-25T02:43:45.968Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 200\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:843:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-EDIT-002",
+      "featureId": "CHAT-EDIT",
+      "feature": "Message Edits & Soft Deletions",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Non-author attempts to edit another user's message",
+      "actors": "User B",
+      "status": "FAIL",
+      "durationMs": 11,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-EDIT-002",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 11,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+          "timestamp": "2026-09-25T02:43:45.979Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 403\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:864:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-EDIT-003",
+      "featureId": "CHAT-EDIT",
+      "feature": "Message Edits & Soft Deletions",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Author attempts to edit message older than 24 hours",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 309,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-EDIT-003",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 309,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 400\n",
+          "timestamp": "2026-09-25T02:43:46.288Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 400\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 400\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:913:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-EDIT-004",
+      "featureId": "CHAT-EDIT",
+      "feature": "Message Edits & Soft Deletions",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Attempting to edit an already-deleted message",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 20,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-EDIT-004",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 20,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 400\n",
+          "timestamp": "2026-09-25T02:43:46.308Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 400\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 400\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:940:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-DEL-001",
+      "featureId": "CHAT-EDIT",
+      "feature": "Message Edits & Soft Deletions",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Author soft-deletes their own message",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 10,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-DEL-001",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 10,
+          "errorMessage": "Cannot read properties of undefined (reading 'id')",
+          "timestamp": "2026-09-25T02:43:46.318Z"
+        }
+      ],
+      "errorMessage": "Cannot read properties of undefined (reading 'id')",
+      "evidence": "TypeError: Cannot read properties of undefined (reading 'id')\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:961:39)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-DEL-002",
+      "featureId": "CHAT-EDIT",
+      "feature": "Message Edits & Soft Deletions",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Non-author regular user attempts to delete another's message",
+      "actors": "User B",
+      "status": "FAIL",
+      "durationMs": 9,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-DEL-002",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 9,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+          "timestamp": "2026-09-25T02:43:46.327Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 403\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:987:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-DEL-003",
+      "featureId": "CHAT-EDIT",
+      "feature": "Message Edits & Soft Deletions",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Org staff deletes inappropriate message in channel",
+      "actors": "Org Staff",
+      "status": "FAIL",
+      "durationMs": 10,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-DEL-003",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 10,
+          "errorMessage": "Cannot read properties of undefined (reading 'id')",
+          "timestamp": "2026-09-25T02:43:46.337Z"
+        }
+      ],
+      "errorMessage": "Cannot read properties of undefined (reading 'id')",
+      "evidence": "TypeError: Cannot read properties of undefined (reading 'id')\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:1007:39)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-MEDIA-001",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Upload valid PNG image attachment",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 42,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MEDIA-001",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 42,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 201\n",
+          "timestamp": "2026-09-25T02:43:46.379Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 201\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 201\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:1045:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-MEDIA-002",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Upload valid PDF document attachment",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 8,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MEDIA-002",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 8,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 201\n",
+          "timestamp": "2026-09-25T02:43:46.387Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 201\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 201\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:1074:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-MEDIA-003",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Upload valid audio note with duration",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 9,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MEDIA-003",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 9,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 201\n",
+          "timestamp": "2026-09-25T02:43:46.396Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 201\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 201\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:1102:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-MEDIA-004",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Upload empty (0-byte) file",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 9,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MEDIA-004",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 9,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 400\n",
+          "timestamp": "2026-09-25T02:43:46.405Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 400\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 400\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:1128:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-MEDIA-005",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Upload file exceeding 15MB limit",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 81,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MEDIA-005",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 81,
+          "errorMessage": "Status must be 400 or 413, got 500",
+          "timestamp": "2026-09-25T02:43:46.486Z"
+        }
+      ],
+      "errorMessage": "Status must be 400 or 413, got 500",
+      "evidence": "AssertionError [ERR_ASSERTION]: Status must be 400 or 413, got 500\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:1159:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-MEDIA-006",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Upload file with spoofed extension and invalid magic bytes",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 9,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MEDIA-006",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 9,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 400\n",
+          "timestamp": "2026-09-25T02:43:46.496Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 400\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 400\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:1185:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-MEDIA-007",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Authorized conversation participant streams attachment via proxy",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 42,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MEDIA-007",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 42,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+          "timestamp": "2026-09-25T02:43:46.538Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 200\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:1203:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-MEDIA-008",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P0",
+      "layer": "API",
+      "scenario": "Outsider User C attempts to download private attachment",
+      "actors": "User C (outsider)",
+      "status": "FAIL",
+      "durationMs": 9,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MEDIA-008",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 9,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+          "timestamp": "2026-09-25T02:43:46.547Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 403\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:1221:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-MEDIA-009",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Path traversal attempt in attachment query (?path=../../etc/passwd)",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 10,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-MEDIA-009",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 10,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+          "timestamp": "2026-09-25T02:43:46.557Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 403\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:1239:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-PERM-001",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P0",
+      "layer": "Rules",
+      "scenario": "Firestore rules deny outsider User C reading /conversations/{cid}",
+      "actors": "User C (outsider)",
+      "status": "PASS",
+      "durationMs": 507,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-PERM-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 507,
+          "timestamp": "2026-09-25T02:43:48.651Z"
+        }
+      ],
+      "evidence": "Firestore rules denied conversation read with permission-denied"
+    },
+    {
+      "id": "CHAT-PERM-002",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P0",
+      "layer": "Rules",
+      "scenario": "Firestore rules deny outsider User C reading /conversations/{cid}/messages",
+      "actors": "User C (outsider)",
+      "status": "PASS",
+      "durationMs": 292,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-PERM-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 292,
+          "timestamp": "2026-09-25T02:43:48.943Z"
+        }
+      ],
+      "evidence": "Firestore rules denied message list read with permission-denied"
+    },
+    {
+      "id": "CHAT-PERM-003",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P0",
+      "layer": "Rules",
+      "scenario": "Firestore rules deny outsider User C creating messages in someone else's conversation",
+      "actors": "User C (outsider)",
+      "status": "FAIL",
+      "durationMs": 666,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-PERM-003",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 666,
+          "errorMessage": "VULNERABILITY: Firestore rules allow outsider User C to directly insert messages into conversations they do not belong to",
+          "timestamp": "2026-09-25T02:43:49.609Z"
+        }
+      ],
+      "errorMessage": "VULNERABILITY: Firestore rules allow outsider User C to directly insert messages into conversations they do not belong to",
+      "evidence": "Missing isConversationParticipant check on message creation in firestore.rules"
+    },
+    {
+      "id": "CHAT-PERM-004",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P0",
+      "layer": "Rules",
+      "scenario": "Firestore rules reject spoofed senderId in messages",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 292,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-PERM-004",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 292,
+          "timestamp": "2026-09-25T02:43:49.901Z"
+        }
+      ],
+      "evidence": "Firestore rules denied spoofed senderId with permission-denied"
+    },
+    {
+      "id": "CHAT-PERM-005",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Direct message send blocked between blocked users",
+      "actors": "User A, User D (blocked)",
+      "status": "FAIL",
+      "durationMs": 14,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-PERM-005",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 14,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+          "timestamp": "2026-09-25T02:43:46.571Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 403\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:1260:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-PERM-006",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P0",
+      "layer": "API",
+      "scenario": "Suspended or banned user cannot access chat endpoints",
+      "actors": "Suspended User",
+      "status": "FAIL",
+      "durationMs": 731,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-PERM-006",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 731,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+          "timestamp": "2026-09-25T02:43:47.302Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 403\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:1286:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-PERM-007",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Message reporting records snapshot in userReports collection",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 31,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-PERM-007",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 31,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 201\n",
+          "timestamp": "2026-09-25T02:43:47.333Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 201\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 201\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:1309:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    },
+    {
+      "id": "CHAT-PERM-008",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P0",
+      "layer": "API",
+      "scenario": "Unauthenticated client receives 401 across all chat API routes",
+      "actors": "Unauthenticated Guest",
+      "status": "FAIL",
+      "durationMs": 11,
+      "attempts": [
+        {
+          "runId": "qa_20260925024144_f04fa",
+          "testId": "CHAT-PERM-008",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 11,
+          "errorMessage": "Expected values to be strictly equal:\n\n500 !== 401\n",
+          "timestamp": "2026-09-25T02:43:47.345Z"
+        }
+      ],
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 401\n",
+      "evidence": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n500 !== 401\n\n    at runApiTests (/home/juan/Work Space/leetcode-clone-youtube/tests/chat/api/chatApi.test.ts:1327:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/juan/Work Space/leetcode-clone-youtube/scripts/run-chat-tests.ts:63:3)"
+    }
+  ],
+  "defects": [
+    {
+      "defectId": "DEF-CHAT-002",
+      "testId": "CHAT-PERM-003",
+      "feature": "Security, Moderation & Blocking",
+      "title": "Firestore security rules allow message injection by non-participants",
+      "severity": "High",
+      "component": "firestore.rules:line 330",
+      "stepsToReproduce": "1. Authenticate as User C using client SDK.\n2. Attempt setDoc into /conversations/{directConvId}/messages/{mid} with senderId=UserC.uid.",
+      "expectedBehavior": "Rules must require isConversationParticipant(get(/databases/$(database)/documents/conversations/$(cid)).data) on message create.",
+      "actualBehavior": "Rules only verified request.resource.data.senderId == request.auth.uid, allowing non-participants to create messages directly via client SDK.",
+      "evidenceSnippet": "Write operation succeeded without permission-denied error"
+    }
+  ],
+  "attempts": [
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MSG-007",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 0,
+      "timestamp": "2026-09-25T02:41:53.701Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-TYPE-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 0,
+      "timestamp": "2026-09-25T02:41:53.701Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-DISC-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4593,
+      "timestamp": "2026-09-25T02:41:58.295Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-DISC-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 3325,
+      "timestamp": "2026-09-25T02:42:01.620Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-DISC-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2932,
+      "timestamp": "2026-09-25T02:42:04.552Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-DISC-004",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 3263,
+      "timestamp": "2026-09-25T02:42:07.815Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-DISC-005",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 3583,
+      "timestamp": "2026-09-25T02:42:11.398Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-CONV-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4709,
+      "timestamp": "2026-09-25T02:42:16.107Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-CONV-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4705,
+      "timestamp": "2026-09-25T02:42:20.812Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-CONV-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2895,
+      "timestamp": "2026-09-25T02:42:23.707Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-CONV-004",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4273,
+      "timestamp": "2026-09-25T02:42:27.980Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-CONV-005",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 7138,
+      "timestamp": "2026-09-25T02:42:35.118Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-CONV-006",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4980,
+      "timestamp": "2026-09-25T02:42:40.098Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-CONV-007",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4142,
+      "timestamp": "2026-09-25T02:42:44.240Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-LIST-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 5539,
+      "timestamp": "2026-09-25T02:42:49.779Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-LIST-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 5706,
+      "timestamp": "2026-09-25T02:42:55.485Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-LIST-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4767,
+      "timestamp": "2026-09-25T02:43:00.252Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MSG-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 6094,
+      "timestamp": "2026-09-25T02:43:06.346Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MSG-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4674,
+      "timestamp": "2026-09-25T02:43:11.021Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MSG-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 3042,
+      "timestamp": "2026-09-25T02:43:14.063Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MSG-004",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4264,
+      "timestamp": "2026-09-25T02:43:18.327Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MSG-005",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4655,
+      "timestamp": "2026-09-25T02:43:22.982Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MSG-006",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2540,
+      "timestamp": "2026-09-25T02:43:25.522Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-SEND-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4052,
+      "timestamp": "2026-09-25T02:43:29.574Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-SEND-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2874,
+      "timestamp": "2026-09-25T02:43:32.448Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-SEND-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2680,
+      "timestamp": "2026-09-25T02:43:35.128Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-CONC-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4218,
+      "timestamp": "2026-09-25T02:43:39.659Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-HIST-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2004,
+      "timestamp": "2026-09-25T02:43:41.663Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-HIST-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 3971,
+      "timestamp": "2026-09-25T02:43:45.634Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-READ-001",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 116,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "timestamp": "2026-09-25T02:43:45.750Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-READ-002",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 44,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "timestamp": "2026-09-25T02:43:45.794Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-TYPE-001",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 46,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "timestamp": "2026-09-25T02:43:45.840Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-TYPE-002",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 12,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "timestamp": "2026-09-25T02:43:45.852Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-REACT-001",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 29,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "timestamp": "2026-09-25T02:43:45.881Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-REACT-002",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 9,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "timestamp": "2026-09-25T02:43:45.890Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-PIN-001",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 36,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "timestamp": "2026-09-25T02:43:45.926Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-PIN-002",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 9,
+      "errorMessage": "Cannot read properties of undefined (reading 'id')",
+      "timestamp": "2026-09-25T02:43:45.936Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-EDIT-001",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 32,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "timestamp": "2026-09-25T02:43:45.968Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-EDIT-002",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 11,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+      "timestamp": "2026-09-25T02:43:45.979Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-EDIT-003",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 309,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 400\n",
+      "timestamp": "2026-09-25T02:43:46.288Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-EDIT-004",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 20,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 400\n",
+      "timestamp": "2026-09-25T02:43:46.308Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-DEL-001",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 10,
+      "errorMessage": "Cannot read properties of undefined (reading 'id')",
+      "timestamp": "2026-09-25T02:43:46.318Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-DEL-002",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 9,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+      "timestamp": "2026-09-25T02:43:46.327Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-DEL-003",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 10,
+      "errorMessage": "Cannot read properties of undefined (reading 'id')",
+      "timestamp": "2026-09-25T02:43:46.337Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MEDIA-001",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 42,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 201\n",
+      "timestamp": "2026-09-25T02:43:46.379Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MEDIA-002",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 8,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 201\n",
+      "timestamp": "2026-09-25T02:43:46.387Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MEDIA-003",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 9,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 201\n",
+      "timestamp": "2026-09-25T02:43:46.396Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MEDIA-004",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 9,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 400\n",
+      "timestamp": "2026-09-25T02:43:46.405Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MEDIA-005",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 81,
+      "errorMessage": "Status must be 400 or 413, got 500",
+      "timestamp": "2026-09-25T02:43:46.486Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MEDIA-006",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 9,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 400\n",
+      "timestamp": "2026-09-25T02:43:46.496Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MEDIA-007",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 42,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 200\n",
+      "timestamp": "2026-09-25T02:43:46.538Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MEDIA-008",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 9,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+      "timestamp": "2026-09-25T02:43:46.547Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-MEDIA-009",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 10,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+      "timestamp": "2026-09-25T02:43:46.557Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-PERM-005",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 14,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+      "timestamp": "2026-09-25T02:43:46.571Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-PERM-006",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 731,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 403\n",
+      "timestamp": "2026-09-25T02:43:47.302Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-PERM-007",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 31,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 201\n",
+      "timestamp": "2026-09-25T02:43:47.333Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-PERM-008",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 11,
+      "errorMessage": "Expected values to be strictly equal:\n\n500 !== 401\n",
+      "timestamp": "2026-09-25T02:43:47.345Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-PERM-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 507,
+      "timestamp": "2026-09-25T02:43:48.651Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-PERM-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 292,
+      "timestamp": "2026-09-25T02:43:48.943Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-PERM-003",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 666,
+      "errorMessage": "VULNERABILITY: Firestore rules allow outsider User C to directly insert messages into conversations they do not belong to",
+      "timestamp": "2026-09-25T02:43:49.609Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-PERM-004",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 292,
+      "timestamp": "2026-09-25T02:43:49.901Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-NAV-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 616,
+      "timestamp": "2026-09-25T02:43:50.693Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-NAV-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 464,
+      "timestamp": "2026-09-25T02:43:51.158Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-NAV-005",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2822,
+      "timestamp": "2026-09-25T02:43:53.980Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-NAV-003",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 15427,
+      "errorMessage": "page.waitForSelector: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('textarea') to be visible\n",
+      "timestamp": "2026-09-25T02:44:09.407Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-NAV-004",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 30000,
+      "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"http://localhost:3005/messages/non_existent_cid_qa_99999\", waiting until \"domcontentloaded\"\n",
+      "timestamp": "2026-09-25T02:44:39.407Z"
+    },
+    {
+      "runId": "qa_20260925024144_f04fa",
+      "testId": "CHAT-REALTIME-001",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 30000,
+      "errorMessage": "page.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('textarea')\n    3 × waiting for \"http://localhost:3005/messages/non_existent_cid_qa_99999\" navigation to finish...\n      - navigated to \"http://localhost:3005/messages/non_existent_cid_qa_99999\"\n",
+      "timestamp": "2026-09-25T02:45:48.029Z"
+    }
+  ]
+}

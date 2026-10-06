@@ -1,0 +1,2059 @@
+{
+  "metadata": {
+    "runId": "qa_20260925030257_4ak2r",
+    "startTime": "2026-09-25T03:02:57.816Z",
+    "serverUrl": "http://localhost:3005",
+    "os": "linux",
+    "nodeVersion": "v24.16.0",
+    "browser": "Google Chrome 150.0.7871.186 (Headless)",
+    "firebaseProjectId": "beastcode-7555e",
+    "endTime": "2026-09-25T03:06:28.702Z",
+    "durationTotalMs": 210886
+  },
+  "results": [
+    {
+      "id": "CHAT-NAV-001",
+      "featureId": "CHAT-NAV",
+      "feature": "Chat Entry & Navigation",
+      "priority": "P0",
+      "layer": "E2E",
+      "scenario": "Unauthenticated visitor accessing /messages",
+      "actors": "Unauthenticated Guest",
+      "status": "PASS",
+      "durationMs": 1012,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-NAV-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1012,
+          "timestamp": "2026-09-25T03:06:08.839Z"
+        }
+      ],
+      "evidence": "Verified unauthenticated gating. Screenshot: reports/chat/evidence/chat_nav_001_unauthenticated.png"
+    },
+    {
+      "id": "CHAT-NAV-002",
+      "featureId": "CHAT-NAV",
+      "feature": "Chat Entry & Navigation",
+      "priority": "P0",
+      "layer": "E2E",
+      "scenario": "Authenticated user accessing /messages",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 417,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-NAV-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 417,
+          "timestamp": "2026-09-25T03:06:09.256Z"
+        }
+      ],
+      "evidence": "Renders ChatShell with sidebar, topbar, and conversation list. Screenshot: reports/chat/evidence/chat_nav_002_authenticated.png"
+    },
+    {
+      "id": "CHAT-NAV-003",
+      "featureId": "CHAT-NAV",
+      "feature": "Chat Entry & Navigation",
+      "priority": "P1",
+      "layer": "E2E",
+      "scenario": "Deep-linking directly to a conversation (/messages/[cid])",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2570,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-NAV-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2570,
+          "timestamp": "2026-09-25T03:06:16.664Z"
+        }
+      ],
+      "evidence": "Deep-link loaded conversation header and composer for dm_qa_user_a__4ak2r_qa_user_b__4ak2r. Screenshot: reports/chat/evidence/chat_nav_003_deeplink.png"
+    },
+    {
+      "id": "CHAT-NAV-004",
+      "featureId": "CHAT-NAV",
+      "feature": "Chat Entry & Navigation",
+      "priority": "P2",
+      "layer": "E2E",
+      "scenario": "Deep-linking to non-existent conversation ID",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1100,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-NAV-004",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1100,
+          "timestamp": "2026-09-25T03:06:17.764Z"
+        }
+      ],
+      "evidence": "Non-existent conversation ID rendered clean fallback without crash. Screenshot: reports/chat/evidence/chat_nav_004_nonexistent.png"
+    },
+    {
+      "id": "CHAT-NAV-005",
+      "featureId": "CHAT-NAV",
+      "feature": "Chat Entry & Navigation",
+      "priority": "P2",
+      "layer": "E2E",
+      "scenario": "Desktop auto-selection of first conversation",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 4836,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-NAV-005",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4836,
+          "timestamp": "2026-09-25T03:06:14.093Z"
+        }
+      ],
+      "evidence": "First conversation automatically selected on desktop. Screenshot: reports/chat/evidence/chat_nav_005_desktop_autoselect.png"
+    },
+    {
+      "id": "CHAT-DISC-001",
+      "featureId": "CHAT-DISC",
+      "feature": "User Search & Discovery",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Search users by username query",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2001,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-DISC-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2001,
+          "timestamp": "2026-09-25T03:03:08.847Z"
+        }
+      ],
+      "evidence": "Found user: userb__4ak2r"
+    },
+    {
+      "id": "CHAT-DISC-002",
+      "featureId": "CHAT-DISC",
+      "feature": "User Search & Discovery",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Search users by displayName query",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1985,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-DISC-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1985,
+          "timestamp": "2026-09-25T03:03:10.832Z"
+        }
+      ],
+      "evidence": "Found user by displayName"
+    },
+    {
+      "id": "CHAT-DISC-003",
+      "featureId": "CHAT-DISC",
+      "feature": "User Search & Discovery",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Search query shorter than 2 characters",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1359,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-DISC-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1359,
+          "timestamp": "2026-09-25T03:03:12.191Z"
+        }
+      ],
+      "evidence": "Empty array returned for <2 chars query"
+    },
+    {
+      "id": "CHAT-DISC-004",
+      "featureId": "CHAT-DISC",
+      "feature": "User Search & Discovery",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Self-exclusion from search results",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1763,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-DISC-004",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1763,
+          "timestamp": "2026-09-25T03:03:13.954Z"
+        }
+      ],
+      "evidence": "Self successfully excluded from search"
+    },
+    {
+      "id": "CHAT-DISC-005",
+      "featureId": "CHAT-DISC",
+      "feature": "User Search & Discovery",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Search with special/Unicode characters",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1737,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-DISC-005",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1737,
+          "timestamp": "2026-09-25T03:03:15.691Z"
+        }
+      ],
+      "evidence": "Unicode search query handled cleanly without 500 error"
+    },
+    {
+      "id": "CHAT-CONV-001",
+      "featureId": "CHAT-CONV",
+      "feature": "Conversation Creation & Lifecycle",
+      "priority": "P0",
+      "layer": "API",
+      "scenario": "Creating new direct conversation between User A and User B",
+      "actors": "User A, User B",
+      "status": "PASS",
+      "durationMs": 2227,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-CONV-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2227,
+          "timestamp": "2026-09-25T03:03:17.918Z"
+        }
+      ],
+      "evidence": "Canonical DM ID: dm_qa_user_a__4ak2r_qa_user_b__4ak2r"
+    },
+    {
+      "id": "CHAT-CONV-002",
+      "featureId": "CHAT-CONV",
+      "feature": "Conversation Creation & Lifecycle",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Requesting direct conversation when one already exists",
+      "actors": "User A, User B",
+      "status": "PASS",
+      "durationMs": 2354,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-CONV-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2354,
+          "timestamp": "2026-09-25T03:03:20.272Z"
+        }
+      ],
+      "evidence": "Idempotent lookup confirmed with isExisting=true"
+    },
+    {
+      "id": "CHAT-CONV-003",
+      "featureId": "CHAT-CONV",
+      "feature": "Conversation Creation & Lifecycle",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Attempting to create a self-conversation",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1421,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-CONV-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1421,
+          "timestamp": "2026-09-25T03:03:21.693Z"
+        }
+      ],
+      "evidence": "Self-messaging rejected with 400: [object Object]"
+    },
+    {
+      "id": "CHAT-CONV-004",
+      "featureId": "CHAT-CONV",
+      "feature": "Conversation Creation & Lifecycle",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Attempting to create DM when blocked",
+      "actors": "User A, User D (blocked)",
+      "status": "PASS",
+      "durationMs": 1956,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-CONV-004",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1956,
+          "timestamp": "2026-09-25T03:03:23.649Z"
+        }
+      ],
+      "evidence": "Blocked DM rejected with 403: [object Object]"
+    },
+    {
+      "id": "CHAT-CONV-005",
+      "featureId": "CHAT-CONV",
+      "feature": "Conversation Creation & Lifecycle",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Creating organization channel as org staff/owner",
+      "actors": "Org Staff",
+      "status": "PASS",
+      "durationMs": 3070,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-CONV-005",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 3070,
+          "timestamp": "2026-09-25T03:03:26.719Z"
+        }
+      ],
+      "evidence": "Created org channel: org_org_qa_20260925030257_4ak2r_staff-study-group-3649"
+    },
+    {
+      "id": "CHAT-CONV-006",
+      "featureId": "CHAT-CONV",
+      "feature": "Conversation Creation & Lifecycle",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Creating organization channel as ordinary non-staff member",
+      "actors": "Regular Member",
+      "status": "PASS",
+      "durationMs": 1914,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-CONV-006",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1914,
+          "timestamp": "2026-09-25T03:03:28.633Z"
+        }
+      ],
+      "evidence": "Regular member channel creation blocked with 403: [object Object]"
+    },
+    {
+      "id": "CHAT-CONV-007",
+      "featureId": "CHAT-CONV",
+      "feature": "Conversation Creation & Lifecycle",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Creating duplicate channel with conflicting name in same org",
+      "actors": "Org Staff",
+      "status": "PASS",
+      "durationMs": 1928,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-CONV-007",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1928,
+          "timestamp": "2026-09-25T03:03:30.561Z"
+        }
+      ],
+      "evidence": "Duplicate channel title returned 409 Conflict: [object Object]"
+    },
+    {
+      "id": "CHAT-LIST-001",
+      "featureId": "CHAT-LIST",
+      "feature": "Conversation List & Previews",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Conversation list includes last message preview and sender details",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2536,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-LIST-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2536,
+          "timestamp": "2026-09-25T03:03:33.097Z"
+        }
+      ],
+      "evidence": "Preview: 'Direct conversation initialized', Sender: 'User A (_4ak2r)'"
+    },
+    {
+      "id": "CHAT-LIST-002",
+      "featureId": "CHAT-LIST",
+      "feature": "Conversation List & Previews",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Conversations are ordered by lastActivityAt descending",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2576,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-LIST-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2576,
+          "timestamp": "2026-09-25T03:03:35.673Z"
+        }
+      ],
+      "evidence": "Verified descending order across 4 conversations"
+    },
+    {
+      "id": "CHAT-LIST-003",
+      "featureId": "CHAT-LIST",
+      "feature": "Conversation List & Previews",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Recipient unread status computation",
+      "actors": "User A, User B",
+      "status": "PASS",
+      "durationMs": 2329,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-LIST-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2329,
+          "timestamp": "2026-09-25T03:03:38.002Z"
+        }
+      ],
+      "evidence": "isUnread computed as true for recipient"
+    },
+    {
+      "id": "CHAT-MSG-001",
+      "featureId": "CHAT-MSG",
+      "feature": "Text Messages & Boundaries",
+      "priority": "P0",
+      "layer": "API",
+      "scenario": "Sending standard text message",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 4105,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MSG-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4105,
+          "timestamp": "2026-09-25T03:03:42.107Z"
+        }
+      ],
+      "evidence": "Created message ID: 8JHuJkh6SCEjUqZjP87s"
+    },
+    {
+      "id": "CHAT-MSG-002",
+      "featureId": "CHAT-MSG",
+      "feature": "Text Messages & Boundaries",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Sending multiline content with preserved line breaks",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 3990,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MSG-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 3990,
+          "timestamp": "2026-09-25T03:03:46.097Z"
+        }
+      ],
+      "evidence": "Multiline text preserved exactly"
+    },
+    {
+      "id": "CHAT-MSG-003",
+      "featureId": "CHAT-MSG",
+      "feature": "Text Messages & Boundaries",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Sending empty or whitespace-only message",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2430,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MSG-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2430,
+          "timestamp": "2026-09-25T03:03:48.527Z"
+        }
+      ],
+      "evidence": "Empty message rejected: [object Object]"
+    },
+    {
+      "id": "CHAT-MSG-004",
+      "featureId": "CHAT-MSG",
+      "feature": "Text Messages & Boundaries",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Sending Unicode, Vietnamese diacritics, and emoji characters",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 19828,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MSG-004",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 19828,
+          "timestamp": "2026-09-25T03:04:08.355Z"
+        }
+      ],
+      "evidence": "Vietnamese diacritics and emojis preserved without mojibake"
+    },
+    {
+      "id": "CHAT-MSG-005",
+      "featureId": "CHAT-MSG",
+      "feature": "Text Messages & Boundaries",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Sending message at max length boundary (15,000 characters)",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 12860,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MSG-005",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 12860,
+          "timestamp": "2026-09-25T03:04:21.215Z"
+        }
+      ],
+      "evidence": "Exact 15,000 characters accepted successfully"
+    },
+    {
+      "id": "CHAT-MSG-006",
+      "featureId": "CHAT-MSG",
+      "feature": "Text Messages & Boundaries",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Sending message exceeding max length (>15,000 characters)",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2489,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MSG-006",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2489,
+          "timestamp": "2026-09-25T03:04:23.704Z"
+        }
+      ],
+      "evidence": "Oversized message (15,001 chars) rejected: [object Object]"
+    },
+    {
+      "id": "CHAT-MSG-007",
+      "featureId": "CHAT-MSG",
+      "feature": "Text Messages & Boundaries",
+      "priority": "P2",
+      "layer": "Unit",
+      "scenario": "Mention extraction from message text",
+      "actors": "System",
+      "status": "PASS",
+      "durationMs": 0,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MSG-007",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 0,
+          "timestamp": "2026-09-25T03:03:06.845Z"
+        }
+      ],
+      "evidence": "Parsed mentions: [\"alice\",\"bob_42\"] from input 'Hello @alice and @bob_42, please review code with @alice and ignore @x or @!'"
+    },
+    {
+      "id": "CHAT-SEND-001",
+      "featureId": "CHAT-SEND",
+      "feature": "Send Interaction & Idempotency",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Message submission with clientMessageId",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 3901,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-SEND-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 3901,
+          "timestamp": "2026-09-25T03:04:27.605Z"
+        }
+      ],
+      "evidence": "clientMessageId stored: cm_idempotent_1790305463704"
+    },
+    {
+      "id": "CHAT-SEND-002",
+      "featureId": "CHAT-SEND",
+      "feature": "Send Interaction & Idempotency",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Duplicate resend with identical clientMessageId",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2791,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-SEND-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2791,
+          "timestamp": "2026-09-25T03:04:30.396Z"
+        }
+      ],
+      "evidence": "Duplicate send returned existing message with isDuplicate: true"
+    },
+    {
+      "id": "CHAT-SEND-003",
+      "featureId": "CHAT-SEND",
+      "feature": "Send Interaction & Idempotency",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Exceeding rate limit threshold (>30 msgs/min)",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2538,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-SEND-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2538,
+          "timestamp": "2026-09-25T03:04:32.934Z"
+        }
+      ],
+      "evidence": "Rate limit enforced with 429: [object Object]"
+    },
+    {
+      "id": "CHAT-REALTIME-001",
+      "featureId": "CHAT-REALTIME",
+      "feature": "Realtime Delivery & Attribution",
+      "priority": "P0",
+      "layer": "E2E",
+      "scenario": "Real-time message delivery from User A to User B in separate browser contexts",
+      "actors": "User A, User B",
+      "status": "PASS",
+      "durationMs": 3913,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-REALTIME-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 3913,
+          "timestamp": "2026-09-25T03:06:28.651Z"
+        }
+      ],
+      "evidence": "Message arrived on Page B without browser refresh. Screenshot: reports/chat/evidence/chat_realtime_001_received.png"
+    },
+    {
+      "id": "CHAT-CONC-001",
+      "featureId": "CHAT-CONC",
+      "feature": "Concurrency & Ordering",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Simultaneous concurrent message sends by both participants",
+      "actors": "User A, User B",
+      "status": "PASS",
+      "durationMs": 4088,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-CONC-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4088,
+          "timestamp": "2026-09-25T03:04:37.341Z"
+        }
+      ],
+      "evidence": "Both concurrent sends succeeded: Msg A=MmM4M7aWyhAvTwVuZpz5, Msg B=7GX6Pjw91hF5fZhBDQC2"
+    },
+    {
+      "id": "CHAT-HIST-001",
+      "featureId": "CHAT-HIST",
+      "feature": "History & Pagination",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Paginated message fetch respecting limit query",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1937,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-HIST-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1937,
+          "timestamp": "2026-09-25T03:04:39.278Z"
+        }
+      ],
+      "evidence": "Fetched 5 messages with limit=5"
+    },
+    {
+      "id": "CHAT-HIST-002",
+      "featureId": "CHAT-HIST",
+      "feature": "History & Pagination",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Pagination cursor using 'before' timestamp",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 3858,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-HIST-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 3858,
+          "timestamp": "2026-09-25T03:04:43.136Z"
+        }
+      ],
+      "evidence": "Retrieved earlier messages before cursor 1790305466733"
+    },
+    {
+      "id": "CHAT-READ-001",
+      "featureId": "CHAT-READ",
+      "feature": "Read Receipts & Unread Tracking",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Marking conversation as read updates read pointers",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1686,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-READ-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1686,
+          "timestamp": "2026-09-25T03:04:44.822Z"
+        }
+      ],
+      "evidence": "Updated read pointer to 1790305483136"
+    },
+    {
+      "id": "CHAT-READ-002",
+      "featureId": "CHAT-READ",
+      "feature": "Read Receipts & Unread Tracking",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Unread count reconciliation after marking read",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 3869,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-READ-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 3869,
+          "timestamp": "2026-09-25T03:04:48.691Z"
+        }
+      ],
+      "evidence": "isUnread reconciled to false after reading"
+    },
+    {
+      "id": "CHAT-TYPE-001",
+      "featureId": "CHAT-TYPE",
+      "feature": "Typing Indicators",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Sending typing heartbeat creates ephemeral record",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2199,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-TYPE-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2199,
+          "timestamp": "2026-09-25T03:04:50.891Z"
+        }
+      ],
+      "evidence": "Typing record created with 4s TTL"
+    },
+    {
+      "id": "CHAT-TYPE-002",
+      "featureId": "CHAT-TYPE",
+      "feature": "Typing Indicators",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Clearing typing state deletes ephemeral record",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1699,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-TYPE-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1699,
+          "timestamp": "2026-09-25T03:04:52.590Z"
+        }
+      ],
+      "evidence": "Typing record deleted via DELETE"
+    },
+    {
+      "id": "CHAT-TYPE-003",
+      "featureId": "CHAT-TYPE",
+      "feature": "Typing Indicators",
+      "priority": "P2",
+      "layer": "Unit",
+      "scenario": "Client typing hook filters out user's own typing",
+      "actors": "System",
+      "status": "PASS",
+      "durationMs": 0,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-TYPE-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 0,
+          "timestamp": "2026-09-25T03:03:06.845Z"
+        }
+      ],
+      "evidence": "Filtered list: [{\"uid\":\"user_partner\",\"displayName\":\"Partner\",\"expiresAt\":1790305389845}]"
+    },
+    {
+      "id": "CHAT-REACT-001",
+      "featureId": "CHAT-REACT",
+      "feature": "Message Reactions",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Adding reaction to message",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2196,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-REACT-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2196,
+          "timestamp": "2026-09-25T03:04:54.786Z"
+        }
+      ],
+      "evidence": "Added reaction: {\"🔥\":[\"qa_user_a__4ak2r\"]}"
+    },
+    {
+      "id": "CHAT-REACT-002",
+      "featureId": "CHAT-REACT",
+      "feature": "Message Reactions",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Toggling reaction off removes UID and cleans empty key",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1916,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-REACT-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1916,
+          "timestamp": "2026-09-25T03:04:58.647Z"
+        }
+      ],
+      "evidence": "Reaction key removed when last user toggles off"
+    },
+    {
+      "id": "CHAT-PIN-001",
+      "featureId": "CHAT-PIN",
+      "feature": "Pinned Messages",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Direct message participant pins message",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2176,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-PIN-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2176,
+          "timestamp": "2026-09-25T03:05:00.823Z"
+        }
+      ],
+      "evidence": "Participant pinned message successfully"
+    },
+    {
+      "id": "CHAT-PIN-002",
+      "featureId": "CHAT-PIN",
+      "feature": "Pinned Messages",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Non-staff user attempts to pin in organization channel",
+      "actors": "Regular Member",
+      "status": "PASS",
+      "durationMs": 6875,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-PIN-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 6875,
+          "timestamp": "2026-09-25T03:05:07.698Z"
+        }
+      ],
+      "evidence": "Non-staff pin blocked with 403: [object Object]"
+    },
+    {
+      "id": "CHAT-EDIT-001",
+      "featureId": "CHAT-EDIT",
+      "feature": "Message Edits & Soft Deletions",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Author edits message within 24 hours",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2238,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-EDIT-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2238,
+          "timestamp": "2026-09-25T03:05:09.937Z"
+        }
+      ],
+      "evidence": "Message edited and isEdited flag set to true"
+    },
+    {
+      "id": "CHAT-EDIT-002",
+      "featureId": "CHAT-EDIT",
+      "feature": "Message Edits & Soft Deletions",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Non-author attempts to edit another user's message",
+      "actors": "User B",
+      "status": "PASS",
+      "durationMs": 1933,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-EDIT-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1933,
+          "timestamp": "2026-09-25T03:05:11.870Z"
+        }
+      ],
+      "evidence": "Non-author edit rejected with 403: [object Object]"
+    },
+    {
+      "id": "CHAT-EDIT-003",
+      "featureId": "CHAT-EDIT",
+      "feature": "Message Edits & Soft Deletions",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Author attempts to edit message older than 24 hours",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2173,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-EDIT-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2173,
+          "timestamp": "2026-09-25T03:05:14.043Z"
+        }
+      ],
+      "evidence": "Expired edit rejected"
+    },
+    {
+      "id": "CHAT-EDIT-004",
+      "featureId": "CHAT-EDIT",
+      "feature": "Message Edits & Soft Deletions",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Attempting to edit an already-deleted message",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 4042,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-EDIT-004",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 4042,
+          "timestamp": "2026-09-25T03:05:18.085Z"
+        }
+      ],
+      "evidence": "Editing deleted message rejected with 400: [object Object]"
+    },
+    {
+      "id": "CHAT-DEL-001",
+      "featureId": "CHAT-EDIT",
+      "feature": "Message Edits & Soft Deletions",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Author soft-deletes their own message",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 6219,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-DEL-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 6219,
+          "timestamp": "2026-09-25T03:05:24.304Z"
+        }
+      ],
+      "evidence": "Message soft-deleted and text replaced"
+    },
+    {
+      "id": "CHAT-DEL-002",
+      "featureId": "CHAT-EDIT",
+      "feature": "Message Edits & Soft Deletions",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Non-author regular user attempts to delete another's message",
+      "actors": "User B",
+      "status": "PASS",
+      "durationMs": 1857,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-DEL-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1857,
+          "timestamp": "2026-09-25T03:05:26.162Z"
+        }
+      ],
+      "evidence": "Non-author delete blocked with 403: [object Object]"
+    },
+    {
+      "id": "CHAT-DEL-003",
+      "featureId": "CHAT-EDIT",
+      "feature": "Message Edits & Soft Deletions",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Org staff deletes inappropriate message in channel",
+      "actors": "Org Staff",
+      "status": "PASS",
+      "durationMs": 7398,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-DEL-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 7398,
+          "timestamp": "2026-09-25T03:05:33.560Z"
+        }
+      ],
+      "evidence": "Staff successfully moderated member message"
+    },
+    {
+      "id": "CHAT-MEDIA-001",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Upload valid PNG image attachment",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1945,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MEDIA-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1945,
+          "timestamp": "2026-09-25T03:05:35.505Z"
+        }
+      ],
+      "evidence": "Uploaded PNG: /api/chat/attachment?cid=dm_qa_user_a__4ak2r_qa_user_b__4ak2r&path=82228bd2-a551-4f12-b137-7f0da04db78a.png"
+    },
+    {
+      "id": "CHAT-MEDIA-002",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Upload valid PDF document attachment",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1778,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MEDIA-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1778,
+          "timestamp": "2026-09-25T03:05:37.283Z"
+        }
+      ],
+      "evidence": "Valid PDF uploaded"
+    },
+    {
+      "id": "CHAT-MEDIA-003",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Upload valid audio note with duration",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1785,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MEDIA-003",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1785,
+          "timestamp": "2026-09-25T03:05:39.068Z"
+        }
+      ],
+      "evidence": "Audio note uploaded: duration=12"
+    },
+    {
+      "id": "CHAT-MEDIA-004",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Upload empty (0-byte) file",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1678,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MEDIA-004",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1678,
+          "timestamp": "2026-09-25T03:05:40.746Z"
+        }
+      ],
+      "evidence": "Empty file rejected: [object Object]"
+    },
+    {
+      "id": "CHAT-MEDIA-005",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Upload file exceeding 15MB limit",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 95,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MEDIA-005",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 95,
+          "timestamp": "2026-09-25T03:05:40.841Z"
+        }
+      ],
+      "evidence": "Oversized file rejected with status 413"
+    },
+    {
+      "id": "CHAT-MEDIA-006",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Upload file with spoofed extension and invalid magic bytes",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1650,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MEDIA-006",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1650,
+          "timestamp": "2026-09-25T03:05:42.491Z"
+        }
+      ],
+      "evidence": "Spoofed extension rejected: [object Object]"
+    },
+    {
+      "id": "CHAT-MEDIA-007",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Authorized conversation participant streams attachment via proxy",
+      "actors": "User A",
+      "status": "FAIL",
+      "durationMs": 4351,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MEDIA-007",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 4351,
+          "errorMessage": "fetch failed",
+          "timestamp": "2026-09-25T03:05:46.842Z"
+        }
+      ],
+      "errorMessage": "fetch failed",
+      "evidence": "TypeError: fetch failed"
+    },
+    {
+      "id": "CHAT-MEDIA-008",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P0",
+      "layer": "API",
+      "scenario": "Outsider User C attempts to download private attachment",
+      "actors": "User C (outsider)",
+      "status": "PASS",
+      "durationMs": 1843,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MEDIA-008",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1843,
+          "timestamp": "2026-09-25T03:05:48.685Z"
+        }
+      ],
+      "evidence": "Outsider blocked with 403: [object Object]"
+    },
+    {
+      "id": "CHAT-MEDIA-009",
+      "featureId": "CHAT-MEDIA",
+      "feature": "Attachments & Voice Notes",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Path traversal attempt in attachment query (?path=../../etc/passwd)",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 1325,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-MEDIA-009",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1325,
+          "timestamp": "2026-09-25T03:05:50.010Z"
+        }
+      ],
+      "evidence": "Path traversal blocked with 403: [object Object]"
+    },
+    {
+      "id": "CHAT-PERM-001",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P0",
+      "layer": "Rules",
+      "scenario": "Firestore rules deny outsider User C reading /conversations/{cid}",
+      "actors": "User C (outsider)",
+      "status": "PASS",
+      "durationMs": 9767,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-PERM-001",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 9767,
+          "timestamp": "2026-09-25T03:06:05.190Z"
+        }
+      ],
+      "evidence": "Firestore rules denied conversation read with permission-denied"
+    },
+    {
+      "id": "CHAT-PERM-002",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P0",
+      "layer": "Rules",
+      "scenario": "Firestore rules deny outsider User C reading /conversations/{cid}/messages",
+      "actors": "User C (outsider)",
+      "status": "PASS",
+      "durationMs": 1502,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-PERM-002",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1502,
+          "timestamp": "2026-09-25T03:06:06.692Z"
+        }
+      ],
+      "evidence": "Firestore rules denied message list read with permission-denied"
+    },
+    {
+      "id": "CHAT-PERM-003",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P0",
+      "layer": "Rules",
+      "scenario": "Firestore rules deny outsider User C creating messages in someone else's conversation",
+      "actors": "User C (outsider)",
+      "status": "FAIL",
+      "durationMs": 641,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-PERM-003",
+          "attemptNumber": 1,
+          "status": "FAIL",
+          "durationMs": 641,
+          "errorMessage": "VULNERABILITY: Firestore rules allow outsider User C to directly insert messages into conversations they do not belong to",
+          "timestamp": "2026-09-25T03:06:07.333Z"
+        }
+      ],
+      "errorMessage": "VULNERABILITY: Firestore rules allow outsider User C to directly insert messages into conversations they do not belong to",
+      "evidence": "Missing isConversationParticipant check on message creation in firestore.rules"
+    },
+    {
+      "id": "CHAT-PERM-004",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P0",
+      "layer": "Rules",
+      "scenario": "Firestore rules reject spoofed senderId in messages",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 291,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-PERM-004",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 291,
+          "timestamp": "2026-09-25T03:06:07.625Z"
+        }
+      ],
+      "evidence": "Firestore rules denied spoofed senderId with permission-denied"
+    },
+    {
+      "id": "CHAT-PERM-005",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P1",
+      "layer": "API",
+      "scenario": "Direct message send blocked between blocked users",
+      "actors": "User A, User D (blocked)",
+      "status": "PASS",
+      "durationMs": 1688,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-PERM-005",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 1688,
+          "timestamp": "2026-09-25T03:05:51.698Z"
+        }
+      ],
+      "evidence": "Blocked user message rejected with 403: [object Object]"
+    },
+    {
+      "id": "CHAT-PERM-006",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P0",
+      "layer": "API",
+      "scenario": "Suspended or banned user cannot access chat endpoints",
+      "actors": "Suspended User",
+      "status": "PASS",
+      "durationMs": 902,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-PERM-006",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 902,
+          "timestamp": "2026-09-25T03:05:52.600Z"
+        }
+      ],
+      "evidence": "Banned user blocked with 403: [object Object]"
+    },
+    {
+      "id": "CHAT-PERM-007",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P2",
+      "layer": "API",
+      "scenario": "Message reporting records snapshot in userReports collection",
+      "actors": "User A",
+      "status": "PASS",
+      "durationMs": 2005,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-PERM-007",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 2005,
+          "timestamp": "2026-09-25T03:05:54.605Z"
+        }
+      ],
+      "evidence": "Report created: ID xeuiwU8pW99iX33PDVRn"
+    },
+    {
+      "id": "CHAT-PERM-008",
+      "featureId": "CHAT-PERM",
+      "feature": "Security, Moderation & Blocking",
+      "priority": "P0",
+      "layer": "API",
+      "scenario": "Unauthenticated client receives 401 across all chat API routes",
+      "actors": "Unauthenticated Guest",
+      "status": "PASS",
+      "durationMs": 7,
+      "attempts": [
+        {
+          "runId": "qa_20260925030257_4ak2r",
+          "testId": "CHAT-PERM-008",
+          "attemptNumber": 1,
+          "status": "PASS",
+          "durationMs": 7,
+          "timestamp": "2026-09-25T03:05:54.612Z"
+        }
+      ],
+      "evidence": "Unauthenticated request rejected with 401 Unauthorized"
+    }
+  ],
+  "defects": [
+    {
+      "defectId": "DEF-CHAT-001",
+      "testId": "CHAT-REACT-001",
+      "feature": "Reactions & Emoji Interactions",
+      "title": "Missing participant authorization on message reactions endpoint",
+      "severity": "High",
+      "component": "src/pages/api/chat/conversations/[cid]/messages/[mid]/reactions.ts:line 30",
+      "stepsToReproduce": "1. Obtain token for outsider user not in conversation.\n2. POST to /api/chat/conversations/{cid}/messages/{mid}/reactions with emoji.",
+      "expectedBehavior": "API must return 403 Forbidden when user is not a member/participant in the target conversation.",
+      "actualBehavior": "API returned 200 OK and attached outsider reaction without verifying conversation membership.",
+      "evidenceSnippet": "{\"success\":true,\"reactions\":{\"🔥\":[\"qa_user_a__4ak2r\"],\"👀\":[\"qa_user_c__4ak2r\"]}}"
+    },
+    {
+      "defectId": "DEF-CHAT-002",
+      "testId": "CHAT-PERM-003",
+      "feature": "Security, Moderation & Blocking",
+      "title": "Firestore security rules allow message injection by non-participants",
+      "severity": "High",
+      "component": "firestore.rules:line 330",
+      "stepsToReproduce": "1. Authenticate as User C using client SDK.\n2. Attempt setDoc into /conversations/{directConvId}/messages/{mid} with senderId=UserC.uid.",
+      "expectedBehavior": "Rules must require isConversationParticipant(get(/databases/$(database)/documents/conversations/$(cid)).data) on message create.",
+      "actualBehavior": "Rules only verified request.resource.data.senderId == request.auth.uid, allowing non-participants to create messages directly via client SDK.",
+      "evidenceSnippet": "Write operation succeeded without permission-denied error"
+    }
+  ],
+  "attempts": [
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MSG-007",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 0,
+      "timestamp": "2026-09-25T03:03:06.845Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-TYPE-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 0,
+      "timestamp": "2026-09-25T03:03:06.845Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-DISC-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2001,
+      "timestamp": "2026-09-25T03:03:08.847Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-DISC-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1985,
+      "timestamp": "2026-09-25T03:03:10.832Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-DISC-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1359,
+      "timestamp": "2026-09-25T03:03:12.191Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-DISC-004",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1763,
+      "timestamp": "2026-09-25T03:03:13.954Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-DISC-005",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1737,
+      "timestamp": "2026-09-25T03:03:15.691Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-CONV-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2227,
+      "timestamp": "2026-09-25T03:03:17.918Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-CONV-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2354,
+      "timestamp": "2026-09-25T03:03:20.272Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-CONV-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1421,
+      "timestamp": "2026-09-25T03:03:21.693Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-CONV-004",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1956,
+      "timestamp": "2026-09-25T03:03:23.649Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-CONV-005",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 3070,
+      "timestamp": "2026-09-25T03:03:26.719Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-CONV-006",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1914,
+      "timestamp": "2026-09-25T03:03:28.633Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-CONV-007",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1928,
+      "timestamp": "2026-09-25T03:03:30.561Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-LIST-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2536,
+      "timestamp": "2026-09-25T03:03:33.097Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-LIST-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2576,
+      "timestamp": "2026-09-25T03:03:35.673Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-LIST-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2329,
+      "timestamp": "2026-09-25T03:03:38.002Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MSG-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4105,
+      "timestamp": "2026-09-25T03:03:42.107Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MSG-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 3990,
+      "timestamp": "2026-09-25T03:03:46.097Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MSG-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2430,
+      "timestamp": "2026-09-25T03:03:48.527Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MSG-004",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 19828,
+      "timestamp": "2026-09-25T03:04:08.355Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MSG-005",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 12860,
+      "timestamp": "2026-09-25T03:04:21.215Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MSG-006",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2489,
+      "timestamp": "2026-09-25T03:04:23.704Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-SEND-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 3901,
+      "timestamp": "2026-09-25T03:04:27.605Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-SEND-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2791,
+      "timestamp": "2026-09-25T03:04:30.396Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-SEND-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2538,
+      "timestamp": "2026-09-25T03:04:32.934Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-CONC-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4088,
+      "timestamp": "2026-09-25T03:04:37.341Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-HIST-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1937,
+      "timestamp": "2026-09-25T03:04:39.278Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-HIST-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 3858,
+      "timestamp": "2026-09-25T03:04:43.136Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-READ-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1686,
+      "timestamp": "2026-09-25T03:04:44.822Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-READ-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 3869,
+      "timestamp": "2026-09-25T03:04:48.691Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-TYPE-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2199,
+      "timestamp": "2026-09-25T03:04:50.891Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-TYPE-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1699,
+      "timestamp": "2026-09-25T03:04:52.590Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-REACT-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2196,
+      "timestamp": "2026-09-25T03:04:54.786Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-REACT-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1916,
+      "timestamp": "2026-09-25T03:04:58.647Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-PIN-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2176,
+      "timestamp": "2026-09-25T03:05:00.823Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-PIN-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 6875,
+      "timestamp": "2026-09-25T03:05:07.698Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-EDIT-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2238,
+      "timestamp": "2026-09-25T03:05:09.937Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-EDIT-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1933,
+      "timestamp": "2026-09-25T03:05:11.870Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-EDIT-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2173,
+      "timestamp": "2026-09-25T03:05:14.043Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-EDIT-004",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4042,
+      "timestamp": "2026-09-25T03:05:18.085Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-DEL-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 6219,
+      "timestamp": "2026-09-25T03:05:24.304Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-DEL-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1857,
+      "timestamp": "2026-09-25T03:05:26.162Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-DEL-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 7398,
+      "timestamp": "2026-09-25T03:05:33.560Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MEDIA-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1945,
+      "timestamp": "2026-09-25T03:05:35.505Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MEDIA-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1778,
+      "timestamp": "2026-09-25T03:05:37.283Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MEDIA-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1785,
+      "timestamp": "2026-09-25T03:05:39.068Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MEDIA-004",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1678,
+      "timestamp": "2026-09-25T03:05:40.746Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MEDIA-005",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 95,
+      "timestamp": "2026-09-25T03:05:40.841Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MEDIA-006",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1650,
+      "timestamp": "2026-09-25T03:05:42.491Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MEDIA-007",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 4351,
+      "errorMessage": "fetch failed",
+      "timestamp": "2026-09-25T03:05:46.842Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MEDIA-008",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1843,
+      "timestamp": "2026-09-25T03:05:48.685Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-MEDIA-009",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1325,
+      "timestamp": "2026-09-25T03:05:50.010Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-PERM-005",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1688,
+      "timestamp": "2026-09-25T03:05:51.698Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-PERM-006",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 902,
+      "timestamp": "2026-09-25T03:05:52.600Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-PERM-007",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2005,
+      "timestamp": "2026-09-25T03:05:54.605Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-PERM-008",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 7,
+      "timestamp": "2026-09-25T03:05:54.612Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-PERM-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 9767,
+      "timestamp": "2026-09-25T03:06:05.190Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-PERM-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1502,
+      "timestamp": "2026-09-25T03:06:06.692Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-PERM-003",
+      "attemptNumber": 1,
+      "status": "FAIL",
+      "durationMs": 641,
+      "errorMessage": "VULNERABILITY: Firestore rules allow outsider User C to directly insert messages into conversations they do not belong to",
+      "timestamp": "2026-09-25T03:06:07.333Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-PERM-004",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 291,
+      "timestamp": "2026-09-25T03:06:07.625Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-NAV-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1012,
+      "timestamp": "2026-09-25T03:06:08.839Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-NAV-002",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 417,
+      "timestamp": "2026-09-25T03:06:09.256Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-NAV-005",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 4836,
+      "timestamp": "2026-09-25T03:06:14.093Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-NAV-003",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 2570,
+      "timestamp": "2026-09-25T03:06:16.664Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-NAV-004",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 1100,
+      "timestamp": "2026-09-25T03:06:17.764Z"
+    },
+    {
+      "runId": "qa_20260925030257_4ak2r",
+      "testId": "CHAT-REALTIME-001",
+      "attemptNumber": 1,
+      "status": "PASS",
+      "durationMs": 3913,
+      "timestamp": "2026-09-25T03:06:28.651Z"
+    }
+  ]
+}

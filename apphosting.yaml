@@ -1,0 +1,100 @@
+# Settings for Backend (on Cloud Run).
+# See https://firebase.google.com/docs/app-hosting/configure#cloud-run
+runConfig:
+  minInstances: 0
+  # maxInstances: 100
+  # concurrency: 80
+  # cpu: 1
+  # memoryMiB: 512
+
+# Environment variables and secrets.
+# SECURITY NOTE: Never commit real private keys here. Use Firebase Secret Manager
+# for FIREBASE_PRIVATE_KEY in production by replacing `value:` with `secret:`.
+# See: https://firebase.google.com/docs/app-hosting/configure#secret-parameters
+env:
+  # ── Firebase Client SDK (Public — required at BUILD time for Next.js) ────────
+  # These are not secrets and are safe to commit. They must be here because
+  # .env.production is gitignored and not uploaded to Cloud Build.
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: AIzaSyAacBT26QSRLqzbTvf_PzG5MOGYPZLy5yI
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    value: www.bomboclatbeastcode.codes
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: beastcode-7555e
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    value: beastcode-media-348293518232
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: FIREBASE_STORAGE_BUCKET
+    value: beastcode-media-348293518232
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    value: "348293518232"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: 1:348293518232:web:5a89bdee324dd460e751ed
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+    value: G-J072ETXY80
+    availability:
+      - BUILD
+      - RUNTIME
+
+  # ── Email (SMTP) ────────────────────────────────────────────────────────────
+  - variable: SMTP_HOST
+    value: smtp.gmail.com
+  - variable: SMTP_PORT
+    value: "587"
+  - variable: SMTP_USER
+    value: bomemebo6996@gmail.com
+  - variable: SMTP_PASS
+    secret: smtp_pass
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: SMTP_FROM
+    value: '"BeastCode" <bomemebo6996@gmail.com>'
+
+  # ── Site URL (used in password reset, auth, and notification links) ───────
+  - variable: NEXT_PUBLIC_SITE_URL
+    value: "https://www.bomboclatbeastcode.codes"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_APP_URL
+    value: "https://www.bomboclatbeastcode.codes"
+    availability:
+      - BUILD
+      - RUNTIME
+
+  # ── Firebase Admin SDK (Service Account) ────────────────────────────────────
+  # These power getUserByEmail, updateUser, and revokeRefreshTokens.
+  # FIREBASE_PRIVATE_KEY should be stored as a Firebase Secret Manager secret.
+  - variable: FIREBASE_PROJECT_ID
+    value: beastcode-7555e
+  - variable: FIREBASE_CLIENT_EMAIL
+    secret: firebase_client_email
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: FIREBASE_PRIVATE_KEY
+    secret: firebase_private_key
+    availability:
+      - BUILD
+      - RUNTIME

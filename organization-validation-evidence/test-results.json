@@ -1,0 +1,1555 @@
+{
+  "timestamp": "2026-10-02T16:02:54.271Z",
+  "summary": {
+    "total": 108,
+    "passed": 89,
+    "fixed": 19,
+    "failed": 0
+  },
+  "results": [
+    {
+      "id": "TC_SEC_001",
+      "category": "Tenant Isolation / IDOR",
+      "title": "IDOR Gradebook Cross-Tenant Read Prevention",
+      "description": "Verify Instructor in Org A cannot read gradebook of Course in Org B",
+      "roleOrActor": "INSTRUCTOR_A",
+      "targetResource": "organizationGradebook (Course B)",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "CRITICAL",
+      "details": "Org A Instructor requested Course B gradebook. Response code: 404, Error: Course not found in this organization",
+      "evidence": {
+        "success": false,
+        "error": "Course not found in this organization"
+      }
+    },
+    {
+      "id": "TC_SEC_001_WRITE",
+      "category": "Tenant Isolation / IDOR",
+      "title": "IDOR Gradebook Cross-Tenant Overwrite Prevention",
+      "description": "Verify Instructor in Org A cannot alter grades of student in Course B",
+      "roleOrActor": "INSTRUCTOR_A",
+      "targetResource": "organizationGradebook (Course B)",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "CRITICAL",
+      "details": "Org A Instructor attempted to overwrite Course B gradebook. Response: 404",
+      "evidence": {
+        "success": false,
+        "error": "Course not found in this organization"
+      }
+    },
+    {
+      "id": "TC_SEC_002",
+      "category": "Tenant Isolation / IDOR",
+      "title": "IDOR Private Problem Read Prevention",
+      "description": "Verify Coach in Org A cannot view confidential private problem from Org B",
+      "roleOrActor": "COACH_A",
+      "targetResource": "organizationPrivateProblems (Problem B)",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "CRITICAL",
+      "details": "Coach A requested Problem B via Org A endpoint. Response: 404",
+      "evidence": {
+        "success": false,
+        "error": "Private problem not found in this organization"
+      }
+    },
+    {
+      "id": "TC_SEC_003",
+      "category": "Privilege Escalation",
+      "title": "Private Problem Deletion Permission Enforcement",
+      "description": "Verify Coach (who has editProblem) cannot delete private problem (requires deleteProblem)",
+      "roleOrActor": "COACH_A",
+      "targetResource": "organizationPrivateProblems (Problem A)",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "HIGH",
+      "details": "Coach A attempted DELETE on Problem A. Response: 403, Error: Access Denied: Insufficient permissions to delete problem",
+      "evidence": {
+        "success": false,
+        "error": "Access Denied: Insufficient permissions to delete problem"
+      }
+    },
+    {
+      "id": "TC_SEC_004",
+      "category": "Tenant Isolation / Information Disclosure",
+      "title": "IDOR Hidden Testcases & Special Judge Leak Prevention",
+      "description": "Verify Coach in Org A cannot inspect secret testcases or validator scripts of Org B",
+      "roleOrActor": "COACH_A",
+      "targetResource": "organizationPrivateProblems testcases (Problem B)",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "CRITICAL",
+      "details": "Coach A attempted reading Problem B testcases. Response: 404",
+      "evidence": {
+        "success": false,
+        "error": "Private problem not found in this organization"
+      }
+    },
+    {
+      "id": "TC_SEC_005",
+      "category": "Tenant Isolation / IDOR",
+      "title": "IDOR Assessment Template Cross-Tenant Isolation",
+      "description": "Verify Member in Org A cannot access or start Assessment in Org B",
+      "roleOrActor": "MEMBER_A",
+      "targetResource": "organizationAssessments (Assessment B)",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "HIGH",
+      "details": "Member A attempted to access Assessment B. Response: 404",
+      "evidence": {
+        "success": false,
+        "error": "Assessment template not found in this organization"
+      }
+    },
+    {
+      "id": "TC_SEC_006",
+      "category": "Tenant Isolation / IDOR",
+      "title": "IDOR Team Tampering Prevention",
+      "description": "Verify Coach/Manager in Org A cannot modify roster or settings of Team in Org B",
+      "roleOrActor": "COACH_A",
+      "targetResource": "organizationTeams (Team B)",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "HIGH",
+      "details": "Coach A attempted modifying Team B. Response: 404",
+      "evidence": {
+        "success": false,
+        "error": "Team not found in this organization"
+      }
+    },
+    {
+      "id": "TC_SEC_007",
+      "category": "Tenant Isolation / IDOR",
+      "title": "IDOR Recruitment Job Posting Modification Prevention",
+      "description": "Verify Recruiter/Admin in Org A cannot alter Job Posting in Org B",
+      "roleOrActor": "ADMIN_A",
+      "targetResource": "organizationJobs (Job B)",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "HIGH",
+      "details": "Admin A attempted to PATCH Job B. Response: 404",
+      "evidence": {
+        "success": false,
+        "error": "Job posting not found in this organization"
+      }
+    },
+    {
+      "id": "TC_SEC_008",
+      "category": "Tenant Isolation / IDOR",
+      "title": "IDOR Candidate Application Review Status Prevention",
+      "description": "Verify Recruiter in Org A cannot review or change stage of candidate in Org B",
+      "roleOrActor": "ADMIN_A",
+      "targetResource": "organizationApplications (Application B)",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "HIGH",
+      "details": "Admin A attempted to modify candidate Application B. Response: 404",
+      "evidence": {
+        "success": false,
+        "error": "Application record not found in this organization"
+      }
+    },
+    {
+      "id": "TC_SEC_009",
+      "category": "Privilege Escalation",
+      "title": "Member Profile and Preference Tampering Prevention",
+      "description": "Verify standard member cannot modify profile or preferences of another member",
+      "roleOrActor": "MEMBER_A",
+      "targetResource": "organizationMembers (Admin A)",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "HIGH",
+      "details": "Member A attempted to edit Admin A profile. Response: 403",
+      "evidence": {
+        "success": false,
+        "message": "Forbidden: Cannot edit another member's profile",
+        "error": {
+          "code": "FORBIDDEN",
+          "message": "Forbidden: Cannot edit another member's profile",
+          "details": {
+            "success": false,
+            "error": "Forbidden: Cannot edit another member's profile"
+          }
+        }
+      }
+    },
+    {
+      "id": "TC_SEC_010",
+      "category": "Information Disclosure",
+      "title": "Private Organization Course Roster Enumeration Protection",
+      "description": "Verify non-member cannot list courses or curriculum of private organization",
+      "roleOrActor": "OUTSIDER",
+      "targetResource": "organizationCourses (Org B)",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "HIGH",
+      "details": "Outsider attempted GET /courses on private Org B. Response: 403",
+      "evidence": {
+        "success": false,
+        "error": "Access Denied: Private organization"
+      }
+    },
+    {
+      "id": "TC_SEC_011",
+      "category": "Information Disclosure",
+      "title": "Private Organization Certificate Registry Protection",
+      "description": "Verify non-member cannot enumerate certificates issued by private organization",
+      "roleOrActor": "OUTSIDER",
+      "targetResource": "organizationCertificates (Org B)",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "HIGH",
+      "details": "Outsider attempted GET /certificates on private Org B. Response: 403",
+      "evidence": {
+        "success": false,
+        "error": "Access Denied: Private organization"
+      }
+    },
+    {
+      "id": "TC_SEC_012",
+      "category": "Tenant Isolation / IDOR",
+      "title": "Course Materials Tenant Isolation",
+      "description": "Verify materials endpoint verifies course belongs to the requested organization",
+      "roleOrActor": "MEMBER_A",
+      "targetResource": "organizationCourseMaterials (Course B)",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "HIGH",
+      "details": "Member A attempted GET materials for Course B via Org A. Response: 404",
+      "evidence": {
+        "success": false,
+        "error": "Course not found in this organization"
+      }
+    },
+    {
+      "id": "TC_SEC_013",
+      "category": "PII & Privacy Protection",
+      "title": "Member Email PII Masking in Workspace Search",
+      "description": "Verify member emails are masked for non-managers while keeping self email visible",
+      "roleOrActor": "MEMBER_A",
+      "targetResource": "organizationMembers (Org A Search)",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "MEDIUM",
+      "details": "Other member email exposed: false. Own email exposed: true",
+      "evidence": {
+        "ownEmail": "member_a@beastcode-test.qa"
+      }
+    },
+    {
+      "id": "TC_SEC_014",
+      "category": "Authentication & Invitations",
+      "title": "Invitation Token Recipient UID Enforcement",
+      "description": "Verify invitation issued to a designated UID cannot be redeemed by another user",
+      "roleOrActor": "MEMBER_B",
+      "targetResource": "organizationInvitations (Token A)",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "LOW",
+      "details": "User B attempted to accept invitation issued to Outsider. Response: 403, Error: [object Object]",
+      "evidence": {
+        "success": false,
+        "message": "Forbidden: This invitation was issued to a different user account",
+        "error": {
+          "code": "FORBIDDEN",
+          "message": "Forbidden: This invitation was issued to a different user account",
+          "details": {
+            "success": false,
+            "error": "Forbidden: This invitation was issued to a different user account"
+          }
+        }
+      }
+    },
+    {
+      "id": "TC_SEC_015",
+      "category": "Tenant Isolation / IDOR",
+      "title": "University Hierarchy Node Cross-Tenant Modification Prevention",
+      "description": "Verify Admin in Org A cannot alter hierarchy nodes belonging to Org B",
+      "roleOrActor": "ADMIN_A",
+      "targetResource": "organizationUniversityNodes (Node B)",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "HIGH",
+      "details": "Admin A attempted to modify Node B. Response: 404",
+      "evidence": {
+        "success": false,
+        "error": "University hierarchy node not found in this organization"
+      }
+    },
+    {
+      "id": "TC_SEC_016",
+      "category": "Tenant Isolation / IDOR",
+      "title": "Interview Scheduling Application Tenant Verification",
+      "description": "Verify Recruiter in Org A cannot schedule interview using Application ID of Org B",
+      "roleOrActor": "ADMIN_A",
+      "targetResource": "organizationInterviews (Application B)",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "HIGH",
+      "details": "Recruiter A attempted interview scheduling on Application B. Response: 404",
+      "evidence": {
+        "success": false,
+        "error": "Candidate application not found in this organization"
+      }
+    },
+    {
+      "id": "TC_SEC_017",
+      "category": "Tenant Isolation / IDOR",
+      "title": "Interview Evaluation Cross-Tenant Modification Prevention",
+      "description": "Verify Recruiter in Org A cannot submit evaluation for Interview in Org B",
+      "roleOrActor": "ADMIN_A",
+      "targetResource": "organizationInterviews (Interview B)",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "status": "FIXED",
+      "vulnerabilitySeverity": "HIGH",
+      "details": "Recruiter A attempted evaluation on Interview B. Response: 404",
+      "evidence": {
+        "success": false,
+        "error": "Interview not found in this organization"
+      }
+    },
+    {
+      "id": "TC_SEC_018",
+      "category": "Access Control / State Management",
+      "title": "Suspended Organization Status Check Enforcement",
+      "description": "Verify verifyUserPermission correctly honors org.status === suspended",
+      "roleOrActor": "OWNER_A",
+      "targetResource": "organizations (Suspended Org)",
+      "expectedStatus": "allowed: false",
+      "actualStatus": "allowed: false",
+      "status": "FIXED",
+      "vulnerabilitySeverity": "MEDIUM",
+      "details": "Checked if owner can access org with status: 'suspended'. Result: allowed=false"
+    },
+    {
+      "id": "TC_RBAC_OWNER_DELETEORGANIZATION",
+      "category": "RBAC Matrix Verification",
+      "title": "Role OWNER - organization.deleteOrganization",
+      "description": "Validate permission check for organization.deleteOrganization matches system template definition",
+      "roleOrActor": "OWNER",
+      "targetResource": "Permission: organization.deleteOrganization",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role owner permission organization.deleteOrganization: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_OWNER_MANAGESETTINGS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role OWNER - organization.manageSettings",
+      "description": "Validate permission check for organization.manageSettings matches system template definition",
+      "roleOrActor": "OWNER",
+      "targetResource": "Permission: organization.manageSettings",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role owner permission organization.manageSettings: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_OWNER_ASSIGNROLE",
+      "category": "RBAC Matrix Verification",
+      "title": "Role OWNER - organization.assignRole",
+      "description": "Validate permission check for organization.assignRole matches system template definition",
+      "roleOrActor": "OWNER",
+      "targetResource": "Permission: organization.assignRole",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role owner permission organization.assignRole: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_OWNER_MANAGECOURSES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role OWNER - organization.manageCourses",
+      "description": "Validate permission check for organization.manageCourses matches system template definition",
+      "roleOrActor": "OWNER",
+      "targetResource": "Permission: organization.manageCourses",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role owner permission organization.manageCourses: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_OWNER_CREATEPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role OWNER - organization.createProblem",
+      "description": "Validate permission check for organization.createProblem matches system template definition",
+      "roleOrActor": "OWNER",
+      "targetResource": "Permission: organization.createProblem",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role owner permission organization.createProblem: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_OWNER_EDITPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role OWNER - organization.editProblem",
+      "description": "Validate permission check for organization.editProblem matches system template definition",
+      "roleOrActor": "OWNER",
+      "targetResource": "Permission: organization.editProblem",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role owner permission organization.editProblem: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_OWNER_DELETEPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role OWNER - organization.deleteProblem",
+      "description": "Validate permission check for organization.deleteProblem matches system template definition",
+      "roleOrActor": "OWNER",
+      "targetResource": "Permission: organization.deleteProblem",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role owner permission organization.deleteProblem: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_OWNER_ASSIGNHOMEWORK",
+      "category": "RBAC Matrix Verification",
+      "title": "Role OWNER - organization.assignHomework",
+      "description": "Validate permission check for organization.assignHomework matches system template definition",
+      "roleOrActor": "OWNER",
+      "targetResource": "Permission: organization.assignHomework",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role owner permission organization.assignHomework: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_OWNER_VIEWINSTRUCTORMETRICS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role OWNER - organization.viewInstructorMetrics",
+      "description": "Validate permission check for organization.viewInstructorMetrics matches system template definition",
+      "roleOrActor": "OWNER",
+      "targetResource": "Permission: organization.viewInstructorMetrics",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role owner permission organization.viewInstructorMetrics: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_OWNER_MANAGECERTIFICATES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role OWNER - organization.manageCertificates",
+      "description": "Validate permission check for organization.manageCertificates matches system template definition",
+      "roleOrActor": "OWNER",
+      "targetResource": "Permission: organization.manageCertificates",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role owner permission organization.manageCertificates: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_OWNER_ISSUECERTIFICATES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role OWNER - organization.issueCertificates",
+      "description": "Validate permission check for organization.issueCertificates matches system template definition",
+      "roleOrActor": "OWNER",
+      "targetResource": "Permission: organization.issueCertificates",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role owner permission organization.issueCertificates: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_OWNER_MANAGETEAMS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role OWNER - organization.manageTeams",
+      "description": "Validate permission check for organization.manageTeams matches system template definition",
+      "roleOrActor": "OWNER",
+      "targetResource": "Permission: organization.manageTeams",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role owner permission organization.manageTeams: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_OWNER_VIEWAUDITLOGS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role OWNER - organization.viewAuditLogs",
+      "description": "Validate permission check for organization.viewAuditLogs matches system template definition",
+      "roleOrActor": "OWNER",
+      "targetResource": "Permission: organization.viewAuditLogs",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role owner permission organization.viewAuditLogs: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_ADMIN_DELETEORGANIZATION",
+      "category": "RBAC Matrix Verification",
+      "title": "Role ADMIN - organization.deleteOrganization",
+      "description": "Validate permission check for organization.deleteOrganization matches system template definition",
+      "roleOrActor": "ADMIN",
+      "targetResource": "Permission: organization.deleteOrganization",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role admin permission organization.deleteOrganization: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_ADMIN_MANAGESETTINGS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role ADMIN - organization.manageSettings",
+      "description": "Validate permission check for organization.manageSettings matches system template definition",
+      "roleOrActor": "ADMIN",
+      "targetResource": "Permission: organization.manageSettings",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role admin permission organization.manageSettings: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_ADMIN_ASSIGNROLE",
+      "category": "RBAC Matrix Verification",
+      "title": "Role ADMIN - organization.assignRole",
+      "description": "Validate permission check for organization.assignRole matches system template definition",
+      "roleOrActor": "ADMIN",
+      "targetResource": "Permission: organization.assignRole",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role admin permission organization.assignRole: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_ADMIN_MANAGECOURSES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role ADMIN - organization.manageCourses",
+      "description": "Validate permission check for organization.manageCourses matches system template definition",
+      "roleOrActor": "ADMIN",
+      "targetResource": "Permission: organization.manageCourses",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role admin permission organization.manageCourses: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_ADMIN_CREATEPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role ADMIN - organization.createProblem",
+      "description": "Validate permission check for organization.createProblem matches system template definition",
+      "roleOrActor": "ADMIN",
+      "targetResource": "Permission: organization.createProblem",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role admin permission organization.createProblem: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_ADMIN_EDITPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role ADMIN - organization.editProblem",
+      "description": "Validate permission check for organization.editProblem matches system template definition",
+      "roleOrActor": "ADMIN",
+      "targetResource": "Permission: organization.editProblem",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role admin permission organization.editProblem: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_ADMIN_DELETEPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role ADMIN - organization.deleteProblem",
+      "description": "Validate permission check for organization.deleteProblem matches system template definition",
+      "roleOrActor": "ADMIN",
+      "targetResource": "Permission: organization.deleteProblem",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role admin permission organization.deleteProblem: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_ADMIN_ASSIGNHOMEWORK",
+      "category": "RBAC Matrix Verification",
+      "title": "Role ADMIN - organization.assignHomework",
+      "description": "Validate permission check for organization.assignHomework matches system template definition",
+      "roleOrActor": "ADMIN",
+      "targetResource": "Permission: organization.assignHomework",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role admin permission organization.assignHomework: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_ADMIN_VIEWINSTRUCTORMETRICS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role ADMIN - organization.viewInstructorMetrics",
+      "description": "Validate permission check for organization.viewInstructorMetrics matches system template definition",
+      "roleOrActor": "ADMIN",
+      "targetResource": "Permission: organization.viewInstructorMetrics",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role admin permission organization.viewInstructorMetrics: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_ADMIN_MANAGECERTIFICATES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role ADMIN - organization.manageCertificates",
+      "description": "Validate permission check for organization.manageCertificates matches system template definition",
+      "roleOrActor": "ADMIN",
+      "targetResource": "Permission: organization.manageCertificates",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role admin permission organization.manageCertificates: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_ADMIN_ISSUECERTIFICATES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role ADMIN - organization.issueCertificates",
+      "description": "Validate permission check for organization.issueCertificates matches system template definition",
+      "roleOrActor": "ADMIN",
+      "targetResource": "Permission: organization.issueCertificates",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role admin permission organization.issueCertificates: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_ADMIN_MANAGETEAMS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role ADMIN - organization.manageTeams",
+      "description": "Validate permission check for organization.manageTeams matches system template definition",
+      "roleOrActor": "ADMIN",
+      "targetResource": "Permission: organization.manageTeams",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role admin permission organization.manageTeams: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_ADMIN_VIEWAUDITLOGS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role ADMIN - organization.viewAuditLogs",
+      "description": "Validate permission check for organization.viewAuditLogs matches system template definition",
+      "roleOrActor": "ADMIN",
+      "targetResource": "Permission: organization.viewAuditLogs",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role admin permission organization.viewAuditLogs: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_COACH_DELETEORGANIZATION",
+      "category": "RBAC Matrix Verification",
+      "title": "Role COACH - organization.deleteOrganization",
+      "description": "Validate permission check for organization.deleteOrganization matches system template definition",
+      "roleOrActor": "COACH",
+      "targetResource": "Permission: organization.deleteOrganization",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role coach permission organization.deleteOrganization: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_COACH_MANAGESETTINGS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role COACH - organization.manageSettings",
+      "description": "Validate permission check for organization.manageSettings matches system template definition",
+      "roleOrActor": "COACH",
+      "targetResource": "Permission: organization.manageSettings",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role coach permission organization.manageSettings: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_COACH_ASSIGNROLE",
+      "category": "RBAC Matrix Verification",
+      "title": "Role COACH - organization.assignRole",
+      "description": "Validate permission check for organization.assignRole matches system template definition",
+      "roleOrActor": "COACH",
+      "targetResource": "Permission: organization.assignRole",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role coach permission organization.assignRole: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_COACH_MANAGECOURSES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role COACH - organization.manageCourses",
+      "description": "Validate permission check for organization.manageCourses matches system template definition",
+      "roleOrActor": "COACH",
+      "targetResource": "Permission: organization.manageCourses",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role coach permission organization.manageCourses: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_COACH_CREATEPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role COACH - organization.createProblem",
+      "description": "Validate permission check for organization.createProblem matches system template definition",
+      "roleOrActor": "COACH",
+      "targetResource": "Permission: organization.createProblem",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role coach permission organization.createProblem: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_COACH_EDITPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role COACH - organization.editProblem",
+      "description": "Validate permission check for organization.editProblem matches system template definition",
+      "roleOrActor": "COACH",
+      "targetResource": "Permission: organization.editProblem",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role coach permission organization.editProblem: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_COACH_DELETEPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role COACH - organization.deleteProblem",
+      "description": "Validate permission check for organization.deleteProblem matches system template definition",
+      "roleOrActor": "COACH",
+      "targetResource": "Permission: organization.deleteProblem",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role coach permission organization.deleteProblem: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_COACH_ASSIGNHOMEWORK",
+      "category": "RBAC Matrix Verification",
+      "title": "Role COACH - organization.assignHomework",
+      "description": "Validate permission check for organization.assignHomework matches system template definition",
+      "roleOrActor": "COACH",
+      "targetResource": "Permission: organization.assignHomework",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role coach permission organization.assignHomework: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_COACH_VIEWINSTRUCTORMETRICS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role COACH - organization.viewInstructorMetrics",
+      "description": "Validate permission check for organization.viewInstructorMetrics matches system template definition",
+      "roleOrActor": "COACH",
+      "targetResource": "Permission: organization.viewInstructorMetrics",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role coach permission organization.viewInstructorMetrics: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_COACH_MANAGECERTIFICATES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role COACH - organization.manageCertificates",
+      "description": "Validate permission check for organization.manageCertificates matches system template definition",
+      "roleOrActor": "COACH",
+      "targetResource": "Permission: organization.manageCertificates",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role coach permission organization.manageCertificates: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_COACH_ISSUECERTIFICATES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role COACH - organization.issueCertificates",
+      "description": "Validate permission check for organization.issueCertificates matches system template definition",
+      "roleOrActor": "COACH",
+      "targetResource": "Permission: organization.issueCertificates",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role coach permission organization.issueCertificates: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_COACH_MANAGETEAMS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role COACH - organization.manageTeams",
+      "description": "Validate permission check for organization.manageTeams matches system template definition",
+      "roleOrActor": "COACH",
+      "targetResource": "Permission: organization.manageTeams",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role coach permission organization.manageTeams: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_COACH_VIEWAUDITLOGS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role COACH - organization.viewAuditLogs",
+      "description": "Validate permission check for organization.viewAuditLogs matches system template definition",
+      "roleOrActor": "COACH",
+      "targetResource": "Permission: organization.viewAuditLogs",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role coach permission organization.viewAuditLogs: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_INSTRUCTOR_DELETEORGANIZATION",
+      "category": "RBAC Matrix Verification",
+      "title": "Role INSTRUCTOR - organization.deleteOrganization",
+      "description": "Validate permission check for organization.deleteOrganization matches system template definition",
+      "roleOrActor": "INSTRUCTOR",
+      "targetResource": "Permission: organization.deleteOrganization",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role instructor permission organization.deleteOrganization: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_INSTRUCTOR_MANAGESETTINGS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role INSTRUCTOR - organization.manageSettings",
+      "description": "Validate permission check for organization.manageSettings matches system template definition",
+      "roleOrActor": "INSTRUCTOR",
+      "targetResource": "Permission: organization.manageSettings",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role instructor permission organization.manageSettings: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_INSTRUCTOR_ASSIGNROLE",
+      "category": "RBAC Matrix Verification",
+      "title": "Role INSTRUCTOR - organization.assignRole",
+      "description": "Validate permission check for organization.assignRole matches system template definition",
+      "roleOrActor": "INSTRUCTOR",
+      "targetResource": "Permission: organization.assignRole",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role instructor permission organization.assignRole: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_INSTRUCTOR_MANAGECOURSES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role INSTRUCTOR - organization.manageCourses",
+      "description": "Validate permission check for organization.manageCourses matches system template definition",
+      "roleOrActor": "INSTRUCTOR",
+      "targetResource": "Permission: organization.manageCourses",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role instructor permission organization.manageCourses: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_INSTRUCTOR_CREATEPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role INSTRUCTOR - organization.createProblem",
+      "description": "Validate permission check for organization.createProblem matches system template definition",
+      "roleOrActor": "INSTRUCTOR",
+      "targetResource": "Permission: organization.createProblem",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role instructor permission organization.createProblem: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_INSTRUCTOR_EDITPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role INSTRUCTOR - organization.editProblem",
+      "description": "Validate permission check for organization.editProblem matches system template definition",
+      "roleOrActor": "INSTRUCTOR",
+      "targetResource": "Permission: organization.editProblem",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role instructor permission organization.editProblem: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_INSTRUCTOR_DELETEPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role INSTRUCTOR - organization.deleteProblem",
+      "description": "Validate permission check for organization.deleteProblem matches system template definition",
+      "roleOrActor": "INSTRUCTOR",
+      "targetResource": "Permission: organization.deleteProblem",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role instructor permission organization.deleteProblem: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_INSTRUCTOR_ASSIGNHOMEWORK",
+      "category": "RBAC Matrix Verification",
+      "title": "Role INSTRUCTOR - organization.assignHomework",
+      "description": "Validate permission check for organization.assignHomework matches system template definition",
+      "roleOrActor": "INSTRUCTOR",
+      "targetResource": "Permission: organization.assignHomework",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role instructor permission organization.assignHomework: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_INSTRUCTOR_VIEWINSTRUCTORMETRICS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role INSTRUCTOR - organization.viewInstructorMetrics",
+      "description": "Validate permission check for organization.viewInstructorMetrics matches system template definition",
+      "roleOrActor": "INSTRUCTOR",
+      "targetResource": "Permission: organization.viewInstructorMetrics",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role instructor permission organization.viewInstructorMetrics: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_INSTRUCTOR_MANAGECERTIFICATES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role INSTRUCTOR - organization.manageCertificates",
+      "description": "Validate permission check for organization.manageCertificates matches system template definition",
+      "roleOrActor": "INSTRUCTOR",
+      "targetResource": "Permission: organization.manageCertificates",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role instructor permission organization.manageCertificates: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_INSTRUCTOR_ISSUECERTIFICATES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role INSTRUCTOR - organization.issueCertificates",
+      "description": "Validate permission check for organization.issueCertificates matches system template definition",
+      "roleOrActor": "INSTRUCTOR",
+      "targetResource": "Permission: organization.issueCertificates",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role instructor permission organization.issueCertificates: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_INSTRUCTOR_MANAGETEAMS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role INSTRUCTOR - organization.manageTeams",
+      "description": "Validate permission check for organization.manageTeams matches system template definition",
+      "roleOrActor": "INSTRUCTOR",
+      "targetResource": "Permission: organization.manageTeams",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role instructor permission organization.manageTeams: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_INSTRUCTOR_VIEWAUDITLOGS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role INSTRUCTOR - organization.viewAuditLogs",
+      "description": "Validate permission check for organization.viewAuditLogs matches system template definition",
+      "roleOrActor": "INSTRUCTOR",
+      "targetResource": "Permission: organization.viewAuditLogs",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role instructor permission organization.viewAuditLogs: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_TA_DELETEORGANIZATION",
+      "category": "RBAC Matrix Verification",
+      "title": "Role TA - organization.deleteOrganization",
+      "description": "Validate permission check for organization.deleteOrganization matches system template definition",
+      "roleOrActor": "TA",
+      "targetResource": "Permission: organization.deleteOrganization",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role ta permission organization.deleteOrganization: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_TA_MANAGESETTINGS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role TA - organization.manageSettings",
+      "description": "Validate permission check for organization.manageSettings matches system template definition",
+      "roleOrActor": "TA",
+      "targetResource": "Permission: organization.manageSettings",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role ta permission organization.manageSettings: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_TA_ASSIGNROLE",
+      "category": "RBAC Matrix Verification",
+      "title": "Role TA - organization.assignRole",
+      "description": "Validate permission check for organization.assignRole matches system template definition",
+      "roleOrActor": "TA",
+      "targetResource": "Permission: organization.assignRole",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role ta permission organization.assignRole: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_TA_MANAGECOURSES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role TA - organization.manageCourses",
+      "description": "Validate permission check for organization.manageCourses matches system template definition",
+      "roleOrActor": "TA",
+      "targetResource": "Permission: organization.manageCourses",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role ta permission organization.manageCourses: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_TA_CREATEPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role TA - organization.createProblem",
+      "description": "Validate permission check for organization.createProblem matches system template definition",
+      "roleOrActor": "TA",
+      "targetResource": "Permission: organization.createProblem",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role ta permission organization.createProblem: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_TA_EDITPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role TA - organization.editProblem",
+      "description": "Validate permission check for organization.editProblem matches system template definition",
+      "roleOrActor": "TA",
+      "targetResource": "Permission: organization.editProblem",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role ta permission organization.editProblem: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_TA_DELETEPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role TA - organization.deleteProblem",
+      "description": "Validate permission check for organization.deleteProblem matches system template definition",
+      "roleOrActor": "TA",
+      "targetResource": "Permission: organization.deleteProblem",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role ta permission organization.deleteProblem: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_TA_ASSIGNHOMEWORK",
+      "category": "RBAC Matrix Verification",
+      "title": "Role TA - organization.assignHomework",
+      "description": "Validate permission check for organization.assignHomework matches system template definition",
+      "roleOrActor": "TA",
+      "targetResource": "Permission: organization.assignHomework",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role ta permission organization.assignHomework: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_TA_VIEWINSTRUCTORMETRICS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role TA - organization.viewInstructorMetrics",
+      "description": "Validate permission check for organization.viewInstructorMetrics matches system template definition",
+      "roleOrActor": "TA",
+      "targetResource": "Permission: organization.viewInstructorMetrics",
+      "expectedStatus": "ALLOWED",
+      "actualStatus": "ALLOWED",
+      "status": "PASS",
+      "details": "Role ta permission organization.viewInstructorMetrics: got true, expected true"
+    },
+    {
+      "id": "TC_RBAC_TA_MANAGECERTIFICATES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role TA - organization.manageCertificates",
+      "description": "Validate permission check for organization.manageCertificates matches system template definition",
+      "roleOrActor": "TA",
+      "targetResource": "Permission: organization.manageCertificates",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role ta permission organization.manageCertificates: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_TA_ISSUECERTIFICATES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role TA - organization.issueCertificates",
+      "description": "Validate permission check for organization.issueCertificates matches system template definition",
+      "roleOrActor": "TA",
+      "targetResource": "Permission: organization.issueCertificates",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role ta permission organization.issueCertificates: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_TA_MANAGETEAMS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role TA - organization.manageTeams",
+      "description": "Validate permission check for organization.manageTeams matches system template definition",
+      "roleOrActor": "TA",
+      "targetResource": "Permission: organization.manageTeams",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role ta permission organization.manageTeams: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_TA_VIEWAUDITLOGS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role TA - organization.viewAuditLogs",
+      "description": "Validate permission check for organization.viewAuditLogs matches system template definition",
+      "roleOrActor": "TA",
+      "targetResource": "Permission: organization.viewAuditLogs",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role ta permission organization.viewAuditLogs: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_MEMBER_DELETEORGANIZATION",
+      "category": "RBAC Matrix Verification",
+      "title": "Role MEMBER - organization.deleteOrganization",
+      "description": "Validate permission check for organization.deleteOrganization matches system template definition",
+      "roleOrActor": "MEMBER",
+      "targetResource": "Permission: organization.deleteOrganization",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role member permission organization.deleteOrganization: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_MEMBER_MANAGESETTINGS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role MEMBER - organization.manageSettings",
+      "description": "Validate permission check for organization.manageSettings matches system template definition",
+      "roleOrActor": "MEMBER",
+      "targetResource": "Permission: organization.manageSettings",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role member permission organization.manageSettings: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_MEMBER_ASSIGNROLE",
+      "category": "RBAC Matrix Verification",
+      "title": "Role MEMBER - organization.assignRole",
+      "description": "Validate permission check for organization.assignRole matches system template definition",
+      "roleOrActor": "MEMBER",
+      "targetResource": "Permission: organization.assignRole",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role member permission organization.assignRole: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_MEMBER_MANAGECOURSES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role MEMBER - organization.manageCourses",
+      "description": "Validate permission check for organization.manageCourses matches system template definition",
+      "roleOrActor": "MEMBER",
+      "targetResource": "Permission: organization.manageCourses",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role member permission organization.manageCourses: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_MEMBER_CREATEPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role MEMBER - organization.createProblem",
+      "description": "Validate permission check for organization.createProblem matches system template definition",
+      "roleOrActor": "MEMBER",
+      "targetResource": "Permission: organization.createProblem",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role member permission organization.createProblem: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_MEMBER_EDITPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role MEMBER - organization.editProblem",
+      "description": "Validate permission check for organization.editProblem matches system template definition",
+      "roleOrActor": "MEMBER",
+      "targetResource": "Permission: organization.editProblem",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role member permission organization.editProblem: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_MEMBER_DELETEPROBLEM",
+      "category": "RBAC Matrix Verification",
+      "title": "Role MEMBER - organization.deleteProblem",
+      "description": "Validate permission check for organization.deleteProblem matches system template definition",
+      "roleOrActor": "MEMBER",
+      "targetResource": "Permission: organization.deleteProblem",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role member permission organization.deleteProblem: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_MEMBER_ASSIGNHOMEWORK",
+      "category": "RBAC Matrix Verification",
+      "title": "Role MEMBER - organization.assignHomework",
+      "description": "Validate permission check for organization.assignHomework matches system template definition",
+      "roleOrActor": "MEMBER",
+      "targetResource": "Permission: organization.assignHomework",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role member permission organization.assignHomework: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_MEMBER_VIEWINSTRUCTORMETRICS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role MEMBER - organization.viewInstructorMetrics",
+      "description": "Validate permission check for organization.viewInstructorMetrics matches system template definition",
+      "roleOrActor": "MEMBER",
+      "targetResource": "Permission: organization.viewInstructorMetrics",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role member permission organization.viewInstructorMetrics: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_MEMBER_MANAGECERTIFICATES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role MEMBER - organization.manageCertificates",
+      "description": "Validate permission check for organization.manageCertificates matches system template definition",
+      "roleOrActor": "MEMBER",
+      "targetResource": "Permission: organization.manageCertificates",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role member permission organization.manageCertificates: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_MEMBER_ISSUECERTIFICATES",
+      "category": "RBAC Matrix Verification",
+      "title": "Role MEMBER - organization.issueCertificates",
+      "description": "Validate permission check for organization.issueCertificates matches system template definition",
+      "roleOrActor": "MEMBER",
+      "targetResource": "Permission: organization.issueCertificates",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role member permission organization.issueCertificates: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_MEMBER_MANAGETEAMS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role MEMBER - organization.manageTeams",
+      "description": "Validate permission check for organization.manageTeams matches system template definition",
+      "roleOrActor": "MEMBER",
+      "targetResource": "Permission: organization.manageTeams",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role member permission organization.manageTeams: got false, expected false"
+    },
+    {
+      "id": "TC_RBAC_MEMBER_VIEWAUDITLOGS",
+      "category": "RBAC Matrix Verification",
+      "title": "Role MEMBER - organization.viewAuditLogs",
+      "description": "Validate permission check for organization.viewAuditLogs matches system template definition",
+      "roleOrActor": "MEMBER",
+      "targetResource": "Permission: organization.viewAuditLogs",
+      "expectedStatus": "DENIED",
+      "actualStatus": "DENIED",
+      "status": "PASS",
+      "details": "Role member permission organization.viewAuditLogs: got false, expected false"
+    },
+    {
+      "id": "TC_ESC_001",
+      "category": "Vertical Privilege Escalation",
+      "title": "Member Modifying Workspace Settings Prevention",
+      "description": "Verify standard Member cannot update organization branding/settings",
+      "roleOrActor": "MEMBER_A",
+      "targetResource": "organizations (Org A Settings)",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "status": "PASS",
+      "vulnerabilitySeverity": "HIGH",
+      "details": "Member A attempted to PATCH org settings. Response: 403"
+    },
+    {
+      "id": "TC_ESC_002",
+      "category": "Vertical Privilege Escalation",
+      "title": "Admin Deleting Organization Prevention",
+      "description": "Verify Workspace Admin cannot delete organization (Owner only privilege)",
+      "roleOrActor": "ADMIN_A",
+      "targetResource": "organizations (Org A)",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "status": "PASS",
+      "vulnerabilitySeverity": "CRITICAL",
+      "details": "Admin A attempted DELETE on Org A. Response: 403"
+    },
+    {
+      "id": "TC_ESC_003",
+      "category": "Horizontal Privilege Escalation",
+      "title": "Cross-Tenant Admin Settings Modification Prevention",
+      "description": "Verify Admin in Org A cannot alter settings of Org B",
+      "roleOrActor": "ADMIN_A",
+      "targetResource": "organizations (Org B)",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "status": "PASS",
+      "vulnerabilitySeverity": "CRITICAL",
+      "details": "Admin A attempted to modify Org B. Response: 403"
+    },
+    {
+      "id": "TC_FUNC_001",
+      "category": "Course Management",
+      "title": "Course Creation Workflow",
+      "description": "Verify Instructor can create a new course with code, title, and semester",
+      "roleOrActor": "INSTRUCTOR_A",
+      "targetResource": "organizationCourses",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "status": "PASS",
+      "details": "Instructor A created course CS-301. ID: course-qt3g63dd",
+      "evidence": {
+        "id": "course-qt3g63dd",
+        "organizationId": "QA_AUTOMATED_ORG_A",
+        "code": "CS-301",
+        "title": "Distributed Systems & Cloud Computing",
+        "semester": "Fall 2026",
+        "syllabus": "Consensus protocols, Raft, Paxos, and multi-tenant cloud storage.",
+        "instructorUids": [
+          "QA_AUTOMATED_USER_INSTRUCTOR_A"
+        ],
+        "taUids": [],
+        "studentUids": [],
+        "createdAt": 1790956954927
+      }
+    },
+    {
+      "id": "TC_FUNC_002",
+      "category": "Course Management",
+      "title": "Course Material Upload Workflow",
+      "description": "Verify Instructor can publish lecture slides and materials",
+      "roleOrActor": "INSTRUCTOR_A",
+      "targetResource": "organizationCourseMaterials",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "status": "PASS",
+      "details": "Instructor A uploaded material. ID: mat-an3n0xcd",
+      "evidence": {
+        "id": "mat-an3n0xcd",
+        "courseId": "QA_COURSE_A",
+        "organizationId": "QA_AUTOMATED_ORG_A",
+        "title": "Week 2: Advanced Graph Algorithms",
+        "type": "slides",
+        "url": "https://beastcode.qa/slides/week2.pdf",
+        "uploadedBy": "QA_AUTOMATED_USER_INSTRUCTOR_A",
+        "createdAt": 1790956956219
+      }
+    },
+    {
+      "id": "TC_FUNC_003",
+      "category": "Certificates",
+      "title": "Certificate Issuance & Verification QR Code Generation",
+      "description": "Verify Coach can issue certificate with QR code URL",
+      "roleOrActor": "COACH_A",
+      "targetResource": "organizationCertificates",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "status": "PASS",
+      "details": "Certificate issued. ID: cert-HLEFWLHBQF, QR URL: https://www.bomboclatbeastcode.codes/qr-verify/cert-HLEFWLHBQF",
+      "evidence": {
+        "id": "cert-HLEFWLHBQF",
+        "organizationId": "QA_AUTOMATED_ORG_A",
+        "candidateUid": "QA_AUTOMATED_USER_MEMBER_A",
+        "courseId": "QA_COURSE_A",
+        "jobId": null,
+        "criteria": "Excellence in Competitive Algorithms (Top 1%)",
+        "issueDate": 1790956957449,
+        "signeeName": "Dr. BeastCode",
+        "signeeRole": "Lead Algorithms Coach",
+        "qrCodeDataUrl": "https://www.bomboclatbeastcode.codes/qr-verify/cert-HLEFWLHBQF",
+        "verified": true
+      }
+    },
+    {
+      "id": "TC_FUNC_004",
+      "category": "Gradebook",
+      "title": "Student Gradebook Self-Inspection",
+      "description": "Verify enrolled student can view their personal grade record",
+      "roleOrActor": "MEMBER_A",
+      "targetResource": "organizationGradebook (Course A)",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "status": "PASS",
+      "details": "Student looked up grades. Final Grade: A+",
+      "evidence": {
+        "id": "QA_COURSE_A_QA_AUTOMATED_USER_MEMBER_A",
+        "courseId": "QA_COURSE_A",
+        "organizationId": "QA_AUTOMATED_ORG_A",
+        "studentUid": "QA_AUTOMATED_USER_MEMBER_A",
+        "grades": {
+          "quiz-1": 95,
+          "hw-1": 100
+        },
+        "finalGrade": "A+",
+        "attendanceCount": 14,
+        "updatedAt": 1790956847952
+      }
+    },
+    {
+      "id": "TC_FUNC_005",
+      "category": "Gradebook",
+      "title": "Gradebook CSV Export Generation",
+      "description": "Verify Instructor can export gradebook roster in CSV format",
+      "roleOrActor": "INSTRUCTOR_A",
+      "targetResource": "organizationGradebook (Course A CSV)",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "status": "PASS",
+      "details": "CSV export completed. Content starts with: Student UID,Display Name,Email,Final Grade,Attenda"
+    },
+    {
+      "id": "TC_FUNC_006",
+      "category": "Private Problems",
+      "title": "Private Problem Version Rollback Workflow",
+      "description": "Verify Coach can roll back problem statement to a previous historical version snapshot",
+      "roleOrActor": "COACH_A",
+      "targetResource": "organizationPrivateProblems (Problem A)",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "status": "PASS",
+      "details": "Rollback applied. Current problem version: 2",
+      "evidence": {
+        "id": "QA_PROB_A",
+        "organizationId": "QA_AUTOMATED_ORG_A",
+        "title": "Alpha Graph Kernel Optimization",
+        "difficulty": "Hard",
+        "description": "Design an O(V+E) algorithm for kernel partitioning.",
+        "examples": [
+          {
+            "input": "4 vertices",
+            "output": "2 partitions"
+          }
+        ],
+        "hiddenTests": [
+          {
+            "input": "1000 vertices",
+            "output": "250 partitions"
+          }
+        ],
+        "generatorScript": "def gen(): return 1000",
+        "validatorScript": "def validate(): return True",
+        "specialJudgeScript": "def judge(): return 1.0",
+        "versions": [
+          {
+            "version": 1,
+            "summary": "Initial release",
+            "timestamp": 1790956849311
+          },
+          {
+            "version": 2,
+            "editorUid": "QA_AUTOMATED_USER_COACH_A",
+            "editorName": "USER_COACH_A",
+            "timestamp": 1790956968512,
+            "summary": "Rolled back to version v1"
+          }
+        ],
+        "version": 2,
+        "createdBy": "QA_AUTOMATED_USER_COACH_A",
+        "createdAt": 1790956849311,
+        "updatedAt": 1790956968512
+      }
+    },
+    {
+      "id": "TC_FUNC_007",
+      "category": "Assessments",
+      "title": "Candidate Assessment Attempt & Automated Evaluation",
+      "description": "Verify candidate can start assessment and submit solutions with automated score calculation",
+      "roleOrActor": "MEMBER_A",
+      "targetResource": "organizationAssessments (Assessment A)",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "status": "PASS",
+      "details": "Candidate started and submitted. Final calculated score: 90",
+      "evidence": {
+        "success": true,
+        "score": 90
+      }
+    },
+    {
+      "id": "TC_FUNC_008",
+      "category": "Audit Logging",
+      "title": "Comprehensive Audit Log Recording",
+      "description": "Verify all sensitive events (course/problem/role updates) emit structured audit logs",
+      "roleOrActor": "SYSTEM",
+      "targetResource": "organizationAuditLogs (Org A)",
+      "expectedStatus": "AUDIT_RECORDS_FOUND",
+      "actualStatus": "FOUND_6_RECORDS",
+      "status": "PASS",
+      "details": "Total audit events logged for Org A: 6",
+      "evidence": [
+        {
+          "logId": "EJd8LkM15p2gaR2s4P4g",
+          "organizationId": "QA_AUTOMATED_ORG_A",
+          "actorUid": "QA_AUTOMATED_USER_COACH_A",
+          "targetUid": "QA_AUTOMATED_USER_MEMBER_A",
+          "action": "certificate.issued",
+          "resource": "organizationCertificates",
+          "resourceId": "cert-RLH3ZM231I",
+          "metadata": {
+            "criteria": "Excellence in Competitive Algorithms (Top 1%)"
+          },
+          "ip": "127.0.0.1",
+          "timestamp": 1790956607259
+        },
+        {
+          "logId": "INgYCn8adMyLgrhMApPQ",
+          "organizationId": "QA_AUTOMATED_ORG_A",
+          "actorUid": "QA_AUTOMATED_USER_COACH_A",
+          "targetUid": null,
+          "action": "private_problem.rollback",
+          "resource": "private_problem",
+          "resourceId": "QA_PROB_A",
+          "metadata": {
+            "targetVersion": 1,
+            "newVersion": 2
+          },
+          "ip": "127.0.0.1",
+          "timestamp": 1790956968826
+        },
+        {
+          "logId": "JcZGZvHUIAZxXO4Shtjf",
+          "organizationId": "QA_AUTOMATED_ORG_A",
+          "actorUid": "QA_AUTOMATED_USER_COACH_A",
+          "targetUid": "QA_AUTOMATED_USER_MEMBER_A",
+          "action": "certificate.issued",
+          "resource": "organizationCertificates",
+          "resourceId": "cert-HLEFWLHBQF",
+          "metadata": {
+            "criteria": "Excellence in Competitive Algorithms (Top 1%)"
+          },
+          "ip": "127.0.0.1",
+          "timestamp": 1790956957827
+        }
+      ]
+    }
+  ]
+}

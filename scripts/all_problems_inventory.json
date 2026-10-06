@@ -1,0 +1,7084 @@
+[
+  {
+    "id": "academy-course-prerequisites",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Academy Course Prerequisites",
+    "category": "graphs",
+    "points": 150
+  },
+  {
+    "id": "adaboost-sample-weight-update",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "AdaBoost Sample Weight Update",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "aegis-housing-valuation-ridge",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Aegis Housing Valuation with Ridge Regression",
+    "category": "machine-learning",
+    "points": 140
+  },
+  {
+    "id": "aero-turbine-efficiency-polynomial",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Aero Turbine Efficiency with Polynomial Regression",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "aggressive-horses-of-the-steppes",
+    "difficulty": "Hard",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Aggressive Horses of the Steppes",
+    "category": "binary-search",
+    "points": 300
+  },
+  {
+    "id": "alexandria-term-frequency-tf-idf",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Alexandria Term Frequency TF-IDF",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "alien-scroll-alphabet-order",
+    "difficulty": "Hard",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Alien Scroll Alphabet Order",
+    "category": "graphs",
+    "points": 200
+  },
+  {
+    "id": "anomalous-substation-distance-outliers",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Anomalous Substation Distance Outliers",
+    "category": "machine-learning",
+    "points": 130
+  },
+  {
+    "id": "app-store-ndcg-ranking-metric",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "App Store NDCG Ranking Metric",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "arcane-addition-without-arithmetic",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Arcane Addition Without Arithmetic",
+    "category": "bit-manipulation",
+    "points": 130
+  },
+  {
+    "id": "archaeology-pottery-agglomerative-linkage",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Archaeology Pottery Agglomerative Linkage",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "astral-message-frequency-sort",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Astral Message Frequency Sort",
+    "category": "string",
+    "points": 150
+  },
+  {
+    "id": "astral-spectral-star-knn",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Astral Spectral Star KNN Classifier",
+    "category": "machine-learning",
+    "points": 140
+  },
+  {
+    "id": "atm-problem",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "type": "exact",
+      "epsilon": 0.000001,
+      "scriptLanguage": "python",
+      "scriptCode": ""
+    },
+    "title": "ATM Problem"
+  },
+  {
+    "id": "automotive-polynomial-feature-expansion",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Automotive Polynomial Feature Expansion",
+    "category": "machine-learning",
+    "points": 110
+  },
+  {
+    "id": "avionics-quantile-binning-transformer",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Avionics Quantile Binning Transformer",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "backprop-gradient-computation-single-layer",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Backprop Gradient Computation Single Layer",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "bagging-bootstrap-sample-generator",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Bagging Bootstrap Sample Generator",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "batch-normalization-forward-step",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Batch Normalization Forward Step",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "bazaar-als-single-factor-update",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Bazaar ALS Single Factor Update",
+    "category": "machine-learning",
+    "points": 200
+  },
+  {
+    "id": "beacon-towers-of-gondor",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Beacon Towers of Gondor",
+    "category": "array",
+    "points": 100
+  },
+  {
+    "id": "bio-pathogen-gaussian-naive-bayes",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Bio-Pathogen Gaussian Naive Bayes",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "bracket-glyphs-of-the-mage",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Bracket Glyphs of the Mage",
+    "category": "stack",
+    "points": 100
+  },
+  {
+    "id": "byte-pair-encoding-merge-step",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Byte-Pair Encoding Merge Step",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "calibrating-the-siege-catapult",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Calibrating the Siege Catapult",
+    "category": "binary-search",
+    "points": 150
+  },
+  {
+    "id": "candy-distribution-at-the-orphanage",
+    "difficulty": "Hard",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Candy Distribution at the Orphanage",
+    "category": "greedy",
+    "points": 300
+  },
+  {
+    "id": "capacity-of-the-desert-caravan",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Capacity of the Desert Caravan",
+    "category": "binary-search",
+    "points": 150
+  },
+  {
+    "id": "caravan-merchandise-majority",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Caravan Merchandise Majority",
+    "category": "array",
+    "points": 100
+  },
+  {
+    "id": "caravans-across-the-great-dune",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Caravans Across the Great Dune",
+    "category": "array",
+    "points": 100
+  },
+  {
+    "id": "casino-upper-confidence-bound-ucb1",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Casino Upper Confidence Bound UCB1",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "catalan-paths-to-the-celestial-citadel",
+    "difficulty": "Hard",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Catalan Paths to the Celestial Citadel",
+    "category": "math",
+    "points": 300
+  },
+  {
+    "id": "chronos-server-latency-huber-loss",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Chronos Server Latency with Huber Loss",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "cinephile-user-collaborative-filtering",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Cinephile User Collaborative Filtering",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "citadel-defense-towers",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Citadel Defense Towers",
+    "category": "stack",
+    "points": 150
+  },
+  {
+    "id": "citadel-gates-and-dungeons",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Citadel Gates and Dungeons",
+    "category": "bfs",
+    "points": 160
+  },
+  {
+    "id": "clinical-trial-standard-scaler",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Clinical Trial StandardScaler",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "collapsing-cavern-stalactites",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Collapsing Cavern Stalactites",
+    "category": "stack",
+    "points": 150
+  },
+  {
+    "id": "continental-divide-water-flow",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Continental Divide Water Flow",
+    "category": "graphs",
+    "points": 160
+  },
+  {
+    "id": "convolution-1d-feature-extractor",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Convolution 1D Feature Extractor",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "corpus-bag-of-words-vectorizer",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Corpus Bag-of-Words Vectorizer",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "counting-stars-in-the-binary-constellation",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Counting Stars in the Binary Constellation",
+    "category": "bit-manipulation",
+    "points": 100
+  },
+  {
+    "id": "credit-guardian-decision-tree-entropy",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Credit Guardian Decision Tree Shannon Entropy",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "credit-risk-weight-of-evidence-iv",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Credit Risk Weight of Evidence (WoE) and Information Value (IV)",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "crypto-volatility-adagrad-optimizer",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Crypto Volatility AdaGrad Optimizer",
+    "category": "machine-learning",
+    "points": 140
+  },
+  {
+    "id": "cyber-sentinel-malware-logistic",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Cyber Sentinel Malware Logistic Regression",
+    "category": "machine-learning",
+    "points": 130
+  },
+  {
+    "id": "cycle-in-the-ancient-teleport-network",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Cycle in the Ancient Teleport Network",
+    "category": "graphs",
+    "points": 140
+  },
+  {
+    "id": "decoding-the-oracle-prophecy",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Decoding the Oracle Prophecy",
+    "category": "dynamic-programming",
+    "points": 150
+  },
+  {
+    "id": "deep-cortex-multilayer-forward-pass",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Deep Cortex Multilayer Forward Pass",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "deep-mine-backtracking-line-search",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Deep Mine Backtracking Line Search",
+    "category": "machine-learning",
+    "points": 140
+  },
+  {
+    "id": "deep-sea-pressure-r-squared",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Deep Sea Pressure R-Squared",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "deep-vault-svd-low-rank-reconstruction",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Deep Vault SVD Low-Rank Reconstruction",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "draco-fraud-detector-precision-recall",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Draco Fraud Detector Precision and Recall",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "dragon-smaugs-feast",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Dragon Smaug's Feast",
+    "category": "binary-search",
+    "points": 150
+  },
+  {
+    "id": "drone-swarm-mahalanobis-distance",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Drone Swarm Mahalanobis Distance",
+    "category": "machine-learning",
+    "points": 110
+  },
+  {
+    "id": "dropout-regularization-mask-generator",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Dropout Regularization Mask Generator",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "e-commerce-item-cosine-recommender",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "E-Commerce Item Cosine Recommender",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "eco-reserve-habitat-kmeans-plus-plus",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Eco-Reserve Habitat K-Means++ Initialization",
+    "category": "machine-learning",
+    "points": 140
+  },
+  {
+    "id": "fleet-breakdown-roc-auc",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Fleet Breakdown ROC AUC Calculation",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "fortress-wall-water-trapping",
+    "difficulty": "Hard",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Fortress Wall Water Trapping",
+    "category": "array",
+    "points": 300
+  },
+  {
+    "id": "fueling-the-starship-odyssey",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Fueling the Starship Odyssey",
+    "category": "greedy",
+    "points": 150
+  },
+  {
+    "id": "galaxy-cluster-silhouette-score",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Galaxy Cluster Silhouette Score",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "genomic-variance-explained-ratio",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Genomic Variance Explained Ratio",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "glacier-melt-rate-weighted-least-squares",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Glacier Melt Rate with Weighted Least Squares",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "gradient-boosting-residual-targets",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Gradient Boosting Residual Targets",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "grid-load-holt-winters-trend",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Grid Load Holt-Winters Trend",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "harvest-of-eldoria",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Harvest of Eldoria",
+    "category": "array",
+    "points": 150
+  },
+  {
+    "id": "helios-reactor-batch-gradient-descent",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Helios Reactor Batch Gradient Descent",
+    "category": "machine-learning",
+    "points": 130
+  },
+  {
+    "id": "holographic-memory-cosine-similarity-matrix",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Holographic Memory Cosine Similarity Matrix",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "hydrology-missing-data-imputation",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Hydrology Missing Data Imputation",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "hyper-cluster-kmeans-inertia",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Hyper-Cluster K-Means Inertia",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "hyperion-solar-power-forecasting",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Hyperion Solar Power Forecasting",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "hyperspectral-satellite-lda-scatter",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Hyperspectral Satellite LDA Between-Class Scatter",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "islands-of-the-archipelago",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Islands of the Archipelago",
+    "category": "graphs",
+    "points": 130
+  },
+  {
+    "id": "jumping-through-the-floating-islands",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Jumping Through the Floating Islands",
+    "category": "greedy",
+    "points": 150
+  },
+  {
+    "id": "kinetic-missile-momentum-optimizer",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Kinetic Missile Momentum Optimizer",
+    "category": "machine-learning",
+    "points": 140
+  },
+  {
+    "id": "kingdom-alliance-factions",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Kingdom Alliance Factions",
+    "category": "graphs",
+    "points": 150
+  },
+  {
+    "id": "layer-normalization-transformer-step",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Layer Normalization Transformer Step",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lexicon-ngram-frequency-analyzer",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lexicon N-gram Frequency Analyzer",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-adaptive-lasso-weights",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Adaptive Lasso Penalty Weights",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-averaged-sgd-polyak-ruppert",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Polyak-Ruppert Averaged SGD (ASGD)",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-barzilai-borwein-sgd",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Barzilai-Borwein Adaptive Step Size",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-bgd-adagrad-optimizer",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD with AdaGrad Optimizer",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-bgd-adam-optimizer",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD with Adam Optimizer",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-bgd-backtracking-line-search",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Backtracking Armijo Line Search Step",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-bgd-classical-momentum",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD with Classical Polyak Momentum",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-bgd-early-stopping-validation",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD with Validation Patience Early Stopping",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-bgd-exponential-decay-schedule",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD with Exponential Learning Rate Decay",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-bgd-fixed-iterations",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Batch Gradient Descent Fixed Iterations",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-bgd-gradient-clipping",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD with L2 Gradient Norm Clipping",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-bgd-gradient-norm-tolerance",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD with Gradient Norm Stopping Criterion",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-bgd-loss-change-tolerance",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD with Objective Loss Change Tolerance",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-bgd-nesterov-accelerated",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD with Nesterov Accelerated Gradient (NAG)",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-bgd-ridge-regularized",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD with L2 Ridge Weight Decay",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-bgd-rmsprop-optimizer",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD with RMSprop Optimizer",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-bgd-standardized-vs-unstandardized",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Convergence: Standardized vs Raw Features",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-bgd-step-decay-schedule",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD with Step-Decay Learning Rate Schedule",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-categorical-dummy-variable",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Linear Regression with Categorical Indicator",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-centered-ols-coefficients",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Centered Multiple Linear Regression",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-cholesky-normal-equation-solver",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Cholesky Decomposition Normal Equation Solver",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-constrained-sum-to-one-regression",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Constrained Sum-to-One Linear Regression",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-diagnostics-breusch-pagan-stat",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Breusch-Pagan Test Statistic for Heteroscedasticity",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-diagnostics-cooks-distance",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Cook's Distance Influential Observation Detection",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-diagnostics-durbin-watson-stat",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Durbin-Watson Autocorrelation Statistic",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-diagnostics-leverage-hat-values",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Leverage Hat Matrix Diagonal Values",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-diagnostics-studentized-residuals",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Internally Studentized Residuals",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-diagnostics-vif-multicollinearity",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Variance Inflation Factor (VIF) Multicollinearity Analysis",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-elasticnet-coordinate-descent",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "ElasticNet Coordinate Descent",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-elasticnet-mixing-parameter",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "ElasticNet L1-Ratio Mixing Parameterization",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-frisch-waugh-lovell-theorem",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Frisch-Waugh-Lovell Partialling-Out Regression",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-fused-lasso-total-variation-penalty",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Fused Lasso Total Variation Penalty",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-generalized-least-squares-correlated-errors",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Generalized Least Squares (GLS) with AR(1) Errors",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-group-lasso-block-norm",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Group Lasso Block Penalty",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-hat-matrix-projection",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Hat Matrix Orthogonal Projection",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-huber-loss-evaluation",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Huber Robust Loss Evaluation",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-interaction-terms-regression",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Linear Regression with Interaction Term",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-irls-huber-single-iteration",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Iteratively Reweighted Least Squares (IRLS) Huber Step",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-lars-first-direction-step",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Least Angle Regression (LARS) Initial Active Feature",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-lasso-coordinate-descent-cycles",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lasso Full Cyclic Coordinate Descent",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-lasso-single-coordinate-update",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lasso Single Coordinate Descent Step",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-lasso-soft-thresholding",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lasso Soft-Thresholding Operator",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-lasso-sparsity-counter",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lasso Feature Sparsity Counter",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-least-trimmed-squares-subset-mse",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Least Trimmed Squares (LTS) Trimmed MSE",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-linear-spline-fixed-knot",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Linear Spline Regression with Fixed Knot",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-log-linear-exponential-growth",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Log-Linear Exponential Growth Regression",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-loocv-ridge-analytical-shortcut",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Analytical Leave-One-Out Cross-Validation for Ridge",
+    "category": "machine-learning",
+    "points": 200
+  },
+  {
+    "id": "lr-median-lad-subgradient-step",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Least Absolute Deviations (LAD) Subgradient Descent",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-metrics-adjusted-r-squared",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Adjusted R-Squared with Model Degrees of Freedom",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-metrics-akaike-information-criterion",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Akaike Information Criterion (AIC and AICc)",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-metrics-bayesian-information-criterion",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Bayesian Information Criterion (BIC)",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-metrics-mae-and-mape",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mean Absolute Error and Mean Absolute Percentage Error",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-metrics-maximum-residual-error",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Maximum Residual and Median Absolute Error",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-metrics-mean-bias-error",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mean Bias Error (MBE) and Fractional Bias",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-metrics-mse-and-rmse",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mean Squared Error and Root Mean Squared Error",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-metrics-r-squared",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Coefficient of Determination (R-Squared)",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-metrics-sum-of-squares-anova",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "ANOVA Sum of Squares Decomposition (TSS, ESS, RSS)",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-minibatch-gd-fixed-batch-size",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mini-Batch Gradient Descent (Batch Size B=2)",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-minibatch-gradient-variance",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mini-Batch Gradient Variance Diagnostic",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-minibatch-momentum",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mini-Batch SGD with Momentum",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-minibatch-rmsprop",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mini-Batch SGD with RMSprop",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-moore-penrose-pseudoinverse",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Moore-Penrose Pseudoinverse Regression",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-multi-target-linear-regression",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Multi-Target Linear Regression",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-nonnegative-least-squares-step",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Non-Negative Least Squares (NNLS) Projected Gradient",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-normal-equation-determinant",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Normal Equation Gram Matrix Determinant",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-normal-equation-direct",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Ordinary Least Squares Normal Equation",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-orthogonal-distance-regression",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Orthogonal Distance Regression (Deming)",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-passive-aggressive-regression",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Passive-Aggressive Regression (PA-I)",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-polynomial-degree2-expansion",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Degree-2 Polynomial Linear Curve Fitting",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-power-law-log-log-regression",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Power-Law Log-Log Regression",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-principal-component-regression-rank1",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Rank-1 Principal Component Regression (PCR)",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-qr-decomposition-ols",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "QR Decomposition OLS Solver",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-quantile-pinball-loss",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Quantile Regression Pinball Loss (tau = 0.75)",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-quantile-subgradient-step-tau90",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Quantile Regression Subgradient (tau = 0.90)",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-ransac-single-iteration",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "RANSAC Single Iteration Inlier Counting",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-recursive-least-squares-covariance-update",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Recursive Least Squares Covariance Update",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-regression-through-origin",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Regression Through the Origin",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-residual-maker-matrix",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Residual Maker Annihilator Matrix",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-ridge-effective-degrees-of-freedom",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Ridge Effective Degrees of Freedom",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-ridge-normal-equation",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Ridge Regression Closed-Form Normal Equation",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-ridge-regularization-path",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Ridge Regularization Path Multi-Lambda",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-ridge-shrinkage-svd-coordinates",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Ridge Shrinkage in SVD Coordinates",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-scad-thresholding-operator",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "SCAD Non-Convex Thresholding Operator",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-sgd-cosine-annealing-schedule",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "SGD with Cosine Annealing Learning Rate",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-sgd-decaying-step-size",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "SGD with Inverse-Time Learning Rate Decay",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-sgd-gradient-accumulation",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "SGD with Micro-Batch Gradient Accumulation",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-sgd-huber-loss-gradient",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Online SGD with Huber Robust Loss",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-sgd-online-ridge-weight-decay",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Online SGD with L2 Weight Decay",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-sgd-sequential-single-epoch",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Sequential Single-Epoch Online SGD",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-sgd-single-sample-update",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Online SGD Single Sample Update",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-simple-ols-slope-intercept",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Analytical Simple Linear Regression Estimator",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-standardized-coefficients",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Standardized Regression Coefficients",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-streaming-exponential-sgd",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Streaming SGD with Exponential Memory Forgetting",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-theil-sen-median-slope",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Theil-Sen Robust Median Estimator",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-tikhonov-general-regularization",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Tikhonov Generalized Regularization",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-tukey-bisquare-weights",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Tukey Bisquare M-Estimator Weights",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lr-two-feature-ols-closed-form",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Two-Feature Multiple OLS Regression",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-weighted-bivariate-regression",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Weighted Bivariate Linear Regression",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "lr-weighted-least-squares-normal-equation",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Weighted Least Squares Matrix Normal Equation",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "lr-welsch-m-estimator-weights",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Welsch M-Estimator Exponential Weights",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "lunar-lander-q-learning-update",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lunar Lander Q-Learning Update",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "machine-translation-bleu-score",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Machine Translation BLEU Score",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "macro-economy-correlation-to-covariance",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Macro-Economy Correlation to Covariance Matrix",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "mars-rover-gridworld-bellman-update",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mars Rover Gridworld Bellman Update",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "merging-the-royal-archives",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Merging the Royal Archives",
+    "category": "array",
+    "points": 100
+  },
+  {
+    "id": "merging-the-royal-summons-intervals",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Merging the Royal Summons Intervals",
+    "category": "sorting",
+    "points": 150
+  },
+  {
+    "id": "message-in-the-stellar-bottle",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Message in the Stellar Bottle",
+    "category": "string",
+    "points": 150
+  },
+  {
+    "id": "meteorology-simple-moving-average",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Meteorology Simple Moving Average",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "minotaurs-labyrinth-escape",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Minotaur's Labyrinth Escape",
+    "category": "bfs",
+    "points": 150
+  },
+  {
+    "id": "multi-armed-bandit-epsilon-greedy",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Multi-Armed Bandit Epsilon-Greedy",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "music-box-jaccard-playlist-similarity",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Music Box Jaccard Playlist Similarity",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "mystic-powers-of-the-oracle",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Mystic Powers of the Oracle",
+    "category": "math",
+    "points": 150
+  },
+  {
+    "id": "nano-device-subgradient-descent",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Nano-Device Subgradient Descent Step",
+    "category": "machine-learning",
+    "points": 110
+  },
+  {
+    "id": "network-delay-in-the-empire",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Network Delay in the Empire",
+    "category": "graphs",
+    "points": 160
+  },
+  {
+    "id": "neural-forge-adam-optimizer",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Forge Adam Optimizer Step",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "neural-foundry-cross-entropy-loss",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Foundry Cross-Entropy Loss",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "night-watch-perimeter-patrol",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Night Watch Perimeter Patrol",
+    "category": "array",
+    "points": 100
+  },
+  {
+    "id": "omni-channel-customer-multinomial-nb",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Omni-Channel Customer Multinomial Naive Bayes",
+    "category": "machine-learning",
+    "points": 140
+  },
+  {
+    "id": "open-the-royal-vault-lock",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Open the Royal Vault Lock",
+    "category": "bfs",
+    "points": 150
+  },
+  {
+    "id": "orbital-docking-l-bfgs-two-loop",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Orbital Docking BFGS Curvature Condition",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "orion-constellation-kmeans-clustering",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Orion Constellation K-Means Update Step",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "perceptron-activation-functions-zoo",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Perceptron Activation Functions Zoo",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "pharma-compound-gini-impurity",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Pharma Compound Gini Impurity",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "predict-fuel-prices-bomboclat-logistics",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Predict Fuel Prices for Bomboclat Logistics using Linear Regression",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "predict-fuel-prices-for-bomboclat-logistics-using-batch-gradient-descent",
+    "difficulty": "Easy",
+    "customChecker": {
+      "type": "exact",
+      "epsilon": 0.000001,
+      "scriptLanguage": "python",
+      "scriptCode": ""
+    },
+    "title": "Predict Fuel Prices for Bomboclat Logistics using Batch Gradient Descent"
+  },
+  {
+    "id": "pulsar-radio-rmsprop-update",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Pulsar Radio RMSprop Update",
+    "category": "machine-learning",
+    "points": 140
+  },
+  {
+    "id": "quantum-annealer-gradient-clipping",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Quantum Annealer Gradient Norm Clipping",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "quantum-fintech-lasso-selection",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Quantum FinTech Lasso Feature Selection",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "random-forest-majority-ensemble",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Random Forest Majority Ensemble",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "reorganizing-the-ancient-scroll",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Reorganizing the Ancient Scroll",
+    "category": "greedy",
+    "points": 150
+  },
+  {
+    "id": "retail-customer-rfm-segmentation",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Retail Customer RFM Segmentation",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "reversing-the-sacred-binary-mirror",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Reversing the Sacred Binary Mirror",
+    "category": "bit-manipulation",
+    "points": 100
+  },
+  {
+    "id": "river-discharge-lagged-features",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "River Discharge Lagged Features",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "robot-arm-discounted-cumulative-return",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Robot Arm Discounted Cumulative Return",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "rotting-oranges-in-the-granary",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Rotting Oranges in the Granary",
+    "category": "bfs",
+    "points": 150
+  },
+  {
+    "id": "royal-astronomers-star-clusters",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Royal Astronomers' Star Clusters",
+    "category": "graphs",
+    "points": 100
+  },
+  {
+    "id": "runes-of-alchemical-transmutation",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Runes of Alchemical Transmutation",
+    "category": "string",
+    "points": 100
+  },
+  {
+    "id": "sacred-flood-fill",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Sacred Flood Fill",
+    "category": "bfs",
+    "points": 100
+  },
+  {
+    "id": "sadfasf",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "type": "exact",
+      "epsilon": 0.000001,
+      "scriptLanguage": "python",
+      "scriptCode": ""
+    },
+    "title": "Content Recommendation Engine"
+  },
+  {
+    "id": "saturn-rover-support-vector-margin",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Saturn Rover Support Vector Margin",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "scroll-of-the-whispering-monks",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Scroll of the Whispering Monks",
+    "category": "string",
+    "points": 100
+  },
+  {
+    "id": "searching-the-royal-archives",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Searching the Royal Archives",
+    "category": "binary-search",
+    "points": 100
+  },
+  {
+    "id": "seismic-sensor-medoid-clustering",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Seismic Sensor Medoid Clustering Cost",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "seismic-station-autocorrelation-function",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Seismic Station Autocorrelation Function",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "self-attention-scaled-dot-product",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Self-Attention Scaled Dot-Product",
+    "category": "machine-learning",
+    "points": 200
+  },
+  {
+    "id": "semantic-search-bm25-ranking",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Semantic Search BM25 Ranking",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "sensor-grid-min-max-normalization",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Sensor Grid Min-Max Normalization",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "sentinel-intrusion-perceptron",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Sentinel Intrusion Perceptron Learning",
+    "category": "machine-learning",
+    "points": 130
+  },
+  {
+    "id": "shield-wall-formations",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Shield Wall Formations",
+    "category": "array",
+    "points": 150
+  },
+  {
+    "id": "shortest-path-in-binary-matrix",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Shortest Path in Binary Matrix",
+    "category": "bfs",
+    "points": 150
+  },
+  {
+    "id": "simplifying-the-ancient-directory",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Simplifying the Ancient Directory",
+    "category": "stack",
+    "points": 150
+  },
+  {
+    "id": "smart-city-one-hot-encoder",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Smart City One-Hot Encoder",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "social-graph-mean-reciprocal-rank",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Social Graph Mean Reciprocal Rank",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "solaris-wind-farm-mae-vs-mse",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Solaris Wind Farm Loss Metrics",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "sort-colors-of-the-empire",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Sort Colors of the Empire",
+    "category": "array",
+    "points": 150
+  },
+  {
+    "id": "sort-knights-by-chivalric-parity",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Sort Knights by Chivalric Parity",
+    "category": "sorting",
+    "points": 100
+  },
+  {
+    "id": "spam-filter-naive-bayes-log-odds",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Spam Filter Naive Bayes Log-Odds",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "spectral-sound-gmm-expectation-maximization",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Spectral Sound GMM Expectation-Maximization E-Step",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "spectral-telescope-pca-projection",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Spectral Telescope PCA Projection",
+    "category": "machine-learning",
+    "points": 140
+  },
+  {
+    "id": "stacking-ensemble-meta-feature-matrix",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Stacking Ensemble Meta-Feature Matrix",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "stock-exchange-autoregressive-ar1",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Stock Exchange Autoregressive AR1",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "streaming-matrix-factorization-sgd",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Streaming Matrix Factorization SGD",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "subscription-forecast",
+    "difficulty": "Easy",
+    "executionProfile": "javascript",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Subscription Forecast"
+  },
+  {
+    "id": "subway-agent-policy-evaluation-iterative",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Subway Agent Policy Evaluation Iterative",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "supercollider-learning-rate-decay",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Supercollider Learning Rate Decay Schedules",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "tactical-radar-gram-schmidt-orthogonalization",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Tactical Radar Gram-Schmidt Orthogonalization",
+    "category": "machine-learning",
+    "points": 130
+  },
+  {
+    "id": "task-scheduling-for-the-royal-smithy",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Task Scheduling for the Royal Smithy",
+    "category": "greedy",
+    "points": 150
+  },
+  {
+    "id": "telecom-traffic-rolling-z-score",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Telecom Traffic Rolling Z-Score",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "text-stream-target-encoding",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Text Stream Target Encoding with Smoothing",
+    "category": "machine-learning",
+    "points": 140
+  },
+  {
+    "id": "the-alchemists-fibonacci-elixir",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Alchemist's Fibonacci Elixir",
+    "category": "math",
+    "points": 150
+  },
+  {
+    "id": "the-alchemists-potion-bottles",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Alchemist's Potion Bottles",
+    "category": "greedy",
+    "points": 100
+  },
+  {
+    "id": "the-alchemists-substance-blend",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Alchemist's Substance Blend",
+    "category": "array",
+    "points": 150
+  },
+  {
+    "id": "the-ancient-cipher-of-karnak",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Ancient Cipher of Karnak",
+    "category": "string",
+    "points": 100
+  },
+  {
+    "id": "the-ancient-lexicon-word-break",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Ancient Lexicon Word Break",
+    "category": "dynamic-programming",
+    "points": 150
+  },
+  {
+    "id": "the-archers-peak-elevation",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Archer's Peak Elevation",
+    "category": "binary-search",
+    "points": 150
+  },
+  {
+    "id": "the-archmages-climbing-steps",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Archmage's Climbing Steps",
+    "category": "dynamic-programming",
+    "points": 100
+  },
+  {
+    "id": "the-archmages-common-incantation",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Archmage's Common Incantation",
+    "category": "string",
+    "points": 100
+  },
+  {
+    "id": "the-archmages-reverse-polish-scroll",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Archmage's Reverse Polish Scroll",
+    "category": "stack",
+    "points": 150
+  },
+  {
+    "id": "the-bitwise-conjunction-of-the-eclipse",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Bitwise Conjunction of the Eclipse",
+    "category": "bit-manipulation",
+    "points": 150
+  },
+  {
+    "id": "the-clockwork-observatory",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Clockwork Observatory",
+    "category": "math",
+    "points": 100
+  },
+  {
+    "id": "the-colosseum-arena-floor",
+    "difficulty": "Hard",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Colosseum Arena Floor",
+    "category": "stack",
+    "points": 300
+  },
+  {
+    "id": "the-cunning-thief-of-baghdad",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Cunning Thief of Baghdad",
+    "category": "dynamic-programming",
+    "points": 120
+  },
+  {
+    "id": "the-deepest-mine-shaft",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Deepest Mine Shaft",
+    "category": "binary-search",
+    "points": 150
+  },
+  {
+    "id": "the-dragon-vault-coin-combinations",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Dragon Vault Coin Combinations",
+    "category": "dynamic-programming",
+    "points": 150
+  },
+  {
+    "id": "the-dragons-hoard-redistribution",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "The Dragon's Hoard Redistribution",
+    "category": "greedy",
+    "points": 150
+  },
+  {
+    "id": "the-emperors-spiral-tomb",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "The Emperor's Spiral Tomb",
+    "category": "array",
+    "points": 150
+  },
+  {
+    "id": "the-empress-maximal-square",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Empress' Maximal Square",
+    "category": "dynamic-programming",
+    "points": 150
+  },
+  {
+    "id": "the-factor-tree-of-yggdrasil",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "The Factor Tree of Yggdrasil",
+    "category": "math",
+    "points": 150
+  },
+  {
+    "id": "the-forbidden-palindromic-inscription",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Forbidden Palindromic Inscription",
+    "category": "string",
+    "points": 150
+  },
+  {
+    "id": "the-goblins-word-pattern",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Goblin's Word Pattern",
+    "category": "string",
+    "points": 100
+  },
+  {
+    "id": "the-grand-architects-largest-number",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Grand Architect's Largest Number",
+    "category": "sorting",
+    "points": 150
+  },
+  {
+    "id": "the-grand-bazaars-stock-spans",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "The Grand Bazaar's Stock Spans",
+    "category": "stack",
+    "points": 150
+  },
+  {
+    "id": "the-guild-hall-meeting-chambers",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Guild Hall Meeting Chambers",
+    "category": "sorting",
+    "points": 150
+  },
+  {
+    "id": "the-guilds-treasury",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Guild's Treasury",
+    "category": "array",
+    "points": 100
+  },
+  {
+    "id": "the-kingdoms-secret-mission-order",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "type": "exact",
+      "epsilon": 0.000001,
+      "scriptLanguage": "python",
+      "scriptCode": ""
+    },
+    "title": "The Kingdom's Secret Mission Order"
+  },
+  {
+    "id": "the-kings-elite-squad",
+    "difficulty": "Easy",
+    "customChecker": {
+      "type": "exact",
+      "epsilon": 0.000001,
+      "scriptLanguage": "python",
+      "scriptCode": ""
+    },
+    "title": "The King's Elite Squad"
+  },
+  {
+    "id": "the-kings-palindrome-number",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The King's Palindrome Number",
+    "category": "math",
+    "points": 100
+  },
+  {
+    "id": "the-kings-road-network",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "type": "exact",
+      "epsilon": 0.000001,
+      "scriptLanguage": "python",
+      "scriptCode": ""
+    },
+    "title": "The King's Road Network"
+  },
+  {
+    "id": "the-kings-roman-numeral-decree",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The King's Roman Numeral Decree",
+    "category": "string",
+    "points": 100
+  },
+  {
+    "id": "the-kings-tournament-eliminations",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "The King's Tournament Eliminations",
+    "category": "array",
+    "points": 150
+  },
+  {
+    "id": "the-knights-errant-journey",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Knight's Errant Journey",
+    "category": "bfs",
+    "points": 120
+  },
+  {
+    "id": "the-lone-sentinel-of-the-dune",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Lone Sentinel of the Dune",
+    "category": "bit-manipulation",
+    "points": 100
+  },
+  {
+    "id": "the-longest-ascension-of-stars",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Longest Ascension of Stars",
+    "category": "dynamic-programming",
+    "points": 150
+  },
+  {
+    "id": "the-lost-expedition-supplies",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Lost Expedition Supplies",
+    "category": "array",
+    "points": 100
+  },
+  {
+    "id": "the-mathematicians-super-power",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Mathematician's Super Power",
+    "category": "math",
+    "points": 100
+  },
+  {
+    "id": "the-minimalist-coin-master",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Minimalist Coin Master",
+    "category": "greedy",
+    "points": 100
+  },
+  {
+    "id": "the-mountain-ridge-silhouettes",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "The Mountain Ridge Silhouettes",
+    "category": "stack",
+    "points": 150
+  },
+  {
+    "id": "the-partition-labels-of-the-library",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "The Partition Labels of the Library",
+    "category": "greedy",
+    "points": 150
+  },
+  {
+    "id": "the-pharaohs-prime-gold",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Pharaoh's Prime Gold",
+    "category": "math",
+    "points": 150
+  },
+  {
+    "id": "the-royal-couriers-schedule",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Royal Courier's Schedule",
+    "category": "greedy",
+    "points": 150
+  },
+  {
+    "id": "the-royal-lumberjacks-harvest",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Royal Lumberjack's Harvest",
+    "category": "binary-search",
+    "points": 150
+  },
+  {
+    "id": "the-scribes-edit-scrolls",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Scribe's Edit Scrolls",
+    "category": "dynamic-programming",
+    "points": 160
+  },
+  {
+    "id": "the-scribes-longest-unique-substring",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Scribe's Longest Unique Substring",
+    "category": "string",
+    "points": 150
+  },
+  {
+    "id": "the-silk-road-checkpoints",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Silk Road Checkpoints",
+    "category": "array",
+    "points": 150
+  },
+  {
+    "id": "the-treasurers-coin-cycles",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Treasurer's Coin Cycles",
+    "category": "math",
+    "points": 100
+  },
+  {
+    "id": "the-vault-of-the-dwarven-king",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Vault of the Dwarven King",
+    "category": "dynamic-programming",
+    "points": 160
+  },
+  {
+    "id": "the-wandering-alchemists-stash",
+    "difficulty": "Easy",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "The Wandering Alchemist's Stash",
+    "category": "array",
+    "points": 100
+  },
+  {
+    "id": "the-wandering-monks-paths",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "The Wandering Monk's Paths",
+    "category": "dynamic-programming",
+    "points": 130
+  },
+  {
+    "id": "three-knights-honor-quest",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Three Knights' Honor Quest",
+    "category": "array",
+    "points": 150
+  },
+  {
+    "id": "titan-mining-ore-yield-sgd",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Titan Mining Ore Yield with SGD",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "top-k-favored-relics",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Top K Favored Relics",
+    "category": "sorting",
+    "points": 150
+  },
+  {
+    "id": "trailing-zeros-in-the-sacred-factorial",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Trailing Zeros in the Sacred Factorial",
+    "category": "math",
+    "points": 150
+  },
+  {
+    "id": "train-adam-71",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Adam Optimizer: Deep Neural Latent Space Embedding Calibration",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-adam-72",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Adam Optimizer: High-Frequency Limit Order Book Fill Time",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-adam-73",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Adam Optimizer: Autonomous Rover Mars Regolith Wheel Slip",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-adam-74",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Adam Optimizer: Nuclear Fusion Tokamak Plasma Beta Poloidal",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-adam-75",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Adam Optimizer: 3D Metal Laser Powder Bed Fusion Porosity",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-adam-76",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Adam Optimizer: Cryogenic Hydrogen Fuel Tank Slosh Dynamics",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-adam-77",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Adam Optimizer: Cloud Kubernetes Autoscaler Pod Scheduling Delay",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-adam-78",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Adam Optimizer: Satellite Laser Optical Downlink Bit Error Rate",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-adam-79",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Adam Optimizer: Bioreactor Monoclonal Antibody Titer Growth",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-adam-80",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Adam Optimizer: Commercial Quantum Computer Qubit Decoherence T2",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-clipping-111",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Gradient Clipping: High-Voltage Pulsed Plasma Deposition",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-clipping-112",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Gradient Clipping: Rocket Stage Separation Shock Load",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-clipping-113",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Gradient Clipping: Financial Flash Crash Order Book Microprice",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-clipping-114",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Gradient Clipping: Nuclear Reactor Control Rod Drop Reactivity",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-clipping-115",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Gradient Clipping: Geotechnical Rock Blast Ground Vibration (PPV)",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-clipping-116",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Gradient Clipping: Deep Subsea Oil Well Gas Kick Blowout Pressure",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-clipping-117",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Gradient Clipping: Aircraft Lightning Strike Electromagnetic Transient",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-clipping-118",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Gradient Clipping: High-Speed Train Emergency Eddy Current Braking",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-clipping-119",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Gradient Clipping: Laser Inertial Fusion Target Implosion Velocity",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-clipping-120",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Gradient Clipping: Space Shuttle Atmospheric Re-Entry Peak Plasma Heat",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-exponential-glm-151",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Exponential GLM: Offshore Wind Turbine Bearing Time-To-Failure",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-exponential-glm-152",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Exponential GLM: Web Application Server Request Response Duration",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-exponential-glm-153",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Exponential GLM: Radioactive Isotope Nuclear Decay Waiting Interval",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-exponential-glm-154",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Exponential GLM: Call Center Customer Hold Queue Patience Time",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-exponential-glm-155",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Exponential GLM: Geothermal Drill Bit Diamond Cutter Failure Life",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-exponential-glm-156",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Exponential GLM: Aircraft Hydraulic Hose Burst Rupture Life",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-exponential-glm-157",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Exponential GLM: Spacecraft Solar Array Micro-Meteoroid Impact Interval",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-exponential-glm-158",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Exponential GLM: Cryogenic Valve Seal Gasket Helium Leak Induction",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-exponential-glm-159",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Exponential GLM: Medical Ventilator Filter Clogging Lifespan",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-exponential-glm-160",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Exponential GLM: Highway Bridge Expansion Joint Rubber Seal Rupture",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-huber-81",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Huber BGD: Heavy-Haul Mining Truck Engine Oil Viscosity Breakdown",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-huber-82",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Huber BGD: Commercial Flight Turbulence Induced Wing Root Bending",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-huber-83",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Huber BGD: High-Frequency Crypto Liquidity Pool Slippage",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-huber-84",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Huber BGD: Geotechnical Deep Foundation Pile Settlement",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-huber-85",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Huber BGD: Satellite Thermal Radiator Temperature Under Flare",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-huber-86",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Huber BGD: Chemical Desalination Membrane Salt Passage Spikes",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-huber-87",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Huber BGD: High-Speed Train Pantograph Dynamic Catenary Contact Force",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-huber-88",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Huber BGD: Hydroelectric Spillway Concrete Cavitation Erosion",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-huber-89",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Huber BGD: Industrial Arc Furnace Electrode Consumption",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-huber-90",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Huber BGD: Semiconductor CMP Polishing Pad Pad-Life Wear",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-kmeans-161",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "K-Means Centroid Training: Autonomous Fleet Dispatch Depot Clusters",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-kmeans-162",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "K-Means Centroid Training: Semiconductor Wafer Defect Spatial Clusters",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-kmeans-163",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "K-Means Centroid Training: Customer Segment Behavioral Persona Prototypes",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-kmeans-164",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "K-Means Centroid Training: Wireless Base Station Relay Site Anchors",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-kmeans-165",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "K-Means Centroid Training: Seismic Epicenter Aftershock Spatial Centers",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-kmeans-166",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "K-Means Centroid Training: Astronomical Star Cluster Metallicity Centroids",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-kmeans-167",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "K-Means Centroid Training: Wind Farm Wake Interference Turbine Clusters",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-kmeans-168",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "K-Means Centroid Training: Medical Patient Phenotype Metabolic Profiles",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-kmeans-169",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "K-Means Centroid Training: Power Grid Regional Load Demand Zones",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-kmeans-170",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "K-Means Centroid Training: Warehouse Autonomous Mobile Robot Charging Pods",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-lasso-ista-31",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lasso ISTA: Genomics Biomarker Sparse Gene Expression",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-lasso-ista-32",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lasso ISTA: Algorithmic Trading Sparse Factor Model",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-lasso-ista-33",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lasso ISTA: Spectroscopic Chemical Mixture Deconvolution",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-lasso-ista-34",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lasso ISTA: Seismic Inversion Subsurface Reflectivity",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-lasso-ista-35",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lasso ISTA: Compressed Sensing Magnetic Resonance Imaging",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-lasso-ista-36",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lasso ISTA: Telecom Cellular Traffic Sparse Feature Attribution",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-lasso-ista-37",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lasso ISTA: Battery Energy Storage System Cell Degradation Attribution",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-lasso-ista-38",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lasso ISTA: Audio Acoustic Room Impulse Response Selection",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-lasso-ista-39",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lasso ISTA: Precision Agriculture Remote Sensing Crop Yield",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-lasso-ista-40",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Lasso ISTA: Supply Chain Port Congestion Dwell Time",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-linear-bgd-01",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Logistics Fleet Fuel Consumption",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-02",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Cloud Data Center Cooling Load",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-03",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Solar Photovoltaic Inverter Yield",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-04",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Rocket Booster Thrust Decay",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-05",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Wind Turbine Aerodynamic Drag",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-06",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: FPGA Interconnect Propagation Delay",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-07",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Catalytic Chemical Reaction Yield",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-08",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Agricultural Nitrogen Uptake",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-09",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Deep-Space Telescope Optical Aberration",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-10",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Server Rack Thermal Dissipation",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-11",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Lithium-Ion Battery Impedance Wear",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-12",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Fiber-Optic Transmission Jitter",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-13",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Drone Quadcopter Rotor Drag",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-14",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Hydroelectric Dam Flow Rate",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-15",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Electric Train Regenerative Braking",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-16",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Satellite Solar Cell Degradation",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-17",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Semiconductor Lithography Etch Depth",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-18",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Cryogenic Superconductor Resistance",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-19",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: Autonomous Vehicle LiDAR Calibration",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-bgd-20",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "BGD Linear Regression: High-Frequency Market Bid-Ask Spread",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-linear-svm-121",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Primal Linear SVM: High-Security Biometric Iris Authentication",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-linear-svm-122",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Primal Linear SVM: Aircraft Engine Acoustic Foreign Object Damage",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-linear-svm-123",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Primal Linear SVM: Credit Card Malware Point-of-Sale Exfiltration",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-linear-svm-124",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Primal Linear SVM: Subsea Gas Pipeline Methane Seep Sonar",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-linear-svm-125",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Primal Linear SVM: Precision Oncology Melanoma Dermoscopy",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-linear-svm-126",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Primal Linear SVM: Commercial Nuclear Core Neutron Flux Tilt",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-linear-svm-127",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Primal Linear SVM: Autonomous Agricultural Weeding Vision",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-linear-svm-128",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Primal Linear SVM: Power Grid Substation Lightning Flashover",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-linear-svm-129",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Primal Linear SVM: Hypersonic Scramjet Combustor Flameout Warning",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-linear-svm-130",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Primal Linear SVM: Satellite Star Tracker Celestial Attitude Lock",
+    "category": "machine-learning",
+    "points": 190
+  },
+  {
+    "id": "train-logistic-bgd-41",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Logistic BGD: Financial Fraud Transaction Detection",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-logistic-bgd-42",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Logistic BGD: Telecommunications Customer Churn Probability",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-logistic-bgd-43",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Logistic BGD: Critical Hospital Patient ICU Sepsis Alert",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-logistic-bgd-44",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Logistic BGD: Subsea Pipeline Corrosion Failure Risk",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-logistic-bgd-45",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Logistic BGD: Semiconductor Die Yield Defect Classification",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-logistic-bgd-46",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Logistic BGD: E-Commerce Search Query Purchase Intent",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-logistic-bgd-47",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Logistic BGD: Railway Track Rail Defect Ultrasonic Detection",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-logistic-bgd-48",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Logistic BGD: Autonomous Drone Wind Turbulence Stall Prediction",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-logistic-bgd-49",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Logistic BGD: Cloud Microservice SLA Breach Prediction",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-logistic-bgd-50",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Logistic BGD: Geothermal Power Plant Well Scale Deposition",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-logistic-l2-51",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "L2 Logistic BGD: Credit Scoring Default Probability",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-logistic-l2-52",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "L2 Logistic BGD: Cyber Threat Intrusion Detection",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-logistic-l2-53",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "L2 Logistic BGD: Pharmaceutical Clinical Trial Drop-Out Rate",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-logistic-l2-54",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "L2 Logistic BGD: Autonomous Driving Pedestrian Crossing Intent",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-logistic-l2-55",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "L2 Logistic BGD: Spacecraft Reaction Wheel Desaturation Trigger",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-logistic-l2-56",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "L2 Logistic BGD: Smart Electrical Grid Transformer Failure",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-logistic-l2-57",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "L2 Logistic BGD: Precision Agriculture Pest Outbreak Warning",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-logistic-l2-58",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "L2 Logistic BGD: Commercial Aviation Hydraulic Valve Stiction",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-logistic-l2-59",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "L2 Logistic BGD: High-Yield Bond Credit Rating Downgrade",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-logistic-l2-60",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "L2 Logistic BGD: Deep Sea ROV Battery Low-Voltage Cutoff",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-minibatch-101",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mini-Batch SGD: High-Volume E-Commerce Ad Click Prediction",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-minibatch-102",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mini-Batch SGD: Autonomous Fleet Telematics Engine Torque",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-minibatch-103",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mini-Batch SGD: Smart Meter Grid Power Consumption Stream",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-minibatch-104",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mini-Batch SGD: Edge IoT Sensor Battery Voltage Drain",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-minibatch-105",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mini-Batch SGD: Commercial Cargo Aircraft Cruise Trim Angle",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-minibatch-106",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mini-Batch SGD: Chemical Plant Fractional Distillation Top Temperature",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-minibatch-107",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mini-Batch SGD: Satellite Ground Station Antennas Tracking Error",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-minibatch-108",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mini-Batch SGD: High-Speed Web Proxy Request Latency",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-minibatch-109",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mini-Batch SGD: Precision CNC Lathe Thermal Spindle Growth",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-minibatch-110",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Mini-Batch SGD: Autonomous Submersible Acoustic Depth Range",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-momentum-61",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Momentum Optimizer: Aerodynamic Aircraft Drag Polar Curve",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-momentum-62",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Momentum Optimizer: Superconducting Magnet Quench Heat Load",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-momentum-63",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Momentum Optimizer: Geotechnical Tunnel Bore Ground Subsidence",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-momentum-64",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Momentum Optimizer: Blast Furnace Molten Iron Silicon Content",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-momentum-65",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Momentum Optimizer: Battery Electric Vehicle Regenerative Braking",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-momentum-66",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Momentum Optimizer: Hydroelectric Pumped Storage Flow Velocity",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-momentum-67",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Momentum Optimizer: Silicon Ingot Czochralski Crystal Pulling",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-momentum-68",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Momentum Optimizer: Gas Turbine Compressor Surge Margin",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-momentum-69",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Momentum Optimizer: Submarine Sonar Acoustic Transmission Loss",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-momentum-70",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Momentum Optimizer: Autonomous Drone Propeller Rotor Acoustic Noise",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-pca-power-171",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "PCA Power Iteration: Financial Portfolio Dominant Yield Factor",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-pca-power-172",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "PCA Power Iteration: Satellite Multi-Spectral Band Compression",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-pca-power-173",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "PCA Power Iteration: Aerospace Supersonic Wind Tunnel Pressure Modes",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-pca-power-174",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "PCA Power Iteration: Human Facial Morphometry Eigenface Component",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-pca-power-175",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "PCA Power Iteration: Gas Turbine Multi-Sensor Harmonic Vibration",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-pca-power-176",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "PCA Power Iteration: Genomics Population Genetics Ancestry Axis",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-pca-power-177",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "PCA Power Iteration: Autonomous Vehicle LiDAR Cloud Ground Plane",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-pca-power-178",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "PCA Power Iteration: Global Climate El Niño Southern Oscillation (ENSO)",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-pca-power-179",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "PCA Power Iteration: Industrial Chemical Reactor Chromatographic Drift",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-pca-power-180",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "PCA Power Iteration: Nuclear Reactor Thermal Core Coolant Density Axis",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-perceptron-131",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Perceptron: Industrial Assembly Robotic Part Presence Optical Gate",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-perceptron-132",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Perceptron: Automotive Radar Micro-Doppler Pedestrian Detection",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-perceptron-133",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Perceptron: Mining Rock Hardness Sonic Borehole Logging",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-perceptron-134",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Perceptron: Optical Fiber Cable Polarization Mode Dispersion",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-perceptron-135",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Perceptron: Pharmaceutical Capsule Powder Blending Uniformity",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-perceptron-136",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Perceptron: Solar Panel Thermal IR Hotspot Defect Detection",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-perceptron-137",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Perceptron: Hydraulic Crane Counterweight Tipping Alarm",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-perceptron-138",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Perceptron: Smart Water Distribution Pipeline Leak Acoustic Geophone",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-perceptron-139",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Perceptron: Container Ship Diesel Engine Cylinder Scavenge Fire",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-perceptron-140",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Perceptron: Autonomous Drone Battery Thermal Runaway Self-Eject",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "train-poisson-glm-141",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Poisson GLM: Server Cluster Hardware Failure Event Counts",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-poisson-glm-142",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Poisson GLM: Nuclear Medical Facility Radiation Scintillation Counts",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-poisson-glm-143",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Poisson GLM: Urban Transit Bus Passenger Boarding Flow",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-poisson-glm-144",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Poisson GLM: Telecommunications Cell Tower Dropped Packet Bursts",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-poisson-glm-145",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Poisson GLM: Semiconductor Photolithography Micro-Defect Spikes",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-poisson-glm-146",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Poisson GLM: Retail Supermarket Checkout Queue Transaction Rate",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-poisson-glm-147",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Poisson GLM: Deep Sea Hydrothermal Vent Microbial Colony Counts",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-poisson-glm-148",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Poisson GLM: Wildlife Conservation Camera Trap Animal Sightings",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-poisson-glm-149",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Poisson GLM: Solar Coronal Mass Ejection Flare Occurrences",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-poisson-glm-150",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Poisson GLM: Commercial Aviation Pilot Air Traffic Alert (TCAS)",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-quantile-100",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Quantile Regression: Semiconductor Fab Cleanroom Aerosol Particle Spike",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-quantile-91",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Quantile Regression: Hospital Emergency Department Peak Wait Times",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-quantile-92",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Quantile Regression: Investment Portfolio Value at Risk (VaR 95%)",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-quantile-93",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Quantile Regression: Cloud CDN Tail Latency P99 Optimization",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-quantile-94",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Quantile Regression: Wildfire Propagation Maximum Front Rate",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-quantile-95",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Quantile Regression: Wind Farm Minimum Power Output (P10 Firm Capacity)",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-quantile-96",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Quantile Regression: Airport Runway Takeoff Ground Roll Distance (P95)",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-quantile-97",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Quantile Regression: High-Voltage Transformer Peak Temperature Rise",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-quantile-98",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Quantile Regression: E-Commerce Last-Mile Delivery Delivery Window P90",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-quantile-99",
+    "difficulty": "Hard",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Quantile Regression: Battery Thermal Runaway Venting Pressure Peak",
+    "category": "machine-learning",
+    "points": 180
+  },
+  {
+    "id": "train-ridge-bgd-21",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Ridge BGD: Semiconductor Wafer Thermal Warpage",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-ridge-bgd-22",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Ridge BGD: Autonomous Vessel Hydrodynamic Hull Resistance",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-ridge-bgd-23",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Ridge BGD: High-Voltage Transmission Line Sag",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-ridge-bgd-24",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Ridge BGD: Commercial Aviation Jet Engine Turbine Blade Creep",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-ridge-bgd-25",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Ridge BGD: High-Precision CNC Milling Tool Wear",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-ridge-bgd-26",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Ridge BGD: Satellite Solar Array Degradation",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-ridge-bgd-27",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Ridge BGD: Geothermal District Heating Heat Exchange",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-ridge-bgd-28",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Ridge BGD: Hypersonic Wind Tunnel Aerodynamic Heating",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-ridge-bgd-29",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Ridge BGD: Liquefied Natural Gas (LNG) Boil-Off Rate",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-ridge-bgd-30",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Ridge BGD: Carbon Fiber Composite Cure Residual Stress",
+    "category": "machine-learning",
+    "points": 160
+  },
+  {
+    "id": "train-single-neuron-181",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Sigmoid): Autonomous Drone Obstacle Proximity Sensation",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-single-neuron-182",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Sigmoid): Smart Thermostat HVAC Duty Cycle Activation",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-single-neuron-183",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Sigmoid): High-Speed Camera Exposure Gain Modulation",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-single-neuron-184",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Sigmoid): Industrial Hydraulic Valve Pilot Pressure",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-single-neuron-185",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Sigmoid): Wireless Hearing Aid Noise Suppression Gain",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-single-neuron-186",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Sigmoid): Spacecraft Gyroscope Drift Compensation",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-single-neuron-187",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Sigmoid): Automotive Electric Power Steering Assist",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-single-neuron-188",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Sigmoid): Laser Cutting Head Height Auto-Focus",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-single-neuron-189",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Sigmoid): Solar Concentrator Heliostat Sun Tracking",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-single-neuron-190",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Sigmoid): Deep Sea Diving Suit Oxygen Injection Valve",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-tanh-neuron-191",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Tanh): Active Magnetic Bearing Magnetic Flux Centering",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-tanh-neuron-192",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Tanh): Submarine Ballast Trim Pitch Moment",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-tanh-neuron-193",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Tanh): Superconducting Cavity RF Resonance Tuning",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-tanh-neuron-194",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Tanh): Quadcopter Drone Yaw Counter-Torque",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-tanh-neuron-195",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Tanh): High-Precision Galvanometer Mirror Deflection",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-tanh-neuron-196",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Tanh): Seismic Vibration Active Mass Damper",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-tanh-neuron-197",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Tanh): Bipedal Walking Robot Ankle Roll Balancing",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-tanh-neuron-198",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Tanh): Satellite Reaction Wheel Speed Despin",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-tanh-neuron-199",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Tanh): Wind Tunnel Sting Balance Aerodynamic Yaw",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "train-tanh-neuron-200",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Neural Backprop (Tanh): Cryogenic Space Cooler Linear Compressor Stroke",
+    "category": "machine-learning",
+    "points": 170
+  },
+  {
+    "id": "traversing-the-mountain-interval",
+    "difficulty": "Medium",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Traversing the Mountain Interval",
+    "category": "array",
+    "points": 150
+  },
+  {
+    "id": "urban-transit-density-dbscan",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Urban Transit Density DBSCAN Point Classifier",
+    "category": "machine-learning",
+    "points": 150
+  },
+  {
+    "id": "video-feed-hit-ratio-at-k",
+    "difficulty": "Easy",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Video Feed Hit Ratio at K",
+    "category": "machine-learning",
+    "points": 100
+  },
+  {
+    "id": "vision-core-2d-max-pooling",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Vision Core 2D Max Pooling",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "word-embedding-cosine-analogy",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "Word Embedding Cosine Analogy",
+    "category": "machine-learning",
+    "points": 120
+  },
+  {
+    "id": "word-ladder-of-the-hierophant",
+    "difficulty": "Hard",
+    "executionProfile": "normal",
+    "customChecker": {
+      "epsilon": 0.000001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "exact"
+    },
+    "title": "Word Ladder of the Hierophant",
+    "category": "bfs",
+    "points": 200
+  },
+  {
+    "id": "xgboost-optimal-leaf-weight",
+    "difficulty": "Medium",
+    "executionProfile": "machine_learning",
+    "customChecker": {
+      "epsilon": 0.0001,
+      "scriptCode": "",
+      "scriptLanguage": "python",
+      "type": "whitespace"
+    },
+    "title": "XGBoost Optimal Leaf Weight",
+    "category": "machine-learning",
+    "points": 120
+  }
+]

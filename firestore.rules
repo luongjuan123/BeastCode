@@ -1,0 +1,372 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check if user has verified platform admin privileges
+    function isAdmin() {
+      return request.auth != null && (
+        request.auth.token.admin == true ||
+        (
+          exists(/databases/$(database)/documents/platformAdmins/$(request.auth.uid)) &&
+          get(/databases/$(database)/documents/platformAdmins/$(request.auth.uid)).data.active == true
+        )
+      );
+    }
+
+    // Dedicated protected collection for platform administrators
+    // Normal users cannot write or browse other admin records. Client writes are strictly forbidden.
+    match /platformAdmins/{adminId} {
+      allow read: if request.auth != null && (request.auth.uid == adminId || isAdmin());
+      allow write: if false;
+    }
+
+    // Rules for the users collection
+    // Normal users cannot add, alter, or delete privileged authority fields.
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && request.auth.uid == userId &&
+        (!request.resource.data.keys().hasAny(['isAdmin', 'role', 'permissions', 'customClaims']) ||
+         request.resource.data.role == "user");
+      allow update: if (request.auth != null && request.auth.uid == userId &&
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(['isAdmin', 'role', 'permissions', 'customClaims'])) ||
+        isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Rules for public user-specific documents
+    match /profiles/{userId} {
+      allow read: if request.auth != null;
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+    match /statistics/{userId} {
+      allow read: if request.auth != null;
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+    match /solvedProblems/{userId} {
+      allow read: if request.auth != null;
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+    match /contestHistory/{userId} {
+      allow read: if request.auth != null;
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+    match /organizationMembership/{userId} {
+      allow read: if request.auth != null;
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+    match /achievements/{userId} {
+      allow read: if request.auth != null;
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+
+    // Rules for private user-specific documents
+    match /settings/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+    match /notificationSettings/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+    match /security/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+    match /sessions/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+    match /bookmarks/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+    match /preferences/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+    match /theme/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+    match /language/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+    match /privacy/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+
+    function isProblemTag(tag) {
+      return exists(/databases/$(database)/documents/problemTags/$(tag));
+    }
+
+    function validateProblemTags(tags) {
+      return tags.size() <= 3 &&
+        (tags.size() < 1 || isProblemTag(tags[0])) &&
+        (tags.size() < 2 || isProblemTag(tags[1])) &&
+        (tags.size() < 3 || isProblemTag(tags[2]));
+    }
+
+    function isThreadTag(tag) {
+      return exists(/databases/$(database)/documents/threadTags/$(tag));
+    }
+
+    function validateThreadTags(tags) {
+      return tags.size() <= 5 &&
+        (tags.size() < 1 || isThreadTag(tags[0])) &&
+        (tags.size() < 2 || isThreadTag(tags[1])) &&
+        (tags.size() < 3 || isThreadTag(tags[2])) &&
+        (tags.size() < 4 || isThreadTag(tags[3])) &&
+        (tags.size() < 5 || isThreadTag(tags[4]));
+    }
+
+    // Rules for the problems collection
+    match /problems/{problemId} {
+      allow read: if true;
+      allow write: if isAdmin() && (!request.resource.data.keys().hasAll(['tags']) || validateProblemTags(request.resource.data.tags));
+    }
+
+    // Rules for the threads collection
+    match /threads/{threadId} {
+      allow read: if true;
+      allow write: if request.auth != null && (
+        (threadId == request.auth.uid && request.resource.data.uid == request.auth.uid) ||
+        (threadId != request.auth.uid && (!request.resource.data.keys().hasAll(['tags']) || validateThreadTags(request.resource.data.tags)))
+      );
+    }
+
+    // Rules for the submissions collection (Strict ownership check)
+    match /submissions/{submissionId} {
+      allow read: if request.auth != null && (resource == null || resource.data.uid == request.auth.uid || isAdmin());
+      allow create: if request.auth != null && request.resource.data.uid == request.auth.uid;
+      allow update: if request.auth != null && resource.data.uid == request.auth.uid && request.resource.data.uid == request.auth.uid || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Rules for the notifications collection
+    match /notifications/{notifId} {
+      allow read: if request.auth != null && resource.data.toUid == request.auth.uid;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null && (resource.data.toUid == request.auth.uid || resource.data.fromUid == request.auth.uid);
+    }
+
+    // Rules for the follows collection
+    match /follows/{followId} {
+      allow read: if true;
+      allow create, delete: if request.auth != null;
+    }
+
+    // Rules for the deleted_problems collection
+    match /deleted_problems/{problemId} {
+      allow read, write: if isAdmin();
+    }
+
+    // Rules for userModeration
+    match /userModeration/{uid} {
+      allow read: if (request.auth != null && request.auth.uid == uid) || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // Rules for moderationLogs
+    match /moderationLogs/{logId} {
+      allow read: if isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // Rules for userReports
+    match /userReports/{reportId} {
+      allow read: if isAdmin() || (request.auth != null && resource.data.reporterUid == request.auth.uid);
+      allow create: if request.auth != null && request.resource.data.reporterUid == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+
+    // Rules for moderationWarnings
+    match /moderationWarnings/{warningId} {
+      allow read: if isAdmin() || (request.auth != null && resource.data.targetUid == request.auth.uid && resource.data.visibleToUser == true);
+      allow write: if isAdmin();
+    }
+
+    // Rules for moderationAppeals
+    match /moderationAppeals/{appealId} {
+      allow read: if isAdmin() || (request.auth != null && resource.data.targetUid == request.auth.uid);
+      allow create: if request.auth != null && request.resource.data.targetUid == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+
+    // Rules for moderationCases
+    match /moderationCases/{caseId} {
+      allow read: if isAdmin() || (request.auth != null && resource.data.targetUid == request.auth.uid);
+      allow write: if isAdmin();
+    }
+
+    // Contest Ecosystem Rules
+    
+    // Contests collection
+    match /contests/{contestId} {
+      allow read: if true;
+      allow write: if isAdmin();
+
+      // Contest discussions rules
+      match /discussions/{discussionId} {
+        allow read: if true;
+        allow create: if request.auth != null && request.resource.data.uid == request.auth.uid;
+        allow update, delete: if isAdmin() || (request.auth != null && resource.data.uid == request.auth.uid);
+      }
+    }
+
+    // Contest Problems collection
+    match /contest_problems/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Contest Participants collection (Prevent self-unterminating or banned users)
+    match /contest_participants/{id} {
+      allow read: if true;
+      allow create: if request.auth != null && request.resource.data.uid == request.auth.uid &&
+        (!exists(/databases/$(database)/documents/userModeration/$(request.auth.uid)) ||
+         get(/databases/$(database)/documents/userModeration/$(request.auth.uid)).data.status != "BANNED");
+      allow update: if request.auth != null && (
+        (resource.data.uid == request.auth.uid && 
+         resource.data.status != "terminated" && 
+         request.resource.data.uid == request.auth.uid &&
+         (!exists(/databases/$(database)/documents/userModeration/$(request.auth.uid)) ||
+          get(/databases/$(database)/documents/userModeration/$(request.auth.uid)).data.status != "BANNED")) || 
+        isAdmin()
+      );
+      allow delete: if isAdmin();
+    }
+
+    // Contest Submissions collection (Lock read to solver during active contests; block terminated or banned participants)
+    match /contest_submissions/{id} {
+      allow read: if request.auth != null && (
+        resource == null || 
+        resource.data.uid == request.auth.uid || 
+        isAdmin() || 
+        (exists(/databases/$(database)/documents/contests/$(resource.data.contestId)) && 
+         get(/databases/$(database)/documents/contests/$(resource.data.contestId)).data.status == "ended")
+      );
+      allow create: if request.auth != null && 
+        request.resource.data.uid == request.auth.uid &&
+        (!exists(/databases/$(database)/documents/userModeration/$(request.auth.uid)) ||
+         get(/databases/$(database)/documents/userModeration/$(request.auth.uid)).data.status != "BANNED") &&
+        (!exists(/databases/$(database)/documents/contest_participants/$(request.resource.data.contestId + "_" + request.auth.uid)) ||
+         get(/databases/$(database)/documents/contest_participants/$(request.resource.data.contestId + "_" + request.auth.uid)).data.status != "terminated");
+      allow update, delete: if isAdmin();
+    }
+
+    // Contest Announcements collection
+    match /contest_announcements/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Contest Clarifications collection (Prevent reading private clarifications of others)
+    match /contest_clarifications/{id} {
+      allow read: if resource == null || resource.data.isPublic == true || (request.auth != null && (resource.data.uid == request.auth.uid || isAdmin()));
+      allow create: if request.auth != null && request.resource.data.uid == request.auth.uid;
+      allow update: if request.auth != null && (resource.data.uid == request.auth.uid || isAdmin());
+      allow delete: if isAdmin();
+    }
+
+    // Contest Leaderboard collection
+    match /contest_leaderboard/{id} {
+      allow read: if true;
+      allow write: if isAdmin() || (request.auth != null && request.resource.data.uid == request.auth.uid);
+    }
+
+    // Contest Integrity Events collection
+    match /contest_integrity_events/{id} {
+      allow read: if isAdmin();
+      allow create: if request.auth != null && request.resource.data.uid == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+
+    // Contest Editorial collection
+    match /contest_editorial/{contestId} {
+      allow read: if isAdmin() || (
+        exists(/databases/$(database)/documents/contests/$(contestId)) && 
+        get(/databases/$(database)/documents/contests/$(contestId)).data.status == "ended"
+      );
+      allow write: if isAdmin();
+    }
+
+    // Contest Statistics collection
+    match /contest_statistics/{contestId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Drafts and Contest Drafts
+    match /drafts/{draftId} {
+      allow read, write: if request.auth != null && (resource == null || resource.data.uid == request.auth.uid) && request.resource.data.uid == request.auth.uid;
+    }
+    match /contest_drafts/{draftId} {
+      allow read, write: if request.auth != null && (resource == null || resource.data.uid == request.auth.uid) && request.resource.data.uid == request.auth.uid;
+    }
+
+    // ============================================================
+    // BEASTCODE REAL-TIME CHAT & MESSAGING SUBSYSTEM
+    // ============================================================
+
+    function isConversationParticipant(convData) {
+      return request.auth != null && (
+        (convData.participantUids != null && request.auth.uid in convData.participantUids) ||
+        (
+          convData.organizationId != null &&
+          exists(/databases/$(database)/documents/organizationMembers/$(convData.organizationId + "_" + request.auth.uid)) &&
+          get(/databases/$(database)/documents/organizationMembers/$(convData.organizationId + "_" + request.auth.uid)).data.status == "active" &&
+          (
+            !(convData.isPrivate == true || convData.channelType == "private" || convData.channelType == "staff") ||
+            (convData.participantUids != null && request.auth.uid in convData.participantUids) ||
+            get(/databases/$(database)/documents/organizationMembers/$(convData.organizationId + "_" + request.auth.uid)).data.roleId in ["owner", "admin", "coach", "instructor"]
+          )
+        ) ||
+        isAdmin()
+      );
+    }
+
+    match /conversations/{cid} {
+      allow read: if request.auth != null && (resource == null || isConversationParticipant(resource.data));
+      allow create: if request.auth != null;
+      allow update: if request.auth != null && isConversationParticipant(resource.data);
+      allow delete: if isAdmin();
+
+      // Messages Subcollection
+      match /messages/{mid} {
+        allow read: if request.auth != null && isConversationParticipant(get(/databases/$(database)/documents/conversations/$(cid)).data);
+        allow create: if request.auth != null && request.resource.data.senderId == request.auth.uid;
+        allow update: if request.auth != null && (
+          resource.data.senderId == request.auth.uid ||
+          request.resource.data.diff(resource.data).affectedKeys().hasOnly(['reactions']) ||
+          isAdmin()
+        );
+        allow delete: if request.auth != null && (resource.data.senderId == request.auth.uid || isAdmin());
+      }
+
+      // Ephemeral Typing Subcollection
+      match /typing/{uid} {
+        allow read: if request.auth != null;
+        allow write: if request.auth != null && request.auth.uid == uid;
+      }
+    }
+
+    // User Conversation Metadata (Unread markers, mute, archive)
+    match /userConversationMeta/{metaId} {
+      allow read: if request.auth != null && (resource == null || resource.data.uid == request.auth.uid || isAdmin());
+      allow write: if request.auth != null && (
+        (resource == null || resource.data.uid == request.auth.uid) &&
+        request.resource.data.uid == request.auth.uid
+      ) || isAdmin();
+    }
+
+    // User Blocks
+    match /userBlocks/{blockId} {
+      allow read: if request.auth != null && (resource == null || resource.data.blockerUid == request.auth.uid || isAdmin());
+      allow write: if request.auth != null && (
+        (resource == null || resource.data.blockerUid == request.auth.uid) &&
+        request.resource.data.blockerUid == request.auth.uid
+      ) || isAdmin();
+    }
+  }
+}
