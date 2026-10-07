@@ -445,6 +445,10 @@ export default function OrgsIndexPage() {
 									placeholder="Search organizations by title, slug, or keywords..."
 									value={search}
 									onChange={(e) => setSearch(e.target.value)}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-bg-elevated border border-border-default focus:border-accent text-xs rounded-md pl-9 pr-3 py-2 text-text-primary outline-none transition font-sans"
 								/>
 							</div>
@@ -852,6 +856,10 @@ export default function OrgsIndexPage() {
 									placeholder="e.g. Stanford Coding Club"
 									value={newOrgName}
 									onChange={(e) => setNewOrgName(e.target.value)}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-bg-elevated border border-border-default hover:border-border-subtle focus:border-accent text-xs rounded-md p-2.5 text-text-primary outline-none transition font-sans"
 									required
 								/>
@@ -917,6 +925,10 @@ export default function OrgsIndexPage() {
 									placeholder="Write a brief overview describing the workspace..."
 									value={newOrgDesc}
 									onChange={(e) => setNewOrgDesc(e.target.value)}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-bg-elevated border border-border-default hover:border-border-subtle focus:border-accent text-xs rounded-md p-2.5 text-text-primary outline-none transition font-sans h-16 resize-none"
 								/>
 							</div>
@@ -931,6 +943,10 @@ export default function OrgsIndexPage() {
 										placeholder="e.g. stanford.edu"
 										value={newOrgWebsite}
 										onChange={(e) => setNewOrgWebsite(e.target.value)}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-bg-elevated border border-border-default hover:border-border-subtle focus:border-accent text-xs rounded-md p-2.5 text-text-primary outline-none transition font-sans"
 									/>
 								</div>
@@ -943,6 +959,10 @@ export default function OrgsIndexPage() {
 										placeholder="e.g. Education"
 										value={newOrgCategory}
 										onChange={(e) => setNewOrgCategory(e.target.value)}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-bg-elevated border border-border-default hover:border-border-subtle focus:border-accent text-xs rounded-md p-2.5 text-text-primary outline-none transition font-sans"
 									/>
 								</div>
@@ -958,6 +978,10 @@ export default function OrgsIndexPage() {
 										placeholder="e.g. Stanford, CA"
 										value={newOrgLocation}
 										onChange={(e) => setNewOrgLocation(e.target.value)}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-bg-elevated border border-border-default hover:border-border-subtle focus:border-accent text-xs rounded-md p-2.5 text-text-primary outline-none transition font-sans"
 									/>
 								</div>
@@ -970,6 +994,10 @@ export default function OrgsIndexPage() {
 										placeholder="e.g. contact@stanford.edu"
 										value={newOrgEmail}
 										onChange={(e) => setNewOrgEmail(e.target.value)}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-bg-elevated border border-border-default hover:border-border-subtle focus:border-accent text-xs rounded-md p-2.5 text-text-primary outline-none transition font-sans"
 									/>
 								</div>

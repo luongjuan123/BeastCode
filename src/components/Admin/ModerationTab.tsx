@@ -714,6 +714,10 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 								placeholder="Search accounts by displayName, username, email or UID..."
 								value={search}
 								onChange={(e) => setSearch(e.target.value)}
+								autoComplete="off"
+								autoCorrect="off"
+								autoCapitalize="off"
+								spellCheck={false}
 								className="w-full bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] focus:border-[var(--brand-orange)] text-xs rounded-xl pl-9 pr-4 py-2 text-[var(--text-primary)] outline-none transition"
 							/>
 						</div>
@@ -1069,6 +1073,10 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 										onChange={(e) => setReportActionNotes(e.target.value)}
 										placeholder="Write notes, dismissal explanations or merge details..."
 										rows={2}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] focus:border-[var(--brand-orange)] text-xs rounded-xl p-3 text-[var(--text-primary)] outline-none resize-none transition"
 									/>
 
@@ -1100,6 +1108,10 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 											placeholder="Target Report ID to merge into..."
 											value={mergeTargetReportId}
 											onChange={(e) => setMergeTargetReportId(e.target.value)}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className="flex-1 bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-xs rounded-lg px-2 py-1.5 text-[var(--text-primary)] outline-none focus:border-[var(--brand-orange)]"
 										/>
 										<button
@@ -1259,6 +1271,10 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 											onChange={(e) => setAppealActionNotes(e.target.value)}
 											placeholder="Write reasons for approval, rejection or requesting details..."
 											rows={3}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className="w-full bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] focus:border-[var(--brand-orange)] text-xs rounded-xl p-3 text-[var(--text-primary)] outline-none resize-none transition"
 										/>
 
@@ -1439,6 +1455,10 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 									onChange={(e) => setSuspendNotes(e.target.value)}
 									placeholder="Provide additional details or audit notes..."
 									rows={3}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] text-xs rounded-xl p-3 text-[var(--text-primary)] outline-none resize-none focus:border-[var(--brand-orange)]"
 								/>
 							</div>
@@ -1510,6 +1530,10 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 									onChange={(e) => setUnsuspendNotes(e.target.value)}
 									placeholder="Provide additional details or audit notes..."
 									rows={3}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] text-xs rounded-xl p-3 text-[var(--text-primary)] outline-none resize-none focus:border-[var(--brand-orange)]"
 								/>
 							</div>
@@ -1596,6 +1620,10 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 									onChange={(e) => setWarnDesc(e.target.value)}
 									placeholder="Describe the violation in detail..."
 									rows={3}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] text-xs rounded-xl p-3 text-[var(--text-primary)] outline-none resize-none focus:border-[var(--brand-orange)]"
 								/>
 							</div>
@@ -1674,6 +1702,10 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 									onChange={(e) => setDeleteNotes(e.target.value)}
 									placeholder="Provide additional details or audit notes..."
 									rows={2}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] text-xs rounded-md p-3 text-[var(--text-primary)] outline-none resize-none focus:border-emerald-500"
 								/>
 							</div>
@@ -1699,6 +1731,10 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 									value={deleteConfirmText}
 									onChange={(e) => setDeleteConfirmText(e.target.value)}
 									placeholder="DELETE"
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] focus:border-emerald-500 text-xs rounded-md px-3 py-2 text-[var(--text-primary)] outline-none font-mono text-center tracking-widest"
 								/>
 							</div>
@@ -1757,6 +1793,10 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 									onChange={(e) => setCancelDeleteReason(e.target.value)}
 									placeholder="Provide reasoning for cancelling deletion..."
 									rows={3}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] text-xs rounded-md p-3 text-[var(--text-primary)] outline-none resize-none focus:border-emerald-500"
 								/>
 							</div>

@@ -430,6 +430,10 @@ const AccountAppealPage: React.FC = () => {
 												onChange={(e) => setAppealRefId(e.target.value)}
 												required
 												type="text"
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className="w-full bg-bg-base border border-border-default rounded-md p-2.5 outline-none font-mono text-emerald-450 uppercase text-xs focus:border-emerald-500/50"
 												placeholder="e.g. CASE-YYYY-XXXXXXXX"
 											/>
@@ -453,6 +457,9 @@ const AccountAppealPage: React.FC = () => {
 											maxLength={5000}
 											rows={5}
 											placeholder="Explain clearly why the decision should be reversed. Provide any necessary context or explanations of what occurred..."
+											autoComplete="off"
+											autoCorrect="off"
+											spellCheck={false}
 											className="w-full bg-bg-base border border-border-default text-text-primary rounded-md p-3 outline-none text-xs placeholder:text-text-muted/50 resize-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20"
 										/>
 									</div>

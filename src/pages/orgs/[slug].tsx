@@ -2057,6 +2057,10 @@ export default function OrgWorkspacePage() {
 										placeholder="Optional join message..."
 										value={joinMsg}
 										onChange={(e) => setJoinMsg(e.target.value)}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="bg-bg-elevated border border-border-default text-xs rounded-md px-3 py-1.5 outline-none w-44 focus:border-accent text-text-primary font-sans"
 									/>
 									<button
@@ -2215,6 +2219,10 @@ export default function OrgWorkspacePage() {
 											placeholder="Search by name, UID, username..."
 											value={memberSearch}
 											onChange={(e) => setMemberSearch(e.target.value)}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className="w-full bg-dark-layer-2 border border-gray-850 text-xs rounded-xl pl-9 pr-4 py-2.5 outline-none focus:border-brand-orange text-white"
 										/>
 									</div>
@@ -2376,6 +2384,10 @@ export default function OrgWorkspacePage() {
 														placeholder="Type UID, Username, or Email..."
 														value={inviteSearchInput}
 														onChange={(e) => handleInviteSearch(e.target.value)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl pl-4 pr-10 py-3 text-white outline-none transition"
 													/>
 													{inviteSearchLoading && (
@@ -2615,6 +2627,10 @@ export default function OrgWorkspacePage() {
 														placeholder="Require pass to join..."
 														value={linkPassword}
 														onChange={(e) => setLinkPassword(e.target.value)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-2.5 text-white outline-none transition"
 													/>
 												</div>
@@ -2702,6 +2718,10 @@ export default function OrgWorkspacePage() {
 											placeholder="Global Contest ID..."
 											value={linkContestId}
 											onChange={(e) => setLinkContestId(e.target.value)}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className="bg-dark-layer-2 border border-gray-855 text-xs rounded-xl px-3 py-2 outline-none w-52 focus:border-brand-orange"
 											required
 										/>
@@ -2726,6 +2746,10 @@ export default function OrgWorkspacePage() {
 									placeholder="Search linked contests..."
 									value={contestSearch}
 									onChange={(e) => setContestSearch(e.target.value)}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="bg-dark-layer-2 border border-gray-850 text-xs rounded-lg pl-8 pr-3 py-2 w-full outline-none focus:border-brand-orange mb-4"
 								/>
 							</div>
@@ -2786,6 +2810,10 @@ export default function OrgWorkspacePage() {
 											placeholder="Global Problem ID..."
 											value={linkProblemId}
 											onChange={(e) => setLinkProblemId(e.target.value)}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className="bg-dark-layer-2 border border-gray-855 text-xs rounded-xl px-3 py-2 outline-none w-52 focus:border-brand-orange"
 											required
 										/>
@@ -2810,6 +2838,10 @@ export default function OrgWorkspacePage() {
 									placeholder="Search problem library..."
 									value={problemSearch}
 									onChange={(e) => setProblemSearch(e.target.value)}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="bg-dark-layer-2 border border-gray-850 text-xs rounded-lg pl-8 pr-3 py-2 w-full outline-none focus:border-brand-orange mb-4"
 								/>
 							</div>
@@ -2977,6 +3009,10 @@ export default function OrgWorkspacePage() {
 												placeholder="Notice Title..."
 												value={newAnnTitle}
 												onChange={(e) => setNewAnnTitle(e.target.value)}
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition"
 												required
 											/>
@@ -2986,6 +3022,10 @@ export default function OrgWorkspacePage() {
 												placeholder="Compose notice details..."
 												value={newAnnContent}
 												onChange={(e) => setNewAnnContent(e.target.value)}
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition h-28"
 												required
 											/>
@@ -3043,6 +3083,10 @@ export default function OrgWorkspacePage() {
 									placeholder="Search shared files..."
 									value={fileSearch}
 									onChange={(e) => setFileSearch(e.target.value)}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="bg-dark-layer-2 border border-gray-850 text-xs rounded-lg pl-8 pr-3 py-2 w-full outline-none focus:border-brand-orange mb-4"
 								/>
 							</div>
@@ -3100,6 +3144,10 @@ export default function OrgWorkspacePage() {
 												placeholder="Resource Title (e.g. PDF Material)..."
 												value={newFileName}
 												onChange={(e) => setNewFileName(e.target.value)}
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition"
 												required
 											/>
@@ -3108,6 +3156,10 @@ export default function OrgWorkspacePage() {
 												placeholder="GCS / Storage URL or Drive URL..."
 												value={newFileUrl}
 												onChange={(e) => setNewFileUrl(e.target.value)}
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition"
 												required
 											/>
@@ -3357,6 +3409,10 @@ export default function OrgWorkspacePage() {
 														placeholder="Software Engineer..."
 														value={newJobTitle}
 														onChange={(e) => setNewJobTitle(e.target.value)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition"
 														required
 													/>
@@ -3368,6 +3424,10 @@ export default function OrgWorkspacePage() {
 														placeholder="Remote, San Francisco, etc."
 														value={newJobLocation}
 														onChange={(e) => setNewJobLocation(e.target.value)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition"
 														required
 													/>
@@ -3396,6 +3456,10 @@ export default function OrgWorkspacePage() {
 														placeholder="$120k - $150k"
 														value={newJobSalary}
 														onChange={(e) => setNewJobSalary(e.target.value)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition"
 														required
 													/>
@@ -3408,6 +3472,10 @@ export default function OrgWorkspacePage() {
 													placeholder="Describe the role, responsibilities, culture..."
 													value={newJobDesc}
 													onChange={(e) => setNewJobDesc(e.target.value)}
+													autoComplete="off"
+													autoCorrect="off"
+													autoCapitalize="off"
+													spellCheck={false}
 													className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition h-20"
 													required
 												/>
@@ -3420,6 +3488,10 @@ export default function OrgWorkspacePage() {
 														placeholder="Python, Go, React, SQL..."
 														value={newJobRequirements}
 														onChange={(e) => setNewJobRequirements(e.target.value)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition h-20"
 													/>
 												</div>
@@ -3429,6 +3501,10 @@ export default function OrgWorkspacePage() {
 														placeholder="Develop scalable APIs..."
 														value={newJobResponsibilities}
 														onChange={(e) => setNewJobResponsibilities(e.target.value)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition h-20"
 													/>
 												</div>
@@ -3467,6 +3543,10 @@ export default function OrgWorkspacePage() {
 											placeholder="Search candidates by UID, university, languages..."
 											value={candidateSearchQuery}
 											onChange={(e) => setCandidateSearchQuery(e.target.value)}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className="flex-1 bg-dark-layer-2 border border-gray-850 text-xs rounded-xl px-4 py-2.5 text-white outline-none focus:border-brand-orange transition"
 										/>
 										<button
@@ -3510,6 +3590,10 @@ export default function OrgWorkspacePage() {
 														placeholder="Recipient User UID..."
 														value={newCertCandidate}
 														onChange={(e) => setNewCertCandidate(e.target.value)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition"
 														required
 													/>
@@ -3521,6 +3605,10 @@ export default function OrgWorkspacePage() {
 														placeholder="John Doe..."
 														value={newCertSignee}
 														onChange={(e) => setNewCertSignee(e.target.value)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition"
 														required
 													/>
@@ -3533,6 +3621,10 @@ export default function OrgWorkspacePage() {
 													placeholder="Completed CS106B Coding Boot camp and all coding challenges with 100% scores."
 													value={newCertCriteria}
 													onChange={(e) => setNewCertCriteria(e.target.value)}
+													autoComplete="off"
+													autoCorrect="off"
+													autoCapitalize="off"
+													spellCheck={false}
 													className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition h-20"
 													required
 												/>
@@ -3678,6 +3770,10 @@ export default function OrgWorkspacePage() {
 														<textarea
 															name="coverLetter"
 															placeholder="Introduce yourself..."
+															autoComplete="off"
+															autoCorrect="off"
+															autoCapitalize="off"
+															spellCheck={false}
 															className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition h-20"
 															required
 														/>
@@ -3689,6 +3785,10 @@ export default function OrgWorkspacePage() {
 																type="text"
 																name="githubUrl"
 																placeholder="https://github.com/..."
+																autoComplete="off"
+																autoCorrect="off"
+																autoCapitalize="off"
+																spellCheck={false}
 																className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition"
 															/>
 														</div>
@@ -3698,6 +3798,10 @@ export default function OrgWorkspacePage() {
 																type="text"
 																name="linkedinUrl"
 																placeholder="https://linkedin.com/in/..."
+																autoComplete="off"
+																autoCorrect="off"
+																autoCapitalize="off"
+																spellCheck={false}
 																className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition"
 															/>
 														</div>
@@ -3875,6 +3979,10 @@ export default function OrgWorkspacePage() {
 																	<input
 																		type="text"
 																		placeholder="Grade (e.g. A+)"
+																		autoComplete="off"
+																		autoCorrect="off"
+																		autoCapitalize="off"
+																		spellCheck={false}
 																		className="w-16 bg-dark-layer-2 border border-gray-850 text-[9px] rounded p-1 text-white"
 																		onKeyDown={(e) => {
 																			if (e.key === "Enter") {
@@ -3885,6 +3993,10 @@ export default function OrgWorkspacePage() {
 																	<input
 																		type="number"
 																		placeholder="Att"
+																		autoComplete="off"
+																		autoCorrect="off"
+																		autoCapitalize="off"
+																		spellCheck={false}
 																		className="w-12 bg-dark-layer-2 border border-gray-850 text-[9px] rounded p-1 text-white"
 																		onKeyDown={(e) => {
 																			if (e.key === "Enter") {
@@ -3915,6 +4027,10 @@ export default function OrgWorkspacePage() {
 															placeholder="CS106B..."
 															value={newCourseCode}
 															onChange={(e) => setNewCourseCode(e.target.value)}
+															autoComplete="off"
+															autoCorrect="off"
+															autoCapitalize="off"
+															spellCheck={false}
 															className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition"
 															required
 														/>
@@ -3926,6 +4042,10 @@ export default function OrgWorkspacePage() {
 															placeholder="Data Structures..."
 															value={newCourseTitle}
 															onChange={(e) => setNewCourseTitle(e.target.value)}
+															autoComplete="off"
+															autoCorrect="off"
+															autoCapitalize="off"
+															spellCheck={false}
 															className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition"
 															required
 														/>
@@ -3937,6 +4057,10 @@ export default function OrgWorkspacePage() {
 															placeholder="Spring 2027..."
 															value={newCourseSemester}
 															onChange={(e) => setNewCourseSemester(e.target.value)}
+															autoComplete="off"
+															autoCorrect="off"
+															autoCapitalize="off"
+															spellCheck={false}
 															className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition"
 															required
 														/>
@@ -3949,6 +4073,10 @@ export default function OrgWorkspacePage() {
 														placeholder="Enter syllabus details..."
 														value={newCourseSyllabus}
 														onChange={(e) => setNewCourseSyllabus(e.target.value)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition h-20"
 													/>
 												</div>
@@ -4027,6 +4155,10 @@ export default function OrgWorkspacePage() {
 													const arr = e.target.value.split(",").map((s) => s.trim());
 													setUserResume({ ...userResume, skills: arr });
 												}}
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition"
 											/>
 										</div>
@@ -4040,6 +4172,10 @@ export default function OrgWorkspacePage() {
 													const arr = e.target.value.split(",").map((s) => s.trim());
 													setUserResume({ ...userResume, programmingLanguages: arr });
 												}}
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition"
 											/>
 										</div>
@@ -4050,6 +4186,10 @@ export default function OrgWorkspacePage() {
 									<h3 className="font-bold text-white text-xs border-b border-gray-800 pb-2">Experience & Career History</h3>
 									<textarea
 										placeholder="Describe your current and previous professional engineering roles..."
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition h-24"
 										value={userResume?.experienceDescription || ""}
 										onChange={(e) => setUserResume({ ...userResume, experienceDescription: e.target.value })}
@@ -4060,6 +4200,10 @@ export default function OrgWorkspacePage() {
 									<h3 className="font-bold text-white text-xs border-b border-gray-800 pb-2">Academic Credentials</h3>
 									<textarea
 										placeholder="School name, major, degree, graduation year..."
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-dark-layer-1 border border-gray-850 text-xs rounded-xl p-3 text-white outline-none focus:border-brand-orange transition h-20"
 										value={userResume?.educationDescription || ""}
 										onChange={(e) => setUserResume({ ...userResume, educationDescription: e.target.value })}
@@ -4112,6 +4256,10 @@ export default function OrgWorkspacePage() {
 												<textarea
 													value={selectedPrivateProblem.description}
 													onChange={(e) => setSelectedPrivateProblem({ ...selectedPrivateProblem, description: e.target.value })}
+													autoComplete="off"
+													autoCorrect="off"
+													autoCapitalize="off"
+													spellCheck={false}
 													className="w-full bg-dark-layer-1 border border-gray-800 focus:border-brand-orange text-xs rounded-lg p-3 text-white outline-none transition h-32"
 												/>
 											</div>
@@ -4221,6 +4369,10 @@ export default function OrgWorkspacePage() {
 													placeholder="Example inputs (e.g. 5\n1 2 3 4 5)..."
 													value={inputTestExample}
 													onChange={(e) => setInputTestExample(e.target.value)}
+													autoComplete="off"
+													autoCorrect="off"
+													autoCapitalize="off"
+													spellCheck={false}
 													className="w-full bg-dark-layer-1 border border-gray-800 focus:border-brand-orange text-xs rounded-lg p-2 text-white outline-none font-mono transition h-14"
 												/>
 											</div>
@@ -4232,6 +4384,10 @@ export default function OrgWorkspacePage() {
 													placeholder="Example expected outputs..."
 													value={outputTestExample}
 													onChange={(e) => setOutputTestExample(e.target.value)}
+													autoComplete="off"
+													autoCorrect="off"
+													autoCapitalize="off"
+													spellCheck={false}
 													className="w-full bg-dark-layer-1 border border-gray-800 focus:border-brand-orange text-xs rounded-lg p-2 text-white outline-none font-mono transition h-14"
 												/>
 											</div>
@@ -4243,6 +4399,10 @@ export default function OrgWorkspacePage() {
 													placeholder="import random\nprint(random.randint(1, 100))"
 													value={generatorScript}
 													onChange={(e) => setGeneratorScript(e.target.value)}
+													autoComplete="off"
+													autoCorrect="off"
+													autoCapitalize="off"
+													spellCheck={false}
 													className="w-full bg-dark-layer-1 border border-gray-800 focus:border-brand-orange text-xs rounded-lg p-2 text-white outline-none font-mono transition h-16"
 												/>
 											</div>
@@ -4312,6 +4472,10 @@ export default function OrgWorkspacePage() {
 											placeholder="Search private gym problemset..."
 											value={privateProblemSearch}
 											onChange={(e) => setPrivateProblemSearch(e.target.value)}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className="bg-dark-layer-2 border border-gray-850 text-xs rounded-lg pl-8 pr-3 py-2 w-full outline-none focus:border-brand-orange mb-4"
 										/>
 									</div>
@@ -4376,6 +4540,10 @@ export default function OrgWorkspacePage() {
 														placeholder="Problem Title..."
 														value={newPrivateProblemTitle}
 														onChange={(e) => setNewPrivateProblemTitle(e.target.value)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition"
 														required
 													/>
@@ -4385,6 +4553,10 @@ export default function OrgWorkspacePage() {
 														placeholder="Write problem statement in Markdown format..."
 														value={newPrivateProblemDesc}
 														onChange={(e) => setNewPrivateProblemDesc(e.target.value)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition h-24"
 														required
 													/>
@@ -4525,6 +4697,10 @@ export default function OrgWorkspacePage() {
 												type="text"
 												placeholder="Invite User UID..."
 												id="team-invite-uid"
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className="bg-dark-layer-1 border border-gray-800 text-xs rounded-lg px-3 py-2 outline-none w-52 focus:border-brand-orange"
 											/>
 											<button
@@ -4621,6 +4797,10 @@ export default function OrgWorkspacePage() {
 													placeholder="Competitor Team Name..."
 													value={newTeamName}
 													onChange={(e) => setNewTeamName(e.target.value)}
+													autoComplete="off"
+													autoCorrect="off"
+													autoCapitalize="off"
+													spellCheck={false}
 													className="bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl px-4 py-3 text-white outline-none w-72 transition"
 													required
 												/>
@@ -4714,6 +4894,10 @@ export default function OrgWorkspacePage() {
 												placeholder="Roadmap Title (e.g. 5-Week Binary Search Camp)..."
 												value={newRoadmapTitle}
 												onChange={(e) => setNewRoadmapTitle(e.target.value)}
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition"
 												required
 											/>
@@ -4723,6 +4907,10 @@ export default function OrgWorkspacePage() {
 												placeholder="Describe target audience and syllabus learning objectives..."
 												value={newRoadmapDesc}
 												onChange={(e) => setNewRoadmapDesc(e.target.value)}
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition h-20"
 												required
 											/>
@@ -4801,6 +4989,10 @@ export default function OrgWorkspacePage() {
 												placeholder="Assignment Title..."
 												value={newAssignmentTitle}
 												onChange={(e) => setNewAssignmentTitle(e.target.value)}
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition"
 												required
 											/>
@@ -4809,6 +5001,10 @@ export default function OrgWorkspacePage() {
 												placeholder="Problem IDs (comma separated, e.g. two-sum, contains-duplicate)..."
 												value={newAssignmentProblems}
 												onChange={(e) => setNewAssignmentProblems(e.target.value)}
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition"
 												required
 											/>
@@ -4818,6 +5014,10 @@ export default function OrgWorkspacePage() {
 												placeholder="Write homework assignment description instructions..."
 												value={newAssignmentDesc}
 												onChange={(e) => setNewAssignmentDesc(e.target.value)}
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition h-20"
 												required
 											/>
@@ -4847,6 +5047,10 @@ export default function OrgWorkspacePage() {
 													placeholder="Leave empty if 'All Members'..."
 													value={newAssignmentAssigneeIds}
 													onChange={(e) => setNewAssignmentAssigneeIds(e.target.value)}
+													autoComplete="off"
+													autoCorrect="off"
+													autoCapitalize="off"
+													spellCheck={false}
 													className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition"
 												/>
 											</div>
@@ -5028,6 +5232,10 @@ export default function OrgWorkspacePage() {
 										type="text"
 										value={org.name}
 										onChange={(e) => setOrg({ ...org, name: e.target.value })}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition"
 										required
 									/>
@@ -5074,6 +5282,10 @@ export default function OrgWorkspacePage() {
 											type="text"
 											value={org.location}
 											onChange={(e) => setOrg({ ...org, location: e.target.value })}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition"
 										/>
 									</div>
@@ -5085,6 +5297,10 @@ export default function OrgWorkspacePage() {
 											type="text"
 											value={org.country}
 											onChange={(e) => setOrg({ ...org, country: e.target.value })}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition"
 										/>
 									</div>
@@ -5098,6 +5314,10 @@ export default function OrgWorkspacePage() {
 										type="text"
 										value={org.website}
 										onChange={(e) => setOrg({ ...org, website: e.target.value })}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition"
 									/>
 								</div>
@@ -5110,6 +5330,10 @@ export default function OrgWorkspacePage() {
 										type="email"
 										value={org.contactEmail}
 										onChange={(e) => setOrg({ ...org, contactEmail: e.target.value })}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition"
 									/>
 								</div>
@@ -5121,6 +5345,10 @@ export default function OrgWorkspacePage() {
 									<textarea
 										value={org.description}
 										onChange={(e) => setOrg({ ...org, description: e.target.value })}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-dark-layer-2 border border-gray-850 focus:border-brand-orange text-xs rounded-xl p-3 text-white outline-none transition h-24"
 									/>
 								</div>

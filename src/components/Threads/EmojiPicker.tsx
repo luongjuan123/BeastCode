@@ -73,6 +73,10 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({ onSelect, onClose }) => {
 					value={searchQuery}
 					onChange={(e) => setSearchQuery(e.target.value)}
 					placeholder="Search emojis..."
+					autoComplete="off"
+					autoCorrect="off"
+					autoCapitalize="off"
+					spellCheck={false}
 					className="bg-transparent text-[11px] text-[var(--text-primary)] outline-none flex-1 placeholder:text-[var(--text-muted)] !border-0 !p-0 !ring-0 !shadow-none"
 				/>
 			</div>

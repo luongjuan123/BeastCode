@@ -260,6 +260,10 @@ const TestcaseScorecard: React.FC<TestcaseScorecardProps> = ({
 							type="text"
 							value={jumpInput}
 							onChange={(e) => setJumpInput(e.target.value)}
+							autoComplete="off"
+							autoCorrect="off"
+							autoCapitalize="off"
+							spellCheck={false}
 							placeholder={`1-${totalCount}`}
 							className="bg-transparent font-mono text-xs text-text-primary outline-none border-none p-0 focus:ring-0 w-10 text-center"
 						/>

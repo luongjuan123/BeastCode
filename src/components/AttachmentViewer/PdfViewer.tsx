@@ -341,6 +341,10 @@ const PdfViewer: React.FC<PdfViewerProps> = ({
 						onChange={(e) => setSearchQuery(e.target.value)}
 						onKeyDown={(e) => e.key === "Enter" && handleSearch()}
 						placeholder="Search text in document..."
+						autoComplete="off"
+						autoCorrect="off"
+						autoCapitalize="off"
+						spellCheck={false}
 						className="bg-transparent text-xs text-[var(--text-primary)] outline-none flex-grow placeholder:text-[var(--text-muted)] border-0 p-0 ring-0 focus:ring-0"
 					/>
 					{searchQuery && (

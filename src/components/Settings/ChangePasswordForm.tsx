@@ -39,6 +39,9 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
 					onChange={(e) => onChange(e.target.value)}
 					disabled={disabled}
 					autoComplete={autoComplete}
+					autoCorrect="off"
+					autoCapitalize="off"
+					spellCheck={false}
 					placeholder={placeholder}
 					className={`w-full bc-input-shell rounded-lg py-2.5 px-3.5 pr-11 text-sm transition-all duration-200 outline-none ${
 						error ? "border-bc-error focus:border-bc-error" : "focus:border-brand-orange"

@@ -254,6 +254,10 @@ export const ThreadTagsTab: React.FC<ThreadTagsTabProps> = ({ triggerStatusMessa
 					placeholder="Search thread tags..."
 					value={searchQuery}
 					onChange={(e) => setSearchQuery(e.target.value)}
+					autoComplete="off"
+					autoCorrect="off"
+					autoCapitalize="off"
+					spellCheck={false}
 					className="w-full px-3.5 py-2 text-xs rounded-xl outline-none border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-primary)] focus:border-[var(--brand-orange)]"
 				/>
 			</div>
@@ -408,6 +412,10 @@ export const ThreadTagsTab: React.FC<ThreadTagsTabProps> = ({ triggerStatusMessa
 											id: prev.createdAt ? prev.id : slugify(e.target.value)
 										}))
 									}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full px-3 py-2 text-xs rounded-xl bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] text-[var(--text-primary)] outline-none focus:border-[var(--brand-orange)] transition"
 								/>
 							</div>
@@ -420,6 +428,10 @@ export const ThreadTagsTab: React.FC<ThreadTagsTabProps> = ({ triggerStatusMessa
 									disabled={!!editingTag.createdAt}
 									value={editingTag.id || ""}
 									onChange={(e) => setEditingTag((prev: any) => ({ ...prev, id: slugify(e.target.value) }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full px-3 py-2 text-xs rounded-xl bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] text-[var(--text-primary)] outline-none focus:border-[var(--brand-orange)] disabled:opacity-50 transition"
 								/>
 							</div>
@@ -430,6 +442,10 @@ export const ThreadTagsTab: React.FC<ThreadTagsTabProps> = ({ triggerStatusMessa
 									rows={3}
 									value={editingTag.description || ""}
 									onChange={(e) => setEditingTag((prev) => ({ ...prev, description: e.target.value }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full px-3 py-2 text-xs rounded-xl bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] text-[var(--text-primary)] outline-none focus:border-[var(--brand-orange)] transition"
 								/>
 							</div>
@@ -448,6 +464,10 @@ export const ThreadTagsTab: React.FC<ThreadTagsTabProps> = ({ triggerStatusMessa
 											type="text"
 											value={editingTag.color || "#3B82F6"}
 											onChange={(e) => setEditingTag((prev) => ({ ...prev, color: e.target.value }))}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className="w-full px-2.5 py-1.5 text-xs rounded-lg bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] text-[var(--text-primary)] font-mono outline-none focus:border-[var(--brand-orange)]"
 										/>
 									</div>
@@ -459,6 +479,10 @@ export const ThreadTagsTab: React.FC<ThreadTagsTabProps> = ({ triggerStatusMessa
 										type="text"
 										value={editingTag.icon || "fa-comments"}
 										onChange={(e) => setEditingTag((prev) => ({ ...prev, icon: e.target.value }))}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full px-3 py-2 text-xs rounded-xl bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] text-[var(--text-primary)] outline-none focus:border-[var(--brand-orange)] transition"
 									/>
 								</div>

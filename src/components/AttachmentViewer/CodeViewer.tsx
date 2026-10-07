@@ -121,6 +121,10 @@ const CodeViewer: React.FC<CodeViewerProps> = ({
 							value={searchTerm}
 							onChange={(e) => setSearchTerm(e.target.value)}
 							placeholder="Find..."
+							autoComplete="off"
+							autoCorrect="off"
+							autoCapitalize="off"
+							spellCheck={false}
 							className="bg-transparent text-xs text-[var(--text-primary)] outline-none w-28 placeholder:text-[var(--text-muted)] border-0 p-0 focus:ring-0"
 						/>
 					</div>

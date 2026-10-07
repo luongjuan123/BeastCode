@@ -145,6 +145,10 @@ export const ReportMessageModal: React.FC<ReportMessageModalProps> = ({
 							onChange={(e) => setReason(e.target.value)}
 							rows={3}
 							placeholder="Provide details about why this message violates community guidelines..."
+							autoComplete="off"
+							autoCorrect="off"
+							autoCapitalize="off"
+							spellCheck={false}
 							className="p-3 rounded-xl bg-dark-fill-3 border border-border-default text-text-primary focus:border-brand-orange focus:outline-none transition resize-none"
 							autoFocus
 						/>

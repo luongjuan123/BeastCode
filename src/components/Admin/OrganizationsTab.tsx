@@ -83,6 +83,10 @@ function AppealCard({ appeal, resolveAppeal }: { appeal: any; resolveAppeal: (ap
 						placeholder="Write moderator decision notes..."
 						value={notes}
 						onChange={(e) => setNotes(e.target.value)}
+						autoComplete="off"
+						autoCorrect="off"
+						autoCapitalize="off"
+						spellCheck={false}
 						className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-2.5 text-white outline-none focus:border-emerald-500 transition"
 						rows={2}
 					/>
@@ -429,6 +433,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 									placeholder="Search name, UID, owner..."
 									value={searchQuery}
 									onChange={(e) => setSearchQuery(e.target.value)}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md pl-9 pr-4 py-2.5 outline-none focus:border-emerald-500 transition"
 								/>
 							</div>
@@ -988,6 +996,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 									type="text"
 									value={editForm.displayName}
 									onChange={(e) => setEditForm((prev) => ({ ...prev, displayName: e.target.value }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
 									required
 								/>
@@ -998,6 +1010,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 								<textarea
 									value={editForm.description}
 									onChange={(e) => setEditForm((prev) => ({ ...prev, description: e.target.value }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
 									rows={3}
 								/>
@@ -1010,6 +1026,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 										type="text"
 										value={editForm.country}
 										onChange={(e) => setEditForm((prev) => ({ ...prev, country: e.target.value }))}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
 									/>
 								</div>
@@ -1019,6 +1039,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 										type="text"
 										value={editForm.university}
 										onChange={(e) => setEditForm((prev) => ({ ...prev, university: e.target.value }))}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
 									/>
 								</div>
@@ -1074,6 +1098,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 									placeholder="Paste target user UID..."
 									value={newOwnerUid}
 									onChange={(e) => setNewOwnerUid(e.target.value)}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
 									required
 								/>
@@ -1125,6 +1153,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 										type="text"
 										value={warningForm.reason}
 										onChange={(e) => setWarningForm((prev) => ({ ...prev, reason: e.target.value }))}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-2.5 text-white outline-none focus:border-emerald-500 transition"
 										required
 									/>
@@ -1166,6 +1198,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 										type="number"
 										value={warningForm.expiresDays}
 										onChange={(e) => setWarningForm((prev) => ({ ...prev, expiresDays: parseInt(e.target.value, 10) }))}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-2.5 text-white outline-none focus:border-emerald-500 transition"
 										required
 									/>
@@ -1178,6 +1214,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 									value={warningForm.description}
 									onChange={(e) => setWarningForm((prev) => ({ ...prev, description: e.target.value }))}
 									placeholder="Detail the infraction..."
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-2.5 text-white outline-none focus:border-emerald-500 transition"
 									rows={3}
 									required
@@ -1229,6 +1269,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 									type="number"
 									value={suspendForm.durationDays}
 									onChange={(e) => setSuspendForm((prev) => ({ ...prev, durationDays: parseInt(e.target.value, 10) }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
 									required
 								/>
@@ -1239,6 +1283,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 								<textarea
 									value={suspendForm.reason}
 									onChange={(e) => setSuspendForm((prev) => ({ ...prev, reason: e.target.value }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
 									rows={3}
 									required
@@ -1293,6 +1341,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 								<textarea
 									value={banForm.reason}
 									onChange={(e) => setBanForm((prev) => ({ ...prev, reason: e.target.value }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
 									rows={3}
 									required
@@ -1414,6 +1466,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 									type="text"
 									value={announcementForm.title}
 									onChange={(e) => setAnnouncementForm((prev) => ({ ...prev, title: e.target.value }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
 									placeholder="Critical system notice..."
 									required
@@ -1425,6 +1481,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 								<textarea
 									value={announcementForm.content}
 									onChange={(e) => setAnnouncementForm((prev) => ({ ...prev, content: e.target.value }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
 									placeholder="Write instructions, details, or policies..."
 									rows={4}
@@ -1478,6 +1538,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 										type="text"
 										value={warningForm.reason}
 										onChange={(e) => setWarningForm((prev) => ({ ...prev, reason: e.target.value }))}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-2.5 text-white outline-none focus:border-emerald-500 transition"
 										required
 									/>
@@ -1519,6 +1583,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 										type="number"
 										value={warningForm.expiresDays}
 										onChange={(e) => setWarningForm((prev) => ({ ...prev, expiresDays: parseInt(e.target.value, 10) }))}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-2.5 text-white outline-none focus:border-emerald-500 transition"
 										required
 									/>
@@ -1531,6 +1599,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 									value={warningForm.description}
 									onChange={(e) => setWarningForm((prev) => ({ ...prev, description: e.target.value }))}
 									placeholder="Describe the reason for the bulk warning..."
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-2.5 text-white outline-none focus:border-emerald-500 transition"
 									rows={3}
 									required
@@ -1581,6 +1653,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 									type="number"
 									value={suspendForm.durationDays}
 									onChange={(e) => setSuspendForm((prev) => ({ ...prev, durationDays: parseInt(e.target.value, 10) }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
 									required
 								/>
@@ -1591,6 +1667,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 								<textarea
 									value={suspendForm.reason}
 									onChange={(e) => setSuspendForm((prev) => ({ ...prev, reason: e.target.value }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
 									rows={3}
 									required
@@ -1644,6 +1724,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 								<textarea
 									value={banForm.reason}
 									onChange={(e) => setBanForm((prev) => ({ ...prev, reason: e.target.value }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
 									rows={3}
 									required
@@ -1694,6 +1778,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 									type="text"
 									value={announcementForm.title}
 									onChange={(e) => setAnnouncementForm((prev) => ({ ...prev, title: e.target.value }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
 									placeholder="Critical notification..."
 									required
@@ -1705,6 +1793,10 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 								<textarea
 									value={announcementForm.content}
 									onChange={(e) => setAnnouncementForm((prev) => ({ ...prev, content: e.target.value }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
 									placeholder="Describe the details..."
 									rows={4}

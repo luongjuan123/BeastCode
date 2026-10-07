@@ -629,6 +629,10 @@ export default function ContestsPage() {
 							placeholder='Enter passcode'
 							value={passInput}
 							onChange={(e) => setPassInput(e.target.value)}
+							autoComplete='off'
+							autoCorrect='off'
+							autoCapitalize='off'
+							spellCheck={false}
 							className='w-full p-2 text-xs rounded-md outline-none border border-border-subtle bg-bg-base focus:border-accent font-mono mb-4 text-text-primary'
 							required
 							autoFocus

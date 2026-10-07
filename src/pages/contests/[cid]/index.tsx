@@ -716,6 +716,10 @@ export default function ContestPortal() {
 								placeholder='Enter passcode'
 								value={passcodeInput}
 								onChange={(e) => setPasscodeInput(e.target.value)}
+								autoComplete='off'
+								autoCorrect='off'
+								autoCapitalize='off'
+								spellCheck={false}
 								className='w-full px-3 py-2 text-xs rounded-md outline-none border border-border-subtle bg-bg-base focus:border-accent font-mono text-center text-text-primary'
 								required
 								autoFocus
@@ -1280,6 +1284,10 @@ export default function ContestPortal() {
 											value={clarQuestion}
 											onChange={(e) => setClarQuestion(e.target.value)}
 											rows={3}
+											autoComplete='off'
+											autoCorrect='off'
+											autoCapitalize='off'
+											spellCheck={false}
 											className='w-full p-3 text-sm rounded-xl outline-none border border-border-default bg-dark-layer-2 focus:border-brand-orange text-white'
 											required
 										/>
@@ -1358,6 +1366,10 @@ export default function ContestPortal() {
 											placeholder='Write a comment, share rank, or ask a question...'
 											value={newComment}
 											onChange={(e) => setNewComment(e.target.value)}
+											autoComplete='off'
+											autoCorrect='off'
+											autoCapitalize='off'
+											spellCheck={false}
 											className='flex-1 p-2.5 text-xs rounded-xl outline-none border border-border-default bg-dark-layer-2 focus:border-brand-orange text-white'
 											required
 										/>

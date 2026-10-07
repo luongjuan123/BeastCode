@@ -174,7 +174,7 @@ const EmailVerificationModal: React.FC<EmailVerificationModalProps> = ({ isOpen,
 								value={newEmail}
 								onChange={(e) => setNewEmail(sanitizeAutofilledEmail(e.target.value))}
 								required
-								autoComplete="email"
+								autoComplete="off"
 								autoCorrect="off"
 								autoCapitalize="off"
 								spellCheck={false}

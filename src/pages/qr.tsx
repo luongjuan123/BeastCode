@@ -124,6 +124,9 @@ function StripeCardForm({ amount }: { amount: number }) {
 					onChange={(e) => setCardholderName(e.target.value.toUpperCase())}
 					placeholder="JOHN DOE"
 					required
+					autoComplete="cc-name"
+					autoCorrect="off"
+					spellCheck={false}
 					disabled={processing}
 					className="w-full border rounded-md p-3 text-sm uppercase focus-visible:outline-none transition-all duration-300 focus-visible:border-emerald-500 glow-focus"
 					style={{
@@ -391,6 +394,9 @@ function MockCardForm({ amount }: { amount: number }) {
 					onChange={handleCardNameChange}
 					placeholder="JOHN DOE"
 					required
+					autoComplete="cc-name"
+					autoCorrect="off"
+					spellCheck={false}
 					disabled={submitState === "processing"}
 					className={`w-full border rounded-md p-3 text-sm placeholder:text-text-muted focus-visible:outline-none transition-all duration-300 uppercase glow-focus ${formErrors.cardName ? "border-red-500 glow-error" : "focus-visible:border-emerald-500"
 						}`}
@@ -414,6 +420,10 @@ function MockCardForm({ amount }: { amount: number }) {
 						onChange={handleCardNumberChange}
 						placeholder="4000 1234 5678 9010"
 						required
+						autoComplete="cc-number"
+						autoCorrect="off"
+						autoCapitalize="off"
+						spellCheck={false}
 						disabled={submitState === "processing"}
 						className={`w-full border rounded-md p-3 text-sm placeholder:text-text-muted focus-visible:outline-none transition-all duration-300 pr-20 font-mono glow-focus ${formErrors.cardNumber ? "border-red-500 glow-error" : "focus-visible:border-emerald-500"
 							}`}
@@ -447,6 +457,10 @@ function MockCardForm({ amount }: { amount: number }) {
 						onChange={handleExpiryChange}
 						placeholder="MM/YY"
 						required
+						autoComplete="cc-exp"
+						autoCorrect="off"
+						autoCapitalize="off"
+						spellCheck={false}
 						disabled={submitState === "processing"}
 						className={`w-full border rounded-md p-3 text-sm placeholder:text-text-muted focus-visible:outline-none transition-all duration-300 font-mono glow-focus ${formErrors.cardExpiry ? "border-red-500 glow-error" : "focus-visible:border-emerald-500"
 							}`}
@@ -469,6 +483,10 @@ function MockCardForm({ amount }: { amount: number }) {
 						onChange={handleCvcChange}
 						placeholder="•••"
 						required
+						autoComplete="cc-csc"
+						autoCorrect="off"
+						autoCapitalize="off"
+						spellCheck={false}
 						disabled={submitState === "processing"}
 						className={`w-full border rounded-md p-3 text-sm placeholder:text-text-muted focus-visible:outline-none transition-all duration-300 font-mono glow-focus ${formErrors.cardCvc ? "border-red-500 glow-error" : "focus-visible:border-emerald-500"
 							}`}
@@ -591,6 +609,7 @@ export default function QRPage() {
 							type="number"
 							placeholder="Other"
 							value={customAmount}
+							autoComplete="off"
 							onChange={(e) => {
 								const val = e.target.value;
 								setCustomAmount(val);

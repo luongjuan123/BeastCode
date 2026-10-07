@@ -823,6 +823,10 @@ const ThreadsBoard: React.FC<ThreadsBoardProps> = ({
 								value={inlineReplyText}
 								onChange={(e) => setInlineReplyText(e.target.value)}
 								placeholder={`Reply to @${focusedThread.displayName}...`}
+								autoComplete="off"
+								autoCorrect="off"
+								autoCapitalize="off"
+								spellCheck={false}
 								className="flex-grow bg-transparent border-0 p-0 text-xs text-text-primary placeholder:text-text-muted outline-none focus:ring-0"
 							/>
 
@@ -900,6 +904,10 @@ const ThreadsBoard: React.FC<ThreadsBoardProps> = ({
 							value={searchQuery}
 							onChange={(e) => setSearchQuery(e.target.value)}
 							placeholder="Search thread title, content, author, hashtag (#), language..."
+							autoComplete="off"
+							autoCorrect="off"
+							autoCapitalize="off"
+							spellCheck={false}
 							className="bg-transparent text-xs text-text-primary outline-none flex-grow placeholder:text-text-muted border-0 p-0 ring-0"
 						/>
 						{searchQuery && (
@@ -961,6 +969,10 @@ const ThreadsBoard: React.FC<ThreadsBoardProps> = ({
 								value={searchProblem}
 								onChange={(e) => setSearchProblem(e.target.value)}
 								placeholder="Problem title or ID..."
+								autoComplete="off"
+								autoCorrect="off"
+								autoCapitalize="off"
+								spellCheck={false}
 								className="w-full bg-bg-surface border border-border-default text-text-primary placeholder:text-text-muted rounded-md px-2.5 py-1 text-xs outline-none focus:border-accent-brand"
 							/>
 						</div>
@@ -972,6 +984,10 @@ const ThreadsBoard: React.FC<ThreadsBoardProps> = ({
 								value={searchAuthor}
 								onChange={(e) => setSearchAuthor(e.target.value)}
 								placeholder="Author handle..."
+								autoComplete="off"
+								autoCorrect="off"
+								autoCapitalize="off"
+								spellCheck={false}
 								className="w-full bg-bg-surface border border-border-default text-text-primary placeholder:text-text-muted rounded-md px-2.5 py-1 text-xs outline-none focus:border-accent-brand"
 							/>
 						</div>
@@ -983,6 +999,10 @@ const ThreadsBoard: React.FC<ThreadsBoardProps> = ({
 								value={searchHashtag}
 								onChange={(e) => setSearchHashtag(e.target.value)}
 								placeholder="e.g. dynamicprogramming"
+								autoComplete="off"
+								autoCorrect="off"
+								autoCapitalize="off"
+								spellCheck={false}
 								className="w-full bg-bg-surface border border-border-default text-text-primary placeholder:text-text-muted rounded-md px-2.5 py-1 text-xs outline-none focus:border-accent-brand"
 							/>
 						</div>

@@ -104,6 +104,10 @@ export default function Home() {
 							placeholder="Search by title, tag, or topic..."
 							value={searchQuery}
 							onChange={(e) => setSearchQuery(e.target.value)}
+							autoComplete="off"
+							autoCorrect="off"
+							autoCapitalize="off"
+							spellCheck={false}
 							className="w-full pl-8 pr-3 py-1.5 text-xs rounded-md border border-border-default bg-[var(--bg-surface)] text-text-primary placeholder:text-text-muted focus:border-accent focus:outline-none"
 						/>
 					</div>

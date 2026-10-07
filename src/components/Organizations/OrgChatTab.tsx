@@ -219,6 +219,10 @@ export const OrgChatTab: React.FC<OrgChatTabProps> = ({ org, user, userRole }) =
 								value={newChannelTitle}
 								onChange={(e) => setNewChannelTitle(e.target.value)}
 								placeholder="e.g. general, announcements, contests"
+								autoComplete="off"
+								autoCorrect="off"
+								autoCapitalize="off"
+								spellCheck={false}
 								className="w-full text-xs px-3 py-2 rounded-md bg-bg-elevated border border-border-default text-text-primary focus:border-accent focus:outline-none font-sans"
 								required
 								autoFocus

@@ -93,6 +93,10 @@ export const CodeSnippetModal: React.FC<CodeSnippetModalProps> = ({
 							onChange={(e) => setContent(e.target.value)}
 							placeholder={`// Paste your ${language} code here...`}
 							rows={10}
+							autoComplete="off"
+							autoCorrect="off"
+							autoCapitalize="off"
+							spellCheck={false}
 							className="w-full font-mono text-xs p-3.5 rounded-xl bg-dark-fill-3 border border-border-default text-text-primary focus:border-brand-orange focus:outline-none resize-none"
 							autoFocus
 							required
@@ -109,6 +113,10 @@ export const CodeSnippetModal: React.FC<CodeSnippetModalProps> = ({
 							value={comment}
 							onChange={(e) => setComment(e.target.value)}
 							placeholder="Explain this snippet or question..."
+							autoComplete="off"
+							autoCorrect="off"
+							autoCapitalize="off"
+							spellCheck={false}
 							className="w-full text-xs px-3.5 py-2.5 rounded-xl bg-dark-fill-3 border border-border-default text-text-primary focus:border-brand-orange focus:outline-none"
 						/>
 					</div>

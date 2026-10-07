@@ -261,6 +261,10 @@ export const ProblemsTab: React.FC<ProblemsTabProps> = ({
 							value={searchQuery}
 							onChange={(e) => setSearchQuery(e.target.value)}
 							placeholder="Search problems by name or ID..."
+							autoComplete="off"
+							autoCorrect="off"
+							autoCapitalize="off"
+							spellCheck={false}
 							className="bg-transparent text-xs text-[var(--text-primary)] outline-none w-full placeholder:text-[var(--text-muted)] border-0 p-0 focus:ring-0"
 						/>
 						{searchQuery && (
@@ -614,6 +618,10 @@ export const ProblemsTab: React.FC<ProblemsTabProps> = ({
 								value={bulkTagsInput}
 								onChange={(e) => setBulkTagsInput(e.target.value)}
 								placeholder="e.g. arrays, dynamic-programming, math"
+								autoComplete="off"
+								autoCorrect="off"
+								autoCapitalize="off"
+								spellCheck={false}
 								className="bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] text-[var(--text-primary)] text-xs rounded-md p-2.5 w-full outline-none focus:border-emerald-500"
 							/>
 						</div>
@@ -695,6 +703,10 @@ export const ProblemsTab: React.FC<ProblemsTabProps> = ({
 										id="bulkTimeoutMs"
 										value={bulkTimeoutMs}
 										onChange={(e) => setBulkTimeoutMs(Number(e.target.value) || 0)}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-primary)] text-xs rounded-md p-2 w-full outline-none"
 									/>
 								</div>
@@ -707,6 +719,10 @@ export const ProblemsTab: React.FC<ProblemsTabProps> = ({
 										id="bulkMemoryLimitMb"
 										value={bulkMemoryLimitMb}
 										onChange={(e) => setBulkMemoryLimitMb(Number(e.target.value) || 0)}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-primary)] text-xs rounded-md p-2 w-full outline-none"
 									/>
 								</div>
@@ -719,6 +735,10 @@ export const ProblemsTab: React.FC<ProblemsTabProps> = ({
 										id="bulkMaxOutputSizeChars"
 										value={bulkMaxOutputSizeChars}
 										onChange={(e) => setBulkMaxOutputSizeChars(Number(e.target.value) || 0)}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-primary)] text-xs rounded-md p-2 w-full outline-none"
 									/>
 								</div>

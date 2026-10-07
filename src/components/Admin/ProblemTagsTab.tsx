@@ -253,6 +253,10 @@ export const ProblemTagsTab: React.FC<ProblemTagsTabProps> = ({ triggerStatusMes
 					placeholder="Search problem tags..."
 					value={searchQuery}
 					onChange={(e) => setSearchQuery(e.target.value)}
+					autoComplete="off"
+					autoCorrect="off"
+					autoCapitalize="off"
+					spellCheck={false}
 					className="w-full px-3.5 py-2 text-xs rounded-xl outline-none border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-primary)] focus:border-[var(--brand-orange)]"
 				/>
 			</div>
@@ -400,6 +404,10 @@ export const ProblemTagsTab: React.FC<ProblemTagsTabProps> = ({ triggerStatusMes
 											id: prev.createdAt ? prev.id : slugify(e.target.value)
 										}))
 									}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full px-3 py-2 text-xs rounded-xl bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] text-[var(--text-primary)] outline-none focus:border-[var(--brand-orange)] transition"
 								/>
 							</div>
@@ -412,6 +420,10 @@ export const ProblemTagsTab: React.FC<ProblemTagsTabProps> = ({ triggerStatusMes
 									disabled={!!editingTag.createdAt}
 									value={editingTag.id || ""}
 									onChange={(e) => setEditingTag((prev: any) => ({ ...prev, id: slugify(e.target.value) }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full px-3 py-2 text-xs rounded-xl bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] text-[var(--text-primary)] outline-none focus:border-[var(--brand-orange)] disabled:opacity-50 transition"
 								/>
 							</div>
@@ -422,6 +434,10 @@ export const ProblemTagsTab: React.FC<ProblemTagsTabProps> = ({ triggerStatusMes
 									rows={3}
 									value={editingTag.description || ""}
 									onChange={(e) => setEditingTag((prev) => ({ ...prev, description: e.target.value }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full px-3 py-2 text-xs rounded-xl bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] text-[var(--text-primary)] outline-none focus:border-[var(--brand-orange)] transition"
 								/>
 							</div>
@@ -432,6 +448,10 @@ export const ProblemTagsTab: React.FC<ProblemTagsTabProps> = ({ triggerStatusMes
 									type="text"
 									value={editingTag.difficultyMetadata || ""}
 									onChange={(e) => setEditingTag((prev) => ({ ...prev, difficultyMetadata: e.target.value }))}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full px-3 py-2 text-xs rounded-xl bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] text-[var(--text-primary)] outline-none focus:border-[var(--brand-orange)] transition"
 								/>
 							</div>

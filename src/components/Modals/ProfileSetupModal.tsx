@@ -288,6 +288,10 @@ const ProfileSetupModal: React.FC<ProfileSetupModalProps> = ({ isOpen, onClose }
 											value={username}
 											onChange={(e) => setUsername(e.target.value)}
 											placeholder="syntax_beast"
+											autoComplete="username"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className="w-full bc-input-shell rounded-xl p-3.5 text-xs placeholder:text-bc-muted transition pr-10"
 										/>
 										<div className="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center">
@@ -374,6 +378,9 @@ const ProfileSetupModal: React.FC<ProfileSetupModalProps> = ({ isOpen, onClose }
 										value={displayName}
 										onChange={(e) => setDisplayName(e.target.value)}
 										placeholder="Nguyen Van A"
+										autoComplete="name"
+										autoCorrect="off"
+										spellCheck={false}
 										className="w-full bc-input-shell rounded-xl p-3 text-xs placeholder:text-bc-muted transition"
 										required
 									/>
@@ -391,6 +398,10 @@ const ProfileSetupModal: React.FC<ProfileSetupModalProps> = ({ isOpen, onClose }
 													value={studentId}
 													onChange={(e) => setStudentId(e.target.value)}
 													placeholder="e.g. 22010234"
+													autoComplete="off"
+													autoCorrect="off"
+													autoCapitalize="off"
+													spellCheck={false}
 													className="w-full bc-input-shell rounded-xl p-3 text-xs placeholder:text-bc-muted font-mono transition"
 													required
 												/>
@@ -405,6 +416,10 @@ const ProfileSetupModal: React.FC<ProfileSetupModalProps> = ({ isOpen, onClose }
 													value={className}
 													onChange={(e) => setClassName(e.target.value)}
 													placeholder="e.g. CSE-2026"
+													autoComplete="off"
+													autoCorrect="off"
+													autoCapitalize="off"
+													spellCheck={false}
 													className="w-full bc-input-shell rounded-xl p-3 text-xs placeholder:text-bc-muted transition"
 													required
 												/>
@@ -420,6 +435,9 @@ const ProfileSetupModal: React.FC<ProfileSetupModalProps> = ({ isOpen, onClose }
 												value={school}
 												onChange={(e) => setSchool(e.target.value)}
 												placeholder="BeastCode University"
+												autoComplete="organization"
+												autoCorrect="off"
+												spellCheck={false}
 												className="w-full bc-input-shell rounded-xl p-3 text-xs placeholder:text-bc-muted transition"
 												required
 											/>
@@ -434,6 +452,9 @@ const ProfileSetupModal: React.FC<ProfileSetupModalProps> = ({ isOpen, onClose }
 												value={faculty}
 												onChange={(e) => setFaculty(e.target.value)}
 												placeholder="e.g. Computer Science & Engineering"
+												autoComplete="off"
+												autoCorrect="off"
+												spellCheck={false}
 												className="w-full bc-input-shell rounded-xl p-3 text-xs placeholder:text-bc-muted transition"
 												required
 											/>

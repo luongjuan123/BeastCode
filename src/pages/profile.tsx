@@ -951,6 +951,9 @@ const ProfilePage: React.FC = () => {
 									type="text"
 									id="displayName"
 									disabled={isReadOnly}
+									autoComplete="name"
+									autoCorrect="off"
+									spellCheck={false}
 									className="border border-border-default outline-none text-sm rounded-md focus:border-accent-brand focus:ring-1 focus:ring-accent-brand/30 block w-full p-2.5 bg-bg-base text-text-primary placeholder:text-text-muted disabled:opacity-50 disabled:cursor-not-allowed transition"
 									placeholder="Nguyen Van A"
 									required
@@ -967,6 +970,10 @@ const ProfilePage: React.FC = () => {
 									type="text"
 									id="username"
 									disabled={isReadOnly || isUsernameLocked}
+									autoComplete="username"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="border border-border-default outline-none text-sm rounded-md focus:border-accent-brand focus:ring-1 focus:ring-accent-brand/30 block w-full p-2.5 bg-bg-base text-text-primary placeholder:text-text-muted font-mono disabled:opacity-50 disabled:cursor-not-allowed transition"
 									placeholder="username"
 									required
@@ -1071,6 +1078,10 @@ const ProfilePage: React.FC = () => {
 											type="text"
 											id="studentId"
 											disabled={isReadOnly}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className="border border-border-default outline-none text-sm rounded-md focus:border-accent-brand focus:ring-1 focus:ring-accent-brand/30 block w-full p-2.5 bg-bg-base text-text-primary placeholder:text-text-muted font-mono disabled:opacity-50 disabled:cursor-not-allowed transition"
 											placeholder="e.g. 22010234"
 										/>
@@ -1086,6 +1097,9 @@ const ProfilePage: React.FC = () => {
 											type="text"
 											id="school"
 											disabled={isReadOnly}
+											autoComplete="organization"
+											autoCorrect="off"
+											spellCheck={false}
 											className="border border-border-default outline-none text-sm rounded-md focus:border-accent-brand focus:ring-1 focus:ring-accent-brand/30 block w-full p-2.5 bg-bg-base text-text-primary placeholder:text-text-muted disabled:opacity-50 disabled:cursor-not-allowed transition"
 											placeholder="BeastCode University"
 										/>
@@ -1101,6 +1115,9 @@ const ProfilePage: React.FC = () => {
 											type="text"
 											id="faculty"
 											disabled={isReadOnly}
+											autoComplete="off"
+											autoCorrect="off"
+											spellCheck={false}
 											className="border border-border-default outline-none text-sm rounded-md focus:border-accent-brand focus:ring-1 focus:ring-accent-brand/30 block w-full p-2.5 bg-bg-base text-text-primary placeholder:text-text-muted disabled:opacity-50 disabled:cursor-not-allowed transition"
 											placeholder="e.g. Computer Science & Engineering"
 										/>
@@ -1116,6 +1133,10 @@ const ProfilePage: React.FC = () => {
 											type="text"
 											id="class"
 											disabled={isReadOnly}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className="border border-border-default outline-none text-sm rounded-md focus:border-accent-brand focus:ring-1 focus:ring-accent-brand/30 block w-full p-2.5 bg-bg-base text-text-primary placeholder:text-text-muted disabled:opacity-50 disabled:cursor-not-allowed transition font-mono"
 											placeholder="e.g. CSE-2026"
 										/>
@@ -1131,6 +1152,9 @@ const ProfilePage: React.FC = () => {
 											id="bio"
 											disabled={isReadOnly}
 											rows={3}
+											autoComplete="off"
+											autoCorrect="off"
+											spellCheck={false}
 											className="border border-border-default outline-none text-sm rounded-md focus:border-accent-brand focus:ring-1 focus:ring-accent-brand/30 block w-full p-2.5 bg-bg-base text-text-primary placeholder:text-text-muted disabled:opacity-50 disabled:cursor-not-allowed transition resize-none"
 											placeholder="Tell the developer community a bit about your tech stack and interests..."
 										/>
@@ -1297,6 +1321,9 @@ const ProfilePage: React.FC = () => {
 									maxLength={3000}
 									rows={3}
 									placeholder="Describe the violation in detail, referencing specific submissions, threads, or dates where appropriate..."
+									autoComplete="off"
+									autoCorrect="off"
+									spellCheck={false}
 									className="w-full bg-bg-base border border-border-default text-text-primary rounded-md p-2.5 outline-none focus:border-accent-brand text-xs placeholder:text-text-muted resize-none transition"
 								/>
 							</div>

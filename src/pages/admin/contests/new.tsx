@@ -279,6 +279,10 @@ const NewContest: React.FC = () => {
 								value={title}
 								onChange={(e) => setTitle(e.target.value)}
 								placeholder='e.g. BeastCode Alpha Round 1'
+								autoComplete="off"
+								autoCorrect="off"
+								autoCapitalize="off"
+								spellCheck={false}
 								className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition'
 								style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 								required
@@ -296,6 +300,10 @@ const NewContest: React.FC = () => {
 								type='text'
 								value={id}
 								disabled
+								autoComplete='off'
+								autoCorrect='off'
+								autoCapitalize='off'
+								spellCheck={false}
 								className='border outline-none rounded p-2 text-sm w-full font-mono cursor-not-allowed'
 								style={{ background: "var(--bg-dark-layer-1)", borderColor: "var(--border-subtle)", color: "var(--text-muted)" }}
 							/>
@@ -314,6 +322,10 @@ const NewContest: React.FC = () => {
 								onChange={(e) => setDescription(e.target.value)}
 								rows={2}
 								placeholder='Brief overview shown on the contest card'
+								autoComplete="off"
+								autoCorrect="off"
+								autoCapitalize="off"
+								spellCheck={false}
 								className='border outline-none rounded p-3 text-sm w-full focus:border-brand-orange transition font-sans resize-y'
 								style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 							/>
@@ -332,6 +344,10 @@ const NewContest: React.FC = () => {
 								value={banner}
 								onChange={(e) => setBanner(e.target.value)}
 								placeholder='e.g. https://images.unsplash.com/... (Optional)'
+								autoComplete="off"
+								autoCorrect="off"
+								autoCapitalize="off"
+								spellCheck={false}
 								className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition'
 								style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 							/>
@@ -353,6 +369,10 @@ const NewContest: React.FC = () => {
 								id='startTime'
 								value={startTime}
 								onChange={(e) => setStartTime(e.target.value)}
+								autoComplete='off'
+								autoCorrect='off'
+								autoCapitalize='off'
+								spellCheck={false}
 								className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition'
 								style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 								required
@@ -370,6 +390,10 @@ const NewContest: React.FC = () => {
 								id='endTime'
 								value={endTime}
 								onChange={(e) => setEndTime(e.target.value)}
+								autoComplete='off'
+								autoCorrect='off'
+								autoCapitalize='off'
+								spellCheck={false}
 								className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition'
 								style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 								required
@@ -423,6 +447,10 @@ const NewContest: React.FC = () => {
 									value={password}
 									onChange={(e) => setPassword(e.target.value)}
 									placeholder='Enter join password'
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition font-mono'
 									style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 									required
@@ -444,6 +472,10 @@ const NewContest: React.FC = () => {
 									value={university}
 									onChange={(e) => setUniversity(e.target.value)}
 									placeholder='e.g. st.vju.ac.vn'
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition'
 									style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 									required
@@ -486,6 +518,10 @@ const NewContest: React.FC = () => {
 									id='penaltyMinutes'
 									value={penaltyMinutes}
 									onChange={(e) => setPenaltyMinutes(e.target.value)}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition pr-16'
 									style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 									min='0'
@@ -506,6 +542,10 @@ const NewContest: React.FC = () => {
 									id='leaderboardFreeze'
 									value={leaderboardFreeze}
 									onChange={(e) => setLeaderboardFreeze(e.target.value)}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition pr-16'
 									style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 									min='0'
@@ -528,6 +568,10 @@ const NewContest: React.FC = () => {
 								id='maxParticipants'
 								value={maxParticipants}
 								onChange={(e) => setMaxParticipants(e.target.value)}
+								autoComplete="off"
+								autoCorrect="off"
+								autoCapitalize="off"
+								spellCheck={false}
 								className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition'
 								style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 								min='1'

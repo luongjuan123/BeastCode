@@ -93,6 +93,10 @@ export const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
 						value={searchQuery}
 						onChange={(e) => setSearchQuery(e.target.value)}
 						placeholder="Search conversations..."
+						autoComplete="off"
+						autoCorrect="off"
+						autoCapitalize="off"
+						spellCheck={false}
 						className="w-full text-xs pl-8 pr-3 py-1.5 rounded-md bg-bg-base border border-border-default text-text-primary focus:border-accent-brand focus:outline-none transition-colors"
 					/>
 				</div>

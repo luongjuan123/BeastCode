@@ -10,7 +10,8 @@
 		"export": "next export",
 		"test:chat": "node scripts/run-chat-tests.mjs",
 		"test:chat:report": "node scripts/run-chat-tests.mjs --report-only",
-		"test:problem-audit": "tsx scripts/audit-and-repair/verify-repaired-problems.ts"
+		"test:problem-audit": "tsx scripts/audit-and-repair/verify-repaired-problems.ts",
+		"test:autocomplete-audit": "tsx scripts/audit-autocomplete.ts"
 	},
 	"dependencies": {
 		"@codemirror/lang-cpp": "^6.0.3",

@@ -790,6 +790,10 @@ export default function UserDetailPage() {
 									onChange={(e) => setSuspendNotes(e.target.value)}
 									placeholder="Provide additional details or audit notes..."
 									rows={3}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-bg-elevated border border-border-default hover:border-border-subtle focus:border-accent text-xs rounded-md p-3 text-text-primary outline-none resize-none transition font-sans"
 								/>
 							</div>
@@ -858,6 +862,10 @@ export default function UserDetailPage() {
 									onChange={(e) => setUnsuspendNotes(e.target.value)}
 									placeholder="Provide additional details or audit notes..."
 									rows={3}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-bg-elevated border border-border-default hover:border-border-subtle focus:border-accent text-xs rounded-md p-3 text-text-primary outline-none resize-none transition font-sans"
 								/>
 							</div>
@@ -932,6 +940,10 @@ export default function UserDetailPage() {
 									onChange={(e) => setDeleteNotes(e.target.value)}
 									placeholder="Provide additional details or audit notes..."
 									rows={2}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-bg-elevated border border-border-default hover:border-border-subtle focus:border-accent text-xs rounded-md p-3 text-text-primary outline-none resize-none transition font-sans"
 								/>
 							</div>
@@ -945,6 +957,10 @@ export default function UserDetailPage() {
 									value={deleteConfirmText}
 									onChange={(e) => setDeleteConfirmText(e.target.value)}
 									placeholder="DELETE"
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full bg-bg-elevated border border-border-default focus:border-rose-500 text-xs rounded-md px-3 py-2 text-text-primary outline-none font-mono text-center tracking-widest"
 								/>
 							</div>

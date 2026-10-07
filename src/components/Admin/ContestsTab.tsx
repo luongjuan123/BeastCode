@@ -307,6 +307,10 @@ export const ContestsTab: React.FC<ContestsTabProps> = ({ triggerStatusMessage }
 						placeholder="Search contests..."
 						value={searchQuery}
 						onChange={(e) => setSearchQuery(e.target.value)}
+						autoComplete="off"
+						autoCorrect="off"
+						autoCapitalize="off"
+						spellCheck={false}
 						className="w-full pl-9 pr-4 py-2 text-xs rounded-md outline-none border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-primary)] focus:border-emerald-500"
 					/>
 				</div>

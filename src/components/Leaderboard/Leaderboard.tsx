@@ -343,6 +343,10 @@ const Leaderboard: React.FC = () => {
 								placeholder="Search handle..."
 								value={searchInput}
 								onChange={(e) => setSearchInput(e.target.value)}
+								autoComplete="off"
+								autoCorrect="off"
+								autoCapitalize="off"
+								spellCheck={false}
 								className="w-full pl-8 pr-2.5 py-1.5 rounded-md border border-border-default bg-bg-base text-xs text-text-primary outline-none focus:border-accent-brand transition-colors"
 							/>
 						</div>
@@ -381,6 +385,10 @@ const Leaderboard: React.FC = () => {
 							placeholder="Filter school/org..."
 							value={school}
 							onChange={(e) => setSchool(e.target.value)}
+							autoComplete="off"
+							autoCorrect="off"
+							autoCapitalize="off"
+							spellCheck={false}
 							className="w-full px-3 py-1.5 rounded-md border border-border-default bg-bg-base text-xs text-text-primary outline-none focus:border-accent-brand transition-colors"
 						/>
 					</div>
@@ -685,6 +693,7 @@ const Leaderboard: React.FC = () => {
 								placeholder="#"
 								value={directPage}
 								onChange={(e) => setDirectPage(e.target.value)}
+								autoComplete="off"
 								className="w-12 px-1.5 py-0.5 text-center text-xs rounded border border-border-default bg-bg-surface text-text-primary outline-none focus:border-accent-brand"
 							/>
 						</form>

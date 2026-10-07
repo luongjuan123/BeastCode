@@ -654,6 +654,10 @@ const Playground: React.FC<PlaygroundProps> = ({
 										}
 									}}
 									rows={5}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full text-xs font-mono p-3 rounded-md outline-none border focus:ring-0 transition bg-bg-base border-border-subtle text-text-primary placeholder:text-text-muted focus:border-accent"
 									placeholder="Provide custom input arguments to run your solution (e.g. [2,7,11,15]\n9)"
 								/>

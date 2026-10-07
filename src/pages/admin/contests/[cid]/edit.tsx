@@ -938,6 +938,10 @@ const EditContest: React.FC = () => {
 										id='title'
 										value={title}
 										onChange={(e) => setTitle(e.target.value)}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition'
 										style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 										required
@@ -955,6 +959,10 @@ const EditContest: React.FC = () => {
 										value={description}
 										onChange={(e) => setDescription(e.target.value)}
 										rows={2}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className='border outline-none rounded p-3 text-sm w-full focus:border-brand-orange transition font-sans'
 										style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 									/>
@@ -971,6 +979,10 @@ const EditContest: React.FC = () => {
 										id='banner'
 										value={banner}
 										onChange={(e) => setBanner(e.target.value)}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition'
 										style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 									/>
@@ -987,6 +999,10 @@ const EditContest: React.FC = () => {
 										id='startTime'
 										value={startTime}
 										onChange={(e) => setStartTime(e.target.value)}
+										autoComplete='off'
+										autoCorrect='off'
+										autoCapitalize='off'
+										spellCheck={false}
 										className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition'
 										style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 										required
@@ -1004,6 +1020,10 @@ const EditContest: React.FC = () => {
 										id='endTime'
 										value={endTime}
 										onChange={(e) => setEndTime(e.target.value)}
+										autoComplete='off'
+										autoCorrect='off'
+										autoCapitalize='off'
+										spellCheck={false}
 										className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition'
 										style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 										required
@@ -1041,6 +1061,10 @@ const EditContest: React.FC = () => {
 											id='password'
 											value={password}
 											onChange={(e) => setPassword(e.target.value)}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition'
 											style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 										/>
@@ -1059,6 +1083,10 @@ const EditContest: React.FC = () => {
 											id='university'
 											value={university}
 											onChange={(e) => setUniversity(e.target.value)}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition'
 											style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 										/>
@@ -1094,6 +1122,10 @@ const EditContest: React.FC = () => {
 										id='penaltyMinutes'
 										value={penaltyMinutes}
 										onChange={(e) => setPenaltyMinutes(Number(e.target.value))}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange'
 										style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 									/>
@@ -1110,6 +1142,10 @@ const EditContest: React.FC = () => {
 										id='leaderboardFreeze'
 										value={leaderboardFreeze}
 										onChange={(e) => setLeaderboardFreeze(Number(e.target.value))}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange'
 										style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 									/>
@@ -1224,6 +1260,10 @@ const EditContest: React.FC = () => {
 										id='newProbLabel'
 										value={newProbLabel}
 										onChange={(e) => setNewProbLabel(e.target.value)}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className='border outline-none rounded p-2.5 text-xs w-full focus:border-brand-orange text-center'
 										style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 										required
@@ -1239,6 +1279,10 @@ const EditContest: React.FC = () => {
 										id='newProbPoints'
 										value={newProbPoints}
 										onChange={(e) => setNewProbPoints(e.target.value)}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className='border outline-none rounded p-2.5 text-xs w-full focus:border-brand-orange text-center'
 										style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 										min='0'
@@ -1256,6 +1300,10 @@ const EditContest: React.FC = () => {
 										value={newProbConstraints}
 										onChange={(e) => setNewProbConstraints(e.target.value)}
 										placeholder='e.g. 1.0s, 256MB'
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className='border outline-none rounded p-2.5 text-xs w-full focus:border-brand-orange'
 										style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 									/>
@@ -1378,6 +1426,10 @@ const EditContest: React.FC = () => {
 											value={announceTitle}
 											onChange={(e) => setAnnounceTitle(e.target.value)}
 											placeholder='e.g. Clarification on Problem B constraints'
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange'
 											style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 											required
@@ -1396,6 +1448,10 @@ const EditContest: React.FC = () => {
 											onChange={(e) => setAnnounceContent(e.target.value)}
 											rows={4}
 											placeholder='Announcement detail markdown...'
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className='border outline-none rounded p-3 text-sm w-full focus:border-brand-orange transition font-sans'
 											style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 											required
@@ -1476,6 +1532,10 @@ const EditContest: React.FC = () => {
 														onChange={(e) => setClarAnswerText(e.target.value)}
 														placeholder='Type answer here...'
 														rows={3}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className='border outline-none rounded p-2 text-xs w-full focus:border-brand-orange'
 														style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 														required

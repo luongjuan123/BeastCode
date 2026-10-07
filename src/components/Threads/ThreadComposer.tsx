@@ -1142,6 +1142,10 @@ const ThreadComposer: React.FC = () => {
 												onDrop={(e) => handleDrop(idx, e)}
 												placeholder={idx === 0 ? (composer.parentThreadId ? "Post a reply..." : "What's new? Support Markdown formatting...") : "Add to thread..."}
 												rows={2}
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className="w-full !bg-transparent text-[var(--text-primary)] placeholder:text-[var(--text-muted)] !border-0 !p-0 !ring-0 !outline-none !shadow-none text-[14.5px] leading-relaxed resize-none"
 											/>
 										)}
@@ -1353,6 +1357,10 @@ const ThreadComposer: React.FC = () => {
 												value={draft.poll.question}
 												onChange={(e) => handlePollQuestionChange(idx, e.target.value)}
 												placeholder="Ask a question..."
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className="w-full bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] rounded-lg p-2 text-xs outline-none focus:border-[var(--brand-orange)]"
 											/>
 											<div className="space-y-2">
@@ -1363,6 +1371,10 @@ const ThreadComposer: React.FC = () => {
 															value={opt}
 															onChange={(e) => handlePollOptionChange(idx, oIdx, e.target.value)}
 															placeholder={`Choice ${oIdx + 1}`}
+															autoComplete="off"
+															autoCorrect="off"
+															autoCapitalize="off"
+															spellCheck={false}
 															className="flex-1 bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] rounded-lg p-2 text-xs outline-none focus:border-[var(--brand-orange)] font-medium"
 														/>
 														{draft.poll!.options.length > 2 && (

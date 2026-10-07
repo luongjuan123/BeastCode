@@ -726,6 +726,10 @@ export default function AdminNotificationsPage() {
 										placeholder="e.g. Alex"
 										value={testName}
 										onChange={(e) => setTestName(e.target.value)}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full px-3 py-2 text-xs rounded-lg bg-dark-fill-3 border border-border-subtle text-text-primary focus:outline-none focus:border-brand-orange"
 									/>
 								</div>
@@ -739,6 +743,10 @@ export default function AdminNotificationsPage() {
 										placeholder="e.g. user@test.com"
 										value={testEmail}
 										onChange={(e) => setTestEmail(e.target.value)}
+										autoComplete="off"
+										autoCorrect="off"
+										autoCapitalize="off"
+										spellCheck={false}
 										className="w-full px-3 py-2 text-xs rounded-lg bg-dark-fill-3 border border-border-subtle text-text-primary focus:outline-none focus:border-brand-orange"
 									/>
 								</div>
@@ -765,6 +773,10 @@ export default function AdminNotificationsPage() {
 									placeholder="Write any additional detail or broadcast message payload..."
 									value={testCustomContent}
 									onChange={(e) => setTestCustomContent(e.target.value)}
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									className="w-full px-3 py-2 text-xs rounded-lg bg-dark-fill-3 border border-border-subtle text-text-primary focus:outline-none focus:border-brand-orange"
 								/>
 							</div>

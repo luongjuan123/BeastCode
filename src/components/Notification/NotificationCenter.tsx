@@ -302,6 +302,10 @@ export default function NotificationCenter() {
 						placeholder="Search by keyword, topic, or sender..."
 						value={searchQuery}
 						onChange={(e) => setSearchQuery(e.target.value)}
+						autoComplete="off"
+						autoCorrect="off"
+						autoCapitalize="off"
+						spellCheck={false}
 						className="w-full pl-11 pr-4 py-3 text-xs rounded-md bg-dark-fill-3 border border-border-subtle text-text-primary focus:outline-none focus:border-emerald-500 transition-all placeholder:text-text-muted"
 						style={{ color: "var(--text-primary)", background: "var(--bg-dark-fill-3)", border: "1px solid var(--border-subtle)" }}
 					/>

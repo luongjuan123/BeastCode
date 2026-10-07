@@ -181,6 +181,10 @@ const GifPicker: React.FC<GifPickerProps> = ({ onSelect, onClose }) => {
 						if (focusedIdx !== -1) setFocusedIdx(-1);
 					}}
 					placeholder="Search GIFs..."
+					autoComplete="off"
+					autoCorrect="off"
+					autoCapitalize="off"
+					spellCheck={false}
 					className="bg-transparent text-xs text-[var(--text-primary)] outline-none flex-1 placeholder:text-[var(--text-muted)] !border-0 !p-0 !ring-0 !shadow-none"
 				/>
 				{searchQuery && (

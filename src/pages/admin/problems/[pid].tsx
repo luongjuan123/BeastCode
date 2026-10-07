@@ -642,6 +642,10 @@ const EditProblem: React.FC = () => {
 												id='title'
 												value={title}
 												onChange={(e) => setTitle(e.target.value)}
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition shadow-sm'
 												style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 												required
@@ -659,6 +663,10 @@ const EditProblem: React.FC = () => {
 												type='text'
 												value={`https://leetcode-yt.com/problems/${pid}`}
 												disabled
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className='border outline-none rounded p-2 text-sm w-full font-mono select-all cursor-not-allowed'
 												style={{ background: "var(--bg-dark-layer-1)", borderColor: "var(--border-subtle)", color: "var(--text-muted)" }}
 											/>
@@ -679,6 +687,10 @@ const EditProblem: React.FC = () => {
 												value={description}
 												onChange={(e) => setDescription(e.target.value.slice(0, 140))}
 												rows={3}
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className='border outline-none rounded p-3 text-sm w-full focus:border-brand-orange transition shadow-sm font-sans resize-y'
 												style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 											/>
@@ -778,6 +790,10 @@ const EditProblem: React.FC = () => {
 												value={newModEmail}
 												onChange={(e) => setNewModEmail(e.target.value)}
 												placeholder="Enter moderator's email address"
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange'
 												style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 											/>
@@ -949,6 +965,10 @@ const EditProblem: React.FC = () => {
 														value={tcInput}
 														onChange={(e) => setTcInput(e.target.value)}
 														rows={5}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className='border outline-none text-xs rounded block w-full p-2.5 font-mono focus:border-brand-orange shadow-sm'
 														style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 														placeholder={'e.g. 4\n2 7 11 15\n9'}
@@ -961,6 +981,10 @@ const EditProblem: React.FC = () => {
 														value={tcOutput}
 														onChange={(e) => setTcOutput(e.target.value)}
 														rows={5}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className='border outline-none text-xs rounded block w-full p-2.5 font-mono focus:border-brand-orange shadow-sm'
 														style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 														placeholder='e.g. 0 1'
@@ -973,6 +997,10 @@ const EditProblem: React.FC = () => {
 														value={tcExplanation}
 														onChange={(e) => setTcExplanation(e.target.value)}
 														rows={2}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className='border outline-none text-xs rounded block w-full p-2.5 focus:border-brand-orange shadow-sm'
 														style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 														placeholder='Explain why this input maps to the output'
@@ -984,6 +1012,10 @@ const EditProblem: React.FC = () => {
 														type='text'
 														value={tcImg}
 														onChange={(e) => setTcImg(e.target.value)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className='border outline-none text-xs rounded block w-full p-2 focus:border-brand-orange shadow-sm'
 														style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 														placeholder='e.g. https://assets.leetcode.com/uploads/...'
@@ -1028,6 +1060,10 @@ const EditProblem: React.FC = () => {
 														value={tcStrength}
 														onChange={(e) => setTcStrength(Number(e.target.value) || 1)}
 														min={1}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className='border rounded px-2 py-1 text-xs w-16 outline-none focus:border-brand-orange shadow-sm'
 														style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 													/>
@@ -1165,6 +1201,10 @@ const EditProblem: React.FC = () => {
 											value={starterFunctionName}
 											onChange={(e) => setStarterFunctionName(e.target.value)}
 											placeholder='e.g. function solve('
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange transition font-mono'
 											style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 										/>
@@ -1183,6 +1223,10 @@ const EditProblem: React.FC = () => {
 											onChange={(e) => setStarterCode(e.target.value)}
 											rows={10}
 											placeholder='// Write starter template here...'
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className='border outline-none rounded p-3 text-sm w-full focus:border-brand-orange transition font-mono'
 											style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 										/>
@@ -1208,6 +1252,10 @@ const EditProblem: React.FC = () => {
 												value={videoId}
 												onChange={(e) => setVideoId(e.target.value)}
 												placeholder='e.g. qm_T3YV8yks'
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange'
 												style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 											/>
@@ -1223,6 +1271,10 @@ const EditProblem: React.FC = () => {
 												value={link}
 												onChange={(e) => setLink(e.target.value)}
 												placeholder='e.g. https://leetcode.com/problems/...'
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className='border outline-none rounded p-2 text-sm w-full focus:border-brand-orange'
 												style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 											/>
@@ -1238,6 +1290,10 @@ const EditProblem: React.FC = () => {
 											value={handlerFunction}
 											onChange={(e) => setHandlerFunction(e.target.value)}
 											rows={8}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className='border outline-none rounded p-3 text-sm w-full focus:border-brand-orange font-mono'
 											style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 										/>
@@ -1321,6 +1377,10 @@ const EditProblem: React.FC = () => {
 														id='customTimeoutMs'
 														value={customTimeoutMs}
 														onChange={(e) => setCustomTimeoutMs(Number(e.target.value) || 0)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className='border outline-none rounded p-2 text-xs w-full focus:border-brand-orange'
 														style={{ background: "var(--bg-surface)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 													/>
@@ -1335,6 +1395,10 @@ const EditProblem: React.FC = () => {
 														id='customMemoryLimitMb'
 														value={customMemoryLimitMb}
 														onChange={(e) => setCustomMemoryLimitMb(Number(e.target.value) || 0)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className='border outline-none rounded p-2 text-xs w-full focus:border-brand-orange'
 														style={{ background: "var(--bg-surface)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 													/>
@@ -1349,6 +1413,10 @@ const EditProblem: React.FC = () => {
 														id='customMaxOutputSizeChars'
 														value={customMaxOutputSizeChars}
 														onChange={(e) => setCustomMaxOutputSizeChars(Number(e.target.value) || 0)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className='border outline-none rounded p-2 text-xs w-full focus:border-brand-orange'
 														style={{ background: "var(--bg-surface)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 													/>
@@ -1363,6 +1431,10 @@ const EditProblem: React.FC = () => {
 														id='customCpuCount'
 														value={customCpuCount}
 														onChange={(e) => setCustomCpuCount(Number(e.target.value) || 0)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className='border outline-none rounded p-2 text-xs w-full focus:border-brand-orange'
 														style={{ background: "var(--bg-surface)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 													/>
@@ -1377,6 +1449,10 @@ const EditProblem: React.FC = () => {
 														id='customDiskLimitMb'
 														value={customDiskLimitMb}
 														onChange={(e) => setCustomDiskLimitMb(Number(e.target.value) || 0)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className='border outline-none rounded p-2 text-xs w-full focus:border-brand-orange'
 														style={{ background: "var(--bg-surface)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 													/>
@@ -1391,6 +1467,10 @@ const EditProblem: React.FC = () => {
 														id='customProcessLimit'
 														value={customProcessLimit}
 														onChange={(e) => setCustomProcessLimit(Number(e.target.value) || 0)}
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className='border outline-none rounded p-2 text-xs w-full focus:border-brand-orange'
 														style={{ background: "var(--bg-surface)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 													/>
@@ -1422,6 +1502,10 @@ const EditProblem: React.FC = () => {
 												value={editorialVideoUrl}
 												onChange={(e) => setEditorialVideoUrl(e.target.value)}
 												placeholder='e.g. https://www.youtube.com/watch?v=...'
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className='border outline-none rounded p-2 text-xs w-full focus:border-brand-orange'
 												style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 											/>
@@ -1483,6 +1567,10 @@ const EditProblem: React.FC = () => {
 														value={customCheckerEpsilon}
 														onChange={(e) => setCustomCheckerEpsilon(Number(e.target.value) || 1e-6)}
 														placeholder='e.g. 1e-6'
+														autoComplete="off"
+														autoCorrect="off"
+														autoCapitalize="off"
+														spellCheck={false}
 														className='border outline-none rounded p-2 text-xs w-full font-mono focus:border-brand-orange'
 														style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 													/>
@@ -1520,6 +1608,10 @@ const EditProblem: React.FC = () => {
 													value={customCheckerCode}
 													onChange={(e) => setCustomCheckerCode(e.target.value)}
 													rows={12}
+													autoComplete="off"
+													autoCorrect="off"
+													autoCapitalize="off"
+													spellCheck={false}
 													placeholder={`# Python Checker Example:
 # Receives 3 arguments via CLI or files: input, expected, actual
 # exit(0) for accepted, exit(1) for incorrect

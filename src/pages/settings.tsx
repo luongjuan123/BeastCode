@@ -264,6 +264,9 @@ export default function SettingsPage() {
 												onChange={(e) => setProfile((p) => ({ ...p, displayName: e.target.value }))}
 												type='text'
 												id='displayName'
+												autoComplete="name"
+												autoCorrect="off"
+												spellCheck={false}
 												className='w-full px-3 py-1.5 rounded-md border border-border-default bg-bg-base text-xs text-text-primary focus:border-accent-brand outline-none transition-colors'
 												placeholder='Your name or handle'
 												required
@@ -279,6 +282,10 @@ export default function SettingsPage() {
 												onChange={(e) => setProfile((p) => ({ ...p, studentId: e.target.value }))}
 												type='text'
 												id='studentId'
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className='w-full px-3 py-1.5 rounded-md border border-border-default bg-bg-base text-xs text-text-primary focus:border-accent-brand outline-none transition-colors font-mono'
 												placeholder='e.g. 22010234'
 											/>
@@ -293,6 +300,9 @@ export default function SettingsPage() {
 												onChange={(e) => setProfile((p) => ({ ...p, school: e.target.value }))}
 												type='text'
 												id='school'
+												autoComplete="organization"
+												autoCorrect="off"
+												spellCheck={false}
 												className='w-full px-3 py-1.5 rounded-md border border-border-default bg-bg-base text-xs text-text-primary focus:border-accent-brand outline-none transition-colors'
 												placeholder='BeastCode Institute'
 											/>
@@ -317,6 +327,9 @@ export default function SettingsPage() {
 												onChange={(e) => setProfile((p) => ({ ...p, faculty: e.target.value }))}
 												type='text'
 												id='faculty'
+												autoComplete="off"
+												autoCorrect="off"
+												spellCheck={false}
 												className='w-full px-3 py-1.5 rounded-md border border-border-default bg-bg-base text-xs text-text-primary focus:border-accent-brand outline-none transition-colors'
 												placeholder='Computer Science'
 											/>
@@ -331,6 +344,10 @@ export default function SettingsPage() {
 												onChange={(e) => setProfile((p) => ({ ...p, class: e.target.value }))}
 												type='text'
 												id='class'
+												autoComplete="off"
+												autoCorrect="off"
+												autoCapitalize="off"
+												spellCheck={false}
 												className='w-full px-3 py-1.5 rounded-md border border-border-default bg-bg-base text-xs text-text-primary focus:border-accent-brand outline-none transition-colors'
 												placeholder='e.g. CS-2026'
 											/>
@@ -345,6 +362,9 @@ export default function SettingsPage() {
 												onChange={(e) => setProfile((p) => ({ ...p, bio: e.target.value }))}
 												id='bio'
 												rows={3}
+												autoComplete="off"
+												autoCorrect="off"
+												spellCheck={false}
 												className='w-full px-3 py-2 rounded-md border border-border-default bg-bg-base text-xs text-text-primary focus:border-accent-brand outline-none transition-colors resize-none'
 												placeholder='Technical bio or research areas...'
 											/>

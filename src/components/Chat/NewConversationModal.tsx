@@ -109,6 +109,10 @@ export const NewConversationModal: React.FC<NewConversationModalProps> = ({
 							value={searchQuery}
 							onChange={(e) => setSearchQuery(e.target.value)}
 							placeholder="Type a username or display name..."
+							autoComplete="off"
+							autoCorrect="off"
+							autoCapitalize="off"
+							spellCheck={false}
 							className="w-full text-xs pl-9 pr-4 py-2.5 rounded-xl bg-dark-fill-3 border border-border-default text-text-primary focus:border-brand-orange focus:outline-none transition"
 							autoFocus
 						/>

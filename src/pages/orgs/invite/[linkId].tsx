@@ -164,6 +164,10 @@ export default function InviteLinkPage() {
 											placeholder="Enter invite password..."
 											value={password}
 											onChange={(e) => setPassword(e.target.value)}
+											autoComplete="off"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className="w-full bg-bg-elevated border border-border-default focus:border-accent text-xs rounded-md p-2.5 text-text-primary outline-none transition font-sans"
 											required
 										/>

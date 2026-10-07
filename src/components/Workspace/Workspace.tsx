@@ -965,6 +965,10 @@ const Workspace: React.FC<WorkspaceProps> = ({ problem, contestId }) => {
 														setSearchQuery(e.target.value);
 														setCurrentPage(1);
 													}}
+													autoComplete="off"
+													autoCorrect="off"
+													autoCapitalize="off"
+													spellCheck={false}
 													className="px-2.5 py-1 text-xs rounded-md border border-border-subtle outline-none bg-bg-surface text-text-primary focus:border-accent w-full sm:w-[170px]"
 												/>
 

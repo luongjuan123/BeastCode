@@ -780,6 +780,7 @@ export default function SecuritySettings() {
 									value={confirmPwd}
 									onChange={(e) => { setConfirmPwd(e.target.value); setPwdErrors({}); }}
 									placeholder="Re-enter your new password"
+									autoComplete="new-password"
 									disabled={pwdSubmitting}
 									className={`w-full bc-input-shell rounded-lg py-2.5 px-3.5 pr-11 text-sm outline-none transition duration-200 ${
 										confirmMismatch ? "border-bc-error" : "focus:border-brand-orange"
@@ -950,6 +951,10 @@ export default function SecuritySettings() {
 											onChange={(e) => setMfaSetupCode(e.target.value)}
 											placeholder="6-digit verification code"
 											maxLength={6}
+											autoComplete="one-time-code"
+											autoCorrect="off"
+											autoCapitalize="off"
+											spellCheck={false}
 											className="outline-none py-2 px-3 bg-dark-fill-3 border border-border-subtle rounded-lg text-xs font-mono text-white focus:border-brand-orange w-48"
 										/>
 										<button onClick={verifyMfaSetup} className="bc-btn-brand py-2 px-4 rounded-lg font-bold text-xs">
@@ -1204,6 +1209,10 @@ export default function SecuritySettings() {
 									value={digit}
 									onChange={(e) => handleCodeChange(idx, e.target.value)}
 									onKeyDown={(e) => handleCodeKeyDown(idx, e)}
+									autoComplete={idx === 0 ? "one-time-code" : "off"}
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck={false}
 									disabled={modalLoading || codeExpiresIn === 0 || pwdVerifySuccess}
 									className="w-12 h-14 bg-dark-fill-3 border border-border-subtle rounded-xl text-center text-xl font-bold font-mono text-white outline-none focus:border-brand-orange transition duration-200 disabled:opacity-40"
 								/>
