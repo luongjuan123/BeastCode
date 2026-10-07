@@ -212,7 +212,7 @@ export const ErrorDisplay: React.FC<ErrorDisplayProps> = ({
 						</button>
 						<Link
 							href="/"
-							className="flex items-center justify-center gap-2 flex-1 py-2 px-3.5 bg-emerald-500 hover:bg-emerald-450 text-black text-xs font-semibold rounded-md transition duration-150 shadow-sm"
+							className="flex items-center justify-center gap-2 flex-1 py-2 px-3.5 bg-accent hover:bg-accent-hover text-[#080909] text-xs font-semibold rounded-md transition duration-150 shadow-sm"
 						>
 							<FiHome size={14} />
 							<span>Go Home</span>

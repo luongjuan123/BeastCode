@@ -18,7 +18,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className = "" })
 				const isLast = index === items.length - 1;
 				return (
 					<React.Fragment key={index}>
-						{index > 0 && <span className="text-text-muted/60">/</span>}
+						{index > 0 && <span className="text-text-muted" aria-hidden="true">/</span>}
 						{item.href && !isLast ? (
 							<Link
 								href={item.href}

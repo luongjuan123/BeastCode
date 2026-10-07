@@ -1,4 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+
+function withOpacity(variableRgbName, fallbackRgb) {
+	return ({ opacityValue }) => {
+		if (opacityValue !== undefined) {
+			return `rgba(var(${variableRgbName}, ${fallbackRgb}), ${opacityValue})`;
+		}
+		return `rgb(var(${variableRgbName}, ${fallbackRgb}))`;
+	};
+}
+
 module.exports = {
 	darkMode: "class",
 	content: [
@@ -16,63 +26,104 @@ module.exports = {
 			colors: {
 				/* Dark Technical Platform Surfaces */
 				background: "#080909",
-				"dark-layer-1": "var(--bg-dark-layer-1, #0f1210)",
-				"dark-layer-2": "var(--bg-dark-layer-2, #080909)",
-				"dark-surface": "var(--bg-surface, #0f1210)",
-				"dark-elevated": "var(--bg-elevated, #151816)",
-				"dark-hover": "var(--bg-hover, #1c211e)",
-				"bg-surface": "var(--bg-surface, #0f1210)",
-				"bg-dark-layer-1": "var(--bg-dark-layer-1, #0f1210)",
-				"bg-dark-layer-2": "var(--bg-dark-layer-2, #080909)",
-				"bg-base": "var(--bg-base, #080909)",
+				"dark-layer-1": withOpacity("--bg-surface-rgb", "15, 18, 16"),
+				"dark-layer-2": withOpacity("--bg-base-rgb", "8, 9, 9"),
+				"dark-surface": withOpacity("--bg-surface-rgb", "15, 18, 16"),
+				"dark-elevated": withOpacity("--bg-elevated-rgb", "21, 24, 22"),
+				"dark-hover": withOpacity("--bg-hover-rgb", "28, 33, 30"),
+				"bg-surface": withOpacity("--bg-surface-rgb", "15, 18, 16"),
+				"bg-dark-layer-1": withOpacity("--bg-surface-rgb", "15, 18, 16"),
+				"bg-dark-layer-2": withOpacity("--bg-base-rgb", "8, 9, 9"),
+				"bg-base": withOpacity("--bg-base-rgb", "8, 9, 9"),
+				"bg-page": withOpacity("--bg-base-rgb", "8, 9, 9"),
+				surface: withOpacity("--bg-surface-rgb", "15, 18, 16"),
+				"surface-elevated": withOpacity("--bg-elevated-rgb", "21, 24, 22"),
+				"bg-surface-elevated": withOpacity("--bg-elevated-rgb", "21, 24, 22"),
+				"bg-elevated": withOpacity("--bg-elevated-rgb", "21, 24, 22"),
+				elevated: withOpacity("--bg-elevated-rgb", "21, 24, 22"),
+				"surface-hover": withOpacity("--bg-hover-rgb", "28, 33, 30"),
+				"bg-surface-hover": withOpacity("--bg-hover-rgb", "28, 33, 30"),
+				"bg-hover": withOpacity("--bg-hover-rgb", "28, 33, 30"),
+				hover: withOpacity("--bg-hover-rgb", "28, 33, 30"),
 
 				/* Text Hierarchy */
-				"text-primary": "var(--text-primary, #f1f3ef)",
-				"text-secondary": "var(--text-secondary, #a6aca5)",
-				"text-muted": "var(--text-muted, #6f766f)",
+				"text-primary": withOpacity("--text-primary-rgb", "241, 243, 239"),
+				"text-secondary": withOpacity("--text-secondary-rgb", "166, 172, 165"),
+				"text-muted": withOpacity("--text-muted-rgb", "111, 118, 111"),
+				"text-accent": withOpacity("--accent-rgb", "34, 197, 94"),
 				"dark-gray-6": "#6f766f",
-				"dark-gray-7": "var(--text-secondary, #a6aca5)",
-				"dark-gray-8": "var(--text-primary, #f1f3ef)",
+				"dark-gray-7": withOpacity("--text-secondary-rgb", "166, 172, 165"),
+				"dark-gray-8": withOpacity("--text-primary-rgb", "241, 243, 239"),
 				"dark-label-2": "rgba(241, 243, 239, 0.75)",
 				"gray-8": "#151816",
 
 				/* Technical Borders */
-				"border-subtle": "var(--border-subtle, #1a1e1b)",
-				"border-default": "var(--border-default, #242824)",
-				"border-strong": "var(--border-strong, #323833)",
-				"border-accent": "var(--border-accent, rgba(34, 197, 94, 0.4))",
-				"dark-divider-border-2": "var(--border-default, #242824)",
+				"border-subtle": withOpacity("--border-subtle-rgb", "26, 30, 27"),
+				"border-default": withOpacity("--border-default-rgb", "36, 40, 36"),
+				"border-strong": withOpacity("--border-strong-rgb", "50, 56, 51"),
+				"border-accent": withOpacity("--accent-rgb", "34, 197, 94"),
+				"border-hover": withOpacity("--border-strong-rgb", "50, 56, 51"),
+				"dark-divider-border-2": withOpacity("--border-default-rgb", "36, 40, 36"),
 
 				/* Fills */
-				"dark-fill-2": "var(--bg-dark-fill-2, rgba(34, 197, 94, 0.08))",
-				"dark-fill-3": "var(--bg-dark-fill-3, rgba(34, 197, 94, 0.04))",
+				"dark-fill-2": withOpacity("--bg-hover-rgb", "28, 33, 30"),
+				"dark-fill-3": withOpacity("--bg-elevated-rgb", "21, 24, 22"),
+				"bg-dark-fill-2": withOpacity("--bg-hover-rgb", "28, 33, 30"),
+				"bg-dark-fill-3": withOpacity("--bg-elevated-rgb", "21, 24, 22"),
 
 				/* Restrained Technical Accent (mapped to brand tokens for safety) */
-				accent: "var(--accent, #22c55e)",
+				accent: withOpacity("--accent-rgb", "34, 197, 94"),
+				"accent-brand": withOpacity("--accent-rgb", "34, 197, 94"),
+				"accent-hover": withOpacity("--accent-hover-rgb", "22, 163, 74"),
 				"accent-muted": "var(--accent-muted, rgba(34, 197, 94, 0.08))",
-				"brand-green": "var(--accent, #22c55e)",
-				"brand-orange": "var(--accent, #22c55e)",
-				"brand-orange-s": "var(--accent-hover, #16a34a)",
-				"brand-orange-hover": "var(--accent-hover, #16a34a)",
+				"accent-border": "var(--accent-border, rgba(34, 197, 94, 0.25))",
+				"brand-green": withOpacity("--accent-rgb", "34, 197, 94"),
+				"brand-orange": withOpacity("--accent-rgb", "34, 197, 94"),
+				"brand-orange-s": withOpacity("--accent-hover-rgb", "22, 163, 74"),
+				"brand-orange-hover": withOpacity("--accent-hover-rgb", "22, 163, 74"),
+				"brand-glow": "rgba(34, 197, 94, 0.06)",
 
 				/* Semantic Signals (Muted, Professional) */
-				"color-success": "var(--color-success, #22c55e)",
-				"color-warning": "var(--color-warning, #f59e0b)",
-				"color-error": "var(--color-error, #ef4444)",
-				"color-info": "var(--color-info, #64748b)",
-				"bc-success": "var(--color-success, #22c55e)",
-				"bc-warning": "var(--color-warning, #f59e0b)",
-				"bc-error": "var(--color-error, #ef4444)",
-				"bc-info": "var(--color-info, #64748b)",
-				"bc-primary": "var(--text-primary, #f1f3ef)",
-				"bc-secondary": "var(--text-secondary, #a6aca5)",
-				"bc-muted": "var(--text-muted, #6f766f)",
-				"bc-accent": "var(--accent, #22c55e)",
-				"dark-green-s": "var(--color-success, #22c55e)",
-				"dark-blue-s": "var(--color-info, #38bdf8)",
+				"color-success": withOpacity("--color-success-rgb", "34, 197, 94"),
+				"color-warning": withOpacity("--color-warning-rgb", "245, 158, 11"),
+				"color-error": withOpacity("--color-error-rgb", "239, 68, 68"),
+				"color-info": withOpacity("--color-info-rgb", "100, 116, 139"),
+				"bc-success": withOpacity("--color-success-rgb", "34, 197, 94"),
+				"bc-warning": withOpacity("--color-warning-rgb", "245, 158, 11"),
+				"bc-error": withOpacity("--color-error-rgb", "239, 68, 68"),
+				"bc-info": withOpacity("--color-info-rgb", "100, 116, 139"),
+				"bc-primary": withOpacity("--text-primary-rgb", "241, 243, 239"),
+				"bc-secondary": withOpacity("--text-secondary-rgb", "166, 172, 165"),
+				"bc-muted": withOpacity("--text-muted-rgb", "111, 118, 111"),
+				"bc-accent": withOpacity("--accent-rgb", "34, 197, 94"),
+				"dark-green-s": withOpacity("--color-success-rgb", "34, 197, 94"),
+				"dark-blue-s": withOpacity("--color-info-rgb", "100, 116, 139"),
 				"dark-yellow": "#f59e0b",
 				"dark-pink": "#ec4899",
 				olive: "#10b981",
+
+				/* Color Semantic Aliases */
+				"color-error-bg": "rgba(239, 68, 68, 0.08)",
+				"color-error-border": "rgba(239, 68, 68, 0.25)",
+				"color-success-bg": "rgba(34, 197, 94, 0.08)",
+				"color-success-border": "rgba(34, 197, 94, 0.25)",
+				"color-warning-bg": "rgba(245, 158, 11, 0.08)",
+				"color-warning-border": "rgba(245, 158, 11, 0.25)",
+
+				/* Extended Custom Palette for Component Consistency */
+				"emerald-450": "#10b981",
+				"emerald-455": "#34d399",
+				"emerald-650": "#047857",
+				"green-450": "#22c55e",
+				"rose-450": "#f43f5e",
+				"rose-455": "#fb7185",
+				"red-650": "#b91c1c",
+				"gray-550": "#4b5563",
+
+				/* 950 Shades (Backported for Tailwind 3.2 compatibility) */
+				"red-950": "#450a0a",
+				"emerald-950": "#022c22",
+				"rose-950": "#4c0519",
 
 				/* Refined Grays */
 				"gray-250": "#d1d5db",
@@ -84,6 +135,16 @@ module.exports = {
 				"gray-805": "#1a1e1b",
 				"gray-850": "#151816",
 				"gray-855": "#121514",
+			},
+			opacity: {
+				15: "0.15",
+				35: "0.35",
+				45: "0.45",
+				55: "0.55",
+				85: "0.85",
+			},
+			fontSize: {
+				md: "1rem",
 			},
 			spacing: {
 				"px-safe": "max(1rem, env(safe-area-inset-left))",

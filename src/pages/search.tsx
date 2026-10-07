@@ -451,10 +451,10 @@ export default function SearchPage() {
 												{!isSelf && user && (
 													<button
 														onClick={(e) => handleFollowUser(targetUser, e)}
-														className={`px-3.5 py-1 rounded-md text-xs font-semibold transition shrink-0 border ${
+														className={`px-3.5 py-1 rounded-md text-xs font-semibold transition shrink-0 ${
 															isFollowing
-																? "bg-bg-dark-fill-3 border-border-subtle text-text-secondary hover:text-text-primary"
-																: "bg-emerald-500 hover:bg-emerald-450 text-black border-transparent"
+																? "bg-bg-elevated hover:bg-bg-hover text-text-primary border border-border-default"
+																: "bg-accent hover:bg-accent-hover text-[#080909] border border-transparent"
 														}`}
 													>
 														{isFollowing ? "Following" : "Follow"}

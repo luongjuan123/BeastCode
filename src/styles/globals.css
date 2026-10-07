@@ -12,6 +12,25 @@
 
 /* ── DESIGN TOKENS ── */
 :root {
+  /* RGB channel triplets for Tailwind alpha modifier support */
+  --accent-rgb:        34, 197, 94;
+  --accent-brand-rgb:  34, 197, 94;
+  --accent-hover-rgb:  22, 163, 74;
+  --bg-base-rgb:       8, 9, 9;
+  --bg-surface-rgb:    15, 18, 16;
+  --bg-elevated-rgb:   21, 24, 22;
+  --bg-hover-rgb:      28, 33, 30;
+  --border-subtle-rgb: 26, 30, 27;
+  --border-default-rgb: 36, 40, 36;
+  --border-strong-rgb: 50, 56, 51;
+  --text-primary-rgb:  241, 243, 239;
+  --text-secondary-rgb: 166, 172, 165;
+  --text-muted-rgb:    111, 118, 111;
+  --color-success-rgb: 34, 197, 94;
+  --color-warning-rgb: 245, 158, 11;
+  --color-error-rgb:   239, 68, 68;
+  --color-info-rgb:    100, 116, 139;
+
   /* Near-black page surfaces */
   --bg-base:           #080909;
   --bg-dark-layer-2:   #080909;
@@ -20,13 +39,14 @@
   --bg-elevated:       #151816;
   --bg-hover:          #1c211e;
 
-  --bg-dark-fill-3-rgb: 34, 197, 94;
-  --bg-dark-fill-3:    rgba(34, 197, 94, 0.04);
-  --bg-dark-fill-2-rgb: 34, 197, 94;
-  --bg-dark-fill-2:    rgba(34, 197, 94, 0.08);
+  --bg-dark-fill-3-rgb: 21, 24, 22;
+  --bg-dark-fill-3:    #151816;
+  --bg-dark-fill-2-rgb: 28, 33, 30;
+  --bg-dark-fill-2:    #1c211e;
 
   /* Primary Accent: Restrained Technical Green */
   --accent:            #22c55e;
+  --accent-brand:      #22c55e;
   --accent-hover:      #16a34a;
   --accent-muted:      rgba(34, 197, 94, 0.08);
   --accent-border:     rgba(34, 197, 94, 0.25);
@@ -177,6 +197,36 @@
     background-color: var(--bg-elevated);
     color: var(--text-primary);
     padding: 0.5rem 0.75rem;
+  }
+
+  /* ── BROWSER AUTOFILL & PLACEHOLDER STYLING ── */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--text-primary) !important;
+    -webkit-box-shadow: 0 0 0px 1000px var(--bg-surface) inset !important;
+    box-shadow: 0 0 0px 1000px var(--bg-surface) inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+    caret-color: var(--text-primary);
+  }
+
+  ::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+  }
+
+  ::-webkit-input-placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+  }
+
+  ::-moz-placeholder {
+    color: var(--text-muted);
+    opacity: 1;
   }
 }
 

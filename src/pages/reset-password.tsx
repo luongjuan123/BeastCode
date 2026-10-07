@@ -513,7 +513,7 @@ export default function ResetPasswordPage() {
 							<button
 								type="submit"
 								disabled={submitting}
-								className="w-full mt-4 bg-emerald-500 hover:bg-emerald-450 text-black disabled:opacity-50 font-semibold py-2.5 px-4 rounded-md text-xs transition-all duration-150 flex items-center justify-center gap-2 outline-none shadow-sm"
+								className="w-full mt-4 bg-accent hover:bg-accent-hover text-[#080909] disabled:opacity-50 font-semibold py-2.5 px-4 rounded-md text-xs transition-all duration-150 flex items-center justify-center gap-2 outline-none shadow-sm"
 							>
 								{submitting ? (
 									<>

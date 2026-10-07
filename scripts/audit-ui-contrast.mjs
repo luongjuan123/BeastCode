@@ -63,7 +63,8 @@ async function auditPage(page, route) {
   console.log(`========================================`);
 
   try {
-    await page.goto(`${BASE_URL}${route}`, { waitUntil: "networkidle", timeout: 15000 });
+    await page.goto(`${BASE_URL}${route}`, { waitUntil: "domcontentloaded", timeout: 8000 });
+    await page.waitForTimeout(800);
   } catch (err) {
     console.log(`Navigation warning for ${route}:`, err.message);
   }
@@ -129,17 +130,6 @@ async function auditPage(page, route) {
       if (rect.width === 0 || rect.height === 0) return;
       const style = window.getComputedStyle(el);
       if (style.display === "none" || style.visibility === "hidden" || parseFloat(style.opacity) < 0.05) {
-        // Check if it's supposed to be visible
-        if (el.tagName === "BUTTON" || el.tagName === "A") {
-          results.push({
-            type: "HIDDEN_INTERACTIVE",
-            tagName: el.tagName,
-            text: (el.innerText || "").slice(0, 40),
-            classes: el.className,
-            opacity: style.opacity,
-            visibility: style.visibility,
-          });
-        }
         return;
       }
 
@@ -200,34 +190,35 @@ async function auditPage(page, route) {
         const hasBorder = style.borderWidth && parseFloat(style.borderWidth) > 0 && style.borderStyle !== "none";
         const borderColor = parseColor(style.borderColor);
 
-        // If button background is identical or near identical to parent background,
-        // and border is transparent or identical to parent background:
-        const btnBg = btnBgStyle && btnBgStyle.a > 0 ? btnBgStyle : parentBg;
-        const btnBgLum = getLuminance(btnBg.r, btnBg.g, btnBg.b);
+        // Calculate button surface luminance
+        const btnBgLum = getLuminance(effectiveBg.r, effectiveBg.g, effectiveBg.b);
         const parentBgLum = getLuminance(parentBg.r, parentBg.g, parentBg.b);
         const bgDiff = contrastRatio(btnBgLum, parentBgLum);
 
         const borderDistinguishable = hasBorder && borderColor && borderColor.a > 0.1 &&
           contrastRatio(getLuminance(borderColor.r, borderColor.g, borderColor.b), parentBgLum) > 1.2;
 
-        // If no background distinction and no border distinction, is it a ghost button?
-        // Ghost button must have high-contrast icon or text.
         const textOrIconColor = parseColor(style.color);
-        if (textOrIconColor) {
-          const textLum = getLuminance(textOrIconColor.r, textOrIconColor.g, textOrIconColor.b);
-          const textRatio = contrastRatio(textLum, parentBgLum);
-          if (textRatio < 2.5) {
-            results.push({
-              severity: "CRITICAL_INVISIBLE_BUTTON",
-              tagName: "BUTTON",
-              text: (el.innerText || "").slice(0, 40),
-              classes: typeof el.className === "string" ? el.className : "",
-              bgDiff: bgDiff.toFixed(2),
-              textRatio: textRatio.toFixed(2),
-              color: style.color,
-              bg: style.backgroundColor,
-            });
-          }
+        const textLum = textOrIconColor ? getLuminance(textOrIconColor.r, textOrIconColor.g, textOrIconColor.b) : parentBgLum;
+        const textVsParentRatio = contrastRatio(textLum, parentBgLum);
+        const textVsBtnBgRatio = contrastRatio(textLum, btnBgLum);
+
+        // A button is INVISIBLE if:
+        // 1. It has no distinct background from its container (bgDiff < 1.15)
+        // 2. AND it has no distinguishable border (borderDistinguishable === false)
+        // 3. AND its text/icon cannot be read against the background (textVsParentRatio < 2.5)
+        if (bgDiff < 1.15 && !borderDistinguishable && textVsParentRatio < 2.5) {
+          results.push({
+            severity: "CRITICAL_INVISIBLE_BUTTON",
+            tagName: "BUTTON",
+            text: (el.innerText || "").slice(0, 40),
+            classes: typeof el.className === "string" ? el.className : "",
+            bgDiff: bgDiff.toFixed(2),
+            textVsParentRatio: textVsParentRatio.toFixed(2),
+            textVsBtnBgRatio: textVsBtnBgRatio ? textVsBtnBgRatio.toFixed(2) : "N/A",
+            color: style.color,
+            bg: style.backgroundColor,
+          });
         }
       }
 

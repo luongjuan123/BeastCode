@@ -55,7 +55,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
 						<div key={idx} className="flex items-center gap-2 text-xs font-mono">
 							<span className="text-text-muted">{m.label}:</span>
 							<span className="text-text-primary font-medium">{m.value}</span>
-							{idx < metrics.length - 1 && <span className="text-border-default ml-2">•</span>}
+							{idx < metrics.length - 1 && <span className="text-text-muted ml-2">•</span>}
 						</div>
 					))}
 				</div>

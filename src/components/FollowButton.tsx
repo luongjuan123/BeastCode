@@ -85,8 +85,8 @@ const FollowButton: React.FC<FollowButtonProps> = ({
         transition-all duration-300 ease-out
         ${
           isFollowing
-            ? 'bg-transparent border-2 border-gray-600 text-gray-400 hover:border-gray-500 hover:text-gray-300'
-            : 'bg-brand-orange text-white hover:bg-brand-orange-s'
+            ? 'bg-bg-elevated border border-border-default text-text-primary hover:bg-bg-hover hover:border-border-strong'
+            : 'bg-accent hover:bg-accent-hover text-[#080909] font-semibold border border-transparent'
         }
         ${isTransitioning ? 'opacity-70 cursor-not-allowed' : ''}
         active:scale-95 transform

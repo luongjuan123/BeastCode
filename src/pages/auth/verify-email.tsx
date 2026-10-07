@@ -303,7 +303,7 @@ export default function VerifyEmailPage() {
 						id="verify-email-btn"
 						onClick={handleVerifyClick}
 						disabled={verifying}
-						className="w-full flex items-center justify-center gap-2 rounded-md py-2.5 text-xs font-semibold bg-emerald-500 hover:bg-emerald-450 text-black transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed mb-3 shadow-sm"
+						className="w-full flex items-center justify-center gap-2 rounded-md py-2.5 text-xs font-semibold bg-accent hover:bg-accent-hover text-[#080909] transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed mb-3 shadow-sm"
 					>
 						{verifying ? (
 							<>
