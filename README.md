@@ -361,6 +361,5 @@ Distributed under the MIT License. See [`LICENSE`](./LICENSE) for more informati
 
 <div align="center">
 
-Built with ❤️ by [luongjuan123](https://github.com/luongjuan123)
 
 </div>
