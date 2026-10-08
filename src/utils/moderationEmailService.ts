@@ -67,8 +67,8 @@ export class ModerationEmailService {
 
 		const html = getEmailHtml({
 			headerTitle: "ACCOUNT REINSTATED",
-			accentColor: "#10b981",
-			accentGlowColor: "rgba(16, 185, 129, 0.25)",
+			accentColor: "#22c55e",
+			accentGlowColor: "rgba(34, 197, 94, 0.25)",
 			title: "Your Account Has Been Reinstated",
 			leadText: "Hello, we are pleased to inform you that your account suspension has been lifted, and full access has been restored.",
 			description: "You can now log in, submit codes, compete in contests, and participate in community threads as normal.",
@@ -120,8 +120,8 @@ export class ModerationEmailService {
 
 		const html = getEmailHtml({
 			headerTitle: "DELETION CANCELLED",
-			accentColor: "#10b981",
-			accentGlowColor: "rgba(16, 185, 129, 0.25)",
+			accentColor: "#22c55e",
+			accentGlowColor: "rgba(34, 197, 94, 0.25)",
 			title: "Scheduled Account Deletion Cancelled",
 			leadText: "Hello, this email confirms that the scheduled deletion of your BeastCode account has been cancelled.",
 			description: "Your account is now fully restored with all your history, contests, and submissions preserved.",
@@ -165,8 +165,8 @@ export class ModerationEmailService {
 
 		const html = getEmailHtml({
 			headerTitle: "APPEAL RESOLVED",
-			accentColor: isApproved ? "#10b981" : "#ef4444",
-			accentGlowColor: isApproved ? "rgba(16, 185, 129, 0.25)" : "rgba(239, 68, 68, 0.25)",
+			accentColor: isApproved ? "#22c55e" : "#ef4444",
+			accentGlowColor: isApproved ? "rgba(34, 197, 94, 0.25)" : "rgba(239, 68, 68, 0.25)",
 			title: isApproved ? "Account Appeal Approved" : "Account Appeal Rejected",
 			leadText: "Hello, our moderation team has completed reviewing the appeal submitted for your account.",
 			description: isApproved

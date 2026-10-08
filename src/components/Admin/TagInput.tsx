@@ -65,7 +65,7 @@ const TagInput: React.FC<TagInputProps> = ({ tags, onChange, placeholder = "add 
 					value={input}
 					onChange={(e) => setInput(e.target.value)}
 					onKeyDown={handleKeyDown}
-					placeholder={tags.length === 0 ? placeholder : "add tag (max 3)"}
+					aria-label="Add tag"
 					autoComplete="off"
 					autoCorrect="off"
 					autoCapitalize="off"

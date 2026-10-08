@@ -388,7 +388,6 @@ const NewProblem: React.FC = () => {
 										id='title'
 										value={title}
 										onChange={(e) => setTitle(e.target.value)}
-										placeholder='e.g. Two Sum'
 										autoComplete="off"
 										autoCorrect="off"
 										autoCapitalize="off"
@@ -434,7 +433,6 @@ const NewProblem: React.FC = () => {
 										value={description}
 										onChange={(e) => setDescription(e.target.value.slice(0, 140))}
 										rows={3}
-										placeholder='Write a short summary about the challenge'
 										autoComplete="off"
 										autoCorrect="off"
 										autoCapitalize="off"
@@ -457,7 +455,6 @@ const NewProblem: React.FC = () => {
 									<MarkdownEditor
 										value={problemStatement}
 										onChange={setProblemStatement}
-										placeholder='Write the full problem definition here...'
 										height='220px'
 									/>
 								</div>
@@ -472,7 +469,6 @@ const NewProblem: React.FC = () => {
 									<MarkdownEditor
 										value={inputFormat}
 										onChange={setInputFormat}
-										placeholder='Detail the formatting of inputs...'
 										height='150px'
 									/>
 								</div>
@@ -487,7 +483,6 @@ const NewProblem: React.FC = () => {
 									<MarkdownEditor
 										value={constraints}
 										onChange={setConstraints}
-										placeholder='e.g. 1 <= nums.length <= 10^4'
 										height='150px'
 									/>
 								</div>
@@ -502,7 +497,6 @@ const NewProblem: React.FC = () => {
 									<MarkdownEditor
 										value={outputFormat}
 										onChange={setOutputFormat}
-										placeholder='Detail the formatting of expected outputs...'
 										height='150px'
 									/>
 								</div>
@@ -535,7 +529,6 @@ const NewProblem: React.FC = () => {
 									id='starterFunctionName'
 									value={starterFunctionName}
 									onChange={(e) => setStarterFunctionName(e.target.value)}
-									placeholder='e.g. function solve('
 									autoComplete="off"
 									autoCorrect="off"
 									autoCapitalize="off"
@@ -557,7 +550,6 @@ const NewProblem: React.FC = () => {
 									value={starterCode}
 									onChange={(e) => setStarterCode(e.target.value)}
 									rows={10}
-									placeholder='// Write starter template here...'
 									autoComplete="off"
 									autoCorrect="off"
 									autoCapitalize="off"
@@ -585,7 +577,6 @@ const NewProblem: React.FC = () => {
 										id='videoId'
 										value={videoId}
 										onChange={(e) => setVideoId(e.target.value)}
-										placeholder='e.g. qm_T3YV8yks'
 										autoComplete="off"
 										autoCorrect="off"
 										autoCapitalize="off"
@@ -604,7 +595,6 @@ const NewProblem: React.FC = () => {
 										id='link'
 										value={link}
 										onChange={(e) => setLink(e.target.value)}
-										placeholder='e.g. https://leetcode.com/problems/...'
 										autoComplete="off"
 										autoCorrect="off"
 										autoCapitalize="off"
@@ -835,7 +825,6 @@ const NewProblem: React.FC = () => {
 										id='editorialVideoUrl'
 										value={editorialVideoUrl}
 										onChange={(e) => setEditorialVideoUrl(e.target.value)}
-										placeholder='e.g. https://www.youtube.com/watch?v=...'
 										autoComplete="off"
 										autoCorrect="off"
 										autoCapitalize="off"
@@ -852,7 +841,6 @@ const NewProblem: React.FC = () => {
 									<MarkdownEditor
 										value={editorialMarkdown}
 										onChange={setEditorialMarkdown}
-										placeholder='Describe the optimal algorithms, time/space complexities, and approaches...'
 										height='350px'
 									/>
 								</div>
@@ -900,7 +888,6 @@ const NewProblem: React.FC = () => {
 												step='any'
 												value={customCheckerEpsilon}
 												onChange={(e) => setCustomCheckerEpsilon(Number(e.target.value) || 1e-6)}
-												placeholder='e.g. 1e-6'
 												autoComplete="off"
 												autoCorrect="off"
 												autoCapitalize="off"
@@ -946,25 +933,6 @@ const NewProblem: React.FC = () => {
 											autoCorrect="off"
 											autoCapitalize="off"
 											spellCheck={false}
-											placeholder={`# Python Checker Example:
-# Receives 3 arguments via CLI or files: input, expected, actual
-# exit(0) for accepted, exit(1) for incorrect
-
-import sys
-
-with open(sys.argv[1], 'r') as f:
-    input_data = f.read()
-with open(sys.argv[2], 'r') as f:
-    expected_data = f.read()
-with open(sys.argv[3], 'r') as f:
-    actual_data = f.read()
-
-# custom comparison code here...
-if actual_data.strip() == expected_data.strip():
-    sys.exit(0)
-else:
-    sys.exit(1)
-`}
 											className='border outline-none rounded p-3 text-xs w-full font-mono focus:border-brand-orange'
 											style={{ background: "var(--bg-elevated)", borderColor: "var(--border-default)", color: "var(--text-primary)" }}
 										/>

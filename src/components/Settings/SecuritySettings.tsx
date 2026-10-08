@@ -676,7 +676,6 @@ export default function SecuritySettings() {
 									type={showCurrent ? "text" : "password"}
 									value={currentPwd}
 									onChange={(e) => { setCurrentPwd(e.target.value); setPwdErrors({}); }}
-									placeholder="••••••••"
 									autoComplete="current-password"
 									disabled={pwdSubmitting}
 									className={`w-full bc-input-shell rounded-lg py-2.5 px-3.5 pr-11 text-sm outline-none transition duration-200 ${
@@ -708,7 +707,6 @@ export default function SecuritySettings() {
 									type={showNew ? "text" : "password"}
 									value={newPwd}
 									onChange={(e) => { setNewPwd(e.target.value); setPwdErrors({}); }}
-									placeholder="Create a strong password"
 									autoComplete="new-password"
 									disabled={pwdSubmitting}
 									className={`w-full bc-input-shell rounded-lg py-2.5 px-3.5 pr-11 text-sm outline-none focus:border-brand-orange transition duration-200`}
@@ -779,7 +777,6 @@ export default function SecuritySettings() {
 									type={showConfirm ? "text" : "password"}
 									value={confirmPwd}
 									onChange={(e) => { setConfirmPwd(e.target.value); setPwdErrors({}); }}
-									placeholder="Re-enter your new password"
 									autoComplete="new-password"
 									disabled={pwdSubmitting}
 									className={`w-full bc-input-shell rounded-lg py-2.5 px-3.5 pr-11 text-sm outline-none transition duration-200 ${
@@ -947,9 +944,9 @@ export default function SecuritySettings() {
 									<div className="flex gap-2 items-center">
 										<input
 											type="text"
+											aria-label="6-digit verification code"
 											value={mfaSetupCode}
 											onChange={(e) => setMfaSetupCode(e.target.value)}
-											placeholder="6-digit verification code"
 											maxLength={6}
 											autoComplete="one-time-code"
 											autoCorrect="off"

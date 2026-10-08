@@ -153,30 +153,56 @@ export class NotificationDispatcher {
 
 		// 5. Place in Outgoing Email Queue (Queue System Integration)
 		if (emailAllowed) {
-			let queuedRef: any = null;
+			let queueDocId = "";
 			try {
-				const eventId = payload.eventId || `evt-${eventType}-${payload.toUid}-${Date.now()}`;
-				
-				// Duplicate check in queue to prevent duplicate delivery of identical emails
-				const dupQuery = await db.collection("emailQueue")
-					.where("eventId", "==", eventId)
-					.where("status", "in", ["pending", "sent"])
-					.limit(1)
-					.get();
+				const now = Date.now();
+				const eventId = payload.eventId || `evt-${eventType}-${payload.toUid}-${now}`;
+				queueDocId = `q_${eventId.replace(/[^a-zA-Z0-9_-]/g, "_")}`;
 
-				if (!dupQuery.empty) {
+				// Calculate expiration time based on event semantics
+				let expiresAt = typeof payload.expiresAt === "number" ? payload.expiresAt : 0;
+				const metaStartTime = typeof payload.metadata?.startTime === "number" ? payload.metadata.startTime : 0;
+				const metaEndTime = typeof payload.metadata?.endTime === "number" ? payload.metadata.endTime : 0;
+
+				if (!expiresAt) {
+					if (eventType === "CONTEST_SOON" || eventType.startsWith("CONTEST_STARTING_") || eventType === "CONTEST_REG_REMINDER") {
+						expiresAt = metaStartTime > 0 ? metaStartTime : (now + 2 * 60 * 60 * 1000);
+					} else if (eventType === "CONTEST_PUBLISHED") {
+						expiresAt = metaStartTime > 0 ? metaStartTime : (now + 48 * 60 * 60 * 1000);
+					} else if (eventType === "CONTEST_REG_CONFIRM") {
+						expiresAt = metaEndTime > 0 ? metaEndTime : (now + 7 * 24 * 60 * 60 * 1000);
+					} else {
+						expiresAt = now + 24 * 60 * 60 * 1000; // 24 hours standard
+					}
+				}
+
+				const queueRef = db.collection("emailQueue").doc(queueDocId);
+				const existingDoc = await queueRef.get();
+
+				if (existingDoc.exists) {
+					const existingData = existingDoc.data() || {};
 					if (historyRef) {
-						await historyRef.update({ status: "skipped", reason: "Duplicate skipped: eventId already exists in queue." });
+						await historyRef.update({
+							status: "skipped",
+							reason: `Duplicate skipped: eventId already exists in queue (status: ${existingData.status}).`
+						});
 					}
 					return {
 						success: true,
-						message: "Skipped: Duplicate eventId detected.",
+						message: `Skipped: Duplicate eventId detected (status: ${existingData.status}).`,
 						status: "skipped",
-						logId: historyRef?.id
+						logId: historyRef?.id,
+						id: queueDocId,
+						queuedId: queueDocId
 					};
 				}
 
-				queuedRef = await db.collection("emailQueue").add({
+				const metadata = {
+					...(payload.metadata || {}),
+					contestId: payload.metadata?.contestId || payload.metadata?.cid || payload.placeholders?.contestId || undefined
+				};
+
+				await queueRef.set({
 					toEmail: emailLower,
 					toUid: payload.toUid,
 					category: config.category,
@@ -185,14 +211,15 @@ export class NotificationDispatcher {
 					emailHtml,
 					status: "pending",
 					retryCount: 0,
-					nextRetryAt: Date.now(),
-					createdAt: Date.now(),
+					nextRetryAt: now,
+					createdAt: now,
 					eventId,
-					metadata: payload.metadata || null
+					expiresAt,
+					metadata: Object.keys(metadata).length > 0 ? metadata : null
 				});
 
 				if (historyRef) {
-					await historyRef.update({ status: "queued", queuedId: queuedRef.id });
+					await historyRef.update({ status: "queued", queuedId: queueDocId });
 				}
 
 				// Immediately trigger background queue processor so the email delivers without waiting for manual admin clicks
@@ -205,7 +232,8 @@ export class NotificationDispatcher {
 					message: "Email placed in queue for delivery.",
 					status: "queued",
 					logId: historyRef?.id,
-					queuedId: queuedRef.id
+					id: queueDocId,
+					queuedId: queueDocId
 				};
 			} catch (queueErr: any) {
 				console.error("[Queue Error] Failed to queue email task:", queueErr);

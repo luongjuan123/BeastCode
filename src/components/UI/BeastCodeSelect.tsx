@@ -220,7 +220,7 @@ const BeastCodeSelect: React.FC<BeastCodeSelectProps> = ({
 							<input
 								ref={searchInputRef}
 								type="text"
-								placeholder="Filter options..."
+								aria-label="Filter options"
 								value={searchQuery}
 								onChange={(e) => {
 									setSearchQuery(e.target.value);

@@ -8,6 +8,7 @@ import {
 	emitOrgEvent,
 	Organization,
 } from "@/utils/orgEngine";
+import { deleteOrganizationPermanently } from "@/utils/organizationDeletionService";
 
 async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 	const db = getAdminFirestore();
@@ -207,15 +208,34 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 		}
 	}
 
-	// DELETE /api/organizations/:id - Soft delete organization
+	// DELETE /api/organizations/:id - Permanently or soft delete organization
 	if (req.method === "DELETE") {
 		if (!uid) {
 			return res.status(401).json({ success: false, error: "Unauthorized" });
 		}
 
 		try {
+			const isSuperAdmin = req.user?.role === "super_admin";
+			const isPermanent =
+				req.query.permanent === "true" ||
+				req.body?.permanent === true ||
+				req.body?.confirmationName !== undefined ||
+				req.query.confirmationName !== undefined;
+
+			if (isPermanent) {
+				const confirmationName = req.body?.confirmationName || (req.query.confirmationName as string);
+				const result = await deleteOrganizationPermanently(org.id, uid, confirmationName, isSuperAdmin);
+				return res.status(200).json({
+					success: true,
+					permanent: true,
+					message: result.message,
+					stats: result.stats,
+				});
+			}
+
+			// Fallback: Soft-delete
 			const { allowed } = await checkOrgPermission(org.id, uid, "organization.deleteOrganization");
-			if (!allowed) {
+			if (!allowed && !isSuperAdmin) {
 				return res.status(403).json({ success: false, error: "Forbidden: Insufficient Permissions" });
 			}
 
@@ -238,7 +258,8 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 			return res.status(200).json({ success: true, message: "Organization soft-deleted successfully" });
 		} catch (error: any) {
 			console.error("DELETE /api/organizations/:id error:", error);
-			return res.status(500).json({ success: false, error: "Internal Error" });
+			const statusCode = error.message?.includes("Forbidden") || error.message?.includes("mismatch") ? 403 : 500;
+			return res.status(statusCode).json({ success: false, error: error.message || "Internal Error" });
 		}
 	}
 

@@ -80,7 +80,7 @@ function AppealCard({ appeal, resolveAppeal }: { appeal: any; resolveAppeal: (ap
 			{appeal.status === "Pending" && (
 				<div className="space-y-3">
 					<textarea
-						placeholder="Write moderator decision notes..."
+						aria-label="Moderator decision notes"
 						value={notes}
 						onChange={(e) => setNotes(e.target.value)}
 						autoComplete="off"
@@ -430,7 +430,7 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 								<FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" size={13} />
 								<input
 									type="text"
-									placeholder="Search name, UID, owner..."
+									aria-label="Search organizations by name, UID, or owner"
 									value={searchQuery}
 									onChange={(e) => setSearchQuery(e.target.value)}
 									autoComplete="off"
@@ -1095,7 +1095,6 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 								<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">New Owner UID</label>
 								<input
 									type="text"
-									placeholder="Paste target user UID..."
 									value={newOwnerUid}
 									onChange={(e) => setNewOwnerUid(e.target.value)}
 									autoComplete="off"
@@ -1213,7 +1212,6 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 								<textarea
 									value={warningForm.description}
 									onChange={(e) => setWarningForm((prev) => ({ ...prev, description: e.target.value }))}
-									placeholder="Detail the infraction..."
 									autoComplete="off"
 									autoCorrect="off"
 									autoCapitalize="off"
@@ -1471,7 +1469,6 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 									autoCapitalize="off"
 									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
-									placeholder="Critical system notice..."
 									required
 								/>
 							</div>
@@ -1486,7 +1483,6 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 									autoCapitalize="off"
 									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
-									placeholder="Write instructions, details, or policies..."
 									rows={4}
 									required
 								/>
@@ -1598,7 +1594,6 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 								<textarea
 									value={warningForm.description}
 									onChange={(e) => setWarningForm((prev) => ({ ...prev, description: e.target.value }))}
-									placeholder="Describe the reason for the bulk warning..."
 									autoComplete="off"
 									autoCorrect="off"
 									autoCapitalize="off"
@@ -1783,7 +1778,6 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 									autoCapitalize="off"
 									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
-									placeholder="Critical notification..."
 									required
 								/>
 							</div>
@@ -1798,7 +1792,6 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 									autoCapitalize="off"
 									spellCheck={false}
 									className="w-full bg-dark-layer-1 border border-gray-800 text-xs rounded-md p-3 text-white outline-none focus:border-emerald-500 transition"
-									placeholder="Describe the details..."
 									rows={4}
 									required
 								/>

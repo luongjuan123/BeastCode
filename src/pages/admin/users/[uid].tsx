@@ -788,7 +788,6 @@ export default function UserDetailPage() {
 								<textarea
 									value={suspendNotes}
 									onChange={(e) => setSuspendNotes(e.target.value)}
-									placeholder="Provide additional details or audit notes..."
 									rows={3}
 									autoComplete="off"
 									autoCorrect="off"
@@ -860,7 +859,6 @@ export default function UserDetailPage() {
 								<textarea
 									value={unsuspendNotes}
 									onChange={(e) => setUnsuspendNotes(e.target.value)}
-									placeholder="Provide additional details or audit notes..."
 									rows={3}
 									autoComplete="off"
 									autoCorrect="off"
@@ -938,7 +936,6 @@ export default function UserDetailPage() {
 								<textarea
 									value={deleteNotes}
 									onChange={(e) => setDeleteNotes(e.target.value)}
-									placeholder="Provide additional details or audit notes..."
 									rows={2}
 									autoComplete="off"
 									autoCorrect="off"
@@ -956,7 +953,6 @@ export default function UserDetailPage() {
 									type="text"
 									value={deleteConfirmText}
 									onChange={(e) => setDeleteConfirmText(e.target.value)}
-									placeholder="DELETE"
 									autoComplete="off"
 									autoCorrect="off"
 									autoCapitalize="off"

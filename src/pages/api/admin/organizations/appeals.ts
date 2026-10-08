@@ -4,6 +4,8 @@ import { withApiErrorHandler } from "@/utils/apiErrorHandler";
 import { withAdminGuard } from "@/utils/withAdminGuard";
 import { AuthenticatedRequest } from "@/utils/authMiddleware";
 import { EmailService } from "@/utils/emailService";
+import { getEmailHtml } from "@/utils/emailTemplate";
+import { buildAbsoluteUrl } from "@/utils/siteConfig";
 
 async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 	const db = getAdminFirestore();
@@ -140,9 +142,21 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 						await EmailService.sendDirectEmail(
 							ownerEmail,
 							`[Update] Organization Appeal Approved!`,
-							`<p>Hello,</p>
-							<p>We are pleased to inform you that your appeal has been approved. Your organization workspace is now fully restored and active.</p>
-							<p><strong>Moderator Notes:</strong> ${moderatorNotes || "No notes provided."}</p>`
+							getEmailHtml({
+								headerTitle: "APPEAL APPROVED",
+								accentColor: "#22c55e",
+								title: "Organization Appeal Approved",
+								leadText: "We are pleased to inform you that your appeal has been approved by the platform administration.",
+								description: "Your organization workspace is now fully restored and all administrative restrictions have been lifted.",
+								details: [
+									{ label: "Status", value: "Restored & Active", isHighlight: true },
+									{ label: "Moderator Notes", value: moderatorNotes || "No notes provided." }
+								],
+								ctaText: "Open Organization Dashboard",
+								ctaUrl: buildAbsoluteUrl("/orgs"),
+								recipientEmail: ownerEmail,
+								preferenceType: "organization"
+							})
 						);
 					}
 				}
@@ -171,9 +185,21 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 						await EmailService.sendDirectEmail(
 							ownerEmail,
 							`[Update] Organization Appeal Rejected`,
-							`<p>Hello,</p>
-							<p>We regret to inform you that your appeal has been rejected. The restriction or ban remains in place.</p>
-							<p><strong>Moderator Notes:</strong> ${moderatorNotes || "No notes provided."}</p>`
+							getEmailHtml({
+								headerTitle: "APPEAL REJECTED",
+								accentColor: "#ef4444",
+								title: "Organization Appeal Rejected",
+								leadText: "We regret to inform you that following administrative review, your organization appeal has been rejected.",
+								description: "The existing workspace restrictions or ban remain in effect in accordance with community guidelines.",
+								details: [
+									{ label: "Status", value: "Appeal Rejected", isHighlight: true },
+									{ label: "Moderator Notes", value: moderatorNotes || "No notes provided." }
+								],
+								ctaText: "Contact Support",
+								ctaUrl: buildAbsoluteUrl("/settings"),
+								recipientEmail: ownerEmail,
+								preferenceType: "organization"
+							})
 						);
 					}
 				}

@@ -321,7 +321,7 @@ const SearchableProblemPicker: React.FC<SearchableProblemPickerProps> = ({
 								<FaSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" size={12} />
 								<input
 									type="text"
-									placeholder="Search problem title, ID, author, tags..."
+									aria-label="Search problem title, ID, author, tags"
 									value={searchQuery}
 									onChange={(e) => {
 										setSearchQuery(e.target.value);

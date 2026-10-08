@@ -3,6 +3,8 @@ import {
 	EmailHeader,
 	EmailFooter,
 	PrimaryButton,
+	SecondaryButton,
+	DestructiveButton,
 	InfoRow,
 	InfoTable,
 	OtpBox,
@@ -11,8 +13,12 @@ import {
 	RecruitmentCard,
 	HomeworkCard,
 	NotificationCard,
-	COLORS
+	COLORS,
+	escapeHtml,
+	EMAIL_LOGO_CONFIG
 } from "./emailComponents";
+
+export { EMAIL_LOGO_CONFIG };
 
 export interface EmailDetailsItem {
 	label: string;
@@ -30,11 +36,14 @@ export interface EmailTemplateOptions {
 	details?: EmailDetailsItem[];
 	ctaText?: string;
 	ctaUrl?: string;
+	secondaryCtaText?: string;
+	secondaryCtaUrl?: string;
+	isDestructiveCta?: boolean;
 	footerText?: string; // Kept for compatibility
 	recipientEmail?: string;
 	preferenceType?: string;
 
-	// Brand card extensions
+	// Specialized brand card extensions
 	otpCode?: string;
 	otpExpiration?: string;
 	orgCard?: {
@@ -72,16 +81,31 @@ export interface EmailTemplateOptions {
 	};
 }
 
+/**
+ * Sanitizes rich text while preserving basic line breaks (<br/>)
+ * and stripping/escaping any script, iframe, or unsafe tags.
+ */
+function sanitizeContent(content: string): string {
+	if (!content) return "";
+	// If content already contains <br/> or <br>, handle safely
+	const normalized = content.replace(/<br\s*\/?>/gi, "___BR_TAG___");
+	const escaped = escapeHtml(normalized);
+	return escaped.replace(/___BR_TAG___/g, "<br/>");
+}
+
 export function getEmailHtml(options: EmailTemplateOptions): string {
 	const {
 		headerTitle,
 		accentColor = COLORS.primary,
-		title,
-		leadText,
+		title = "BeastCode Notification",
+		leadText = "",
 		description = "",
 		details = [],
 		ctaText,
 		ctaUrl,
+		secondaryCtaText,
+		secondaryCtaUrl,
+		isDestructiveCta = false,
 		recipientEmail,
 		preferenceType,
 
@@ -94,14 +118,19 @@ export function getEmailHtml(options: EmailTemplateOptions): string {
 		notificationCard
 	} = options;
 
-	// Render details using InfoRow
-	const detailsRowsHtml = details
+	const safeTitle = escapeHtml(title);
+	const safeLeadText = sanitizeContent(leadText);
+	const safeDescription = sanitizeContent(description);
+
+	// Render details using InfoRow with strict escaping
+	const detailsRowsHtml = (details || [])
+		.filter((item) => item && (item.label || item.value))
 		.map((item) =>
 			InfoRow({
-				label: item.label,
-				value: item.value,
-				isHighlight: item.isHighlight,
-				accentColor: accentColor
+				label: item.label || "",
+				value: item.value || "",
+				isHighlight: !!item.isHighlight,
+				accentColor: accentColor || COLORS.primary
 			})
 		)
 		.join("");
@@ -127,35 +156,50 @@ export function getEmailHtml(options: EmailTemplateOptions): string {
 		cardContentHtml += NotificationCard(notificationCard);
 	}
 
-	// Build the complete inside-card body layout
+	// Determine CTA button rendering
+	let ctaHtml = "";
+	if (ctaText && ctaUrl) {
+		if (isDestructiveCta) {
+			ctaHtml = DestructiveButton({ text: ctaText, url: ctaUrl });
+		} else {
+			ctaHtml = PrimaryButton({ text: ctaText, url: ctaUrl, accentColor });
+		}
+	}
+	if (secondaryCtaText && secondaryCtaUrl) {
+		ctaHtml += SecondaryButton({ text: secondaryCtaText, url: secondaryCtaUrl });
+	}
+
+	// Build inside-card body layout
 	const bodyContent = `
 		${EmailHeader({ headerTitle, accentColor })}
 		
 		<!-- Content Body -->
 		<tr>
-			<td style="padding: 40px 35px 35px 35px; background-color: ${COLORS.card}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-				<h1 style="margin: 0 0 20px 0; font-size: 24px; font-weight: 800; line-height: 1.3; color: ${COLORS.primaryText}; letter-spacing: -0.5px;">
-					${title}
+			<td class="mobile-padding" style="padding: 32px 32px 28px 32px; background-color: ${COLORS.card}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+				<h1 style="margin: 0 0 16px 0; font-size: 20px; font-weight: 700; line-height: 1.35; color: ${COLORS.primaryText}; letter-spacing: -0.3px;">
+					${safeTitle}
 				</h1>
 				
-				<p style="margin: 0 0 20px 0; font-size: 15px; line-height: 1.6; color: ${COLORS.secondaryText}; font-weight: 500;">
-					${leadText}
+				${safeLeadText ? `
+				<p style="margin: 0 0 16px 0; font-size: 14px; line-height: 1.6; color: ${COLORS.secondaryText}; font-weight: 400;">
+					${safeLeadText}
 				</p>
+				` : ""}
 				
-				${description ? `
-				<p style="margin: 0 0 30px 0; font-size: 14px; line-height: 1.6; color: ${COLORS.secondaryText}; opacity: 0.9;">
-					${description}
+				${safeDescription ? `
+				<p style="margin: 0 0 20px 0; font-size: 13px; line-height: 1.6; color: ${COLORS.secondaryText}; opacity: 0.9;">
+					${safeDescription}
 				</p>
 				` : ""}
 
-				<!-- Specialized Card -->
+				<!-- Specialized Cards -->
 				${cardContentHtml}
 
-				<!-- Details Card -->
+				<!-- Details Table -->
 				${details.length > 0 ? InfoTable({ content: detailsRowsHtml, accentColor }) : ""}
 
-				<!-- CTA Block -->
-				${ctaText && ctaUrl ? PrimaryButton({ text: ctaText, url: ctaUrl, accentColor }) : ""}
+				<!-- Call to Action Buttons -->
+				${ctaHtml}
 			</td>
 		</tr>
 
@@ -163,8 +207,8 @@ export function getEmailHtml(options: EmailTemplateOptions): string {
 	`;
 
 	return EmailLayout({
-		title,
-		previewText: leadText,
+		title: safeTitle,
+		previewText: leadText ? leadText.replace(/<[^>]+>/g, "").substring(0, 150) : safeTitle,
 		bodyContent
 	});
 }

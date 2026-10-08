@@ -180,7 +180,6 @@ const EmailVerificationModal: React.FC<EmailVerificationModalProps> = ({ isOpen,
 								spellCheck={false}
 								disabled={updatingEmail}
 								className="w-full bc-input-shell rounded-xl py-3 px-4 text-xs placeholder:text-bc-muted transition"
-								placeholder="Enter new email"
 							/>
 						</div>
 						<div className="flex gap-3 pt-2">

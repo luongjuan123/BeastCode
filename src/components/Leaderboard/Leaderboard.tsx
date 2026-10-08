@@ -280,8 +280,8 @@ const Leaderboard: React.FC = () => {
 				metrics={[
 					{ label: "Easy", value: "1 pt" },
 					{ label: "Medium", value: "3 pts" },
-					{ label: "Hard", value: "5 pts" },
-					{ label: "Total Members", value: totalItems > 0 ? totalItems.toLocaleString() : "..." },
+					{ label: "Hard", value: "7 pts" },
+					{ label: "Total Members", value: loading && totalItems === 0 ? "..." : totalItems.toLocaleString() },
 				]}
 				actions={
 					user ? (
@@ -626,9 +626,15 @@ const Leaderboard: React.FC = () => {
 				{/* Technical Pagination Bar */}
 				<div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-4 py-2.5 border-t border-border-default bg-bg-base text-xs font-mono text-text-muted">
 					<div>
-						Showing <span className="text-text-primary font-medium">{totalItems > 0 ? (currentPage - 1) * PAGE_SIZE + 1 : 0}</span> to{" "}
-						<span className="text-text-primary font-medium">{Math.min(totalItems, currentPage * PAGE_SIZE)}</span> of{" "}
-						<span className="text-text-primary font-medium">{totalItems.toLocaleString()}</span> members
+						Showing{" "}
+						<span className="text-text-primary font-medium">
+							{totalItems === 0 || usersList.length === 0 ? 0 : (currentPage - 1) * PAGE_SIZE + 1}
+						</span>{" "}
+						to{" "}
+						<span className="text-text-primary font-medium">
+							{totalItems === 0 || usersList.length === 0 ? 0 : (currentPage - 1) * PAGE_SIZE + usersList.length}
+						</span>{" "}
+						of <span className="text-text-primary font-medium">{totalItems.toLocaleString()}</span> members
 					</div>
 
 					<div className="flex items-center gap-2">

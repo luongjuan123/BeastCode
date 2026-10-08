@@ -442,7 +442,7 @@ export default function OrgsIndexPage() {
 								</span>
 								<input
 									type="text"
-									placeholder="Search organizations by title, slug, or keywords..."
+									aria-label="Search organizations"
 									value={search}
 									onChange={(e) => setSearch(e.target.value)}
 									autoComplete="off"
@@ -853,7 +853,6 @@ export default function OrgsIndexPage() {
 								</label>
 								<input
 									type="text"
-									placeholder="e.g. Stanford Coding Club"
 									value={newOrgName}
 									onChange={(e) => setNewOrgName(e.target.value)}
 									autoComplete="off"
@@ -922,7 +921,6 @@ export default function OrgsIndexPage() {
 									Short Description
 								</label>
 								<textarea
-									placeholder="Write a brief overview describing the workspace..."
 									value={newOrgDesc}
 									onChange={(e) => setNewOrgDesc(e.target.value)}
 									autoComplete="off"
@@ -940,7 +938,6 @@ export default function OrgsIndexPage() {
 									</label>
 									<input
 										type="text"
-										placeholder="e.g. stanford.edu"
 										value={newOrgWebsite}
 										onChange={(e) => setNewOrgWebsite(e.target.value)}
 										autoComplete="off"
@@ -956,7 +953,6 @@ export default function OrgsIndexPage() {
 									</label>
 									<input
 										type="text"
-										placeholder="e.g. Education"
 										value={newOrgCategory}
 										onChange={(e) => setNewOrgCategory(e.target.value)}
 										autoComplete="off"
@@ -975,7 +971,6 @@ export default function OrgsIndexPage() {
 									</label>
 									<input
 										type="text"
-										placeholder="e.g. Stanford, CA"
 										value={newOrgLocation}
 										onChange={(e) => setNewOrgLocation(e.target.value)}
 										autoComplete="off"
@@ -991,7 +986,6 @@ export default function OrgsIndexPage() {
 									</label>
 									<input
 										type="email"
-										placeholder="e.g. contact@stanford.edu"
 										value={newOrgEmail}
 										onChange={(e) => setNewOrgEmail(e.target.value)}
 										autoComplete="off"

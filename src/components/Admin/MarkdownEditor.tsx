@@ -237,7 +237,6 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
 						ref={editorRef}
 						value={value}
 						height={height}
-						placeholder={placeholder}
 						onChange={onChange}
 						className="outline-none text-sm md:text-base border-none custom-cm-editor"
 						basicSetup={{

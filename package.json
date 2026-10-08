@@ -11,7 +11,11 @@
 		"test:chat": "node scripts/run-chat-tests.mjs",
 		"test:chat:report": "node scripts/run-chat-tests.mjs --report-only",
 		"test:problem-audit": "tsx scripts/audit-and-repair/verify-repaired-problems.ts",
-		"test:autocomplete-audit": "tsx scripts/audit-autocomplete.ts"
+		"test:autocomplete-audit": "tsx scripts/audit-autocomplete.ts",
+		"test:rankings": "tsx tests/rankings/rankingsCorrectness.test.ts",
+		"test:contest-emails": "tsx tests/contestEmailCorrectness.test.ts",
+		"test:account-bulk": "tsx tests/accountBulkActions.test.ts",
+		"test:org-deletion": "tsx tests/organizationDeletion.test.ts"
 	},
 	"dependencies": {
 		"@codemirror/lang-cpp": "^6.0.3",

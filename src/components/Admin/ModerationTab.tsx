@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import React, { useEffect, useState, useCallback, useRef, useMemo } from "react";
+import { BulkActionBar, BulkActionType } from "./BulkActionBar";
+import { BulkActionModal } from "./BulkActionModal";
 import Link from "next/link";
 import { auth } from "@/firebase/firebase";
 import { getFriendlyErrorMessage } from "@/utils/errorFilter";
@@ -15,6 +17,7 @@ import {
 	FaFilter,
 	FaEllipsisV,
 	FaChevronLeft,
+	FaChevronRight,
 	FaTimes,
 	FaSpinner,
 	FaCheck,
@@ -104,6 +107,26 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 	const [statusFilter, setStatusFilter] = useState("");
 	const [sortBy, setSortBy] = useState("createdAt");
 	const [sortOrder, setSortOrder] = useState("desc");
+
+	// Selection & Pagination States
+	const [selectedUids, setSelectedUids] = useState<Set<string>>(new Set());
+	const [page, setPage] = useState(1);
+	const [pageSize, setPageSize] = useState(25);
+	const [totalCount, setTotalCount] = useState(0);
+	const [totalPages, setTotalPages] = useState(1);
+	const headerCheckboxRef = useRef<HTMLInputElement>(null);
+	const [isSuperAdmin, setIsSuperAdmin] = useState(false);
+	const [bulkModalAction, setBulkModalAction] = useState<BulkActionType | null>(null);
+
+	useEffect(() => {
+		if (auth.currentUser) {
+			auth.currentUser.getIdTokenResult().then((res) => {
+				if (res.claims.role === "super_admin" || res.claims.super_admin === true) {
+					setIsSuperAdmin(true);
+				}
+			}).catch(() => {});
+		}
+	}, []);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -208,7 +231,9 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 				role: roleFilter,
 				status: statusFilter,
 				sortBy,
-				sortOrder
+				sortOrder,
+				page: page.toString(),
+				pageSize: pageSize.toString()
 			});
 			const res = await fetch(`/api/admin/users?${params.toString()}`, {
 				headers: { "Authorization": `Bearer ${idToken}` }
@@ -217,6 +242,8 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 			const data = await res.json();
 			if (reqId === searchReqIdRef.current) {
 				setUsers(data.users || []);
+				setTotalCount(data.totalCount ?? (data.users?.length || 0));
+				setTotalPages(data.totalPages ?? 1);
 			}
 		} catch (error: any) {
 			if (reqId === searchReqIdRef.current) {
@@ -227,7 +254,90 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 				setLoadingUsers(false);
 			}
 		}
-	}, [debouncedSearch, roleFilter, statusFilter, sortBy, sortOrder, triggerStatusMessage]);
+	}, [debouncedSearch, roleFilter, statusFilter, sortBy, sortOrder, page, pageSize, triggerStatusMessage]);
+
+	useEffect(() => {
+		setPage(1);
+	}, [debouncedSearch, roleFilter, statusFilter, pageSize]);
+
+	// ─── Bulk Selection Computations & Handlers ──────────────────────────────────
+	const currentPageUids = useMemo(() => users.map((u) => u.uid), [users]);
+	const numSelectedOnPage = useMemo(() => currentPageUids.filter((id) => selectedUids.has(id)).length, [currentPageUids, selectedUids]);
+	const isAllPageSelected = currentPageUids.length > 0 && numSelectedOnPage === currentPageUids.length;
+	const isIndeterminate = numSelectedOnPage > 0 && numSelectedOnPage < currentPageUids.length;
+
+	useEffect(() => {
+		if (headerCheckboxRef.current) {
+			headerCheckboxRef.current.indeterminate = isIndeterminate;
+		}
+	}, [isIndeterminate]);
+
+	const handleToggleSelectAllPage = () => {
+		setSelectedUids((prev) => {
+			const next = new Set(prev);
+			if (isAllPageSelected) {
+				currentPageUids.forEach((id) => next.delete(id));
+			} else {
+				currentPageUids.forEach((id) => next.add(id));
+			}
+			return next;
+		});
+	};
+
+	const toggleSelectUser = (uid: string) => {
+		setSelectedUids((prev) => {
+			const next = new Set(prev);
+			if (next.has(uid)) {
+				next.delete(uid);
+			} else {
+				next.add(uid);
+			}
+			return next;
+		});
+	};
+
+	const handleExecuteBulkAction = async (payload: {
+		reason: string;
+		duration?: "1 day" | "7 days" | "30 days" | "Permanent";
+		newRole?: "admin" | "user";
+		notes?: string;
+		forceImmediate?: boolean;
+	}) => {
+		if (!bulkModalAction || selectedUids.size === 0) return;
+		try {
+			const idToken = auth.currentUser ? await auth.currentUser.getIdToken() : "";
+			const res = await fetch("/api/admin/users/bulk-action", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${idToken}`,
+				},
+				body: JSON.stringify({
+					action: bulkModalAction,
+					uids: Array.from(selectedUids),
+					payload,
+				}),
+			});
+
+			const data = await res.json();
+			if (!res.ok || !data.success) {
+				throw new Error(data.error || "Bulk action execution failed");
+			}
+
+			const skippedMsg = data.skipped && data.skipped.length > 0 ? ` (${data.skipped.length} skipped)` : "";
+			triggerStatusMessage(
+				"success",
+				`Processed ${data.processedCount} account(s) successfully.${skippedMsg}`
+			);
+
+			setSelectedUids(new Set());
+			setBulkModalAction(null);
+			fetchUsers();
+		} catch (err: any) {
+			triggerStatusMessage("error", getFriendlyErrorMessage(err, "Bulk action failed."));
+			throw err;
+		}
+	};
 
 	const fetchReports = useCallback(async () => {
 		setLoadingReports(true);
@@ -711,7 +821,7 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 							</span>
 							<input
 								type="text"
-								placeholder="Search accounts by displayName, username, email or UID..."
+								aria-label="Search accounts by displayName, username, email or UID"
 								value={search}
 								onChange={(e) => setSearch(e.target.value)}
 								autoComplete="off"
@@ -755,6 +865,26 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 						</div>
 					</div>
 
+					{/* Selection Count Banner */}
+					{selectedUids.size > 0 && (
+						<div className="bg-emerald-950/30 border border-emerald-900/50 rounded-xl px-4 py-2.5 flex items-center justify-between text-xs animate-fade-in shadow-sm select-none">
+							<div className="flex items-center gap-2 text-emerald-400 font-bold">
+								<FaCheck size={11} />
+								<span>{selectedUids.size} {selectedUids.size === 1 ? "account" : "accounts"} selected</span>
+								<span className="text-[10px] text-[var(--text-muted)] font-mono font-normal">
+									({numSelectedOnPage} on current page)
+								</span>
+							</div>
+							<button
+								type="button"
+								onClick={() => setSelectedUids(new Set())}
+								className="text-[11px] text-[var(--text-muted)] hover:text-white underline transition cursor-pointer font-medium"
+							>
+								Deselect All
+							</button>
+						</div>
+					)}
+
 					{/* Table container */}
 					<div className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-lg overflow-hidden shadow-sm">
 						{loadingUsers ? (
@@ -771,6 +901,16 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 								<table className="w-full text-left text-xs text-[var(--text-secondary)]">
 									<thead className="bg-[var(--bg-dark-fill-3)]/50 border-b border-[var(--border-subtle)] text-[10px] text-[var(--text-muted)] font-bold uppercase tracking-wider select-none">
 										<tr>
+											<th className="px-4 py-3.5 w-12 text-center">
+												<input
+													ref={headerCheckboxRef}
+													type="checkbox"
+													checked={isAllPageSelected}
+													onChange={handleToggleSelectAllPage}
+													className="w-4 h-4 rounded border-[var(--border-subtle)] text-emerald-500 bg-[var(--bg-dark-fill-3)] focus:ring-0 focus:ring-offset-0 cursor-pointer accent-[#22c55e]"
+													title={isAllPageSelected ? "Deselect current page" : "Select all on current page"}
+												/>
+											</th>
 											<th className="px-6 py-3.5">User Profile</th>
 											<th className="px-6 py-3.5 w-24">Role</th>
 											<th className="px-6 py-3.5 w-36">Status</th>
@@ -781,7 +921,15 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 									</thead>
 									<tbody className="divide-y divide-[var(--border-subtle)]">
 										{users.map((userItem) => (
-											<tr key={userItem.uid} className="hover:bg-[var(--bg-hover)] transition">
+											<tr key={userItem.uid} className={`hover:bg-[var(--bg-hover)] transition ${selectedUids.has(userItem.uid) ? "bg-emerald-500/5" : ""}`}>
+												<td className="px-4 py-3.5 text-center">
+													<input
+														type="checkbox"
+														checked={selectedUids.has(userItem.uid)}
+														onChange={() => toggleSelectUser(userItem.uid)}
+														className="w-4 h-4 rounded border-[var(--border-subtle)] text-emerald-500 bg-[var(--bg-dark-fill-3)] focus:ring-0 focus:ring-offset-0 cursor-pointer accent-[#22c55e]"
+													/>
+												</td>
 												<td className="px-6 py-3.5">
 													<div className="flex items-center gap-3">
 														<div className="w-7 h-7 rounded-full bg-[var(--brand-glow)] text-[var(--brand-orange)] font-black border border-[var(--brand-orange)]/15 flex items-center justify-center text-xs shrink-0 select-none">
@@ -935,6 +1083,80 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 								</table>
 							</div>
 						)}
+
+						{/* Pagination Controls */}
+						{users.length > 0 && (
+							<div className="bg-[var(--bg-dark-fill-3)]/30 border-t border-[var(--border-subtle)] px-6 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs select-none">
+								<div className="flex items-center gap-3 text-[var(--text-muted)] text-[11px]">
+									<span>
+										Showing <strong className="text-white font-mono">{Math.min((page - 1) * pageSize + 1, totalCount)}</strong> to{" "}
+										<strong className="text-white font-mono">{Math.min(page * pageSize, totalCount)}</strong> of{" "}
+										<strong className="text-white font-mono">{totalCount}</strong> accounts
+									</span>
+									<span className="text-gray-700">|</span>
+									<div className="flex items-center gap-1.5">
+										<span>Per page:</span>
+										<select
+											value={pageSize}
+											onChange={(e) => setPageSize(Number(e.target.value))}
+											className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[11px] rounded-lg px-2 py-1 text-white outline-none cursor-pointer"
+										>
+											<option value={10}>10</option>
+											<option value={25}>25</option>
+											<option value={50}>50</option>
+											<option value={100}>100</option>
+										</select>
+									</div>
+								</div>
+
+								<div className="flex items-center gap-2">
+									<button
+										type="button"
+										onClick={() => setPage((p) => Math.max(1, p - 1))}
+										disabled={page <= 1}
+										className="px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-white hover:bg-[var(--bg-hover)] disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold flex items-center gap-1"
+									>
+										<FaChevronLeft size={10} />
+										<span>Prev</span>
+									</button>
+
+									<div className="flex items-center gap-1">
+										{Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+											let pNum = i + 1;
+											if (totalPages > 5 && page > 3) {
+												pNum = page - 3 + i;
+												if (pNum > totalPages) pNum = totalPages - (4 - i);
+											}
+											return (
+												<button
+													key={pNum}
+													type="button"
+													onClick={() => setPage(pNum)}
+													className={`w-7 h-7 rounded-lg text-xs font-mono font-bold transition flex items-center justify-center ${
+														page === pNum
+															? "bg-brand-orange text-bg-base border border-brand-orange"
+															: "bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-white border border-[var(--border-subtle)]"
+													}`}
+													style={page === pNum ? { color: "var(--bg-base)" } : {}}
+												>
+													{pNum}
+												</button>
+											);
+										})}
+									</div>
+
+									<button
+										type="button"
+										onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+										disabled={page >= totalPages}
+										className="px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-white hover:bg-[var(--bg-hover)] disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold flex items-center gap-1"
+									>
+										<span>Next</span>
+										<FaChevronRight size={10} />
+									</button>
+								</div>
+							</div>
+						)}
 					</div>
 				</div>
 			)}
@@ -1071,7 +1293,7 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 									<textarea
 										value={reportActionNotes}
 										onChange={(e) => setReportActionNotes(e.target.value)}
-										placeholder="Write notes, dismissal explanations or merge details..."
+										aria-label="Action notes"
 										rows={2}
 										autoComplete="off"
 										autoCorrect="off"
@@ -1105,7 +1327,7 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 									<div className="bg-[var(--bg-dark-fill-3)] border border-[var(--border-subtle)] rounded-xl p-3 flex gap-2 items-center">
 										<input
 											type="text"
-											placeholder="Target Report ID to merge into..."
+											aria-label="Target Report ID to merge into"
 											value={mergeTargetReportId}
 											onChange={(e) => setMergeTargetReportId(e.target.value)}
 											autoComplete="off"
@@ -1269,7 +1491,7 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 										<textarea
 											value={appealActionNotes}
 											onChange={(e) => setAppealActionNotes(e.target.value)}
-											placeholder="Write reasons for approval, rejection or requesting details..."
+											aria-label="Decision details"
 											rows={3}
 											autoComplete="off"
 											autoCorrect="off"
@@ -1453,7 +1675,6 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 								<textarea
 									value={suspendNotes}
 									onChange={(e) => setSuspendNotes(e.target.value)}
-									placeholder="Provide additional details or audit notes..."
 									rows={3}
 									autoComplete="off"
 									autoCorrect="off"
@@ -1528,7 +1749,6 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 								<textarea
 									value={unsuspendNotes}
 									onChange={(e) => setUnsuspendNotes(e.target.value)}
-									placeholder="Provide additional details or audit notes..."
 									rows={3}
 									autoComplete="off"
 									autoCorrect="off"
@@ -1618,7 +1838,6 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 								<textarea
 									value={warnDesc}
 									onChange={(e) => setWarnDesc(e.target.value)}
-									placeholder="Describe the violation in detail..."
 									rows={3}
 									autoComplete="off"
 									autoCorrect="off"
@@ -1700,7 +1919,6 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 								<textarea
 									value={deleteNotes}
 									onChange={(e) => setDeleteNotes(e.target.value)}
-									placeholder="Provide additional details or audit notes..."
 									rows={2}
 									autoComplete="off"
 									autoCorrect="off"
@@ -1730,7 +1948,6 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 									type="text"
 									value={deleteConfirmText}
 									onChange={(e) => setDeleteConfirmText(e.target.value)}
-									placeholder="DELETE"
 									autoComplete="off"
 									autoCorrect="off"
 									autoCapitalize="off"
@@ -1791,7 +2008,6 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 								<textarea
 									value={cancelDeleteReason}
 									onChange={(e) => setCancelDeleteReason(e.target.value)}
-									placeholder="Provide reasoning for cancelling deletion..."
 									rows={3}
 									autoComplete="off"
 									autoCorrect="off"
@@ -1824,6 +2040,21 @@ export const ModerationTab: React.FC<ModerationTabProps> = ({ triggerStatusMessa
 					</div>
 				</div>
 			)}
+
+			{/* Floating Bulk Action Bar & Confirmation Modal */}
+			<BulkActionBar
+				selectedCount={selectedUids.size}
+				onClearSelection={() => setSelectedUids(new Set())}
+				onTriggerAction={(act) => setBulkModalAction(act)}
+			/>
+
+			<BulkActionModal
+				action={bulkModalAction}
+				selectedCount={selectedUids.size}
+				onClose={() => setBulkModalAction(null)}
+				onSubmit={handleExecuteBulkAction}
+				isSuperAdmin={isSuperAdmin}
+			/>
 		</div>
 	);
 };

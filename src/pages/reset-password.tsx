@@ -456,7 +456,6 @@ export default function ResetPasswordPage() {
 										disabled={submitting}
 										required
 										className="w-full bc-input-shell rounded-md py-2.5 px-3.5 pr-10 text-xs placeholder:text-bc-muted transition-all duration-200 outline-none focus-visible:ring-1 focus-visible:ring-emerald-500"
-										placeholder="Create a secure password"
 										aria-required="true"
 									/>
 									<button
@@ -490,7 +489,6 @@ export default function ResetPasswordPage() {
 										disabled={submitting}
 										required
 										className="w-full bc-input-shell rounded-md py-2.5 px-3.5 pr-10 text-xs placeholder:text-bc-muted transition-all duration-200 outline-none focus-visible:ring-1 focus-visible:ring-emerald-500"
-										placeholder="Re-enter password"
 										aria-required="true"
 									/>
 									<button

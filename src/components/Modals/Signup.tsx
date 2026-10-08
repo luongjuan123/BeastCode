@@ -250,7 +250,6 @@ const Signup: React.FC<SignupProps> = () => {
 					className={`w-full bc-input-shell rounded-lg py-2 px-3.5 text-xs placeholder:text-bc-muted transition-all duration-200 ${
 						errors.email ? "border-bc-error focus:border-bc-error" : ""
 					}`}
-					placeholder="name@company.com"
 				/>
 				{errors.email && <p className="text-bc-error text-[10px] mt-1.5 font-medium">{errors.email}</p>}
 			</div>
@@ -273,7 +272,6 @@ const Signup: React.FC<SignupProps> = () => {
 					className={`w-full bc-input-shell rounded-lg py-2 px-3.5 text-xs placeholder:text-bc-muted transition-all duration-200 ${
 						errors.displayName ? "border-bc-error focus:border-bc-error" : ""
 					}`}
-					placeholder="John Doe"
 				/>
 				{errors.displayName && <p className="text-bc-error text-[10px] mt-1.5 font-medium">{errors.displayName}</p>}
 			</div>
@@ -295,7 +293,6 @@ const Signup: React.FC<SignupProps> = () => {
 						className={`w-full bc-input-shell rounded-lg py-2 px-3.5 pr-10 text-xs placeholder:text-bc-muted transition-all duration-200 ${
 							errors.password ? "border-bc-error focus:border-bc-error" : ""
 						}`}
-						placeholder="••••••••"
 					/>
 					<button
 						type="button"

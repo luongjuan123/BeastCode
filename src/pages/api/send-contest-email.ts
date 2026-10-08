@@ -1,5 +1,6 @@
 import { withApiErrorHandler } from "@/utils/apiErrorHandler";
 import type { NextApiResponse } from "next";
+import { getAdminFirestore } from "@/firebase/firebaseAdmin";
 import { NotificationDispatcher } from "@/utils/notificationDispatcher";
 import { NotificationRecipientService } from "@/utils/notificationRecipientService";
 import { EmailService } from "@/utils/emailService";
@@ -42,7 +43,25 @@ async function handler(
 			return res.status(400).json({ success: false, message: "Missing required contest parameters" });
 		}
 
-		// 3. Fetch Registered Users dynamically
+		// 3. Revalidate contest existence and status directly in Firestore
+		const db = getAdminFirestore();
+		const contestDoc = await db.collection("contests").doc(contestId).get();
+		if (!contestDoc.exists) {
+			return res.status(404).json({ success: false, message: `Contest "${contestId}" not found in database` });
+		}
+
+		const contestData = contestDoc.data() || {};
+		const cStatus = String(contestData.status || "draft").toLowerCase();
+		if (cStatus === "cancelled" || cStatus === "archived") {
+			return res.status(400).json({ success: false, message: `Cannot send announcement: Contest is ${cStatus}` });
+		}
+
+		const now = Date.now();
+		if (cStatus === "ended" || (contestData.endTime && now >= contestData.endTime)) {
+			return res.status(400).json({ success: false, message: "Cannot send announcement: Contest has already ended" });
+		}
+
+		// 4. Fetch Registered Users dynamically
 		let eligibleUsers: { uid: string; email: string; displayName: string }[] = [];
 		try {
 			eligibleUsers = await NotificationRecipientService.resolveRecipients("CONTEST_PUBLISHED", contestId, {
@@ -58,9 +77,11 @@ async function handler(
 			return res.status(200).json({ success: true, message: "No eligible recipients found to email.", recipientCount: 0 });
 		}
 
-		// 4. Queue emails using central dispatcher in parallel and process delivery in background
+		// 5. Queue emails using central dispatcher in parallel and process delivery in background
 		const appOrigin = (origin && !origin.includes(".run.app") && !origin.includes(".hosted.app")) ? origin : getSiteUrl();
 		const contestUrl = `${appOrigin}/contests/${contestId}`;
+		const contestStartTime = Number(startTime);
+		const expiresAt = contestStartTime > 0 ? Math.min(contestStartTime, now + 48 * 60 * 60 * 1000) : (now + 48 * 60 * 60 * 1000);
 		
 		const dispatchResults = await Promise.allSettled(
 			eligibleUsers.map((u) =>
@@ -70,6 +91,10 @@ async function handler(
 					userName: u.displayName,
 					ctaUrl: contestUrl,
 					customContent: description,
+					expiresAt,
+					metadata: {
+						contestId
+					},
 					placeholders: {
 						contestTitle: title,
 						startTime: new Date(startTime).toLocaleString("en-US", { dateStyle: "full", timeStyle: "short" }),

@@ -15,6 +15,7 @@ import {
 	FaQuestionCircle,
 	FaCheckCircle,
 	FaTrash,
+	FaExclamationTriangle,
 	FaEdit,
 	FaPlus,
 	FaFile,
@@ -61,6 +62,7 @@ import {
 	FaComments,
 } from "react-icons/fa";
 import { OrgChatTab } from "@/components/Organizations/OrgChatTab";
+import { DangerZoneModal } from "@/components/Organizations/DangerZoneModal";
 
 interface Organization {
 	id: string;
@@ -101,6 +103,7 @@ export default function OrgWorkspacePage() {
 	const [loading, setLoading] = useState(true);
 	const [errorMsg, setErrorMsg] = useState("");
 	const [successMsg, setSuccessMsg] = useState("");
+	const [showDangerZoneModal, setShowDangerZoneModal] = useState(false);
 
 	// Tab states
 	const [members, setMembers] = useState<any[]>([]);
@@ -1865,29 +1868,35 @@ export default function OrgWorkspacePage() {
 		}
 	};
 
-	const handleDeleteOrg = async () => {
+	const handlePermanentDeleteOrg = async (confirmationName: string) => {
 		if (!user || !org) return;
-		if (!confirm("CRITICAL WARNING: This will soft-delete the organization. Are you absolutely sure?")) return;
 		setActionLoading(true);
 		try {
 			const idToken = await user.getIdToken();
 			const res = await fetch(`/api/organizations/${org.id}`, {
 				method: "DELETE",
 				headers: {
+					"Content-Type": "application/json",
 					Authorization: `Bearer ${idToken}`,
 				},
+				body: JSON.stringify({
+					permanent: true,
+					confirmationName,
+				}),
 			});
 			const data = await res.json();
 			if (data.success) {
-				triggerFeedback("success", "Organization deleted. Redirecting...");
+				triggerFeedback("success", "Organization permanently deleted. Redirecting...");
 				setTimeout(() => {
 					router.push("/orgs");
 				}, 1500);
 			} else {
-				triggerFeedback("error", data.error || "Failed to delete organization.");
+				triggerFeedback("error", data.error || "Failed to permanently delete organization.");
+				throw new Error(data.error || "Failed to permanently delete organization.");
 			}
 		} catch (err: any) {
 			triggerFeedback("error", err.message);
+			throw err;
 		} finally {
 			setActionLoading(false);
 		}
@@ -2054,7 +2063,6 @@ export default function OrgWorkspacePage() {
 								<form onSubmit={handleRequestJoin} className="flex gap-1.5">
 									<input
 										type="text"
-										placeholder="Optional join message..."
 										value={joinMsg}
 										onChange={(e) => setJoinMsg(e.target.value)}
 										autoComplete="off"
@@ -2216,7 +2224,7 @@ export default function OrgWorkspacePage() {
 										</span>
 										<input
 											type="text"
-											placeholder="Search by name, UID, username..."
+											aria-label="Search members"
 											value={memberSearch}
 											onChange={(e) => setMemberSearch(e.target.value)}
 											autoComplete="off"
@@ -2381,7 +2389,6 @@ export default function OrgWorkspacePage() {
 												<div className="relative">
 													<input
 														type="text"
-														placeholder="Type UID, Username, or Email..."
 														value={inviteSearchInput}
 														onChange={(e) => handleInviteSearch(e.target.value)}
 														autoComplete="off"
@@ -2624,7 +2631,6 @@ export default function OrgWorkspacePage() {
 													<label className="text-[9px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Optional Password</label>
 													<input
 														type="password"
-														placeholder="Require pass to join..."
 														value={linkPassword}
 														onChange={(e) => setLinkPassword(e.target.value)}
 														autoComplete="off"
@@ -2715,7 +2721,7 @@ export default function OrgWorkspacePage() {
 									<form onSubmit={handleLinkContest} className="flex gap-2">
 										<input
 											type="text"
-											placeholder="Global Contest ID..."
+											aria-label="Global Contest ID"
 											value={linkContestId}
 											onChange={(e) => setLinkContestId(e.target.value)}
 											autoComplete="off"
@@ -2743,7 +2749,7 @@ export default function OrgWorkspacePage() {
 								</span>
 								<input
 									type="text"
-									placeholder="Search linked contests..."
+									aria-label="Search linked contests"
 									value={contestSearch}
 									onChange={(e) => setContestSearch(e.target.value)}
 									autoComplete="off"
@@ -2807,7 +2813,7 @@ export default function OrgWorkspacePage() {
 									<form onSubmit={handleLinkProblem} className="flex gap-2">
 										<input
 											type="text"
-											placeholder="Global Problem ID..."
+											aria-label="Global Problem ID"
 											value={linkProblemId}
 											onChange={(e) => setLinkProblemId(e.target.value)}
 											autoComplete="off"
@@ -2835,7 +2841,7 @@ export default function OrgWorkspacePage() {
 								</span>
 								<input
 									type="text"
-									placeholder="Search problem library..."
+									aria-label="Search problem library"
 									value={problemSearch}
 									onChange={(e) => setProblemSearch(e.target.value)}
 									autoComplete="off"
@@ -3006,7 +3012,7 @@ export default function OrgWorkspacePage() {
 										<div>
 											<input
 												type="text"
-												placeholder="Notice Title..."
+												aria-label="Notice Title"
 												value={newAnnTitle}
 												onChange={(e) => setNewAnnTitle(e.target.value)}
 												autoComplete="off"
@@ -3019,7 +3025,7 @@ export default function OrgWorkspacePage() {
 										</div>
 										<div>
 											<textarea
-												placeholder="Compose notice details..."
+												aria-label="Notice Content"
 												value={newAnnContent}
 												onChange={(e) => setNewAnnContent(e.target.value)}
 												autoComplete="off"
@@ -3080,7 +3086,7 @@ export default function OrgWorkspacePage() {
 								</span>
 								<input
 									type="text"
-									placeholder="Search shared files..."
+									aria-label="Search shared files"
 									value={fileSearch}
 									onChange={(e) => setFileSearch(e.target.value)}
 									autoComplete="off"
@@ -3141,7 +3147,7 @@ export default function OrgWorkspacePage() {
 										<div className="grid grid-cols-2 gap-4">
 											<input
 												type="text"
-												placeholder="Resource Title (e.g. PDF Material)..."
+												aria-label="Resource Title"
 												value={newFileName}
 												onChange={(e) => setNewFileName(e.target.value)}
 												autoComplete="off"
@@ -3153,7 +3159,7 @@ export default function OrgWorkspacePage() {
 											/>
 											<input
 												type="text"
-												placeholder="GCS / Storage URL or Drive URL..."
+												aria-label="Storage URL or Drive URL"
 												value={newFileUrl}
 												onChange={(e) => setNewFileUrl(e.target.value)}
 												autoComplete="off"
@@ -3406,7 +3412,6 @@ export default function OrgWorkspacePage() {
 													<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Job Title</label>
 													<input
 														type="text"
-														placeholder="Software Engineer..."
 														value={newJobTitle}
 														onChange={(e) => setNewJobTitle(e.target.value)}
 														autoComplete="off"
@@ -3421,7 +3426,6 @@ export default function OrgWorkspacePage() {
 													<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Location</label>
 													<input
 														type="text"
-														placeholder="Remote, San Francisco, etc."
 														value={newJobLocation}
 														onChange={(e) => setNewJobLocation(e.target.value)}
 														autoComplete="off"
@@ -3453,7 +3457,6 @@ export default function OrgWorkspacePage() {
 													<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Salary Range</label>
 													<input
 														type="text"
-														placeholder="$120k - $150k"
 														value={newJobSalary}
 														onChange={(e) => setNewJobSalary(e.target.value)}
 														autoComplete="off"
@@ -3469,7 +3472,6 @@ export default function OrgWorkspacePage() {
 											<div>
 												<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Job Description</label>
 												<textarea
-													placeholder="Describe the role, responsibilities, culture..."
 													value={newJobDesc}
 													onChange={(e) => setNewJobDesc(e.target.value)}
 													autoComplete="off"
@@ -3485,7 +3487,6 @@ export default function OrgWorkspacePage() {
 												<div>
 													<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Requirements (one per line)</label>
 													<textarea
-														placeholder="Python, Go, React, SQL..."
 														value={newJobRequirements}
 														onChange={(e) => setNewJobRequirements(e.target.value)}
 														autoComplete="off"
@@ -3498,7 +3499,6 @@ export default function OrgWorkspacePage() {
 												<div>
 													<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Responsibilities (one per line)</label>
 													<textarea
-														placeholder="Develop scalable APIs..."
 														value={newJobResponsibilities}
 														onChange={(e) => setNewJobResponsibilities(e.target.value)}
 														autoComplete="off"
@@ -3540,7 +3540,7 @@ export default function OrgWorkspacePage() {
 									<div className="flex gap-2">
 										<input
 											type="text"
-											placeholder="Search candidates by UID, university, languages..."
+											aria-label="Search candidates by UID, university, languages"
 											value={candidateSearchQuery}
 											onChange={(e) => setCandidateSearchQuery(e.target.value)}
 											autoComplete="off"
@@ -3587,7 +3587,6 @@ export default function OrgWorkspacePage() {
 													<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Recipient User UID</label>
 													<input
 														type="text"
-														placeholder="Recipient User UID..."
 														value={newCertCandidate}
 														onChange={(e) => setNewCertCandidate(e.target.value)}
 														autoComplete="off"
@@ -3602,7 +3601,6 @@ export default function OrgWorkspacePage() {
 													<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Signee Name</label>
 													<input
 														type="text"
-														placeholder="John Doe..."
 														value={newCertSignee}
 														onChange={(e) => setNewCertSignee(e.target.value)}
 														autoComplete="off"
@@ -3618,7 +3616,6 @@ export default function OrgWorkspacePage() {
 											<div>
 												<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Completion Criteria</label>
 												<textarea
-													placeholder="Completed CS106B Coding Boot camp and all coding challenges with 100% scores."
 													value={newCertCriteria}
 													onChange={(e) => setNewCertCriteria(e.target.value)}
 													autoComplete="off"
@@ -3769,7 +3766,6 @@ export default function OrgWorkspacePage() {
 														<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Cover Letter / Statement</label>
 														<textarea
 															name="coverLetter"
-															placeholder="Introduce yourself..."
 															autoComplete="off"
 															autoCorrect="off"
 															autoCapitalize="off"
@@ -3784,7 +3780,6 @@ export default function OrgWorkspacePage() {
 															<input
 																type="text"
 																name="githubUrl"
-																placeholder="https://github.com/..."
 																autoComplete="off"
 																autoCorrect="off"
 																autoCapitalize="off"
@@ -3797,7 +3792,6 @@ export default function OrgWorkspacePage() {
 															<input
 																type="text"
 																name="linkedinUrl"
-																placeholder="https://linkedin.com/in/..."
 																autoComplete="off"
 																autoCorrect="off"
 																autoCapitalize="off"
@@ -3978,7 +3972,7 @@ export default function OrgWorkspacePage() {
 																<div className="flex gap-1.5 pt-1">
 																	<input
 																		type="text"
-																		placeholder="Grade (e.g. A+)"
+																		aria-label="Grade"
 																		autoComplete="off"
 																		autoCorrect="off"
 																		autoCapitalize="off"
@@ -3992,7 +3986,7 @@ export default function OrgWorkspacePage() {
 																	/>
 																	<input
 																		type="number"
-																		placeholder="Att"
+																		aria-label="Attendance"
 																		autoComplete="off"
 																		autoCorrect="off"
 																		autoCapitalize="off"
@@ -4024,7 +4018,6 @@ export default function OrgWorkspacePage() {
 														<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Course Code</label>
 														<input
 															type="text"
-															placeholder="CS106B..."
 															value={newCourseCode}
 															onChange={(e) => setNewCourseCode(e.target.value)}
 															autoComplete="off"
@@ -4039,7 +4032,6 @@ export default function OrgWorkspacePage() {
 														<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Course Title</label>
 														<input
 															type="text"
-															placeholder="Data Structures..."
 															value={newCourseTitle}
 															onChange={(e) => setNewCourseTitle(e.target.value)}
 															autoComplete="off"
@@ -4054,7 +4046,6 @@ export default function OrgWorkspacePage() {
 														<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Semester</label>
 														<input
 															type="text"
-															placeholder="Spring 2027..."
 															value={newCourseSemester}
 															onChange={(e) => setNewCourseSemester(e.target.value)}
 															autoComplete="off"
@@ -4070,7 +4061,6 @@ export default function OrgWorkspacePage() {
 												<div>
 													<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Syllabus Markdown</label>
 													<textarea
-														placeholder="Enter syllabus details..."
 														value={newCourseSyllabus}
 														onChange={(e) => setNewCourseSyllabus(e.target.value)}
 														autoComplete="off"
@@ -4149,7 +4139,6 @@ export default function OrgWorkspacePage() {
 											<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Key Professional Skills (comma separated)</label>
 											<input
 												type="text"
-												placeholder="React, Next.js, Node.js, GraphQL, PostgreSQL"
 												value={userResume?.skills?.join(", ") || ""}
 												onChange={(e) => {
 													const arr = e.target.value.split(",").map((s) => s.trim());
@@ -4166,7 +4155,6 @@ export default function OrgWorkspacePage() {
 											<label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Programming Languages (comma separated)</label>
 											<input
 												type="text"
-												placeholder="TypeScript, Python, Go, C++, Rust"
 												value={userResume?.programmingLanguages?.join(", ") || ""}
 												onChange={(e) => {
 													const arr = e.target.value.split(",").map((s) => s.trim());
@@ -4185,7 +4173,6 @@ export default function OrgWorkspacePage() {
 								<div className="bg-dark-layer-2 border border-gray-850 p-5 rounded-xl space-y-4">
 									<h3 className="font-bold text-white text-xs border-b border-gray-800 pb-2">Experience & Career History</h3>
 									<textarea
-										placeholder="Describe your current and previous professional engineering roles..."
 										autoComplete="off"
 										autoCorrect="off"
 										autoCapitalize="off"
@@ -4199,7 +4186,6 @@ export default function OrgWorkspacePage() {
 								<div className="bg-dark-layer-2 border border-gray-850 p-5 rounded-xl space-y-4">
 									<h3 className="font-bold text-white text-xs border-b border-gray-800 pb-2">Academic Credentials</h3>
 									<textarea
-										placeholder="School name, major, degree, graduation year..."
 										autoComplete="off"
 										autoCorrect="off"
 										autoCapitalize="off"
@@ -4366,7 +4352,6 @@ export default function OrgWorkspacePage() {
 													Example Input Testcase (Single Example)
 												</label>
 												<textarea
-													placeholder="Example inputs (e.g. 5\n1 2 3 4 5)..."
 													value={inputTestExample}
 													onChange={(e) => setInputTestExample(e.target.value)}
 													autoComplete="off"
@@ -4381,7 +4366,6 @@ export default function OrgWorkspacePage() {
 													Example Output Testcase
 												</label>
 												<textarea
-													placeholder="Example expected outputs..."
 													value={outputTestExample}
 													onChange={(e) => setOutputTestExample(e.target.value)}
 													autoComplete="off"
@@ -4396,7 +4380,6 @@ export default function OrgWorkspacePage() {
 													Generator Script (Python config)
 												</label>
 												<textarea
-													placeholder="import random\nprint(random.randint(1, 100))"
 													value={generatorScript}
 													onChange={(e) => setGeneratorScript(e.target.value)}
 													autoComplete="off"
@@ -4469,7 +4452,7 @@ export default function OrgWorkspacePage() {
 										</span>
 										<input
 											type="text"
-											placeholder="Search private gym problemset..."
+											aria-label="Search private gym problemset"
 											value={privateProblemSearch}
 											onChange={(e) => setPrivateProblemSearch(e.target.value)}
 											autoComplete="off"
@@ -4537,7 +4520,7 @@ export default function OrgWorkspacePage() {
 												<div>
 													<input
 														type="text"
-														placeholder="Problem Title..."
+														aria-label="Problem Title"
 														value={newPrivateProblemTitle}
 														onChange={(e) => setNewPrivateProblemTitle(e.target.value)}
 														autoComplete="off"
@@ -4550,7 +4533,7 @@ export default function OrgWorkspacePage() {
 												</div>
 												<div>
 													<textarea
-														placeholder="Write problem statement in Markdown format..."
+														aria-label="Problem Description"
 														value={newPrivateProblemDesc}
 														onChange={(e) => setNewPrivateProblemDesc(e.target.value)}
 														autoComplete="off"
@@ -4695,7 +4678,7 @@ export default function OrgWorkspacePage() {
 										<div className="flex gap-3 pt-4 border-t border-gray-800">
 											<input
 												type="text"
-												placeholder="Invite User UID..."
+												aria-label="Invite User UID"
 												id="team-invite-uid"
 												autoComplete="off"
 												autoCorrect="off"
@@ -4794,7 +4777,7 @@ export default function OrgWorkspacePage() {
 											<form onSubmit={handleCreateTeam} className="flex gap-3">
 												<input
 													type="text"
-													placeholder="Competitor Team Name..."
+													aria-label="Competitor Team Name"
 													value={newTeamName}
 													onChange={(e) => setNewTeamName(e.target.value)}
 													autoComplete="off"
@@ -4891,7 +4874,7 @@ export default function OrgWorkspacePage() {
 										<div>
 											<input
 												type="text"
-												placeholder="Roadmap Title (e.g. 5-Week Binary Search Camp)..."
+												aria-label="Roadmap Title"
 												value={newRoadmapTitle}
 												onChange={(e) => setNewRoadmapTitle(e.target.value)}
 												autoComplete="off"
@@ -4904,7 +4887,7 @@ export default function OrgWorkspacePage() {
 										</div>
 										<div>
 											<textarea
-												placeholder="Describe target audience and syllabus learning objectives..."
+												aria-label="Roadmap Description"
 												value={newRoadmapDesc}
 												onChange={(e) => setNewRoadmapDesc(e.target.value)}
 												autoComplete="off"
@@ -4986,7 +4969,7 @@ export default function OrgWorkspacePage() {
 										<div className="grid grid-cols-2 gap-4">
 											<input
 												type="text"
-												placeholder="Assignment Title..."
+												aria-label="Assignment Title"
 												value={newAssignmentTitle}
 												onChange={(e) => setNewAssignmentTitle(e.target.value)}
 												autoComplete="off"
@@ -4998,7 +4981,7 @@ export default function OrgWorkspacePage() {
 											/>
 											<input
 												type="text"
-												placeholder="Problem IDs (comma separated, e.g. two-sum, contains-duplicate)..."
+												aria-label="Problem IDs (comma separated)"
 												value={newAssignmentProblems}
 												onChange={(e) => setNewAssignmentProblems(e.target.value)}
 												autoComplete="off"
@@ -5011,7 +4994,7 @@ export default function OrgWorkspacePage() {
 										</div>
 										<div>
 											<textarea
-												placeholder="Write homework assignment description instructions..."
+												aria-label="Assignment Description"
 												value={newAssignmentDesc}
 												onChange={(e) => setNewAssignmentDesc(e.target.value)}
 												autoComplete="off"
@@ -5044,7 +5027,6 @@ export default function OrgWorkspacePage() {
 												</label>
 												<input
 													type="text"
-													placeholder="Leave empty if 'All Members'..."
 													value={newAssignmentAssigneeIds}
 													onChange={(e) => setNewAssignmentAssigneeIds(e.target.value)}
 													autoComplete="off"
@@ -5162,6 +5144,7 @@ export default function OrgWorkspacePage() {
 
 					{/* SETTINGS TAB */}
 					{tab === "settings" && hasPerm("organization.manageSettings") && (
+						<>
 						<form onSubmit={handleUpdateSettings} className="space-y-6 animate-fade-in">
 							<h2 className="text-base font-bold text-white">Workspace Configuration</h2>
 
@@ -5354,27 +5337,58 @@ export default function OrgWorkspacePage() {
 								</div>
 							</div>
 
-							<div className="border-t border-gray-850 pt-6 flex justify-between items-center">
-								{userRole === "owner" && (
-									<button
-										type="button"
-										onClick={handleDeleteOrg}
-										disabled={actionLoading}
-										className="bg-red-950 text-red-500 hover:bg-red-900 border border-red-800/40 px-5 py-2.5 rounded-xl text-xs font-bold transition cursor-pointer"
-									>
-										Delete Organization
-									</button>
-								)}
+							<div className="border-t border-gray-850 pt-6 flex justify-end items-center">
 								<button
 									type="submit"
 									disabled={actionLoading}
-									className="bg-brand-orange hover:bg-brand-orange-s text-bg-base px-6 py-2.5 rounded-xl text-xs font-bold transition ml-auto cursor-pointer"
+									className="bg-brand-orange hover:bg-brand-orange-s text-bg-base px-6 py-2.5 rounded-xl text-xs font-bold transition cursor-pointer"
 									style={{ color: "var(--bg-base)" }}
 								>
 									{actionLoading ? "Saving..." : "Save Workspace Changes"}
 								</button>
 							</div>
 						</form>
+
+						{/* DANGER ZONE */}
+						{userRole === "owner" && org && (
+							<div className="mt-12 pt-8 border-t border-red-900/30">
+								<div className="flex items-center gap-2 mb-2 text-red-500">
+									<FaExclamationTriangle size={15} />
+									<h3 className="text-sm font-black uppercase tracking-wider">Danger Zone</h3>
+								</div>
+								<p className="text-xs text-gray-500 mb-4">
+									Destructive and irreversible operations for this organization workspace.
+								</p>
+
+								<div className="p-5 rounded-2xl bg-[#140a0b] border border-red-900/40 flex flex-col md:flex-row md:items-center justify-between gap-4">
+									<div className="space-y-1">
+										<h4 className="text-xs font-black text-white">
+											Permanently delete this organization
+										</h4>
+										<p className="text-[11px] text-gray-400 max-w-xl leading-relaxed">
+											Completely purges this organization and all its data (problems, contests, roadmaps, teams, files, and chat history). Individual member accounts will NOT be deleted.
+										</p>
+									</div>
+
+									<button
+										type="button"
+										onClick={() => setShowDangerZoneModal(true)}
+										className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs transition shrink-0 flex items-center justify-center gap-2 shadow-lg shadow-red-950 cursor-pointer"
+									>
+										<FaTrash size={11} />
+										<span>Delete Organization</span>
+									</button>
+								</div>
+
+								<DangerZoneModal
+									isOpen={showDangerZoneModal}
+									onClose={() => setShowDangerZoneModal(false)}
+									org={org}
+									onConfirmDelete={handlePermanentDeleteOrg}
+								/>
+							</div>
+						)}
+						</>
 					)}
 				</section>
 			</div>

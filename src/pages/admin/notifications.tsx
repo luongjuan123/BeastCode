@@ -28,7 +28,7 @@ interface QueueItem {
 	category: string;
 	eventType: string;
 	subject: string;
-	status: "pending" | "processing" | "sent" | "failed";
+	status: "pending" | "processing" | "sent" | "failed" | "dead_letter" | "expired" | "cancelled";
 	retryCount: number;
 	nextRetryAt: number;
 	createdAt: number;
@@ -533,8 +533,10 @@ export default function AdminNotificationsPage() {
 															className={`px-2 py-0.5 rounded text-[10px] font-bold ${
 																item.status === "sent"
 																	? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"
-																	: item.status === "failed"
+																	: item.status === "failed" || item.status === "dead_letter"
 																	? "bg-red-500/10 text-red-400 border border-red-500/30"
+																	: item.status === "expired" || item.status === "cancelled"
+																	? "bg-zinc-500/10 text-zinc-400 border border-zinc-500/30"
 																	: item.status === "processing"
 																	? "bg-blue-500/10 text-blue-400 border border-blue-500/30"
 																	: "bg-amber-500/10 text-amber-400 border border-amber-500/30"
@@ -723,7 +725,6 @@ export default function AdminNotificationsPage() {
 									<input
 										type="text"
 										required
-										placeholder="e.g. Alex"
 										value={testName}
 										onChange={(e) => setTestName(e.target.value)}
 										autoComplete="off"
@@ -740,7 +741,6 @@ export default function AdminNotificationsPage() {
 									<input
 										type="email"
 										required
-										placeholder="e.g. user@test.com"
 										value={testEmail}
 										onChange={(e) => setTestEmail(e.target.value)}
 										autoComplete="off"
@@ -770,7 +770,6 @@ export default function AdminNotificationsPage() {
 								</label>
 								<textarea
 									rows={4}
-									placeholder="Write any additional detail or broadcast message payload..."
 									value={testCustomContent}
 									onChange={(e) => setTestCustomContent(e.target.value)}
 									autoComplete="off"

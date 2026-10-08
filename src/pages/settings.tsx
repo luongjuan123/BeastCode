@@ -268,7 +268,6 @@ export default function SettingsPage() {
 												autoCorrect="off"
 												spellCheck={false}
 												className='w-full px-3 py-1.5 rounded-md border border-border-default bg-bg-base text-xs text-text-primary focus:border-accent-brand outline-none transition-colors'
-												placeholder='Your name or handle'
 												required
 											/>
 										</div>
@@ -287,7 +286,6 @@ export default function SettingsPage() {
 												autoCapitalize="off"
 												spellCheck={false}
 												className='w-full px-3 py-1.5 rounded-md border border-border-default bg-bg-base text-xs text-text-primary focus:border-accent-brand outline-none transition-colors font-mono'
-												placeholder='e.g. 22010234'
 											/>
 										</div>
 
@@ -304,7 +302,6 @@ export default function SettingsPage() {
 												autoCorrect="off"
 												spellCheck={false}
 												className='w-full px-3 py-1.5 rounded-md border border-border-default bg-bg-base text-xs text-text-primary focus:border-accent-brand outline-none transition-colors'
-												placeholder='BeastCode Institute'
 											/>
 										</div>
 
@@ -331,7 +328,6 @@ export default function SettingsPage() {
 												autoCorrect="off"
 												spellCheck={false}
 												className='w-full px-3 py-1.5 rounded-md border border-border-default bg-bg-base text-xs text-text-primary focus:border-accent-brand outline-none transition-colors'
-												placeholder='Computer Science'
 											/>
 										</div>
 
@@ -349,7 +345,6 @@ export default function SettingsPage() {
 												autoCapitalize="off"
 												spellCheck={false}
 												className='w-full px-3 py-1.5 rounded-md border border-border-default bg-bg-base text-xs text-text-primary focus:border-accent-brand outline-none transition-colors'
-												placeholder='e.g. CS-2026'
 											/>
 										</div>
 
@@ -366,7 +361,6 @@ export default function SettingsPage() {
 												autoCorrect="off"
 												spellCheck={false}
 												className='w-full px-3 py-2 rounded-md border border-border-default bg-bg-base text-xs text-text-primary focus:border-accent-brand outline-none transition-colors resize-none'
-												placeholder='Technical bio or research areas...'
 											/>
 										</div>
 

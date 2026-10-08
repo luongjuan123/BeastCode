@@ -197,7 +197,7 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 			if (role) {
 				queryRef = queryRef.where("role", "==", role);
 			}
-			const defaultSnap = await queryRef.limit(100).get();
+			const defaultSnap = await queryRef.limit(500).get();
 			defaultSnap.forEach((d: any) => {
 				userMap.set(d.id, formatUserDoc(d.id, d.data()));
 			});
@@ -252,7 +252,26 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 			return 0;
 		});
 
-		return res.status(200).json({ success: true, users: list });
+		const totalCount = list.length;
+		const rawPage = parseInt(req.query.page as string, 10);
+		const rawPageSize = parseInt(req.query.pageSize as string, 10);
+		const page = isNaN(rawPage) || rawPage < 1 ? 1 : rawPage;
+		const pageSize = isNaN(rawPageSize) || rawPageSize < 1 ? 25 : Math.min(rawPageSize, 100);
+		const totalPages = Math.max(1, Math.ceil(totalCount / pageSize));
+
+		const paginatedUsers =
+			req.query.page !== undefined || req.query.pageSize !== undefined
+				? list.slice((page - 1) * pageSize, page * pageSize)
+				: list;
+
+		return res.status(200).json({
+			success: true,
+			users: paginatedUsers,
+			totalCount,
+			page,
+			pageSize,
+			totalPages,
+		});
 	} catch (error: any) {
 		console.error("GET admin users error:", error);
 		return res.status(500).json({ success: false, error: error.message });

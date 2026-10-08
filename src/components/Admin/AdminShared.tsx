@@ -100,7 +100,6 @@ interface AdminSearchBarProps {
 export const AdminSearchBar: React.FC<AdminSearchBarProps> = ({
 	value,
 	onChange,
-	placeholder = "Search...",
 	className = ""
 }) => {
 	return (
@@ -110,7 +109,7 @@ export const AdminSearchBar: React.FC<AdminSearchBarProps> = ({
 				type="text"
 				value={value}
 				onChange={(e) => onChange(e.target.value)}
-				placeholder={placeholder}
+				aria-label="Search"
 				autoComplete="off"
 				autoCorrect="off"
 				autoCapitalize="off"

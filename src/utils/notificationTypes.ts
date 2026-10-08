@@ -94,6 +94,7 @@ export interface NotificationPayload {
 	ctaUrl?: string;
 	customContent?: string;
 	eventId?: string;
+	expiresAt?: number;
 	metadata?: Record<string, any>;
 	fromUid?: string;
 	fromDisplayName?: string;
@@ -104,6 +105,7 @@ export interface DispatchResult {
 	success: boolean;
 	message: string;
 	logId?: string;
+	id?: string;
 	queuedId?: string;
 	status: "queued" | "skipped" | "failed";
 }

@@ -278,7 +278,6 @@ const NewContest: React.FC = () => {
 								id='title'
 								value={title}
 								onChange={(e) => setTitle(e.target.value)}
-								placeholder='e.g. BeastCode Alpha Round 1'
 								autoComplete="off"
 								autoCorrect="off"
 								autoCapitalize="off"
@@ -321,7 +320,6 @@ const NewContest: React.FC = () => {
 								value={description}
 								onChange={(e) => setDescription(e.target.value)}
 								rows={2}
-								placeholder='Brief overview shown on the contest card'
 								autoComplete="off"
 								autoCorrect="off"
 								autoCapitalize="off"
@@ -343,7 +341,6 @@ const NewContest: React.FC = () => {
 								id='banner'
 								value={banner}
 								onChange={(e) => setBanner(e.target.value)}
-								placeholder='e.g. https://images.unsplash.com/... (Optional)'
 								autoComplete="off"
 								autoCorrect="off"
 								autoCapitalize="off"
@@ -446,7 +443,6 @@ const NewContest: React.FC = () => {
 									id='password'
 									value={password}
 									onChange={(e) => setPassword(e.target.value)}
-									placeholder='Enter join password'
 									autoComplete="off"
 									autoCorrect="off"
 									autoCapitalize="off"
@@ -471,7 +467,6 @@ const NewContest: React.FC = () => {
 									id='university'
 									value={university}
 									onChange={(e) => setUniversity(e.target.value)}
-									placeholder='e.g. st.vju.ac.vn'
 									autoComplete="off"
 									autoCorrect="off"
 									autoCapitalize="off"
@@ -614,7 +609,6 @@ const NewContest: React.FC = () => {
 							<MarkdownEditor
 								value={rules}
 								onChange={setRules}
-								placeholder='Write general regulations or rules...'
 								height='200px'
 							/>
 						</div>

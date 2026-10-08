@@ -11,19 +11,7 @@ const nextConfig = {
     ],
   },
   async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'bomboclatbeastcode.codes',
-          },
-        ],
-        destination: 'https://www.bomboclatbeastcode.codes/:path*',
-        permanent: true,
-      },
-    ];
+    return [];
   },
   async rewrites() {
     return {

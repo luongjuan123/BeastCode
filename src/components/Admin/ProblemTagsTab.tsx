@@ -250,7 +250,7 @@ export const ProblemTagsTab: React.FC<ProblemTagsTabProps> = ({ triggerStatusMes
 			<div className="relative max-w-xs select-none">
 				<input
 					type="text"
-					placeholder="Search problem tags..."
+					aria-label="Search problem tags"
 					value={searchQuery}
 					onChange={(e) => setSearchQuery(e.target.value)}
 					autoComplete="off"

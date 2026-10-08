@@ -955,7 +955,6 @@ const ProfilePage: React.FC = () => {
 									autoCorrect="off"
 									spellCheck={false}
 									className="border border-border-default outline-none text-sm rounded-md focus:border-accent-brand focus:ring-1 focus:ring-accent-brand/30 block w-full p-2.5 bg-bg-base text-text-primary placeholder:text-text-muted disabled:opacity-50 disabled:cursor-not-allowed transition"
-									placeholder="Nguyen Van A"
 									required
 								/>
 							</div>
@@ -975,7 +974,6 @@ const ProfilePage: React.FC = () => {
 									autoCapitalize="off"
 									spellCheck={false}
 									className="border border-border-default outline-none text-sm rounded-md focus:border-accent-brand focus:ring-1 focus:ring-accent-brand/30 block w-full p-2.5 bg-bg-base text-text-primary placeholder:text-text-muted font-mono disabled:opacity-50 disabled:cursor-not-allowed transition"
-									placeholder="username"
 									required
 								/>
 								{isUsernameLocked && (
@@ -1083,7 +1081,6 @@ const ProfilePage: React.FC = () => {
 											autoCapitalize="off"
 											spellCheck={false}
 											className="border border-border-default outline-none text-sm rounded-md focus:border-accent-brand focus:ring-1 focus:ring-accent-brand/30 block w-full p-2.5 bg-bg-base text-text-primary placeholder:text-text-muted font-mono disabled:opacity-50 disabled:cursor-not-allowed transition"
-											placeholder="e.g. 22010234"
 										/>
 									</div>
 
@@ -1101,7 +1098,6 @@ const ProfilePage: React.FC = () => {
 											autoCorrect="off"
 											spellCheck={false}
 											className="border border-border-default outline-none text-sm rounded-md focus:border-accent-brand focus:ring-1 focus:ring-accent-brand/30 block w-full p-2.5 bg-bg-base text-text-primary placeholder:text-text-muted disabled:opacity-50 disabled:cursor-not-allowed transition"
-											placeholder="BeastCode University"
 										/>
 									</div>
 
@@ -1119,7 +1115,6 @@ const ProfilePage: React.FC = () => {
 											autoCorrect="off"
 											spellCheck={false}
 											className="border border-border-default outline-none text-sm rounded-md focus:border-accent-brand focus:ring-1 focus:ring-accent-brand/30 block w-full p-2.5 bg-bg-base text-text-primary placeholder:text-text-muted disabled:opacity-50 disabled:cursor-not-allowed transition"
-											placeholder="e.g. Computer Science & Engineering"
 										/>
 									</div>
 
@@ -1138,7 +1133,6 @@ const ProfilePage: React.FC = () => {
 											autoCapitalize="off"
 											spellCheck={false}
 											className="border border-border-default outline-none text-sm rounded-md focus:border-accent-brand focus:ring-1 focus:ring-accent-brand/30 block w-full p-2.5 bg-bg-base text-text-primary placeholder:text-text-muted disabled:opacity-50 disabled:cursor-not-allowed transition font-mono"
-											placeholder="e.g. CSE-2026"
 										/>
 									</div>
 
@@ -1156,7 +1150,6 @@ const ProfilePage: React.FC = () => {
 											autoCorrect="off"
 											spellCheck={false}
 											className="border border-border-default outline-none text-sm rounded-md focus:border-accent-brand focus:ring-1 focus:ring-accent-brand/30 block w-full p-2.5 bg-bg-base text-text-primary placeholder:text-text-muted disabled:opacity-50 disabled:cursor-not-allowed transition resize-none"
-											placeholder="Tell the developer community a bit about your tech stack and interests..."
 										/>
 									</div>
 								</>
@@ -1320,7 +1313,6 @@ const ProfilePage: React.FC = () => {
 									minLength={30}
 									maxLength={3000}
 									rows={3}
-									placeholder="Describe the violation in detail, referencing specific submissions, threads, or dates where appropriate..."
 									autoComplete="off"
 									autoCorrect="off"
 									spellCheck={false}

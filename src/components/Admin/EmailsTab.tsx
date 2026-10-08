@@ -8,7 +8,7 @@ interface EmailTask {
 	to: string;
 	template?: string;
 	subject?: string;
-	status: "pending" | "processing" | "sent" | "failed";
+	status: "pending" | "processing" | "sent" | "failed" | "dead_letter" | "expired" | "cancelled";
 	retryCount: number;
 	nextRetryAt: number;
 	sentAt?: number;
@@ -35,6 +35,8 @@ export const EmailsTab: React.FC = () => {
 		processing: 0,
 		sent: 0,
 		failed: 0,
+		dead_letter: 0,
+		expired: 0,
 	});
 
 	useEffect(() => {
@@ -45,6 +47,8 @@ export const EmailsTab: React.FC = () => {
 			let processing = 0;
 			let sent = 0;
 			let failed = 0;
+			let dead_letter = 0;
+			let expired = 0;
 
 			snap.forEach((d) => {
 				const data = d.data();
@@ -66,6 +70,8 @@ export const EmailsTab: React.FC = () => {
 				else if (task.status === "processing") processing++;
 				else if (task.status === "sent") sent++;
 				else if (task.status === "failed") failed++;
+				else if (task.status === "dead_letter") dead_letter++;
+				else if (task.status === "expired" || task.status === "cancelled") expired++;
 			});
 
 			setTasks(fetchedTasks);
@@ -75,6 +81,8 @@ export const EmailsTab: React.FC = () => {
 				processing,
 				sent,
 				failed,
+				dead_letter,
+				expired,
 			});
 			setLoading(false);
 		}, (err) => {
@@ -137,17 +145,19 @@ export const EmailsTab: React.FC = () => {
 			</div>
 
 			{/* Queue Status Aggregator */}
-			<div className="grid grid-cols-2 lg:grid-cols-5 gap-4 select-none">
+			<div className="grid grid-cols-2 lg:grid-cols-7 gap-3 select-none">
 				{[
 					{ label: "Total Tasks", count: stats.total, color: "text-[var(--text-primary)]" },
 					{ label: "Pending", count: stats.pending, color: "text-amber-400" },
 					{ label: "Processing", count: stats.processing, color: "text-blue-400" },
-					{ label: "Sent Success", count: stats.sent, color: "text-emerald-400" },
-					{ label: "Permanently Failed", count: stats.failed, color: "text-red-400" },
+					{ label: "Sent", count: stats.sent, color: "text-emerald-400" },
+					{ label: "Failed", count: stats.failed, color: "text-rose-400" },
+					{ label: "Dead Letter", count: stats.dead_letter, color: "text-purple-400" },
+					{ label: "Expired", count: stats.expired, color: "text-zinc-400" },
 				].map((item, idx) => (
 					<div
 						key={idx}
-						className="p-4 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-lg shadow-sm flex flex-col gap-1.5"
+						className="p-3 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-lg shadow-sm flex flex-col gap-1"
 					>
 						<span className="text-[9px] font-bold uppercase tracking-wider text-[var(--text-muted)]">
 							{item.label}
@@ -238,8 +248,12 @@ export const EmailsTab: React.FC = () => {
 									const statusColors =
 										task.status === "sent"
 											? { text: "text-emerald-400", bg: "bg-emerald-950/20 border-emerald-900/30" }
+											: task.status === "dead_letter"
+											? { text: "text-purple-400", bg: "bg-purple-950/20 border-purple-900/30" }
+											: task.status === "expired" || task.status === "cancelled"
+											? { text: "text-zinc-400", bg: "bg-zinc-800/40 border-zinc-700/30" }
 											: task.status === "failed"
-											? { text: "text-red-400", bg: "bg-red-950/20 border-red-900/30" }
+											? { text: "text-rose-400", bg: "bg-rose-950/20 border-rose-900/30" }
 											: task.status === "processing"
 											? { text: "text-blue-400", bg: "bg-blue-950/20 border-blue-900/30" }
 											: { text: "text-amber-400", bg: "bg-amber-950/20 border-amber-900/30" };

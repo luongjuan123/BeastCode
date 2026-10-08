@@ -58,24 +58,28 @@ async function handler(
 			return res.status(400).json({ success: false, message: "Recipient user is not eligible (unverified or blacklisted email)." });
 		}
 
-		const resolvedUser = eligibleUsers[0];
-		let contestTitle = "Contest";
-		let startTime = Date.now() + 24 * 60 * 60 * 1000;
-		let duration = 120;
-
-		try {
-			const db = getAdminFirestore();
-			const contestDoc = await db.collection("contests").doc(contestId).get();
-			if (contestDoc.exists) {
-				const contestData = contestDoc.data() || {};
-				contestTitle = contestData.title || "Contest";
-				startTime = contestData.startTime || startTime;
-				duration = contestData.duration || duration;
-			}
-		} catch (adminErr: any) {
-			console.warn("[Admin Credential Warn] Fallback to defaults for contest title:", adminErr.message);
-			contestTitle = "BeastCode Tournament Grand Prix";
+		const db = getAdminFirestore();
+		const contestDoc = await db.collection("contests").doc(contestId).get();
+		if (!contestDoc.exists) {
+			return res.status(404).json({ success: false, message: `Contest "${contestId}" not found in database.` });
 		}
+
+		const contestData = contestDoc.data() || {};
+		const cStatus = String(contestData.status || "draft").toLowerCase();
+		if (cStatus === "cancelled" || cStatus === "archived") {
+			return res.status(400).json({ success: false, message: `Cannot register: Contest is ${cStatus}.` });
+		}
+
+		const now = Date.now();
+		if (cStatus === "ended" || (contestData.endTime && now >= contestData.endTime)) {
+			return res.status(400).json({ success: false, message: "Cannot register: Contest has already ended." });
+		}
+
+		const resolvedUser = eligibleUsers[0];
+		const contestTitle = contestData.title || "Contest";
+		const startTime = contestData.startTime || (now + 24 * 60 * 60 * 1000);
+		const duration = contestData.duration || 120;
+		const endTime = contestData.endTime || (startTime + duration * 60000);
 
 		const contestUrl = buildAbsoluteUrl(`/contests/${contestId}`);
 
@@ -85,6 +89,10 @@ async function handler(
 			toUid: resolvedUser.uid,
 			userName: resolvedUser.displayName,
 			ctaUrl: contestUrl,
+			expiresAt: endTime,
+			metadata: {
+				contestId
+			},
 			placeholders: {
 				contestTitle,
 				startTime: new Date(startTime).toLocaleString("en-US", { dateStyle: "full", timeStyle: "short" }),

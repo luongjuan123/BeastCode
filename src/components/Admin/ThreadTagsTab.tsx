@@ -251,7 +251,7 @@ export const ThreadTagsTab: React.FC<ThreadTagsTabProps> = ({ triggerStatusMessa
 			<div className="relative max-w-xs select-none">
 				<input
 					type="text"
-					placeholder="Search thread tags..."
+					aria-label="Search thread tags"
 					value={searchQuery}
 					onChange={(e) => setSearchQuery(e.target.value)}
 					autoComplete="off"

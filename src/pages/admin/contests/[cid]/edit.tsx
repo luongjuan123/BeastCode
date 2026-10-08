@@ -1246,7 +1246,7 @@ const EditContest: React.FC = () => {
 										}
 										value={selectedDbProblem}
 										onChange={setSelectedDbProblem}
-										placeholder="-- Choose Algorithmic Problem --"
+		
 										searchable
 									/>
 								</div>
@@ -1299,7 +1299,7 @@ const EditContest: React.FC = () => {
 										id='newProbCon'
 										value={newProbConstraints}
 										onChange={(e) => setNewProbConstraints(e.target.value)}
-										placeholder='e.g. 1.0s, 256MB'
+		
 										autoComplete="off"
 										autoCorrect="off"
 										autoCapitalize="off"
@@ -1425,7 +1425,7 @@ const EditContest: React.FC = () => {
 											id='annTitle'
 											value={announceTitle}
 											onChange={(e) => setAnnounceTitle(e.target.value)}
-											placeholder='e.g. Clarification on Problem B constraints'
+		
 											autoComplete="off"
 											autoCorrect="off"
 											autoCapitalize="off"
@@ -1447,7 +1447,7 @@ const EditContest: React.FC = () => {
 											value={announceContent}
 											onChange={(e) => setAnnounceContent(e.target.value)}
 											rows={4}
-											placeholder='Announcement detail markdown...'
+		
 											autoComplete="off"
 											autoCorrect="off"
 											autoCapitalize="off"
@@ -1530,7 +1530,7 @@ const EditContest: React.FC = () => {
 													<textarea
 														value={clarAnswerText}
 														onChange={(e) => setClarAnswerText(e.target.value)}
-														placeholder='Type answer here...'
+					
 														rows={3}
 														autoComplete="off"
 														autoCorrect="off"
@@ -1597,7 +1597,7 @@ const EditContest: React.FC = () => {
 							<MarkdownEditor
 								value={editorialMarkdown}
 								onChange={setEditorialMarkdown}
-								placeholder='Write algorithmic approaches, dynamic stubs, time/space limits explanations...'
+			
 								height='400px'
 							/>
 

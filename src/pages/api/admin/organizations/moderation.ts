@@ -4,7 +4,9 @@ import { withApiErrorHandler } from "@/utils/apiErrorHandler";
 import { withAdminGuard } from "@/utils/withAdminGuard";
 import { AuthenticatedRequest } from "@/utils/authMiddleware";
 import { EmailService } from "@/utils/emailService";
+import { getEmailHtml } from "@/utils/emailTemplate";
 import { buildAbsoluteUrl } from "@/utils/siteConfig";
+import { deleteOrganizationPermanently } from "@/utils/organizationDeletionService";
 
 async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 	const db = getAdminFirestore();
@@ -161,9 +163,21 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 				await EmailService.sendDirectEmail(
 					newOwnerEmail,
 					`Ownership Transferred: ${org.displayName || org.name}`,
-					`<p>Hello,</p>
-					<p>You have been assigned as the new owner of the workspace <strong>${org.displayName || org.name}</strong> on BeastCode.</p>
-					<p>Log in to manage your organization: <a href="${buildAbsoluteUrl(`/orgs/${org.slug}`)}">Workspace Settings</a>.</p>`
+					getEmailHtml({
+						headerTitle: "WORKSPACE OWNERSHIP",
+						accentColor: "#22c55e",
+						title: "Organization Ownership Transferred",
+						leadText: `You have been designated as the new owner of the workspace "${org.displayName || org.name}" (@${org.slug}) on BeastCode.`,
+						description: "As the workspace owner, you now have administrative control over organization settings, members, teams, and private problem repositories.",
+						details: [
+							{ label: "Organization", value: org.displayName || org.name },
+							{ label: "Your Role", value: "Workspace Owner", isHighlight: true }
+						],
+						ctaText: "Open Workspace Settings",
+						ctaUrl: buildAbsoluteUrl(`/orgs/${org.slug}`),
+						recipientEmail: newOwnerEmail,
+						preferenceType: "organization"
+					})
 				);
 			}
 
@@ -226,27 +240,13 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 				return res.status(403).json({ success: false, error: "Forbidden: Only Super Admins can permanently delete organizations." });
 			}
 
-			// Permanently delete organization document and membership relations
-			batch.delete(orgRef);
+			// Execute full cascading cleanup across all collections, storage, and redis
+			const deletionResult = await deleteOrganizationPermanently(orgId, actorUid, undefined, true);
 
-			// Delete members
-			const membersSnap = await db.collection("organizationMembers").where("organizationId", "==", orgId).get();
-			membersSnap.forEach((mDoc) => {
-				batch.delete(mDoc.ref);
-			});
-
-			// Audit log
-			const auditId = db.collection("organizationAuditLogs").doc().id;
-			batch.set(db.collection("organizationAuditLogs").doc(auditId), {
-				logId: auditId,
-				organizationId: orgId,
-				actorUid,
-				targetUid: org.ownerUid || null,
-				action: "organization.permanently_deleted",
-				resource: "organizations",
-				resourceId: orgId,
-				metadata: { originalName: org.name },
-				timestamp: now,
+			return res.status(200).json({
+				success: true,
+				message: deletionResult.message,
+				stats: deletionResult.stats,
 			});
 		}
 

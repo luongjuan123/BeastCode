@@ -14,7 +14,6 @@ interface PasswordInputProps {
 	label: string;
 	value: string;
 	onChange: (v: string) => void;
-	placeholder?: string;
 	disabled?: boolean;
 	error?: string | null;
 	hint?: string;
@@ -22,7 +21,7 @@ interface PasswordInputProps {
 }
 
 const PasswordInput: React.FC<PasswordInputProps> = ({
-	id, label, value, onChange, placeholder = "••••••••••",
+	id, label, value, onChange,
 	disabled, error, hint, autoComplete = "current-password",
 }) => {
 	const [show, setShow] = useState(false);
@@ -42,7 +41,6 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
 					autoCorrect="off"
 					autoCapitalize="off"
 					spellCheck={false}
-					placeholder={placeholder}
 					className={`w-full bc-input-shell rounded-lg py-2.5 px-3.5 pr-11 text-sm transition-all duration-200 outline-none ${
 						error ? "border-bc-error focus:border-bc-error" : "focus:border-brand-orange"
 					}`}
@@ -294,7 +292,6 @@ export default function ChangePasswordForm() {
 					disabled={submitting}
 					error={errors.new}
 					autoComplete="new-password"
-					placeholder="Create a strong password"
 				/>
 
 				{/* Live strength + checklist (shown when typing) */}
@@ -334,7 +331,6 @@ export default function ChangePasswordForm() {
 					disabled={submitting}
 					error={confirmMismatch ? "Passwords do not match." : errors.confirm}
 					autoComplete="new-password"
-					placeholder="Re-enter your new password"
 				/>
 
 				{/* Match indicator */}

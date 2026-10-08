@@ -102,7 +102,7 @@ const TagSelect: React.FC<TagSelectProps> = ({
 			>
 				<div className="flex flex-wrap gap-2 flex-grow">
 					{selectedTags.length === 0 ? (
-						<span className="text-sm text-[var(--text-muted)] select-none pl-1">{actualPlaceholder}</span>
+						<span className="text-sm text-[var(--text-muted)] select-none pl-1">&nbsp;</span>
 					) : (
 						selectedTags.map((tagId) => {
 							const tag = getTagDetails(tagId);
@@ -151,7 +151,7 @@ const TagSelect: React.FC<TagSelectProps> = ({
 						<FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={10} />
 						<input
 							type="text"
-							placeholder="Search tags..."
+							aria-label="Search tags"
 							value={searchQuery}
 							onChange={(e) => setSearchQuery(e.target.value)}
 							onClick={(e) => e.stopPropagation()}

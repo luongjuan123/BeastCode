@@ -1,25 +1,54 @@
 /**
  * Centralized Email Component System for BeastCode
- * Enforces WCAG AA contrast standards, uses solid color hex values,
- * and maintains readability across Gmail, Outlook, Apple Mail, and mobile clients.
+ * 
+ * Synchronized with the BeastCode Dark Technical Developer Platform Design System:
+ * - Near-black canvas (#080909) with dark surfaces (#0f1210 / #151816)
+ * - 1px technical borders (#242824 / #1a1e1b)
+ * - Restrained technical green brand accent (#22c55e)
+ * - High-contrast typography (#f1f3ef / #a6aca5)
+ * - Bulletproof table layouts compatible with Gmail, Outlook, Apple Mail, and mobile clients
+ * - Strict HTML sanitization against XSS / injection attacks
  */
 
 import { getSiteUrl, buildAbsoluteUrl } from "./siteConfig";
 
-// Official color palette
+// Official BeastCode Design System Tokens
 export const COLORS = {
-	background: "#0B1020",
-	card: "#131B2E",
-	primary: "#FF8A00", // primary orange
-	hover: "#FFA733",
-	accent: "#00D4FF", // accent cyan
-	success: "#00C853",
-	warning: "#FFC107",
-	danger: "#FF4D4F",
-	primaryText: "#FFFFFF",
-	secondaryText: "#A5B0C2",
-	border: "#202C45"
+	background: "#080909",      // Near-black page base
+	card: "#0f1210",            // Primary dark surface
+	elevated: "#151816",        // Elevated container / nested surface
+	hover: "#1c211e",           // Interactive element hover state
+	border: "#242824",          // Default 1px technical border
+	borderSubtle: "#1a1e1b",    // Subtle divider border
+	borderStrong: "#323833",    // Highlighted border
+	primary: "#22c55e",         // Technical brand green
+	primaryHover: "#16a34a",    // Green hover state
+	primaryText: "#f1f3ef",     // High-contrast primary text
+	secondaryText: "#a6aca5",   // Clean secondary / descriptive text
+	mutedText: "#6f766f",       // Subdued metadata & label text
+	accent: "#22c55e",          // Unified brand accent (green)
+	success: "#22c55e",         // Success status
+	warning: "#f59e0b",         // Warning status
+	danger: "#ef4444",          // Error / destructive status
+	info: "#64748b",            // Informational badge
+	// Compatibility aliases
+	hoverAccent: "#16a34a",
 };
+
+/**
+ * Strict HTML escaping utility to sanitize all user-controlled values
+ * before rendering into email HTML templates.
+ */
+export function escapeHtml(value: unknown): string {
+	if (value === null || value === undefined) return "";
+	const str = String(value);
+	return str
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;")
+		.replace(/'/g, "&#39;");
+}
 
 interface EmailLayoutProps {
 	previewText?: string;
@@ -28,19 +57,95 @@ interface EmailLayoutProps {
 }
 
 export function EmailLayout({ previewText, title, bodyContent }: EmailLayoutProps): string {
+	const safeTitle = escapeHtml(title);
+	const safePreview = previewText ? escapeHtml(previewText) : "";
+
 	return `<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="color-scheme" content="dark only">
+  <meta name="supported-color-schemes" content="dark">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <title>${safeTitle}</title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+  <style>
+    :root {
+      color-scheme: dark only;
+      supported-color-schemes: dark;
+    }
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      height: 100% !important;
+      width: 100% !important;
+      background-color: ${COLORS.background} !important;
+      color: ${COLORS.primaryText} !important;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+    }
+    table, td {
+      border-collapse: collapse !important;
+      mso-table-lspace: 0pt !important;
+      mso-table-rspace: 0pt !important;
+    }
+    img {
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
+    a {
+      text-decoration: none;
+    }
+    @media only screen and (max-width: 600px) {
+      .email-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 0px !important;
+        border-left: none !important;
+        border-right: none !important;
+      }
+      .email-wrapper {
+        padding: 0px !important;
+      }
+      .mobile-padding {
+        padding: 24px 20px !important;
+      }
+      .mobile-header-padding {
+        padding: 28px 20px 20px 20px !important;
+      }
+      .mobile-button {
+        width: 100% !important;
+        display: block !important;
+        text-align: center !important;
+      }
+    }
+  </style>
 </head>
-<body style="margin: 0; padding: 0; background-color: ${COLORS.background}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; color: ${COLORS.primaryText};">
-  ${previewText ? `<div style="display: none; max-height: 0px; overflow: hidden; font-size: 1px; color: ${COLORS.background};">${previewText}</div>` : ""}
-  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.background}; padding: 40px 20px;">
+<body style="margin: 0; padding: 0; background-color: ${COLORS.background}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; color: ${COLORS.primaryText};">
+  ${safePreview ? `
+  <div style="display: none; max-height: 0px; overflow: hidden; mso-hide: all; font-size: 1px; line-height: 1px; color: ${COLORS.background}; opacity: 0;">
+    ${safePreview}
+  </div>
+  ` : ""}
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="email-wrapper" style="background-color: ${COLORS.background}; padding: 36px 16px;">
     <tr>
-      <td align="center">
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: ${COLORS.card}; border: 1px solid ${COLORS.border}; border-radius: 16px; overflow: hidden; border-collapse: separate; box-shadow: 0 10px 30px rgba(0,0,0,0.45);">
+      <td align="center" valign="top">
+        <!-- Main Card Container (600px Max) -->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="email-container" style="max-width: 600px; background-color: ${COLORS.card}; border: 1px solid ${COLORS.border}; border-radius: 12px; overflow: hidden; border-collapse: separate; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
           ${bodyContent}
         </table>
       </td>
@@ -50,46 +155,70 @@ export function EmailLayout({ previewText, title, bodyContent }: EmailLayoutProp
 </html>`;
 }
 
+/**
+ * Canonical BeastCode Email Branding Configuration
+ *
+ * Uses the permanent, SSL-verified, globally-cached Firebase CDN endpoint (beastcode-7555e).
+ * Guarantees 100% email client deliverability (Gmail, Outlook, Apple Mail, Yahoo) without
+ * relying on unverified custom domains, local file paths, or localhost addresses.
+ */
+export const EMAIL_LOGO_CONFIG = {
+	url: process.env.EMAIL_LOGO_URL || "https://beastcode-7555e.web.app/beastcode-icon.png",
+	fullLogoUrl: process.env.EMAIL_FULL_LOGO_URL || "https://beastcode-7555e.web.app/beastcode-logo.png",
+	alt: "BeastCode",
+	width: 36,
+	height: 36,
+};
+
 interface EmailHeaderProps {
 	headerTitle?: string;
 	accentColor?: string;
 }
 
 export function EmailHeader({ headerTitle, accentColor = COLORS.primary }: EmailHeaderProps): string {
+	const safeHeaderTitle = headerTitle ? escapeHtml(headerTitle) : "";
+	const safeAccentColor = accentColor || COLORS.primary;
+	const siteUrl = getSiteUrl();
+
 	return `
     <!-- Header Section -->
     <tr>
-      <td align="center" style="padding: 40px 30px 25px 30px; background-color: ${COLORS.card}; border-bottom: 1px solid ${COLORS.border};">
-        <table border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 8px;">
+      <td align="center" class="mobile-header-padding" style="padding: 32px 32px 24px 32px; background-color: ${COLORS.card}; border-bottom: 1px solid ${COLORS.border};">
+        <table border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
           <tr>
-            <td align="center" style="vertical-align: middle;">
-              <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;">
-                <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" stroke="${COLORS.primary}" stroke-width="6" stroke-linejoin="round" fill="${COLORS.background}" />
-                <path d="M 37,32 L 21,50 L 37,68" stroke="${COLORS.primaryText}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M 63,32 L 79,50 L 63,68" stroke="${COLORS.primaryText}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M 57,26 L 43,74" stroke="${COLORS.primary}" stroke-width="8" stroke-linecap="round" />
-              </svg>
+            <!-- BeastCode Brand Logo Icon (Email Client Compatible) -->
+            <td align="center" valign="middle" style="padding-right: 12px; width: 36px;">
+              <a href="${siteUrl}" target="_blank" style="text-decoration: none; display: block; width: 36px; height: 36px;">
+                <img 
+                  src="${EMAIL_LOGO_CONFIG.url}" 
+                  width="${EMAIL_LOGO_CONFIG.width}" 
+                  height="${EMAIL_LOGO_CONFIG.height}" 
+                  alt="${EMAIL_LOGO_CONFIG.alt}" 
+                  border="0"
+                  style="display: block; width: 36px; height: 36px; max-width: 36px; max-height: 36px; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border-radius: 6px;" 
+                />
+              </a>
             </td>
-            <td style="font-size: 28px; font-weight: 900; letter-spacing: -1.5px; color: ${COLORS.primaryText}; padding-left: 14px; vertical-align: middle; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-              Beast<span style="color: ${COLORS.primary};">Code</span>
+            <!-- Brand Wordmark -->
+            <td valign="middle" style="font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: ${COLORS.primaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+              <a href="${siteUrl}" target="_blank" style="text-decoration: none; color: ${COLORS.primaryText};">
+                Beast<span style="color: ${COLORS.primary};">Code</span>
+              </a>
             </td>
           </tr>
         </table>
         
-        <!-- Tagline & Brand tag -->
-        <p style="margin: 0; font-size: 13px; font-weight: 600; color: ${COLORS.secondaryText}; letter-spacing: 0.5px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-          Competitive Programming Platform
-        </p>
-        <p style="margin: 4px 0 0 0; font-size: 11px; font-weight: 700; color: ${COLORS.accent}; text-transform: uppercase; letter-spacing: 2px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-          Learn. Practice. Compete.
+        <!-- Platform Subtitle -->
+        <p style="margin: 6px 0 0 0; font-size: 11px; font-weight: 500; color: ${COLORS.secondaryText}; letter-spacing: 0.3px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+          Developer Platform &amp; Competitive Programming
         </p>
         
-        ${headerTitle ? `
-        <!-- Accent Badge -->
-        <table border="0" cellpadding="0" cellspacing="0" style="margin-top: 20px;">
+        ${safeHeaderTitle ? `
+        <!-- Status / Header Badge -->
+        <table border="0" cellpadding="0" cellspacing="0" style="margin-top: 16px;">
           <tr>
-            <td style="border: 1px solid ${accentColor}; border-radius: 20px; padding: 6px 16px; background-color: ${COLORS.background}; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: ${accentColor}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-              ${headerTitle}
+            <td style="border: 1px solid ${COLORS.border}; border-radius: 14px; padding: 4px 14px; background-color: ${COLORS.elevated}; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: ${safeAccentColor}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+              ${safeHeaderTitle}
             </td>
           </tr>
         </table>
@@ -106,36 +235,46 @@ interface EmailFooterProps {
 
 export function EmailFooter({ recipientEmail, preferenceType }: EmailFooterProps): string {
 	const origin = getSiteUrl();
+	const safeEmail = recipientEmail ? escapeHtml(recipientEmail) : "";
 
 	return `
     <!-- Footer Section -->
     <tr>
-      <td style="padding: 35px; border-top: 1px solid ${COLORS.border}; background-color: ${COLORS.card}; text-align: center; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-        <p style="margin: 0 0 12px 0; font-size: 12px; color: ${COLORS.secondaryText}; font-weight: 500; line-height: 1.5;">
-          Need help? <a href="mailto:support@beastcode.codes" style="color: ${COLORS.primary}; text-decoration: none; font-weight: 600;">Contact Support</a>
+      <td class="mobile-padding" style="padding: 28px 32px; border-top: 1px solid ${COLORS.border}; background-color: ${COLORS.card}; text-align: center; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+        <!-- Support Links -->
+        <p style="margin: 0 0 10px 0; font-size: 12px; color: ${COLORS.secondaryText}; font-weight: 500; line-height: 1.5;">
+          Questions or assistance? <a href="mailto:support@beastcode.codes" style="color: ${COLORS.primary}; text-decoration: none; font-weight: 600;">support@beastcode.codes</a>
         </p>
-        <p style="margin: 0 0 18px 0; font-size: 12px; color: ${COLORS.secondaryText}; font-weight: 500;">
-          <a href="${origin}" target="_blank" style="color: ${COLORS.accent}; text-decoration: none; margin: 0 10px; font-weight: 600;">Website</a> &bull;
-          <a href="https://github.com" target="_blank" style="color: ${COLORS.accent}; text-decoration: none; margin: 0 10px; font-weight: 600;">GitHub</a> &bull;
-          <a href="https://discord.gg" target="_blank" style="color: ${COLORS.accent}; text-decoration: none; margin: 0 10px; font-weight: 600;">Discord</a>
+        
+        <!-- Platform Links -->
+        <p style="margin: 0 0 14px 0; font-size: 12px; color: ${COLORS.mutedText}; font-weight: 500;">
+          <a href="${origin}" target="_blank" style="color: ${COLORS.secondaryText}; text-decoration: none; margin: 0 8px; font-weight: 500;">Platform</a> &bull;
+          <a href="${origin}/rankings" target="_blank" style="color: ${COLORS.secondaryText}; text-decoration: none; margin: 0 8px; font-weight: 500;">Rankings</a> &bull;
+          <a href="${origin}/contests" target="_blank" style="color: ${COLORS.secondaryText}; text-decoration: none; margin: 0 8px; font-weight: 500;">Contests</a> &bull;
+          <a href="${origin}/threads" target="_blank" style="color: ${COLORS.secondaryText}; text-decoration: none; margin: 0 8px; font-weight: 500;">Community</a>
         </p>
-        <p style="margin: 0 0 12px 0; font-size: 11px; color: ${COLORS.secondaryText}; line-height: 1.5; font-style: italic;">
-          This email was automatically generated. Please do not reply.
+
+        <!-- Automated System Notice -->
+        <p style="margin: 0 0 8px 0; font-size: 11px; color: ${COLORS.mutedText}; line-height: 1.4;">
+          This is an automated system email from BeastCode. Please do not reply directly.
         </p>
-        <p style="margin: 0; font-size: 11px; color: ${COLORS.secondaryText}; opacity: 0.8;">
+
+        <!-- Copyright Notice -->
+        <p style="margin: 0; font-size: 11px; color: ${COLORS.mutedText};">
           &copy; 2026 BeastCode Platform. All rights reserved.
         </p>
         
-        ${recipientEmail ? `
-        <p style="margin: 15px 0 0 0; font-size: 10px; color: ${COLORS.secondaryText}; opacity: 0.6;">
-          Sent to <span style="color: ${COLORS.primaryText}; font-weight: 600;">${recipientEmail}</span>. 
-          <a href="${origin}/unsubscribe?email=${encodeURIComponent(recipientEmail)}${preferenceType ? `&type=${preferenceType}` : ""}" target="_blank" style="color: ${COLORS.primary}; text-decoration: none; font-weight: 600;">Unsubscribe</a> 
-          &nbsp;&bull;&nbsp; 
-          <a href="${origin}/settings" target="_blank" style="color: ${COLORS.primary}; text-decoration: none; font-weight: 600;">Notification Preferences</a>
+        ${safeEmail ? `
+        <!-- Unsubscribe & Notification Preferences -->
+        <p style="margin: 14px 0 0 0; font-size: 11px; color: ${COLORS.mutedText}; line-height: 1.5;">
+          Sent to <span style="color: ${COLORS.primaryText}; font-weight: 500;">${safeEmail}</span>. 
+          <a href="${origin}/unsubscribe?email=${encodeURIComponent(recipientEmail || "")}${preferenceType ? `&amp;type=${encodeURIComponent(preferenceType)}` : ""}" target="_blank" style="color: ${COLORS.primary}; text-decoration: underline; font-weight: 500;">Unsubscribe</a> 
+          &bull; 
+          <a href="${origin}/settings" target="_blank" style="color: ${COLORS.primary}; text-decoration: underline; font-weight: 500;">Notification Preferences</a>
         </p>
         ` : `
-        <p style="margin: 15px 0 0 0; font-size: 10px; color: ${COLORS.secondaryText}; opacity: 0.6;">
-          <a href="${origin}/settings" target="_blank" style="color: ${COLORS.primary}; text-decoration: none; font-weight: 600;">Manage Preferences</a>
+        <p style="margin: 14px 0 0 0; font-size: 11px; color: ${COLORS.mutedText}; line-height: 1.5;">
+          <a href="${origin}/settings" target="_blank" style="color: ${COLORS.primary}; text-decoration: underline; font-weight: 500;">Manage Notification Preferences</a>
         </p>
         `}
       </td>
@@ -150,15 +289,20 @@ interface ButtonProps {
 }
 
 export function PrimaryButton({ text, url, accentColor = COLORS.primary }: ButtonProps): string {
+	const safeText = escapeHtml(text);
+	const safeUrl = escapeHtml(url);
+	const btnBg = accentColor || COLORS.primary;
+
 	return `
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 25px; margin-bottom: 25px;">
+    <!-- Bulletproof Primary Button -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 24px; margin-bottom: 24px;">
       <tr>
         <td align="center">
           <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate;">
             <tr>
-              <td align="center" style="border-radius: 8px; background-color: ${accentColor}; box-shadow: 0 4px 12px rgba(255, 138, 0, 0.2);">
-                <a href="${url}" target="_blank" style="display: inline-block; padding: 14px 36px; color: ${COLORS.background}; text-decoration: none; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 8px; border: 1px solid ${accentColor}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-                  ${text}
+              <td align="center" style="border-radius: 6px; background-color: ${btnBg};">
+                <a href="${safeUrl}" target="_blank" class="mobile-button" style="display: inline-block; padding: 13px 32px; background-color: ${btnBg}; color: #080909; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 0.3px; border-radius: 6px; border: 1px solid ${btnBg}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                  ${safeText}
                 </a>
               </td>
             </tr>
@@ -170,15 +314,43 @@ export function PrimaryButton({ text, url, accentColor = COLORS.primary }: Butto
 }
 
 export function SecondaryButton({ text, url }: ButtonProps): string {
+	const safeText = escapeHtml(text);
+	const safeUrl = escapeHtml(url);
+
 	return `
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 20px; margin-bottom: 20px;">
+    <!-- Bulletproof Secondary Button -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 16px; margin-bottom: 16px;">
       <tr>
         <td align="center">
           <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate;">
             <tr>
-              <td align="center" style="border-radius: 8px; background-color: ${COLORS.card}; border: 1px solid ${COLORS.border};">
-                <a href="${url}" target="_blank" style="display: inline-block; padding: 14px 36px; color: ${COLORS.primaryText}; text-decoration: none; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 8px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-                  ${text}
+              <td align="center" style="border-radius: 6px; background-color: ${COLORS.elevated}; border: 1px solid ${COLORS.border};">
+                <a href="${safeUrl}" target="_blank" class="mobile-button" style="display: inline-block; padding: 12px 28px; background-color: ${COLORS.elevated}; color: ${COLORS.primaryText}; text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 0.2px; border-radius: 6px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                  ${safeText}
+                </a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+	`;
+}
+
+export function DestructiveButton({ text, url }: ButtonProps): string {
+	const safeText = escapeHtml(text);
+	const safeUrl = escapeHtml(url);
+
+	return `
+    <!-- Bulletproof Destructive Button -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 16px; margin-bottom: 16px;">
+      <tr>
+        <td align="center">
+          <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate;">
+            <tr>
+              <td align="center" style="border-radius: 6px; background-color: ${COLORS.elevated}; border: 1px solid ${COLORS.danger};">
+                <a href="${safeUrl}" target="_blank" class="mobile-button" style="display: inline-block; padding: 12px 28px; background-color: ${COLORS.elevated}; color: ${COLORS.danger}; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 0.2px; border-radius: 6px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                  ${safeText}
                 </a>
               </td>
             </tr>
@@ -197,27 +369,31 @@ interface InfoRowProps {
 }
 
 export function InfoRow({ label, value, isHighlight = false, accentColor = COLORS.primary }: InfoRowProps): string {
-	const labelColor = accentColor;
-	const valueColor = isHighlight ? accentColor : COLORS.primaryText;
+	const safeLabel = escapeHtml(label);
+	const safeValue = escapeHtml(value);
+	const valueColor = isHighlight ? (accentColor || COLORS.primary) : COLORS.primaryText;
 	const fontWeight = isHighlight ? "700" : "500";
 
 	return `
     <tr>
-      <td style="padding: 10px 0; width: 35%; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: ${labelColor}; vertical-align: top; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-        ${label}
+      <td style="padding: 9px 0; width: 38%; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: ${COLORS.mutedText}; vertical-align: top; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+        ${safeLabel}
       </td>
-      <td style="padding: 10px 0; font-size: 14px; color: ${valueColor}; font-weight: ${fontWeight}; line-height: 1.4; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-        ${value}
+      <td style="padding: 9px 0; font-size: 13px; color: ${valueColor}; font-weight: ${fontWeight}; line-height: 1.4; vertical-align: top; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+        ${safeValue}
       </td>
     </tr>
 	`;
 }
 
 export function InfoTable({ content, accentColor = COLORS.primary }: { content: string; accentColor?: string }): string {
+	const borderAccent = accentColor || COLORS.primary;
+
 	return `
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.background}; border: 1px solid ${COLORS.border}; border-left: 4px solid ${accentColor}; border-radius: 8px; margin-bottom: 25px; border-collapse: separate;">
+    <!-- Info Table Container -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.elevated}; border: 1px solid ${COLORS.border}; border-left: 3px solid ${borderAccent}; border-radius: 8px; margin-top: 18px; margin-bottom: 22px; border-collapse: separate;">
       <tr>
-        <td style="padding: 20px 20px;">
+        <td style="padding: 16px 20px;">
           <table border="0" cellpadding="0" cellspacing="0" width="100%">
             ${content}
           </table>
@@ -233,12 +409,15 @@ interface MessageBoxProps {
 }
 
 export function AlertBox({ title, message }: MessageBoxProps): string {
+	const safeTitle = title ? escapeHtml(title) : "";
+	const safeMessage = escapeHtml(message);
+
 	return `
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #121F3D; border: 1px solid ${COLORS.accent}; border-radius: 8px; margin-bottom: 20px; border-collapse: separate;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.elevated}; border: 1px solid ${COLORS.border}; border-left: 3px solid ${COLORS.info}; border-radius: 8px; margin-bottom: 20px; border-collapse: separate;">
       <tr>
-        <td style="padding: 16px 20px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-          ${title ? `<h4 style="margin: 0 0 8px 0; font-size: 14px; font-weight: 700; color: ${COLORS.primaryText};">${title}</h4>` : ""}
-          <p style="margin: 0; font-size: 13px; line-height: 1.5; color: ${COLORS.secondaryText};">${message}</p>
+        <td style="padding: 14px 18px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+          ${safeTitle ? `<h4 style="margin: 0 0 6px 0; font-size: 13px; font-weight: 700; color: ${COLORS.primaryText};">${safeTitle}</h4>` : ""}
+          <p style="margin: 0; font-size: 13px; line-height: 1.5; color: ${COLORS.secondaryText};">${safeMessage}</p>
         </td>
       </tr>
     </table>
@@ -246,12 +425,15 @@ export function AlertBox({ title, message }: MessageBoxProps): string {
 }
 
 export function SuccessBox({ title, message }: MessageBoxProps): string {
+	const safeTitle = title ? escapeHtml(title) : "";
+	const safeMessage = escapeHtml(message);
+
 	return `
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #0E291D; border: 1px solid ${COLORS.success}; border-radius: 8px; margin-bottom: 20px; border-collapse: separate;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.elevated}; border: 1px solid ${COLORS.border}; border-left: 3px solid ${COLORS.success}; border-radius: 8px; margin-bottom: 20px; border-collapse: separate;">
       <tr>
-        <td style="padding: 16px 20px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-          ${title ? `<h4 style="margin: 0 0 8px 0; font-size: 14px; font-weight: 700; color: ${COLORS.primaryText};">${title}</h4>` : ""}
-          <p style="margin: 0; font-size: 13px; line-height: 1.5; color: ${COLORS.secondaryText};">${message}</p>
+        <td style="padding: 14px 18px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+          ${safeTitle ? `<h4 style="margin: 0 0 6px 0; font-size: 13px; font-weight: 700; color: ${COLORS.primaryText};">${safeTitle}</h4>` : ""}
+          <p style="margin: 0; font-size: 13px; line-height: 1.5; color: ${COLORS.secondaryText};">${safeMessage}</p>
         </td>
       </tr>
     </table>
@@ -259,12 +441,15 @@ export function SuccessBox({ title, message }: MessageBoxProps): string {
 }
 
 export function WarningBox({ title, message }: MessageBoxProps): string {
+	const safeTitle = title ? escapeHtml(title) : "";
+	const safeMessage = escapeHtml(message);
+
 	return `
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #2F210F; border: 1px solid ${COLORS.warning}; border-radius: 8px; margin-bottom: 20px; border-collapse: separate;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.elevated}; border: 1px solid ${COLORS.border}; border-left: 3px solid ${COLORS.warning}; border-radius: 8px; margin-bottom: 20px; border-collapse: separate;">
       <tr>
-        <td style="padding: 16px 20px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-          ${title ? `<h4 style="margin: 0 0 8px 0; font-size: 14px; font-weight: 700; color: ${COLORS.primaryText};">${title}</h4>` : ""}
-          <p style="margin: 0; font-size: 13px; line-height: 1.5; color: ${COLORS.secondaryText};">${message}</p>
+        <td style="padding: 14px 18px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+          ${safeTitle ? `<h4 style="margin: 0 0 6px 0; font-size: 13px; font-weight: 700; color: ${COLORS.warning};">${safeTitle}</h4>` : ""}
+          <p style="margin: 0; font-size: 13px; line-height: 1.5; color: ${COLORS.secondaryText};">${safeMessage}</p>
         </td>
       </tr>
     </table>
@@ -272,12 +457,15 @@ export function WarningBox({ title, message }: MessageBoxProps): string {
 }
 
 export function DangerBox({ title, message }: MessageBoxProps): string {
+	const safeTitle = title ? escapeHtml(title) : "";
+	const safeMessage = escapeHtml(message);
+
 	return `
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #2D1418; border: 1px solid ${COLORS.danger}; border-radius: 8px; margin-bottom: 20px; border-collapse: separate;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.elevated}; border: 1px solid ${COLORS.border}; border-left: 3px solid ${COLORS.danger}; border-radius: 8px; margin-bottom: 20px; border-collapse: separate;">
       <tr>
-        <td style="padding: 16px 20px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-          ${title ? `<h4 style="margin: 0 0 8px 0; font-size: 14px; font-weight: 700; color: ${COLORS.primaryText};">${title}</h4>` : ""}
-          <p style="margin: 0; font-size: 13px; line-height: 1.5; color: ${COLORS.secondaryText};">${message}</p>
+        <td style="padding: 14px 18px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+          ${safeTitle ? `<h4 style="margin: 0 0 6px 0; font-size: 13px; font-weight: 700; color: ${COLORS.danger};">${safeTitle}</h4>` : ""}
+          <p style="margin: 0; font-size: 13px; line-height: 1.5; color: ${COLORS.secondaryText};">${safeMessage}</p>
         </td>
       </tr>
     </table>
@@ -285,21 +473,25 @@ export function DangerBox({ title, message }: MessageBoxProps): string {
 }
 
 export function OtpBox({ code, expirationText = "10 minutes" }: { code: string; expirationText?: string }): string {
+	const safeCode = escapeHtml(code);
+	const safeExpiration = escapeHtml(expirationText);
+
 	return `
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.background}; border: 1px solid ${COLORS.border}; border-radius: 12px; margin-top: 20px; margin-bottom: 20px; border-collapse: separate;">
+    <!-- Verification Code (OTP) Card -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.elevated}; border: 1px solid ${COLORS.border}; border-radius: 8px; margin-top: 18px; margin-bottom: 22px; border-collapse: separate;">
       <tr>
-        <td align="center" style="padding: 30px 24px;">
-          <p style="margin: 0 0 12px 0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+        <td align="center" style="padding: 26px 20px;">
+          <p style="margin: 0 0 10px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: ${COLORS.mutedText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
             Verification Code
           </p>
-          <div style="font-size: 38px; font-weight: 800; color: ${COLORS.primary}; letter-spacing: 8px; font-family: 'Courier New', Courier, monospace; margin: 10px 0;">
-            ${code}
+          <div style="font-size: 34px; font-weight: 700; color: ${COLORS.primary}; letter-spacing: 7px; font-family: 'JetBrains Mono', 'Courier New', Courier, monospace; margin: 10px 0; padding: 8px 16px; background-color: ${COLORS.card}; border: 1px solid ${COLORS.border}; border-radius: 6px; display: inline-block;">
+            ${safeCode}
           </div>
           <p style="margin: 12px 0 0 0; font-size: 12px; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-            This code will expire in <strong style="color: ${COLORS.warning};">${expirationText}</strong>.
+            This code will expire in <strong style="color: ${COLORS.warning}; font-weight: 600;">${safeExpiration}</strong>.
           </p>
-          <p style="margin: 15px 0 0 0; font-size: 11px; color: ${COLORS.secondaryText}; opacity: 0.7; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.4;">
-            Security Reminder: Never share your verification code with anyone. BeastCode representatives will never ask for your code.
+          <p style="margin: 12px 0 0 0; font-size: 11px; color: ${COLORS.mutedText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.4;">
+            Security Notice: Never share your code with anyone. BeastCode will never ask for your verification code.
           </p>
         </td>
       </tr>
@@ -316,47 +508,52 @@ interface OrgCardProps {
 }
 
 export function OrganizationCard({ orgName, orgAvatar, roleName, ownerName, detailsText }: OrgCardProps): string {
-	const avatarUrl = orgAvatar || buildAbsoluteUrl("/placeholder-org.png");
+	const avatarUrl = orgAvatar ? escapeHtml(orgAvatar) : buildAbsoluteUrl("/placeholder-org.png");
+	const safeOrgName = escapeHtml(orgName);
+	const safeRoleName = roleName ? escapeHtml(roleName) : "";
+	const safeOwnerName = ownerName ? escapeHtml(ownerName) : "";
+	const safeDetails = detailsText ? escapeHtml(detailsText) : "";
+
 	return `
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.background}; border: 1px solid ${COLORS.border}; border-radius: 12px; margin-top: 20px; margin-bottom: 20px; border-collapse: separate; overflow: hidden;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.elevated}; border: 1px solid ${COLORS.border}; border-radius: 8px; margin-top: 18px; margin-bottom: 22px; border-collapse: separate; overflow: hidden;">
       <tr>
-        <td style="padding: 24px;">
+        <td style="padding: 20px;">
           <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr>
               ${orgAvatar ? `
-              <td width="64" style="vertical-align: middle; padding-right: 16px;">
-                <img src="${avatarUrl}" alt="${orgName} Avatar" width="60" height="60" style="border-radius: 12px; display: block; border: 1px solid ${COLORS.border};" />
+              <td width="56" style="vertical-align: middle; padding-right: 14px;">
+                <img src="${avatarUrl}" alt="${safeOrgName} Avatar" width="52" height="52" style="border-radius: 8px; display: block; border: 1px solid ${COLORS.border};" />
               </td>
               ` : ""}
               <td style="vertical-align: middle;">
-                <h3 style="margin: 0; font-size: 18px; font-weight: 800; color: ${COLORS.primaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-                  ${orgName}
+                <h3 style="margin: 0; font-size: 16px; font-weight: 700; color: ${COLORS.primaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                  ${safeOrgName}
                 </h3>
-                <p style="margin: 4px 0 0 0; font-size: 12px; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                <p style="margin: 3px 0 0 0; font-size: 11px; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
                   BeastCode Organization Workspace
                 </p>
               </td>
             </tr>
           </table>
           
-          ${(roleName || ownerName || detailsText) ? `
-          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid ${COLORS.border};">
-            ${roleName ? `
+          ${(safeRoleName || safeOwnerName || safeDetails) ? `
+          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 16px; padding-top: 14px; border-top: 1px solid ${COLORS.border};">
+            ${safeRoleName ? `
             <tr>
-              <td style="padding: 6px 0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: ${COLORS.accent}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Role Assigned</td>
-              <td style="padding: 6px 0; font-size: 13px; color: ${COLORS.primaryText}; font-weight: 600; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${roleName}</td>
+              <td style="padding: 5px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: ${COLORS.mutedText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Role Assigned</td>
+              <td style="padding: 5px 0; font-size: 12px; color: ${COLORS.primary}; font-weight: 600; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${safeRoleName}</td>
             </tr>
             ` : ""}
-            ${ownerName ? `
+            ${safeOwnerName ? `
             <tr>
-              <td style="padding: 6px 0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: ${COLORS.accent}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Workspace Owner</td>
-              <td style="padding: 6px 0; font-size: 13px; color: ${COLORS.primaryText}; font-weight: 600; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${ownerName}</td>
+              <td style="padding: 5px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: ${COLORS.mutedText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Workspace Owner</td>
+              <td style="padding: 5px 0; font-size: 12px; color: ${COLORS.primaryText}; font-weight: 500; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${safeOwnerName}</td>
             </tr>
             ` : ""}
-            ${detailsText ? `
+            ${safeDetails ? `
             <tr>
-              <td colspan="2" style="padding: 10px 0 0 0; font-size: 13px; line-height: 1.5; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-                ${detailsText}
+              <td colspan="2" style="padding: 8px 0 0 0; font-size: 12px; line-height: 1.5; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                ${safeDetails}
               </td>
             </tr>
             ` : ""}
@@ -377,33 +574,39 @@ interface ContestCardProps {
 }
 
 export function ContestCard({ title, startTime, duration, countdown, bannerUrl }: ContestCardProps): string {
+	const safeTitle = escapeHtml(title);
+	const safeStartTime = escapeHtml(startTime);
+	const safeDuration = escapeHtml(duration);
+	const safeCountdown = countdown ? escapeHtml(countdown) : "";
+	const safeBanner = bannerUrl ? escapeHtml(bannerUrl) : "";
+
 	return `
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.background}; border: 1px solid ${COLORS.border}; border-radius: 12px; margin-top: 20px; margin-bottom: 20px; border-collapse: separate; overflow: hidden;">
-      ${bannerUrl ? `
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.elevated}; border: 1px solid ${COLORS.border}; border-radius: 8px; margin-top: 18px; margin-bottom: 22px; border-collapse: separate; overflow: hidden;">
+      ${safeBanner ? `
       <tr>
         <td style="padding: 0;">
-          <img src="${bannerUrl}" alt="${title} Banner" width="100%" style="display: block; max-width: 100%; height: auto; border-bottom: 1px solid ${COLORS.border};" />
+          <img src="${safeBanner}" alt="${safeTitle} Banner" width="100%" style="display: block; max-width: 100%; height: auto; border-bottom: 1px solid ${COLORS.border};" />
         </td>
       </tr>
       ` : ""}
       <tr>
-        <td style="padding: 24px;">
-          <h3 style="margin: 0 0 15px 0; font-size: 18px; font-weight: 800; color: ${COLORS.primaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-            ${title}
+        <td style="padding: 20px;">
+          <h3 style="margin: 0 0 14px 0; font-size: 16px; font-weight: 700; color: ${COLORS.primaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+            ${safeTitle}
           </h3>
           <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr>
-              <td style="padding: 6px 0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: ${COLORS.primary}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Start Time</td>
-              <td style="padding: 6px 0; font-size: 13px; color: ${COLORS.primaryText}; font-weight: 600; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${startTime}</td>
+              <td style="padding: 5px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: ${COLORS.mutedText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Start Time</td>
+              <td style="padding: 5px 0; font-size: 12px; color: ${COLORS.primaryText}; font-weight: 600; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${safeStartTime}</td>
             </tr>
             <tr>
-              <td style="padding: 6px 0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: ${COLORS.primary}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Duration</td>
-              <td style="padding: 6px 0; font-size: 13px; color: ${COLORS.primaryText}; font-weight: 600; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${duration}</td>
+              <td style="padding: 5px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: ${COLORS.mutedText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Duration</td>
+              <td style="padding: 5px 0; font-size: 12px; color: ${COLORS.primaryText}; font-weight: 600; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${safeDuration}</td>
             </tr>
-            ${countdown ? `
+            ${safeCountdown ? `
             <tr>
-              <td style="padding: 6px 0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: ${COLORS.warning}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Countdown</td>
-              <td style="padding: 6px 0; font-size: 13px; color: ${COLORS.warning}; font-weight: 700; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${countdown}</td>
+              <td style="padding: 5px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: ${COLORS.warning}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Countdown</td>
+              <td style="padding: 5px 0; font-size: 12px; color: ${COLORS.warning}; font-weight: 700; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${safeCountdown}</td>
             </tr>
             ` : ""}
           </table>
@@ -422,45 +625,49 @@ interface RecruitmentCardProps {
 }
 
 export function RecruitmentCard({ companyName, companyLogo, jobTitle, skills, description }: RecruitmentCardProps): string {
-	const avatarUrl = companyLogo || buildAbsoluteUrl("/placeholder-org.png");
+	const avatarUrl = companyLogo ? escapeHtml(companyLogo) : buildAbsoluteUrl("/placeholder-org.png");
+	const safeCompany = escapeHtml(companyName);
+	const safeJob = escapeHtml(jobTitle);
+	const safeDesc = description ? escapeHtml(description) : "";
+
 	return `
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.background}; border: 1px solid ${COLORS.border}; border-radius: 12px; margin-top: 20px; margin-bottom: 20px; border-collapse: separate; overflow: hidden;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.elevated}; border: 1px solid ${COLORS.border}; border-radius: 8px; margin-top: 18px; margin-bottom: 22px; border-collapse: separate; overflow: hidden;">
       <tr>
-        <td style="padding: 24px;">
+        <td style="padding: 20px;">
           <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr>
               ${companyLogo ? `
-              <td width="64" style="vertical-align: middle; padding-right: 16px;">
-                <img src="${avatarUrl}" alt="${companyName} Logo" width="60" height="60" style="border-radius: 12px; display: block; border: 1px solid ${COLORS.border};" />
+              <td width="56" style="vertical-align: middle; padding-right: 14px;">
+                <img src="${avatarUrl}" alt="${safeCompany} Logo" width="50" height="50" style="border-radius: 8px; display: block; border: 1px solid ${COLORS.border};" />
               </td>
               ` : ""}
               <td style="vertical-align: middle;">
-                <p style="margin: 0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: ${COLORS.accent}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                <p style="margin: 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: ${COLORS.primary}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
                   Career Opportunity
                 </p>
-                <h3 style="margin: 4px 0 0 0; font-size: 18px; font-weight: 800; color: ${COLORS.primaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-                  ${jobTitle}
+                <h3 style="margin: 3px 0 0 0; font-size: 16px; font-weight: 700; color: ${COLORS.primaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                  ${safeJob}
                 </h3>
-                <p style="margin: 2px 0 0 0; font-size: 13px; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-                  at ${companyName}
+                <p style="margin: 2px 0 0 0; font-size: 12px; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                  at ${safeCompany}
                 </p>
               </td>
             </tr>
           </table>
           
-          ${description ? `
-          <p style="margin: 15px 0 0 0; font-size: 13px; line-height: 1.5; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-            ${description}
+          ${safeDesc ? `
+          <p style="margin: 14px 0 0 0; font-size: 12px; line-height: 1.5; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+            ${safeDesc}
           </p>
           ` : ""}
 
           ${skills && skills.length > 0 ? `
-          <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid ${COLORS.border};">
-            <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; display: block; margin-bottom: 8px;">
+          <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid ${COLORS.border};">
+            <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: ${COLORS.mutedText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; display: block; margin-bottom: 6px;">
               Required Skills
             </span>
             <div style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-              ${skills.map(skill => `<span style="display: inline-block; background-color: ${COLORS.card}; border: 1px solid ${COLORS.border}; border-radius: 4px; padding: 4px 10px; font-size: 12px; color: ${COLORS.primaryText}; font-weight: 600; margin: 0 6px 6px 0;">${skill}</span>`).join("")}
+              ${skills.map(skill => `<span style="display: inline-block; background-color: ${COLORS.card}; border: 1px solid ${COLORS.border}; border-radius: 4px; padding: 3px 8px; font-size: 11px; color: ${COLORS.primaryText}; font-weight: 500; margin: 0 4px 4px 0;">${escapeHtml(skill)}</span>`).join("")}
             </div>
           </div>
           ` : ""}
@@ -479,33 +686,41 @@ interface HomeworkCardProps {
 }
 
 export function HomeworkCard({ title, dueDate, difficulty, teacher, orgName }: HomeworkCardProps): string {
-	const diffColor = difficulty.toLowerCase() === "easy" ? COLORS.success : difficulty.toLowerCase() === "medium" ? COLORS.warning : COLORS.danger;
+	const safeTitle = escapeHtml(title);
+	const safeDue = escapeHtml(dueDate);
+	const safeDiff = escapeHtml(difficulty);
+	const safeTeacher = escapeHtml(teacher);
+	const safeOrg = escapeHtml(orgName);
+
+	const diffLower = difficulty.toLowerCase();
+	const diffColor = diffLower === "easy" ? COLORS.success : diffLower === "medium" ? COLORS.warning : COLORS.danger;
+
 	return `
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.background}; border: 1px solid ${COLORS.border}; border-radius: 12px; margin-top: 20px; margin-bottom: 20px; border-collapse: separate; overflow: hidden;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.elevated}; border: 1px solid ${COLORS.border}; border-radius: 8px; margin-top: 18px; margin-bottom: 22px; border-collapse: separate; overflow: hidden;">
       <tr>
-        <td style="padding: 24px;">
-          <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: ${COLORS.accent}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+        <td style="padding: 20px;">
+          <p style="margin: 0 0 3px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: ${COLORS.primary}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
             Assignment Details
           </p>
-          <h3 style="margin: 0 0 15px 0; font-size: 18px; font-weight: 800; color: ${COLORS.primaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-            ${title}
+          <h3 style="margin: 0 0 14px 0; font-size: 16px; font-weight: 700; color: ${COLORS.primaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+            ${safeTitle}
           </h3>
           <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr>
-              <td style="padding: 6px 0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Classroom/Org</td>
-              <td style="padding: 6px 0; font-size: 13px; color: ${COLORS.primaryText}; font-weight: 600; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${orgName}</td>
+              <td style="padding: 5px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: ${COLORS.mutedText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Workspace</td>
+              <td style="padding: 5px 0; font-size: 12px; color: ${COLORS.primaryText}; font-weight: 500; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${safeOrg}</td>
             </tr>
             <tr>
-              <td style="padding: 6px 0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Instructor</td>
-              <td style="padding: 6px 0; font-size: 13px; color: ${COLORS.primaryText}; font-weight: 600; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${teacher}</td>
+              <td style="padding: 5px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: ${COLORS.mutedText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Instructor</td>
+              <td style="padding: 5px 0; font-size: 12px; color: ${COLORS.primaryText}; font-weight: 500; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${safeTeacher}</td>
             </tr>
             <tr>
-              <td style="padding: 6px 0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Difficulty</td>
-              <td style="padding: 6px 0; font-size: 12px; color: ${diffColor}; font-weight: 800; text-transform: uppercase; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${difficulty}</td>
+              <td style="padding: 5px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: ${COLORS.mutedText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Difficulty</td>
+              <td style="padding: 5px 0; font-size: 12px; color: ${diffColor}; font-weight: 700; text-transform: uppercase; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${safeDiff}</td>
             </tr>
             <tr>
-              <td style="padding: 6px 0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: ${COLORS.danger}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Due Date</td>
-              <td style="padding: 6px 0; font-size: 13px; color: ${COLORS.danger}; font-weight: 700; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${dueDate}</td>
+              <td style="padding: 5px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: ${COLORS.danger}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Due Date</td>
+              <td style="padding: 5px 0; font-size: 12px; color: ${COLORS.danger}; font-weight: 700; text-align: right; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">${safeDue}</td>
             </tr>
           </table>
         </td>
@@ -521,21 +736,25 @@ interface NotificationCardProps {
 }
 
 export function NotificationCard({ title, description, timestamp }: NotificationCardProps): string {
+	const safeTitle = escapeHtml(title);
+	const safeDesc = escapeHtml(description);
+	const safeTime = escapeHtml(timestamp);
+
 	return `
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.background}; border: 1px solid ${COLORS.border}; border-radius: 12px; margin-top: 20px; margin-bottom: 20px; border-collapse: separate; overflow: hidden;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: ${COLORS.elevated}; border: 1px solid ${COLORS.border}; border-radius: 8px; margin-top: 18px; margin-bottom: 22px; border-collapse: separate; overflow: hidden;">
       <tr>
-        <td style="padding: 24px;">
-          <div style="font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: ${COLORS.accent}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin-bottom: 6px;">
+        <td style="padding: 20px;">
+          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: ${COLORS.primary}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin-bottom: 6px;">
             Notification Alert
           </div>
-          <h3 style="margin: 0 0 10px 0; font-size: 16px; font-weight: 800; color: ${COLORS.primaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-            ${title}
+          <h3 style="margin: 0 0 8px 0; font-size: 15px; font-weight: 700; color: ${COLORS.primaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+            ${safeTitle}
           </h3>
-          <p style="margin: 0 0 15px 0; font-size: 13px; line-height: 1.5; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-            ${description}
+          <p style="margin: 0 0 12px 0; font-size: 12px; line-height: 1.5; color: ${COLORS.secondaryText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+            ${safeDesc}
           </p>
-          <div style="font-size: 11px; color: ${COLORS.secondaryText}; opacity: 0.6; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-            Triggered at: ${timestamp}
+          <div style="font-size: 11px; color: ${COLORS.mutedText}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+            Triggered at: ${safeTime}
           </div>
         </td>
       </tr>

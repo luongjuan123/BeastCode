@@ -178,6 +178,7 @@ export const ContestsTab: React.FC<ContestsTabProps> = ({ triggerStatusMessage }
 				id: newId,
 				title: newTitle,
 				status: "draft",
+				reminderSent: false,
 				createdAt: Date.now()
 			};
 
@@ -304,7 +305,7 @@ export const ContestsTab: React.FC<ContestsTabProps> = ({ triggerStatusMessage }
 					<FaSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--text-muted)]" size={10} />
 					<input
 						type="text"
-						placeholder="Search contests..."
+						aria-label="Search contests"
 						value={searchQuery}
 						onChange={(e) => setSearchQuery(e.target.value)}
 						autoComplete="off"

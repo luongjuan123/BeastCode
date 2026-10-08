@@ -6,6 +6,8 @@ import { AuthenticatedRequest } from "@/utils/authMiddleware";
 import { ModerationEmailService } from "@/utils/moderationEmailService";
 import { moderationConfig } from "@/utils/moderationConfig";
 import { EmailService } from "@/utils/emailService";
+import { getEmailHtml } from "@/utils/emailTemplate";
+import { buildAbsoluteUrl } from "@/utils/siteConfig";
 
 async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 	const adminUser = req.user;
@@ -211,15 +213,21 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 						await EmailService.sendDirectEmail(
 							userEmail,
 							`[BeastCode] Information Requested for Appeal (Ref: ${refId})`,
-							`
-								<p>Dear Member,</p>
-								<p>A moderator has requested additional information regarding your appeal (Ref: ${refId}).</p>
-								<div class="alert-box">
-									<strong>Moderator Request:</strong><br>
-									${notes}
-								</div>
-								<p>Please reply directly or submit updated files via the appeal page.</p>
-							`
+							getEmailHtml({
+								headerTitle: "APPEAL REVIEW",
+								accentColor: "#3b82f6",
+								title: "Information Requested for Your Appeal",
+								leadText: `A moderator has requested additional information regarding your appeal (Ref: ${refId}).`,
+								description: "Please review the inquiry below and submit the requested clarification through your appeal portal.",
+								details: [
+									{ label: "Reference ID", value: refId, isHighlight: true },
+									{ label: "Moderator Inquiry", value: notes || "Additional clarification required." }
+								],
+								ctaText: "Update Appeal Documentation",
+								ctaUrl: buildAbsoluteUrl(`/account-appeal?refId=${refId}`),
+								recipientEmail: userEmail,
+								preferenceType: "security"
+							})
 						);
 					} catch (err) {
 						console.warn("[Appeal Review] Failed sending info request email:", err);

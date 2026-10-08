@@ -59,8 +59,12 @@ async function handler(
 		})) as any[];
 
 		const targetContests = pendingContests.filter(c => {
+			const status = String(c.status || "draft").toLowerCase();
+			const isEligibleStatus = status === "scheduled" || status === "registration_open";
+			if (!isEligibleStatus) return false;
+
 			const timeDiff = c.startTime - now;
-			// Starts in the next 15 minutes
+			// Starts in the next 15 minutes and hasn't started yet
 			const isStartingSoon = timeDiff <= 15 * 60 * 1000 && timeDiff > 0;
 			return isStartingSoon && !c.reminderSent;
 		});
@@ -77,6 +81,21 @@ async function handler(
 
 		// 3. Process reminders for each target contest
 		for (const contest of targetContests) {
+			// Atomic claim on contest to prevent concurrent execution across multiple cron instances
+			const contestRef = db.collection("contests").doc(contest.id);
+			const shouldProcess = await db.runTransaction(async (transaction) => {
+				const docSnap = await transaction.get(contestRef);
+				if (!docSnap.exists) return false;
+				const cData = docSnap.data() || {};
+				if (cData.reminderSent) return false;
+				transaction.update(contestRef, { reminderSent: true, reminderSentAt: now });
+				return true;
+			});
+
+			if (!shouldProcess) {
+				continue;
+			}
+
 			let targetedRecipients: any[] = [];
 			try {
 				targetedRecipients = await NotificationRecipientService.resolveRecipients("CONTEST_SOON", contest.id, {
@@ -89,8 +108,6 @@ async function handler(
 			}
 
 			if (targetedRecipients.length === 0) {
-				const db = getAdminFirestore();
-				await db.collection("contests").doc(contest.id).update({ reminderSent: true });
 				processedContests.push(contest.title);
 				continue;
 			}
@@ -105,6 +122,10 @@ async function handler(
 						toUid: u.uid,
 						userName: u.displayName,
 						ctaUrl: contestUrl,
+						expiresAt: contest.startTime,
+						metadata: {
+							contestId: contest.id
+						},
 						placeholders: {
 							contestTitle: contest.title,
 							startTime: new Date(contest.startTime).toLocaleString("en-US", { dateStyle: "full", timeStyle: "short" }),
@@ -117,8 +138,6 @@ async function handler(
 				}
 			}
 
-			const db = getAdminFirestore();
-			await db.collection("contests").doc(contest.id).update({ reminderSent: true });
 			processedContests.push(contest.title);
 		}
 

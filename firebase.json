@@ -3,6 +3,19 @@
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
+  "hosting": {
+    "public": "public",
+    "cleanUrls": true,
+    "rewrites": [
+      {
+        "source": "**",
+        "run": {
+          "serviceId": "beastcode",
+          "region": "asia-southeast1"
+        }
+      }
+    ]
+  },
   "apphosting": {
     "backendId": "beastcode",
     "rootDir": "/",
@@ -15,3 +28,4 @@
     ]
   }
 }
+

@@ -260,7 +260,7 @@ export const ProblemsTab: React.FC<ProblemsTabProps> = ({
 							type="text"
 							value={searchQuery}
 							onChange={(e) => setSearchQuery(e.target.value)}
-							placeholder="Search problems by name or ID..."
+							aria-label="Search problems by name or ID"
 							autoComplete="off"
 							autoCorrect="off"
 							autoCapitalize="off"
@@ -617,7 +617,6 @@ export const ProblemsTab: React.FC<ProblemsTabProps> = ({
 								id="bulkTags"
 								value={bulkTagsInput}
 								onChange={(e) => setBulkTagsInput(e.target.value)}
-								placeholder="e.g. arrays, dynamic-programming, math"
 								autoComplete="off"
 								autoCorrect="off"
 								autoCapitalize="off"

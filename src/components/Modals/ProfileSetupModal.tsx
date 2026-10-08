@@ -287,7 +287,6 @@ const ProfileSetupModal: React.FC<ProfileSetupModalProps> = ({ isOpen, onClose }
 											type="text"
 											value={username}
 											onChange={(e) => setUsername(e.target.value)}
-											placeholder="syntax_beast"
 											autoComplete="username"
 											autoCorrect="off"
 											autoCapitalize="off"
@@ -377,7 +376,6 @@ const ProfileSetupModal: React.FC<ProfileSetupModalProps> = ({ isOpen, onClose }
 										type="text"
 										value={displayName}
 										onChange={(e) => setDisplayName(e.target.value)}
-										placeholder="Nguyen Van A"
 										autoComplete="name"
 										autoCorrect="off"
 										spellCheck={false}
@@ -397,7 +395,6 @@ const ProfileSetupModal: React.FC<ProfileSetupModalProps> = ({ isOpen, onClose }
 													type="text"
 													value={studentId}
 													onChange={(e) => setStudentId(e.target.value)}
-													placeholder="e.g. 22010234"
 													autoComplete="off"
 													autoCorrect="off"
 													autoCapitalize="off"
@@ -415,7 +412,6 @@ const ProfileSetupModal: React.FC<ProfileSetupModalProps> = ({ isOpen, onClose }
 													type="text"
 													value={className}
 													onChange={(e) => setClassName(e.target.value)}
-													placeholder="e.g. CSE-2026"
 													autoComplete="off"
 													autoCorrect="off"
 													autoCapitalize="off"
@@ -434,7 +430,6 @@ const ProfileSetupModal: React.FC<ProfileSetupModalProps> = ({ isOpen, onClose }
 												type="text"
 												value={school}
 												onChange={(e) => setSchool(e.target.value)}
-												placeholder="BeastCode University"
 												autoComplete="organization"
 												autoCorrect="off"
 												spellCheck={false}
@@ -451,7 +446,6 @@ const ProfileSetupModal: React.FC<ProfileSetupModalProps> = ({ isOpen, onClose }
 												type="text"
 												value={faculty}
 												onChange={(e) => setFaculty(e.target.value)}
-												placeholder="e.g. Computer Science & Engineering"
 												autoComplete="off"
 												autoCorrect="off"
 												spellCheck={false}

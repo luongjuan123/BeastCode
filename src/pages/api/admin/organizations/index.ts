@@ -4,6 +4,8 @@ import { withApiErrorHandler } from "@/utils/apiErrorHandler";
 import { withAdminGuard } from "@/utils/withAdminGuard";
 import { AuthenticatedRequest } from "@/utils/authMiddleware";
 import { EmailService } from "@/utils/emailService";
+import { getEmailHtml } from "@/utils/emailTemplate";
+import { buildAbsoluteUrl } from "@/utils/siteConfig";
 
 async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 	const db = getAdminFirestore();
@@ -244,17 +246,23 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 							await EmailService.sendDirectEmail(
 								ownerEmail,
 								`[Official Notice] Warning Issued for ${org.displayName || org.name}`,
-								`<div style="font-family: sans-serif; color: #1f2937; padding: 20px; max-width: 600px; border: 1px solid #e5e7eb; border-radius: 12px;">
-									<h2 style="color: #ea580c; margin-top: 0;">Organization Warning Issued</h2>
-									<p>Your organization <strong>${org.displayName || org.name}</strong> (@${org.slug}) has been issued an official warning by a platform administrator.</p>
-									<hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 16px 0;" />
-									<p><strong>Reason:</strong> ${reason}</p>
-									<p><strong>Category:</strong> ${category}</p>
-									<p><strong>Severity:</strong> ${severity.toUpperCase()}</p>
-									<p><strong>Details:</strong> ${description}</p>
-									<hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 16px 0;" />
-									<p style="font-size: 12px; color: #6b7280;">If you believe this warning was issued in error, you may submit an appeal via your organization dashboard.</p>
-								</div>`
+								getEmailHtml({
+									headerTitle: "ORGANIZATION WARNING",
+									accentColor: "#f59e0b",
+									title: "Official Workspace Warning Issued",
+									leadText: `Your organization "${org.displayName || org.name}" (@${org.slug}) has been issued an official warning by a platform administrator.`,
+									description: description || "Please review the warning details below and take corrective actions to comply with platform guidelines.",
+									details: [
+										{ label: "Organization", value: org.displayName || org.name },
+										{ label: "Reason", value: reason },
+										{ label: "Category", value: category },
+										{ label: "Severity", value: severity.toUpperCase(), isHighlight: true }
+									],
+									ctaText: "Open Organization Dashboard",
+									ctaUrl: buildAbsoluteUrl(`/orgs/${org.slug}`),
+									recipientEmail: ownerEmail,
+									preferenceType: "organization"
+								})
 							);
 						}
 					}
@@ -312,13 +320,22 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 							await EmailService.sendDirectEmail(
 								ownerEmail,
 								`[CRITICAL NOTICE] Organization Suspended: ${org.displayName || org.name}`,
-								`<div style="font-family: sans-serif; color: #1f2937; padding: 20px; max-width: 600px; border: 1px solid #f3f4f6; border-radius: 12px;">
-									<h2 style="color: #dc2626; margin-top: 0;">Workspace Suspended</h2>
-									<p>We regret to inform you that your organization <strong>${org.displayName || org.name}</strong> has been suspended from the BeastCode platform.</p>
-									<p><strong>Reason:</strong> ${reason}</p>
-									<p><strong>Duration:</strong> ${durationDays > 0 ? `${durationDays} Days (Expires ${new Date(expiresAt!).toLocaleDateString()})` : "Indefinite"}</p>
-									<p style="font-size: 12px; color: #6b7280; margin-top: 20px;">All organization features, private problems, and contests are temporarily offline. You may submit an appeal using the support form.</p>
-								</div>`
+								getEmailHtml({
+									headerTitle: "WORKSPACE SUSPENDED",
+									accentColor: "#ef4444",
+									title: "Organization Workspace Suspended",
+									leadText: `We regret to inform you that your organization "${org.displayName || org.name}" (@${org.slug}) has been temporarily suspended from BeastCode.`,
+									description: "All organization features, private problems, and contests are temporarily offline. You may submit an appeal using the support portal.",
+									details: [
+										{ label: "Organization", value: org.displayName || org.name },
+										{ label: "Reason", value: reason },
+										{ label: "Duration", value: durationDays > 0 ? `${durationDays} Days (Expires ${new Date(expiresAt!).toLocaleDateString()})` : "Indefinite", isHighlight: true }
+									],
+									ctaText: "Submit Workspace Appeal",
+									ctaUrl: buildAbsoluteUrl(`/orgs/${org.slug}`),
+									recipientEmail: ownerEmail,
+									preferenceType: "organization"
+								})
 							);
 						}
 					}
@@ -393,11 +410,21 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 							await EmailService.sendDirectEmail(
 								ownerEmail,
 								`[CRITICAL BAN NOTICE] Organization Banned: ${org.displayName || org.name}`,
-								`<div style="font-family: sans-serif; color: #1f2937; padding: 20px; max-width: 600px; border: 1px solid #f3f4f6; border-radius: 12px;">
-									<h2 style="color: #dc2626; margin-top: 0;">Workspace Permanently Banned</h2>
-									<p>This is a formal notification that your organization <strong>${org.displayName || org.name}</strong> has been banned from BeastCode due to policy violations.</p>
-									<p><strong>Reason:</strong> ${reason}</p>
-								</div>`
+								getEmailHtml({
+									headerTitle: "WORKSPACE BANNED",
+									accentColor: "#ef4444",
+									title: "Organization Permanently Banned",
+									leadText: `This is a formal notification that your organization "${org.displayName || org.name}" (@${org.slug}) has been permanently banned from BeastCode due to policy violations.`,
+									description: "Access to this organization and its internal resources has been permanently revoked.",
+									details: [
+										{ label: "Organization", value: org.displayName || org.name },
+										{ label: "Reason", value: reason, isHighlight: true }
+									],
+									ctaText: "Contact Support",
+									ctaUrl: buildAbsoluteUrl(`/settings`),
+									recipientEmail: ownerEmail,
+									preferenceType: "organization"
+								})
 							);
 						}
 					}
