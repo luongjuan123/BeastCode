@@ -10,6 +10,18 @@ Live Deployment: https://www.bomboclatbeastcode.codes
 
 - [Overview](#overview)
 - [Visual Showcase](#visual-showcase)
+  - [Problems Directory](#problems-directory)
+  - [Algorithmic Problem Workspace](#algorithmic-problem-workspace)
+  - [Competitive Contests Arena](#competitive-contests-arena)
+  - [Global Rankings and Leaderboard](#global-rankings-and-leaderboard)
+  - [Organization Workspaces Directory](#organization-workspaces-directory)
+  - [Organization Workspace Management](#organization-workspace-management)
+  - [Real-Time Direct and Group Messaging](#real-time-direct-and-group-messaging)
+  - [Community Discussions and Discourse](#community-discussions-and-discourse)
+  - [Developer Settings and Profile](#developer-settings-and-profile)
+  - [Platform Administration and Diagnostics](#platform-administration-and-diagnostics)
+  - [Multi-Tenant Organization Administration](#multi-tenant-organization-administration)
+  - [Trust and Safety Moderation Panel](#trust-and-safety-moderation-panel)
 - [Key Features](#key-features)
   - [Online Judge and Execution Sandbox](#online-judge-and-execution-sandbox)
   - [Contests and Competitive Arena](#contests-and-competitive-arena)
@@ -36,79 +48,85 @@ Live Deployment: https://www.bomboclatbeastcode.codes
 
 ## Overview
 
-BeastCode is an enterprise-ready algorithmic problem solving and learning management system designed for students, competitive programmers, university clubs, and academic institutions.
+BeastCode is an algorithmic problem solving and learning management system designed for students, competitive programmers, university clubs, and academic institutions.
 
-The platform provides a complete LeetCode-style problem bank with multi-language code execution, combined with ICPC-standard contest management, an organization workspace suite for course curricula and team management, real-time messaging, and comprehensive administrative controls.
+The platform provides a complete LeetCode-style problem bank with multi-language code execution, combined with ICPC-standard contest management, an organization workspace suite for course curricula and team management, real-time messaging, and comprehensive administrative controls with bulk account operations.
 
 ---
 
 ## Visual Showcase
 
+### Problems Directory
+
+Searchable algorithmic problem index categorized by topic, difficulty tags, and live user completion statuses.
+
+![Problems Directory](docs/screenshots/01_problems_directory.png)
+
+### Algorithmic Problem Workspace
+
+Interactive solving environment featuring CodeMirror 6 syntax highlighting, multi-language support (C++, Python, Java, JavaScript, C), and testcase evaluation.
+
+![Problem Workspace](docs/screenshots/02_problem_workspace.png)
+
+### Competitive Contests Arena
+
+Scheduled, live, and archived contest hub for timed algorithmic challenges with real-time scoring.
+
+![Contests Arena](docs/screenshots/03_contests_arena.png)
+
+### Global Rankings and Leaderboard
+
+Global competitive leaderboard tracking user points, solved problem breakdowns (Easy, Medium, Hard), and country standings.
+
+![Global Rankings](docs/screenshots/04_global_rankings.png)
+
 ### Organization Workspaces Directory
 
-Browse and discover public and affiliated workspaces across universities and coding clubs.
+Directory of university workspaces, research labs, and programming teams with filtering by category and membership state.
 
-![Organizations Directory](organization-validation-evidence/screenshots/desktop_01_orgs_directory.png)
+![Organization Directory](docs/screenshots/05_organization_directory.png)
 
-### Workspace Dashboard and Overview
+### Organization Workspace Management
 
-Dedicated tenant homepage displaying statistics, recent activities, announcements, and team roadmaps.
+Tenant control panel featuring private problem banks, member rosters, syllabi, roadmaps, announcements, and team permissions.
 
-![Organization Workspace Overview](organization-validation-evidence/screenshots/desktop_02_org_overview.png)
-
-### Courses and Curriculum Management
-
-Structure learning tracks, organize problem sets by week or module, and track student completion in gradebooks.
-
-![Course Management](organization-validation-evidence/screenshots/desktop_03_org_courses.png)
-
-### Problem Repository and Private Problem Bank
-
-Manage both public algorithmic challenges and private institutional problem sets with custom testcases.
-
-![Problem Bank](organization-validation-evidence/screenshots/desktop_04_org_problems.png)
-
-### Assessments and Timed Evaluations
-
-Schedule and host proctored tests, entrance exams, and coding assessments within organizations.
-
-![Assessments and Exams](organization-validation-evidence/screenshots/desktop_05_org_assessments.png)
-
-### Teams and Study Groups
-
-Group organization members into cohorts, project teams, or contest preparation tracks.
-
-![Workspace Teams](organization-validation-evidence/screenshots/desktop_06_org_teams.png)
-
-### Recruitment and Opportunities Pipeline
-
-Post student job listings, review submitted applications, and coordinate technical interviews.
-
-![Recruitment Board](organization-validation-evidence/screenshots/desktop_07_org_recruitment.png)
-
-### Announcements and Broadcasts
-
-Deliver organization-wide notices and contest updates with markdown support.
-
-![Announcements Feed](organization-validation-evidence/screenshots/desktop_08_org_announcements.png)
-
-### Member Management and Role-Based Access Control
-
-Manage workspace rosters, configure membership roles (Owner, Admin, Member, Reviewer), and track activity.
-
-![Member Roster](organization-validation-evidence/screenshots/desktop_09_org_members.png)
-
-### Workspace Settings and Danger Zone
-
-Configure workspace branding, join permissions, custom slugs, and execute permanent deletion workflows.
-
-![Workspace Settings](organization-validation-evidence/screenshots/desktop_10_org_settings.png)
+![Organization Workspace](docs/screenshots/06_organization_workspace.png)
 
 ### Real-Time Direct and Group Messaging
 
-Integrated chat system featuring instant delivery, typing indicators, pinned messages, reactions, and attachments.
+Direct and group communication channels with instant message delivery, channel management, and real-time state synchronization.
 
-![Real-Time Messaging](reports/chat/evidence/chat_realtime_001_received.png)
+![Real-Time Messaging](docs/screenshots/07_realtime_chat.png)
+
+### Community Discussions and Discourse
+
+Technical community discussion feed for post-mortems, editorial breakdowns, and peer collaboration.
+
+![Community Discussions](docs/screenshots/08_community_threads.png)
+
+### Developer Settings and Profile
+
+Profile configuration covering academic affiliations, student credentials, email notification rules, and security preferences.
+
+![Developer Settings](docs/screenshots/09_developer_settings.png)
+
+### Platform Administration and Diagnostics
+
+Central administrative dashboard displaying system diagnostics, database synchronization status, and platform metrics.
+
+![Platform Administration](docs/screenshots/10_admin_dashboard.png)
+
+### Multi-Tenant Organization Administration
+
+Administrative oversight panel for managing organization tenants, approving institutions, inspecting privacy levels, and executing permanent workspace deletions.
+
+![Admin Organizations](docs/screenshots/11_admin_organizations.png)
+
+### Trust and Safety Moderation Panel
+
+Moderation suite with checkbox-based bulk account selection, user role controls, warning pipelines, suspension appeals, and permanent account removal.
+
+![Trust and Safety Moderation](docs/screenshots/12_admin_moderation.png)
 
 ---
 
@@ -140,7 +158,7 @@ Integrated chat system featuring instant delivery, typing indicators, pinned mes
 - Team Management: Sub-teams with designated leaders and team-specific discussion channels.
 - Recruitment and Career Portal: Built-in job board, resume uploads, application pipeline tracking, and interview scheduling.
 - Join Workflows: Supports secret invitation links, manual join requests with admin approvals, and domain auto-join.
-- Permanent Workspace Deletion: Secure two-factor confirmation workflow that completely cascades through all subcollections and resources.
+- Permanent Workspace Deletion: Cascading deletion service that removes organization documents, memberships, invitations, teams, assignments, audit logs, and storage assets.
 
 ### Real-Time Direct and Group Messaging
 
@@ -164,7 +182,7 @@ Integrated chat system featuring instant delivery, typing indicators, pinned mes
 
 ### Administrative Dashboard and Bulk Moderation
 
-- Unified Control Center: Tabbed single-page administration interface covering Users, Problems, Contests, Organizations, Emails, Moderation, and Tags.
+- Unified Control Center: Tabbed single-page administration interface covering Overview, Problems, Contests, Organizations, Moderation, and Email Queue.
 - Checkbox Bulk Actions: Select multiple accounts simultaneously to perform bulk role changes, warnings, suspensions, or permanent account deletions.
 - Comprehensive Audit Logs: Track every moderator decision with timestamped rationales and target user references.
 - Appeal Management: Dedicated queues for processing user suspension appeals and organization reinstatement requests.
@@ -319,8 +337,7 @@ Open http://localhost:3000 in your browser to view the application.
 
 ```
 ├── docs/                               # Comprehensive architectural documentation
-├── organization-validation-evidence/   # Full-page screenshots and validation evidence
-├── reports/                            # Chat system reports, test traces, and audit logs
+│   └── screenshots/                    # Production platform screenshots
 ├── scripts/                            # Operational, database, and reconciliation scripts
 ├── src/
 │   ├── atoms/                          # Recoil atomic state management
@@ -348,7 +365,7 @@ Open http://localhost:3000 in your browser to view the application.
 │   │   │   ├── organizations/          # Workspace management APIs
 │   │   │   └── security/               # Session and security verification APIs
 │   │   ├── contests/                   # Contest arena and detail pages
-│   │   ├── messages/                   # Real-time chat application
+│   │   ├── messages/                   # Real-Time chat application
 │   │   ├── orgs/                       # Organization directory and workspace pages
 │   │   ├── problems/                   # Problem workspace and submission history
 │   │   ├── rankings.tsx                # Global leaderboard
