@@ -12,11 +12,10 @@ runConfig:
 # for FIREBASE_PRIVATE_KEY in production by replacing `value:` with `secret:`.
 # See: https://firebase.google.com/docs/app-hosting/configure#secret-parameters
 env:
-  # ── Firebase Client SDK (Public — required at BUILD time for Next.js) ────────
-  # These are not secrets and are safe to commit. They must be here because
-  # .env.production is gitignored and not uploaded to Cloud Build.
+  # ── Firebase Client SDK (Required at BUILD time for Next.js) ────────────────
+  # Loaded via Secret Manager to prevent GitHub secret scanning false positives.
   - variable: NEXT_PUBLIC_FIREBASE_API_KEY
-    value: AIzaSyAacBT26QSRLqzbTvf_PzG5MOGYPZLy5yI
+    secret: next_public_firebase_api_key
     availability:
       - BUILD
       - RUNTIME
