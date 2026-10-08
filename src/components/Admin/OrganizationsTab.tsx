@@ -189,12 +189,16 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 
 	// Fetch Stats/Overview counts
 	const stats = useMemo(() => {
-		const total = organizations.length;
-		const active = organizations.filter((o) => o.status === "active").length;
-		const suspended = organizations.filter((o) => o.status === "suspended").length;
-		const banned = organizations.filter((o) => o.status === "banned").length;
-		const reportsCount = reports.filter((r) => r.status === "pending").length;
-		const appealsCount = appeals.filter((a) => a.status === "Pending").length;
+		const orgsList = Array.isArray(organizations) ? organizations : [];
+		const reportsList = Array.isArray(reports) ? reports : [];
+		const appealsList = Array.isArray(appeals) ? appeals : [];
+
+		const total = orgsList.length;
+		const active = orgsList.filter((o) => o?.status === "active").length;
+		const suspended = orgsList.filter((o) => o?.status === "suspended").length;
+		const banned = orgsList.filter((o) => o?.status === "banned").length;
+		const reportsCount = reportsList.filter((r) => r?.status === "pending").length;
+		const appealsCount = appealsList.filter((a) => a?.status === "Pending").length;
 		return { total, active, suspended, banned, reportsCount, appealsCount };
 	}, [organizations, reports, appeals]);
 
@@ -501,6 +505,20 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 									Soft Delete
 								</button>
 								<button
+									onClick={() => {
+										if (
+											confirm(
+												`DANGER: Are you absolutely sure you want to PERMANENTLY delete all ${selectedOrgIds.length} selected organizations and all associated data? This action CANNOT be undone!`
+											)
+										) {
+											handleBulkAction("permanent_delete", {});
+										}
+									}}
+									className="px-2.5 py-1.5 bg-rose-950/30 hover:bg-rose-950/50 text-rose-400 hover:text-rose-300 text-[10px] font-bold rounded-lg border border-rose-900/40 transition flex items-center gap-1"
+								>
+									<FaTrash size={9} /> Permanent Delete
+								</button>
+								<button
 									onClick={() => openModal("bulk_announcement", null)}
 									className="px-2.5 py-1.5 bg-emerald-500/10 text-emerald-500 hover:bg-emerald-500/20 text-[10px] font-bold rounded-lg border border-emerald-500/20 transition flex items-center gap-1"
 								>
@@ -579,7 +597,15 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 											deleted: "bg-gray-500/10 text-gray-400 border-gray-500/20",
 											archived: "bg-purple-500/10 text-purple-400 border-purple-500/20"
 										};
-										const statusVal = org.status as keyof typeof statusColors;
+										const statusVal = ((org.status || "active") as keyof typeof statusColors) in statusColors
+											? (org.status as keyof typeof statusColors)
+											: "active";
+
+										const orgDisplayName = org.displayName || org.name || "Workspace";
+										const orgIdStr = org.id ? `${org.id.substring(0, 8)}...` : "unknown";
+										const orgSlugStr = org.slug || org.id || "";
+										const ownerName = org.ownerUsername || "Unknown";
+										const ownerUidStr = org.ownerUid ? `${org.ownerUid.substring(0, 8)}...` : "None";
 
 										return (
 											<tr
@@ -608,25 +634,25 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 													<div className="flex items-center gap-3">
 														<OrganizationAvatar
 															organization={org}
-															name={org.displayName}
+															name={orgDisplayName}
 															size={36}
 															className="rounded-md border border-gray-800 shrink-0"
 														/>
 														<div className="min-w-0">
 															<span className="font-extrabold text-white block hover:text-emerald-500 transition cursor-pointer" onClick={() => openModal("details", org)}>
-																{org.displayName}
+																{orgDisplayName}
 															</span>
 															<span className="text-[10px] text-gray-500 font-mono block">
-																{org.id.substring(0, 8)}... | @{org.slug}
+																{orgIdStr} | @{orgSlugStr}
 															</span>
 														</div>
 													</div>
 												</td>
 												<td className="py-4 px-4 font-semibold text-gray-300">
 													<div className="flex flex-col">
-														<span>@{org.ownerUsername}</span>
+														<span>@{ownerName}</span>
 														<span className="text-[9px] text-gray-600 font-mono">
-															{org.ownerUid.substring(0, 8)}...
+															{ownerUidStr}
 														</span>
 													</div>
 												</td>
@@ -641,7 +667,7 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 														{org.visibility === "secret" && (
 															<FaEyeSlash size={11} className="text-red-500" />
 														)}
-														{org.visibility}
+														{org.visibility || "public"}
 													</div>
 												</td>
 												<td className="py-4 px-4">
@@ -651,7 +677,7 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 															"bg-gray-500/10 text-gray-400 border-gray-500/20"
 														}`}
 													>
-														{org.status.replace("_", " ")}
+														{(org.status || "active").replace("_", " ")}
 													</span>
 												</td>
 												<td className="py-4 px-4 text-center font-mono font-bold text-white">
@@ -854,32 +880,32 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 							<div className="flex items-center gap-4 bg-dark-layer-1/50 border border-gray-850 rounded-md p-4">
 								<OrganizationAvatar
 									organization={targetOrg}
-									name={targetOrg.displayName}
+									name={targetOrg.displayName || targetOrg.name || "Workspace"}
 									size={56}
 									className="rounded-lg border border-gray-800 shrink-0"
 								/>
 								<div>
-									<h4 className="text-base font-extrabold text-white">{targetOrg.displayName}</h4>
-									<span className="text-[10px] text-gray-500 font-mono">@{targetOrg.slug}</span>
+									<h4 className="text-base font-extrabold text-white">{targetOrg.displayName || targetOrg.name || "Workspace"}</h4>
+									<span className="text-[10px] text-gray-500 font-mono">@{targetOrg.slug || targetOrg.id}</span>
 								</div>
 							</div>
 
 							<div className="grid grid-cols-2 gap-3 text-xs">
 								<div className="bg-dark-layer-1 border border-gray-850 rounded-md p-3">
 									<span className="text-[9px] text-gray-500 font-bold uppercase tracking-wider block">Owner</span>
-									<span className="font-semibold text-white">@{targetOrg.ownerUsername}</span>
+									<span className="font-semibold text-white">@{targetOrg.ownerUsername || "Unknown"}</span>
 								</div>
 								<div className="bg-dark-layer-1 border border-gray-850 rounded-md p-3">
 									<span className="text-[9px] text-gray-500 font-bold uppercase tracking-wider block">Status</span>
-									<span className="font-semibold text-emerald-500 uppercase text-[10px]">{targetOrg.status}</span>
+									<span className="font-semibold text-emerald-500 uppercase text-[10px]">{targetOrg.status || "active"}</span>
 								</div>
 								<div className="bg-dark-layer-1 border border-gray-850 rounded-md p-3">
 									<span className="text-[9px] text-gray-500 font-bold uppercase tracking-wider block">Health Score</span>
-									<span className="font-bold text-emerald-400">{targetOrg.healthScore}%</span>
+									<span className="font-bold text-emerald-400">{targetOrg.healthScore ?? 100}%</span>
 								</div>
 								<div className="bg-dark-layer-1 border border-gray-850 rounded-md p-3">
 									<span className="text-[9px] text-gray-500 font-bold uppercase tracking-wider block">Restricted Features</span>
-									<span className="text-gray-400 font-semibold">{targetOrg.restrictedFeatures.join(", ") || "None"}</span>
+									<span className="text-gray-400 font-semibold">{targetOrg.restrictedFeatures?.join(", ") || "None"}</span>
 								</div>
 							</div>
 

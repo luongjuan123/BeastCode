@@ -1,6 +1,6 @@
 import { getAdminFirestore, getAdminStorage } from "@/firebase/firebaseAdmin";
 import { getRedisClient } from "@/utils/redis";
-import { resolveOrgAndMembership } from "@/utils/orgEngine";
+import { resolveOrgAndMembership, Organization } from "@/utils/orgEngine";
 
 export interface DeletionStats {
 	membersDeleted: number;
@@ -76,7 +76,30 @@ export async function deleteOrganizationPermanently(
 	const db = getAdminFirestore();
 
 	// 1. Resolve Organization & Validate Authorization
-	const { org, member } = await resolveOrgAndMembership(orgIdentifier, callerUid);
+	let org: Organization | null = null;
+	let member: any = null;
+
+	try {
+		const resolved = await resolveOrgAndMembership(orgIdentifier, callerUid);
+		org = resolved.org;
+		member = resolved.member;
+	} catch (e: any) {
+		// e.g. org was suspended
+	}
+
+	// If not found through active resolver (e.g. status was already 'deleted' or 'suspended'), fetch directly from Firestore
+	if (!org) {
+		const docSnap = await db.collection("organizations").doc(orgIdentifier).get();
+		if (docSnap.exists) {
+			org = { id: docSnap.id, ...docSnap.data() } as Organization;
+		} else {
+			const slugSnap = await db.collection("organizations").where("slug", "==", orgIdentifier).limit(1).get();
+			if (!slugSnap.empty) {
+				org = { id: slugSnap.docs[0].id, ...slugSnap.docs[0].data() } as Organization;
+			}
+		}
+	}
+
 	if (!org) {
 		throw new Error("Organization not found");
 	}
@@ -89,18 +112,18 @@ export async function deleteOrganizationPermanently(
 	// 2. Exact Name or Slug Matching Verification (if confirmationName supplied)
 	if (confirmationName !== undefined) {
 		const cleanConfirmation = confirmationName.trim().toLowerCase();
-		const matchesName = org.name.trim().toLowerCase() === cleanConfirmation;
-		const matchesSlug = org.slug.trim().toLowerCase() === cleanConfirmation;
+		const matchesName = (org.name || "").trim().toLowerCase() === cleanConfirmation;
+		const matchesSlug = (org.slug || "").trim().toLowerCase() === cleanConfirmation;
 		const matchesDisplayName = (org.displayName || "").trim().toLowerCase() === cleanConfirmation;
 
 		if (!matchesName && !matchesSlug && !matchesDisplayName) {
-			throw new Error(`Confirmation mismatch: Please type the exact organization name "${org.name}" or slug "${org.slug}" to confirm deletion.`);
+			throw new Error(`Confirmation mismatch: Please type the exact organization name "${org.name || org.displayName}" or slug "${org.slug}" to confirm deletion.`);
 		}
 	}
 
-	const orgId = org.id;
-	const orgSlug = org.slug;
-	const orgName = org.name;
+	const orgId = org.id || orgIdentifier;
+	const orgSlug = org.slug || "";
+	const orgName = org.name || org.displayName || orgId;
 	const now = Date.now();
 
 	const stats: DeletionStats = {

@@ -6,6 +6,7 @@ import { AuthenticatedRequest } from "@/utils/authMiddleware";
 import { EmailService } from "@/utils/emailService";
 import { getEmailHtml } from "@/utils/emailTemplate";
 import { buildAbsoluteUrl } from "@/utils/siteConfig";
+import { deleteOrganizationPermanently } from "@/utils/organizationDeletionService";
 
 async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 	const db = getAdminFirestore();
@@ -557,13 +558,36 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 						}
 					});
 				}
+			} else if (action === "permanent_delete") {
+				if (req.user?.role !== "super_admin" && req.user?.role !== "admin") {
+					return res.status(403).json({ success: false, error: "Forbidden: Platform Admin access required to permanently delete organizations." });
+				}
+
+				let deletedCount = 0;
+				const errors: string[] = [];
+				for (const id of orgIds) {
+					try {
+						await deleteOrganizationPermanently(id, actorUid, undefined, true);
+						deletedCount++;
+					} catch (delErr: any) {
+						console.error(`Error permanently deleting org ${id}:`, delErr);
+						errors.push(delErr?.message || `Failed to delete ${id}`);
+					}
+				}
+
+				return res.status(200).json({
+					success: true,
+					message: `Permanently deleted ${deletedCount} of ${orgIds.length} organizations.`,
+					deletedCount,
+					errors: errors.length > 0 ? errors : undefined,
+				});
 			}
 
 			await batch.commit();
 			return res.status(200).json({ success: true, message: `Bulk action "${action}" completed successfully.` });
 		} catch (error: any) {
 			console.error("POST admin organizations bulk action error:", error);
-			return res.status(500).json({ success: false, error: "Internal Server Error" });
+			return res.status(500).json({ success: false, error: error?.message || "Internal Server Error" });
 		}
 	}
 

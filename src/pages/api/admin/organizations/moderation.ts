@@ -235,9 +235,9 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 			});
 
 		} else if (action === "permanent_delete") {
-			// Super admin protection check
-			if (req.user?.role !== "super_admin") {
-				return res.status(403).json({ success: false, error: "Forbidden: Only Super Admins can permanently delete organizations." });
+			// Super admin / platform admin protection check
+			if (req.user?.role !== "super_admin" && req.user?.role !== "admin") {
+				return res.status(403).json({ success: false, error: "Forbidden: Administrative access required to permanently delete organizations." });
 			}
 
 			// Execute full cascading cleanup across all collections, storage, and redis
@@ -254,7 +254,7 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 		return res.status(200).json({ success: true, message: `Moderation action "${action}" completed successfully.` });
 	} catch (error: any) {
 		console.error("POST admin organizations moderation error:", error);
-		return res.status(500).json({ success: false, error: "Internal Server Error" });
+		return res.status(500).json({ success: false, error: error?.message || "Internal Server Error" });
 	}
 }
 
