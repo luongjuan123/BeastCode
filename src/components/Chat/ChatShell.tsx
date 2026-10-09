@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/firebase";
@@ -51,15 +51,48 @@ export const ChatShell: React.FC<ChatShellProps> = ({ initialConversationId }) =
 	// Active conversation object
 	const activeConversation = conversations.find((c) => c.id === activeConversationId) || null;
 
-	// Synchronize URL when initialConversationId changes
+	const initialSyncDoneRef = useRef(false);
+
+	// Synchronize URL initialConversationId on direct mount or navigation
 	useEffect(() => {
-		if (initialConversationId) {
+		if (initialConversationId && (!initialSyncDoneRef.current || !activeConversationId)) {
 			setActiveConversationId(initialConversationId);
-		} else if (conversations.length > 0 && !activeConversationId && typeof window !== "undefined" && window.innerWidth >= 768) {
-			// Auto-select first conversation on desktop
-			setActiveConversationId(conversations[0].id);
+			initialSyncDoneRef.current = true;
 		}
-	}, [initialConversationId, conversations, activeConversationId]);
+	}, [initialConversationId, activeConversationId]);
+
+	// Auto-select first conversation on desktop ONLY ONCE if no conversation was specified
+	useEffect(() => {
+		if (
+			!initialSyncDoneRef.current &&
+			!initialConversationId &&
+			conversations.length > 0 &&
+			!activeConversationId
+		) {
+			if (typeof window !== "undefined" && window.innerWidth >= 768) {
+				const firstId = conversations[0].id;
+				setActiveConversationId(firstId);
+				window.history.replaceState(null, "", `/messages/${firstId}`);
+			}
+			initialSyncDoneRef.current = true;
+		}
+	}, [conversations, initialConversationId, activeConversationId]);
+
+	// Listen to browser Back/Forward (popstate) navigation without full page reloads
+	useEffect(() => {
+		const handlePopState = () => {
+			if (typeof window === "undefined") return;
+			const path = window.location.pathname;
+			const match = path.match(/^\/messages\/([^/?#]+)/);
+			if (match && match[1]) {
+				setActiveConversationId(match[1]);
+			} else if (path === "/messages") {
+				setActiveConversationId(null);
+			}
+		};
+		window.addEventListener("popstate", handlePopState);
+		return () => window.removeEventListener("popstate", handlePopState);
+	}, []);
 
 	// Messages hook
 	const {
@@ -93,7 +126,9 @@ export const ChatShell: React.FC<ChatShellProps> = ({ initialConversationId }) =
 		setReplyingMessage(null);
 		setEditingMessage(null);
 		setReportingMessage(null);
-		router.push(`/messages/${conv.id}`, undefined, { shallow: true });
+		if (typeof window !== "undefined") {
+			window.history.pushState(null, "", `/messages/${conv.id}`);
+		}
 	};
 
 	const handleBackToList = () => {
@@ -101,11 +136,19 @@ export const ChatShell: React.FC<ChatShellProps> = ({ initialConversationId }) =
 		setReplyingMessage(null);
 		setEditingMessage(null);
 		setReportingMessage(null);
-		router.push("/messages", undefined, { shallow: true });
+		if (typeof window !== "undefined") {
+			window.history.pushState(null, "", "/messages");
+		}
 	};
 
 	const handleSendMessage = async (params: any) => {
-		await sendMessage(params);
+		const targetConversationId = params.conversationId || activeConversationId;
+		if (!targetConversationId) return;
+
+		await sendMessage({
+			...params,
+			targetConversationId,
+		});
 		await clearTyping();
 	};
 

@@ -65,6 +65,51 @@ function uploadSingleFileWithProgress(
 	});
 }
 
+function deduplicateMessages(messages: ChatMessage[]): ChatMessage[] {
+	const seenIds = new Set<string>();
+	const seenClientIds = new Set<string>();
+	const result: ChatMessage[] = [];
+
+	// First pass: register IDs of confirmed server messages
+	for (const m of messages) {
+		if (m.deliveryStatus !== "sending" && m.deliveryStatus !== "failed") {
+			if (m.id) seenIds.add(m.id);
+			if (m.clientMessageId) seenClientIds.add(m.clientMessageId);
+		}
+	}
+
+	// Second pass: filter out duplicates
+	for (const m of messages) {
+		const isOptimistic = m.deliveryStatus === "sending" || m.deliveryStatus === "failed";
+		if (isOptimistic) {
+			if (m.clientMessageId && seenClientIds.has(m.clientMessageId)) {
+				// Server already has this message confirmed, skip optimistic duplicate
+				continue;
+			}
+			if (m.id && seenIds.has(m.id)) {
+				continue;
+			}
+		} else {
+			// Confirmed server message
+			if (m.id && result.some((r) => r.id === m.id)) {
+				continue;
+			}
+			if (m.clientMessageId && result.some((r) => r.clientMessageId === m.clientMessageId)) {
+				continue;
+			}
+		}
+
+		result.push(m);
+	}
+
+	return result.sort((a, b) => {
+		if (a.createdAt !== b.createdAt) {
+			return a.createdAt - b.createdAt;
+		}
+		return a.id.localeCompare(b.id);
+	});
+}
+
 export function useMessages(conversationId: string | null) {
 	const [user] = useAuthState(auth);
 	const [rawMessages, setRawMessages] = useState<ChatMessage[]>([]);
@@ -80,6 +125,21 @@ export function useMessages(conversationId: string | null) {
 
 	const oldestMessageTimestampRef = useRef<number | null>(null);
 	const pendingMessagesRef = useRef<Map<string, ChatMessage>>(new Map());
+
+	// ─── Reset state immediately when switching conversations ──────────────────
+	useEffect(() => {
+		setRawMessages([]);
+		setLoading(!!conversationId);
+		setLoadingOlder(false);
+		setHasMoreOlder(true);
+		setError(null);
+		setReadPointers({});
+		setParticipantUids([]);
+		setInitialLastReadAt(null);
+		oldestMessageTimestampRef.current = null;
+		pendingMessagesRef.current.clear();
+		initialReadCapturedRef.current = false;
+	}, [conversationId]);
 
 	// ─── Real-time Snapshot Listener for Conversation Metadata (Read Receipts) ─
 	useEffect(() => {
@@ -153,20 +213,24 @@ export function useMessages(conversationId: string | null) {
 					const serverIds = new Set(fetched.map((m) => m.id));
 					const serverClientIds = new Set(fetched.map((m) => m.clientMessageId).filter(Boolean));
 
-					// Retain pending messages whose clientMessageId hasn't arrived on server yet
+					// Retain pending messages strictly for THIS conversation whose clientMessageId hasn't arrived on server yet
 					const remainingPending = Array.from(pendingMessagesRef.current.values()).filter(
-						(p) => !serverClientIds.has(p.clientMessageId) && !serverIds.has(p.id)
+						(p) =>
+							p.conversationId === conversationId &&
+							!serverClientIds.has(p.clientMessageId) &&
+							!serverIds.has(p.id)
 					);
 
-					// Combine older loaded messages if any
+					// Combine older loaded messages for THIS conversation
 					const olderMessages = prev.filter(
 						(p) =>
+							p.conversationId === conversationId &&
 							fetched.length > 0 &&
 							p.createdAt < fetched[0].createdAt &&
 							!serverIds.has(p.id)
 					);
 
-					return [...olderMessages, ...fetched, ...remainingPending];
+					return deduplicateMessages([...olderMessages, ...fetched, ...remainingPending]);
 				});
 
 				setLoading(false);
@@ -203,9 +267,7 @@ export function useMessages(conversationId: string | null) {
 				if (older.length > 0) {
 					oldestMessageTimestampRef.current = older[0].createdAt;
 					setRawMessages((prev) => {
-						const existingIds = new Set(prev.map((m) => m.id));
-						const uniqueOlder = older.filter((m) => !existingIds.has(m.id));
-						return [...uniqueOlder, ...prev];
+						return deduplicateMessages([...older, ...prev]);
 					});
 				}
 				if (!data.hasMore || older.length === 0) {
@@ -228,8 +290,10 @@ export function useMessages(conversationId: string | null) {
 			attachments?: ChatAttachment[];
 			stagedFiles?: File[];
 			replyTo?: MessageReplyReference;
+			targetConversationId?: string;
 		}) => {
-			if (!conversationId || !user) return;
+			const targetId = params.targetConversationId || conversationId;
+			if (!targetId || !user) return;
 
 			const clientMessageId = `cm_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
 			const now = Date.now();
@@ -267,7 +331,7 @@ export function useMessages(conversationId: string | null) {
 
 			const optimisticMsg: ChatMessage = {
 				id: clientMessageId,
-				conversationId,
+				conversationId: targetId,
 				senderId: user.uid,
 				senderDisplayName: user.displayName || user.email?.split("@")[0] || "Me",
 				senderUsername: user.email?.split("@")[0] || "me",
@@ -295,7 +359,7 @@ export function useMessages(conversationId: string | null) {
 
 			// Save to pending map & optimistic state immediately (<5ms render)
 			pendingMessagesRef.current.set(clientMessageId, optimisticMsg);
-			setRawMessages((prev) => [...prev, optimisticMsg]);
+			setRawMessages((prev) => deduplicateMessages([...prev, optimisticMsg]));
 
 			// Launch asynchronous non-blocking upload and submission in background
 			(async () => {
@@ -308,7 +372,7 @@ export function useMessages(conversationId: string | null) {
 						const uploadPromises = stagedFiles.map((file, idx) =>
 							uploadSingleFileWithProgress(
 								file,
-								conversationId,
+								targetId,
 								idToken,
 								(pct) => {
 									setRawMessages((prev) =>
@@ -342,7 +406,7 @@ export function useMessages(conversationId: string | null) {
 					}
 
 					// Commit message payload
-					const res = await fetch(`/api/chat/conversations/${conversationId}/messages`, {
+					const res = await fetch(`/api/chat/conversations/${targetId}/messages`, {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json",
@@ -365,25 +429,26 @@ export function useMessages(conversationId: string | null) {
 
 					// Successfully confirmed
 					pendingMessagesRef.current.delete(clientMessageId);
-					setRawMessages((prev) =>
-						prev.map((m) =>
+					setRawMessages((prev) => {
+						const updated = prev.map((m) =>
 							m.clientMessageId === clientMessageId
 								? {
 										...m,
 										id: data.message.id,
 										attachments: data.message.attachments || finalAttachments,
-										deliveryStatus: "sent",
+										deliveryStatus: "sent" as const,
 										isUploadingMedia: false,
 								  }
 								: m
-						)
-					);
+						);
+						return deduplicateMessages(updated);
+					});
 				} catch (err: any) {
 					console.error("[sendMessage background error]:", err);
 					setRawMessages((prev) =>
 						prev.map((m) =>
 							m.clientMessageId === clientMessageId
-								? { ...m, deliveryStatus: "failed", isUploadingMedia: false }
+								? { ...m, deliveryStatus: "failed" as const, isUploadingMedia: false }
 								: m
 						)
 					);
@@ -402,7 +467,7 @@ export function useMessages(conversationId: string | null) {
 			setRawMessages((prev) =>
 				prev.map((m) =>
 					m.clientMessageId === failedClientMessageId
-						? { ...m, deliveryStatus: "sending" }
+						? { ...m, deliveryStatus: "sending" as const }
 						: m
 				)
 			);
@@ -434,7 +499,7 @@ export function useMessages(conversationId: string | null) {
 				setRawMessages((prev) =>
 					prev.map((m) =>
 						m.clientMessageId === failedClientMessageId
-							? { ...m, id: data.message.id, deliveryStatus: "sent" }
+							? { ...m, id: data.message.id, deliveryStatus: "sent" as const }
 							: m
 					)
 				);
@@ -442,7 +507,7 @@ export function useMessages(conversationId: string | null) {
 				setRawMessages((prev) =>
 					prev.map((m) =>
 						m.clientMessageId === failedClientMessageId
-							? { ...m, deliveryStatus: "failed" }
+							? { ...m, deliveryStatus: "failed" as const }
 							: m
 					)
 				);
@@ -613,7 +678,9 @@ export function useMessages(conversationId: string | null) {
 		const otherUid = participantUids.find((u) => u !== user?.uid);
 		const otherReadAt = otherUid ? readPointers[otherUid] || 0 : 0;
 
-		return rawMessages.map((m) => {
+		const deduped = deduplicateMessages(rawMessages);
+
+		return deduped.map((m) => {
 			if (m.deliveryStatus === "sending" || m.deliveryStatus === "failed") {
 				return m;
 			}

@@ -38,6 +38,7 @@ interface MessageComposerProps {
 		attachments?: ChatAttachment[];
 		stagedFiles?: File[];
 		replyTo?: MessageReplyReference;
+		conversationId?: string;
 	}) => Promise<void> | void;
 	onTyping: () => void;
 	disabled?: boolean;
@@ -82,6 +83,7 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
 	const textareaRef = useRef<HTMLTextAreaElement>(null);
 	const fileInputRef = useRef<HTMLInputElement>(null);
 	const prevConvIdRef = useRef<string>(conversationId);
+	const isSubmittingRef = useRef(false);
 
 	// Auto-expand textarea
 	useEffect(() => {
@@ -139,6 +141,8 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
 	}, [editingMessage, conversationId]);
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+		if (e.nativeEvent.isComposing) return;
+
 		if (e.key === "Escape") {
 			e.preventDefault();
 			if (editingMessage) {
@@ -248,8 +252,14 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
 
 	// ─── Instant Optimistic Send ───────────────────────────────────────────────
 	const handleSend = () => {
+		if (isSubmittingRef.current) return;
 		const trimmed = text.trim();
 		if ((!trimmed && stagedFiles.length === 0) || disabled) return;
+
+		isSubmittingRef.current = true;
+		setTimeout(() => {
+			isSubmittingRef.current = false;
+		}, 300);
 
 		if (editingMessage) {
 			if (!trimmed) return;
@@ -284,6 +294,7 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
 
 		const filesToSend = stagedFiles.map((f) => f.file);
 		const messageText = trimmed;
+		const currentTargetConversationId = conversationId;
 
 		// INSTANT UI CLEARANCE (<5ms perceived latency)
 		setText("");
@@ -294,11 +305,12 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
 			textareaRef.current.focus();
 		}
 
-		// Fire optimistic background send
+		// Fire optimistic background send with explicit target conversationId
 		onSendMessage({
 			text: messageText,
 			stagedFiles: filesToSend.length > 0 ? filesToSend : undefined,
 			replyTo,
+			conversationId: currentTargetConversationId,
 		});
 	};
 
@@ -592,6 +604,7 @@ export const MessageComposer: React.FC<MessageComposerProps> = ({
 						type: "code",
 						code,
 						text: comment,
+						conversationId,
 					});
 				}}
 			/>

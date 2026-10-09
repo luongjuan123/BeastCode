@@ -11,12 +11,16 @@ import {
 } from "firebase/firestore";
 import { Conversation, UserConversationMeta } from "@/types/chat";
 
+// In-memory cache across component mounts to eliminate reload lag
+let cachedConversations: Conversation[] = [];
+let cachedUserMeta: Record<string, UserConversationMeta> = {};
+
 export function useConversations(options?: { enabled?: boolean }) {
 	const enabled = options?.enabled !== false;
 	const [user] = useAuthState(auth);
-	const [conversations, setConversations] = useState<Conversation[]>([]);
-	const [userMeta, setUserMeta] = useState<Record<string, UserConversationMeta>>({});
-	const [loading, setLoading] = useState(enabled);
+	const [conversations, setConversations] = useState<Conversation[]>(cachedConversations);
+	const [userMeta, setUserMeta] = useState<Record<string, UserConversationMeta>>(cachedUserMeta);
+	const [loading, setLoading] = useState(cachedConversations.length > 0 ? false : enabled);
 	const [error, setError] = useState<string | null>(null);
 
 	// Fetch initial conversation list from API (handles org channels and direct messages)
@@ -31,7 +35,9 @@ export function useConversations(options?: { enabled?: boolean }) {
 			});
 			const data = await res.json();
 			if (data.success) {
-				setConversations(data.conversations || []);
+				const list = data.conversations || [];
+				cachedConversations = list;
+				setConversations(list);
 			} else {
 				setError(data.error || "Failed to load conversations");
 			}
@@ -66,6 +72,7 @@ export function useConversations(options?: { enabled?: boolean }) {
 					const data = doc.data() as UserConversationMeta;
 					map[data.conversationId] = data;
 				});
+				cachedUserMeta = map;
 				setUserMeta(map);
 			},
 			(err) => {
@@ -100,9 +107,11 @@ export function useConversations(options?: { enabled?: boolean }) {
 							...d,
 						});
 					});
-					return Array.from(updatedMap.values()).sort(
+					const sorted = Array.from(updatedMap.values()).sort(
 						(a, b) => (b.lastActivityAt || 0) - (a.lastActivityAt || 0)
 					);
+					cachedConversations = sorted;
+					return sorted;
 				});
 			},
 			(err) => {

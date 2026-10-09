@@ -31,7 +31,7 @@ function formatRelativeTime(timestamp: number): string {
 	return date.toLocaleDateString([], { month: "short", day: "numeric" });
 }
 
-export const ConversationRow: React.FC<ConversationRowProps> = ({
+export const ConversationRow = React.memo<ConversationRowProps>(({
 	conversation,
 	isSelected,
 	currentUserId,
@@ -137,4 +137,6 @@ export const ConversationRow: React.FC<ConversationRowProps> = ({
 			</div>
 		</div>
 	);
-};
+});
+
+ConversationRow.displayName = "ConversationRow";
