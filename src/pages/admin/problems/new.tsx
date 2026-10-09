@@ -232,14 +232,32 @@ const NewProblem: React.FC = () => {
 				}
 			};
 
-			await setDoc(docRef, problemData);
+			const idToken = auth.currentUser ? await auth.currentUser.getIdToken() : "";
+			if (!idToken) {
+				throw new Error("You must be logged in to create a challenge.");
+			}
+
+			const res = await fetch(`/api/admin/problems/${id}`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${idToken}`,
+				},
+				body: JSON.stringify(problemData),
+			});
+
+			const result = await res.json();
+			if (!res.ok || !result.success) {
+				throw new Error(result.error || "Failed to create challenge. Please try again.");
+			}
+
 			triggerStatusRibbon("success", "Challenge created successfully!");
 			setTimeout(() => {
 				router.push(`/admin/problems/${id}`);
 			}, 1500);
 		} catch (error: any) {
 			console.error("Error creating challenge:", error);
-			triggerStatusRibbon("error", "Failed to create challenge. Please try again.");
+			triggerStatusRibbon("error", error?.message || "Failed to create challenge. Please try again.");
 			setSubmitting(false);
 		}
 	};

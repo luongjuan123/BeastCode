@@ -484,14 +484,32 @@ const EditProblem: React.FC = () => {
 				problemData.examples = examples;
 			}
 
-			await setDoc(doc(firestore, "problems", pid as string), problemData, { merge: true });
+			const idToken = auth.currentUser ? await auth.currentUser.getIdToken() : "";
+			if (!idToken) {
+				throw new Error("You must be logged in to save changes.");
+			}
+
+			const res = await fetch(`/api/admin/problems/${pid}`, {
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${idToken}`,
+				},
+				body: JSON.stringify(problemData),
+			});
+
+			const result = await res.json();
+			if (!res.ok || !result.success) {
+				throw new Error(result.error || "Failed to save changes. Please try again.");
+			}
+
 			triggerStatusRibbon("success", "Problem updated successfully!");
 			setTimeout(() => {
 				router.push("/admin");
 			}, 1500);
 		} catch (error: any) {
 			console.error("Error updating problem:", error);
-			triggerStatusRibbon("error", "Failed to save changes. Please try again.");
+			triggerStatusRibbon("error", error?.message || "Failed to save changes. Please try again.");
 			setSubmitting(false);
 		}
 	};
