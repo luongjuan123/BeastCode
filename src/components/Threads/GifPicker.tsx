@@ -119,6 +119,35 @@ const GifPicker: React.FC<GifPickerProps> = ({ onSelect, onClose }) => {
 		return () => document.removeEventListener("mousedown", handleClickOutside);
 	}, [onClose]);
 
+	// Auto-clamp horizontal position within parent modal/dialog to avoid clipping
+	useEffect(() => {
+		const adjustPosition = () => {
+			if (!containerRef.current) return;
+			const el = containerRef.current;
+			el.style.left = "";
+			el.style.right = "";
+
+			const parentModal = el.closest(".overflow-y-auto") || el.closest("[role='dialog']") || document.body;
+			const modalRect = parentModal.getBoundingClientRect();
+			const elRect = el.getBoundingClientRect();
+
+			if (elRect.right > modalRect.right - 12) {
+				const overflow = elRect.right - (modalRect.right - 12);
+				el.style.left = `-${overflow}px`;
+			}
+			const updatedRect = el.getBoundingClientRect();
+			if (updatedRect.left < modalRect.left + 12) {
+				const underflow = (modalRect.left + 12) - updatedRect.left;
+				const currentLeft = parseFloat(el.style.left || "0");
+				el.style.left = `${currentLeft + underflow}px`;
+			}
+		};
+
+		adjustPosition();
+		window.addEventListener("resize", adjustPosition);
+		return () => window.removeEventListener("resize", adjustPosition);
+	}, [activeTab]);
+
 	// Keyboard accessibility navigation
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
@@ -157,7 +186,7 @@ const GifPicker: React.FC<GifPickerProps> = ({ onSelect, onClose }) => {
 	return (
 		<div
 			ref={containerRef}
-			className="absolute z-50 rounded-lg shadow-2xl p-4 w-80 max-w-sm right-0 mt-2 animate-fade-in border border-border-default"
+			className="absolute z-50 rounded-lg shadow-2xl p-4 w-80 max-w-[calc(100vw-3rem)] sm:max-w-sm left-0 mt-2 animate-fade-in border border-border-default"
 			style={{ background: "var(--bg-elevated)" }}
 		>
 			{/* Header */}
