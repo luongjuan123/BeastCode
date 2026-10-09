@@ -716,6 +716,21 @@ export function OrganizationsTab({ triggerStatusMessage }: { triggerStatusMessag
 														>
 															Manage
 														</button>
+														<button
+															onClick={() => {
+																if (
+																	confirm(
+																		`DANGER: Are you absolutely sure you want to PERMANENTLY delete "${org.displayName || org.name}" (@${org.slug || org.id})? This action CANNOT be undone!`
+																	)
+																) {
+																	handleAction("permanent_delete", org.id, {});
+																}
+															}}
+															className="bg-rose-950/20 hover:bg-rose-950/50 border border-rose-900/30 text-rose-400 hover:text-rose-300 text-[10px] font-bold px-2 py-1.5 rounded-lg transition flex items-center gap-1"
+															title="Permanently Delete Workspace"
+														>
+															<FaTrash size={9} />
+														</button>
 													</div>
 												</td>
 											</tr>

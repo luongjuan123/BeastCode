@@ -31,6 +31,7 @@ import {
 	FaEnvelopeOpenText,
 	FaArrowRight,
 	FaRegClock,
+	FaTrash,
 } from "react-icons/fa";
 import { useRouter } from "next/router";
 import BeastCodeSelect from "@/components/UI/BeastCodeSelect";
@@ -247,6 +248,48 @@ export default function OrgsIndexPage() {
 			}
 		} catch (err) {
 			console.error("Failed to toggle hidden:", err);
+		} finally {
+			setActionPending(null);
+		}
+	};
+
+	const handlePermanentDeleteFromIndex = async (org: any) => {
+		if (!user) return;
+		const orgName = org.displayName || org.name || org.slug;
+		if (
+			!confirm(
+				`DANGER: Are you absolutely sure you want to PERMANENTLY delete "${orgName}"? All associated data will be irreversibly erased!`
+			)
+		) {
+			return;
+		}
+
+		setActionPending(org.id);
+		try {
+			const idToken = await user.getIdToken();
+			const res = await fetch(`/api/organizations/${org.id}`, {
+				method: "DELETE",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${idToken}`,
+				},
+				body: JSON.stringify({
+					permanent: true,
+					confirmationName: org.name || org.slug,
+				}),
+			});
+			const data = await res.json();
+			if (data.success) {
+				setSuccessMsg(`Organization "${orgName}" has been permanently deleted.`);
+				setTimeout(() => setSuccessMsg(""), 4000);
+				fetchMemberships();
+			} else {
+				setErrorMsg(data.error || "Failed to permanently delete organization.");
+				setTimeout(() => setErrorMsg(""), 4000);
+			}
+		} catch (err: any) {
+			setErrorMsg(err.message || "Failed to permanently delete organization.");
+			setTimeout(() => setErrorMsg(""), 4000);
 		} finally {
 			setActionPending(null);
 		}
@@ -783,21 +826,38 @@ export default function OrgsIndexPage() {
 										</h2>
 										<div className="space-y-2">
 											{memberships.archived.map((org) => (
-												<div key={org.slug} className="flex justify-between items-center bg-bg-elevated/40 p-2.5 rounded-md border border-border-subtle">
+												<div key={org.slug || org.id} className="flex justify-between items-center bg-bg-elevated/40 p-2.5 rounded-md border border-border-subtle">
 													<div className="flex items-center gap-2.5">
 														<FaFolderOpen className="text-text-muted" size={14} />
 														<div>
 															<h4 className="text-xs font-medium text-text-primary">{org.displayName || org.name}</h4>
-															<span className="text-[10px] text-text-muted font-mono">@{org.slug}</span>
+															<div className="flex items-center gap-2">
+																<span className="text-[10px] text-text-muted font-mono">@{org.slug}</span>
+																{org.status === "deleted" && (
+																	<span className="text-[9px] px-1.5 py-0.5 bg-red-500/10 text-red-400 border border-red-500/20 rounded font-mono uppercase">
+																		Soft-Deleted
+																	</span>
+																)}
+															</div>
 														</div>
 													</div>
-													<button
-														onClick={() => handleToggleHidden(org.id, false)}
-														disabled={actionPending === org.id}
-														className="text-text-muted hover:text-text-primary border border-border-default text-xs px-2.5 py-1 rounded-md transition flex items-center gap-1"
-													>
-														<FaEye size={10} /> Restore
-													</button>
+													<div className="flex items-center gap-2">
+														<button
+															onClick={() => handleToggleHidden(org.id, false)}
+															disabled={actionPending === org.id}
+															className="text-text-muted hover:text-text-primary border border-border-default text-xs px-2.5 py-1 rounded-md transition flex items-center gap-1"
+														>
+															<FaEye size={10} /> Restore
+														</button>
+														<button
+															onClick={() => handlePermanentDeleteFromIndex(org)}
+															disabled={actionPending === org.id}
+															className="text-red-400 hover:text-red-300 bg-red-950/20 hover:bg-red-950/40 border border-red-900/30 text-xs px-2.5 py-1 rounded-md transition flex items-center gap-1"
+															title="Permanently Delete Workspace"
+														>
+															<FaTrash size={10} /> Delete Permanently
+														</button>
+													</div>
 												</div>
 											))}
 										</div>

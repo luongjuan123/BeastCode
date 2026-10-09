@@ -1,6 +1,7 @@
 import { getAdminFirestore, getAdminStorage } from "@/firebase/firebaseAdmin";
 import { getRedisClient } from "@/utils/redis";
 import { resolveOrgAndMembership, Organization } from "@/utils/orgEngine";
+import { verifyPlatformAdmin } from "@/utils/withAdminGuard";
 
 export interface DeletionStats {
 	membersDeleted: number;
@@ -104,19 +105,54 @@ export async function deleteOrganizationPermanently(
 		throw new Error("Organization not found");
 	}
 
+	// If member not resolved yet (e.g. org was soft-deleted or fetched via fallback), check membership document
+	if (!member && org && callerUid) {
+		const mDoc1 = await db.collection("organizationMembers").doc(`${org.id}_${callerUid}`).get();
+		if (mDoc1.exists) {
+			member = mDoc1.data();
+		} else if (org.slug) {
+			const mDoc2 = await db.collection("organizationMembers").doc(`${org.slug}_${callerUid}`).get();
+			if (mDoc2.exists) {
+				member = mDoc2.data();
+			}
+		}
+		if (!member) {
+			const mQuery = await db.collection("organizationMembers")
+				.where("organizationId", "in", [org.id, org.slug].filter(Boolean))
+				.where("uid", "==", callerUid)
+				.limit(1)
+				.get();
+			if (!mQuery.empty) {
+				member = mQuery.docs[0].data();
+			}
+		}
+	}
+
 	const isOwner = org.ownerUid === callerUid || member?.roleId === "owner";
+	if (!isOwner && !isSuperAdmin && callerUid) {
+		try {
+			const adminCheck = await verifyPlatformAdmin(callerUid, null);
+			if (adminCheck.isPlatformAdmin) {
+				isSuperAdmin = true;
+			}
+		} catch (adminErr) {
+			// ignore
+		}
+	}
+
 	if (!isOwner && !isSuperAdmin) {
 		throw new Error("Forbidden: Only the organization owner or a platform Super Admin can permanently delete this organization.");
 	}
 
-	// 2. Exact Name or Slug Matching Verification (if confirmationName supplied)
-	if (confirmationName !== undefined) {
+	// 2. Exact Name, Slug, or ID Matching Verification (if confirmationName supplied)
+	if (confirmationName !== undefined && confirmationName.trim() !== "") {
 		const cleanConfirmation = confirmationName.trim().toLowerCase();
 		const matchesName = (org.name || "").trim().toLowerCase() === cleanConfirmation;
 		const matchesSlug = (org.slug || "").trim().toLowerCase() === cleanConfirmation;
 		const matchesDisplayName = (org.displayName || "").trim().toLowerCase() === cleanConfirmation;
+		const matchesId = (org.id || "").trim().toLowerCase() === cleanConfirmation;
 
-		if (!matchesName && !matchesSlug && !matchesDisplayName) {
+		if (!matchesName && !matchesSlug && !matchesDisplayName && !matchesId) {
 			throw new Error(`Confirmation mismatch: Please type the exact organization name "${org.name || org.displayName}" or slug "${org.slug}" to confirm deletion.`);
 		}
 	}
@@ -421,6 +457,9 @@ export async function deleteOrganizationPermanently(
 
 	// 9. Root Organization Document Deletion
 	await db.collection("organizations").doc(orgId).delete();
+	if (orgSlug && orgSlug !== orgId) {
+		await db.collection("organizations").doc(orgSlug).delete().catch(() => {});
+	}
 
 	// Calculate total records purged
 	stats.totalRecordsPurged =

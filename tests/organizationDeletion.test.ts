@@ -220,7 +220,61 @@ async function runTests() {
 		assert.ok(data?.stats.totalRecordsPurged > 0, "Total records purged must be positive");
 	});
 
-	console.log("\n--- 5. Cleanup Test Users & Audit Doc ---");
+	console.log("\n--- 5. Soft-Deleted Organization & Bulk Deletion Validations ---");
+	await test("Permanently deletes an organization that was already soft-deleted", async () => {
+		const softDelOrgId = `org-soft-del-${now}`;
+		await db.collection("organizations").doc(softDelOrgId).set({
+			id: softDelOrgId,
+			name: `Soft Deleted Org ${now}`,
+			slug: `soft-del-${now}`,
+			ownerUid: testOwnerUid,
+			status: "deleted",
+			deletedAt: now,
+		});
+		await db.collection("organizationMembers").doc(`${softDelOrgId}_${testOwnerUid}`).set({
+			organizationId: softDelOrgId,
+			uid: testOwnerUid,
+			roleId: "owner",
+		});
+
+		const result = await deleteOrganizationPermanently(softDelOrgId, testOwnerUid);
+		assert.strictEqual(result.success, true);
+		const checkDoc = await db.collection("organizations").doc(softDelOrgId).get();
+		assert.strictEqual(checkDoc.exists, false, "Soft-deleted org must be completely purged");
+	});
+
+	await test("Bulk permanently deletes multiple organizations with admin privilege", async () => {
+		const bulkOrg1 = `bulk-org-1-${now}`;
+		const bulkOrg2 = `bulk-org-2-${now}`;
+
+		await db.collection("organizations").doc(bulkOrg1).set({
+			id: bulkOrg1,
+			name: `Bulk Org 1 ${now}`,
+			slug: `bulk-1-${now}`,
+			status: "deleted",
+		});
+		await db.collection("organizations").doc(bulkOrg2).set({
+			id: bulkOrg2,
+			name: `Bulk Org 2 ${now}`,
+			slug: `bulk-2-${now}`,
+			status: "active",
+		});
+
+		const orgIds = [bulkOrg1, bulkOrg2];
+		let deletedCount = 0;
+		for (const id of orgIds) {
+			const res = await deleteOrganizationPermanently(id, "admin-test", undefined, true);
+			if (res.success) deletedCount++;
+		}
+
+		assert.strictEqual(deletedCount, 2, "Both orgs must be deleted in bulk");
+		const snap1 = await db.collection("organizations").doc(bulkOrg1).get();
+		const snap2 = await db.collection("organizations").doc(bulkOrg2).get();
+		assert.strictEqual(snap1.exists, false);
+		assert.strictEqual(snap2.exists, false);
+	});
+
+	console.log("\n--- 6. Cleanup Test Users & Audit Doc ---");
 	await test("Clean up test fixture user accounts and audit doc", async () => {
 		await db.collection("users").doc(testOwnerUid).delete();
 		await db.collection("users").doc(testSharedMemberUid).delete();

@@ -22,13 +22,20 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 			return res.status(400).json({ success: false, error: "Validation Error: Missing orgId or action" });
 		}
 
-		const orgRef = db.collection("organizations").doc(orgId);
-		const orgSnap = await orgRef.get();
+		let orgSnap = await db.collection("organizations").doc(orgId).get();
+		if (!orgSnap.exists) {
+			const slugSnap = await db.collection("organizations").where("slug", "==", orgId).limit(1).get();
+			if (!slugSnap.empty) {
+				orgSnap = slugSnap.docs[0];
+			}
+		}
 		if (!orgSnap.exists) {
 			return res.status(404).json({ success: false, error: "Not Found: Organization does not exist" });
 		}
 
+		const orgRef = orgSnap.ref;
 		const org = orgSnap.data() || {};
+		const resolvedOrgId = orgSnap.id;
 		const actorUid = req.user?.uid || "system";
 
 		// Fetch actor details
@@ -235,13 +242,17 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 			});
 
 		} else if (action === "permanent_delete") {
-			// Super admin / platform admin protection check
-			if (req.user?.role !== "super_admin" && req.user?.role !== "admin") {
+			const isPlatformAdmin =
+				req.user?.role === "super_admin" ||
+				req.user?.role === "admin" ||
+				req.user?.isAdmin === true;
+
+			if (!isPlatformAdmin) {
 				return res.status(403).json({ success: false, error: "Forbidden: Administrative access required to permanently delete organizations." });
 			}
 
 			// Execute full cascading cleanup across all collections, storage, and redis
-			const deletionResult = await deleteOrganizationPermanently(orgId, actorUid, undefined, true);
+			const deletionResult = await deleteOrganizationPermanently(resolvedOrgId, actorUid, undefined, true);
 
 			return res.status(200).json({
 				success: true,

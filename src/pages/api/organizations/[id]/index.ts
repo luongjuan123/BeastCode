@@ -25,10 +25,28 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 	try {
 		resolved = await resolveOrgAndMembership(orgIdentifier, uid || null);
 	} catch (e: any) {
-		return res.status(403).json({ success: false, error: "Forbidden: Organization is suspended" });
+		if (req.method !== "DELETE") {
+			return res.status(403).json({ success: false, error: "Forbidden: Organization is suspended" });
+		}
 	}
 
-	const { org, member, role } = resolved;
+	let org = resolved?.org;
+	let member = resolved?.member;
+	let role = resolved?.role;
+
+	// For DELETE requests, resolve directly even if soft-deleted or suspended
+	if (!org && req.method === "DELETE") {
+		const docSnap = await db.collection("organizations").doc(orgIdentifier).get();
+		if (docSnap.exists) {
+			org = { id: docSnap.id, ...docSnap.data() } as Organization;
+		} else {
+			const slugSnap = await db.collection("organizations").where("slug", "==", orgIdentifier).limit(1).get();
+			if (!slugSnap.empty) {
+				org = { id: slugSnap.docs[0].id, ...slugSnap.docs[0].data() } as Organization;
+			}
+		}
+	}
+
 	if (!org) {
 		return res.status(404).json({ success: false, error: "Not Found: Organization does not exist" });
 	}
@@ -215,7 +233,10 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 		}
 
 		try {
-			const isSuperAdmin = req.user?.role === "super_admin";
+			const isPlatformAdmin =
+				req.user?.role === "super_admin" ||
+				req.user?.role === "admin" ||
+				req.user?.isAdmin === true;
 			const isPermanent =
 				req.query.permanent === "true" ||
 				req.body?.permanent === true ||
@@ -224,7 +245,7 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 
 			if (isPermanent) {
 				const confirmationName = req.body?.confirmationName || (req.query.confirmationName as string);
-				const result = await deleteOrganizationPermanently(org.id, uid, confirmationName, isSuperAdmin);
+				const result = await deleteOrganizationPermanently(org.id, uid, confirmationName, isPlatformAdmin);
 				return res.status(200).json({
 					success: true,
 					permanent: true,
@@ -235,7 +256,7 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 
 			// Fallback: Soft-delete
 			const { allowed } = await checkOrgPermission(org.id, uid, "organization.deleteOrganization");
-			if (!allowed && !isSuperAdmin) {
+			if (!allowed && !isPlatformAdmin && org.ownerUid !== uid) {
 				return res.status(403).json({ success: false, error: "Forbidden: Insufficient Permissions" });
 			}
 

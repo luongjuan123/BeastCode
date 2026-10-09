@@ -559,7 +559,12 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 					});
 				}
 			} else if (action === "permanent_delete") {
-				if (req.user?.role !== "super_admin" && req.user?.role !== "admin") {
+				const isPlatformAdmin =
+					req.user?.role === "super_admin" ||
+					req.user?.role === "admin" ||
+					req.user?.isAdmin === true;
+
+				if (!isPlatformAdmin) {
 					return res.status(403).json({ success: false, error: "Forbidden: Platform Admin access required to permanently delete organizations." });
 				}
 
@@ -575,9 +580,12 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
 					}
 				}
 
-				return res.status(200).json({
-					success: true,
-					message: `Permanently deleted ${deletedCount} of ${orgIds.length} organizations.`,
+				const isSuccess = deletedCount > 0;
+				return res.status(isSuccess ? 200 : 400).json({
+					success: isSuccess,
+					message: isSuccess
+						? `Permanently deleted ${deletedCount} of ${orgIds.length} organizations.${errors.length > 0 ? ` (${errors.length} failed: ${errors.join(", ")})` : ""}`
+						: `Failed to permanently delete selected organizations: ${errors.join("; ")}`,
 					deletedCount,
 					errors: errors.length > 0 ? errors : undefined,
 				});
