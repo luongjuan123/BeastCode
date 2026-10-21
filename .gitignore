@@ -49,3 +49,13 @@ serviceAccountKey*.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# AI agent tooling
+.agent/
+.agents/
+.claude/
+.continue/
+.roo/
+.understand-anything/
+.zed/
+skills-lock.json
